@@ -133,7 +133,6 @@
 (add-hook 'ruby-mode-hook 'ruby-mode-hooks)
 
 ;; Ruby - indent (http://willnet.in/13)
-
 (setq ruby-deep-indent-paren-style nil)
 
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
@@ -186,8 +185,13 @@
   )
 (add-hook 'js-mode-hook 'js-indent-hook)
 
-;; Htmlize
+;; Markdown
+(autoload 'markdown-mode "markdown-mode.el"
+   "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
+;; Htmlize
 (require 'htmlize)
 
 (defun htmlize-and-browse ()
