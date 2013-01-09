@@ -87,6 +87,13 @@ setopt PROMPT_SUBST
 
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
+function git_prompt_stash_count {
+  local COUNT=$(git stash list 2>/dev/null | wc -l | tr -d ' ')
+  if [ "$COUNT" -gt 0 ]; then
+    echo "[$COUNT]"
+  fi
+}
+
 function rprompt-git-current-branch {
     local name st color gitdir action
     if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
@@ -111,7 +118,7 @@ function rprompt-git-current-branch {
         color=%F{red}
     fi
 
-    echo "($color$name$action%f%b)"
+    echo "($color$name$action%f%b)`git_prompt_stash_count`"
 }
 
 RPROMPT='`rprompt-git-current-branch`'$PURPLE'[%~]'$DEFAULT
