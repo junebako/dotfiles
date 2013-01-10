@@ -70,6 +70,13 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 REPORTTIME=5
 
+# z
+
+. `brew --prefix`/etc/profile.d/z.sh
+function precmd () {
+   z --add "$(pwd -P)"
+}
+
 # Prompt
 ## Show current ruby version
 ## Show git branch name
