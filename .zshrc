@@ -50,8 +50,8 @@ stty stop undef
 # History
 
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=530000
+SAVEHIST=530000
 setopt extended_history
 function history-all { history -E 1 }
 
