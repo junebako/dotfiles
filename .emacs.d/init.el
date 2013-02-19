@@ -118,6 +118,11 @@
 
 
 
+;; Dash
+(autoload 'dash-at-point "dash-at-point"
+          "Search the word at point with Dash." t nil)
+(global-set-key "\C-cd" 'dash-at-point)
+
 ;; Ruby
 (add-to-list 'auto-mode-alist '("Rakefile"     . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile"      . ruby-mode))
