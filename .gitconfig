@@ -1,0 +1,21 @@
+[core]
+        editor = emacs
+        pager = lv -c
+	quotepath = false
+[user]
+        name = june29
+        email = june29.jp@gmail.com
+[color]
+        ui = auto
+[alias]
+        st  = status
+        df  = diff
+        dfc = diff --cached
+        ci  = commit
+        co  = checkout
+        b   = branch
+        g   = grep
+        pl  = pull
+        pr  = pull --rebase
+[github]
+        user = june29
