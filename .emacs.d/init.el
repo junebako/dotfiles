@@ -123,6 +123,9 @@
           "Search the word at point with Dash." t nil)
 (global-set-key "\C-cd" 'dash-at-point)
 
+;; PHP
+(add-to-list 'auto-mode-alist '("\\.pnp$" . html-mode))
+
 ;; Ruby
 (add-to-list 'auto-mode-alist '("Rakefile"     . ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile"      . ruby-mode))
