@@ -31,6 +31,8 @@ alias x="exit"
 
 alias cemacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 
+alias tree="tree -CN"
+
 # http://www.clear-code.com/blog/2011/9/5.html
 
 alias grep="grep --color=auto"
