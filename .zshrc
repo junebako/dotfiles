@@ -87,7 +87,11 @@ local PURPLE=$'%{[35m%}'
 local RED=$'%{[31m%}'
 local DEFAULT=$'%{[m%}'
 
-PROMPT=$RED'[j] %(!.#.$) '$DEFAULT
+precmd() {
+    RUBY_VERSION="$(rbenv version | sed -e 's/ .*//')"
+}
+
+PROMPT=$RED'[j]($RUBY_VERSION) %(!.#.$) '$DEFAULT
 setopt PROMPT_SUBST
 
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
