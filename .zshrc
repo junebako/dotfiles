@@ -178,3 +178,7 @@ if [ "$TERM" = "screen" ]; then
         }
         chpwd
 fi
+
+# rbenv
+
+eval "$(rbenv init -)"
