@@ -20,7 +20,3 @@ alias cp="cp -i"
 
 alias h="history"
 alias x="exit"
-
-# rvm-install added line:
-if [[ -s /Users/june29/.rvm/scripts/rvm ]] ; then source /Users/june29/.rvm/scripts/rvm ; fi
-

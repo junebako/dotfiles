@@ -87,11 +87,7 @@ local PURPLE=$'%{[35m%}'
 local RED=$'%{[31m%}'
 local DEFAULT=$'%{[m%}'
 
-precmd() {
-    RUBY_VERSION="$(rvm-prompt v s g)"
-}
-
-PROMPT=$RED'[j]($RUBY_VERSION)%(!.#.$) '$DEFAULT
+PROMPT=$RED'[j] %(!.#.$) '$DEFAULT
 setopt PROMPT_SUBST
 
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
