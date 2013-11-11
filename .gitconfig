@@ -19,3 +19,5 @@
         pr  = pull --rebase
 [github]
         user = june29
+[push]
+	default = simple
