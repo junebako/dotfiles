@@ -5,6 +5,9 @@ export LC_MONETARY=C
 export LC_NUMERIC=C
 export LC_TIME=C
 
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+
 export MAKEOPTS="-j4"
 
 # nvm
