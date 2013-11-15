@@ -206,6 +206,9 @@
 (require 'jade-mode)
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
+;; Elixir
+(require 'elixir-mode)
+
 ;; Go
 (require 'go-mode-load)
 (add-hook 'go-mode-hook
