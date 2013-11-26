@@ -14,7 +14,7 @@
         ci  = commit
         co  = checkout
         b   = branch
-        g   = grep
+        g   = grep -n
         pl  = pull
         pr  = pull --rebase
 [github]
