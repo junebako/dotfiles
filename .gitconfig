@@ -1,7 +1,7 @@
 [core]
         editor = emacs
         pager = lv -c
-	quotepath = false
+        quotepath = false
 [user]
         name = june29
         email = june29.jp@gmail.com
@@ -20,4 +20,4 @@
 [github]
         user = june29
 [push]
-	default = simple
+        default = simple
