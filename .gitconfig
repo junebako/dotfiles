@@ -17,6 +17,7 @@
         g   = grep -n
         pl  = pull
         pr  = pull --rebase
+        cp  = cherry-pick
 [github]
         user = june29
 [push]
