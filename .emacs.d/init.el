@@ -92,6 +92,11 @@
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
+;; Emacs server
+(require 'server)
+(unless (server-running-p)
+(server-start))
+
 
 
 ;; auto-install
