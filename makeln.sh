@@ -10,3 +10,4 @@ ln -s $DOTFILES/.tigrc
 ln -s $DOTFILES/.zshrc
 ln -s $DOTFILES/.zshenv
 ln -s $DOTFILES/.zprofile
+ln -s $DOTFILES/.zsh.d

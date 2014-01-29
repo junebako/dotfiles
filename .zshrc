@@ -65,6 +65,10 @@ setopt share_history
 autoload -U compinit
 compinit
 
+# zsh hook
+
+autoload -U add-zsh-hook
+
 # Case insensitive complete
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -145,6 +149,11 @@ setopt magic_equal_subst
 setopt mark_dirs
 function chpwd() { ls }
 setopt auto_cd
+
+# zsh-notify
+# https://github.com/marzocchi/zsh-notify
+
+source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 
 # screen
 
