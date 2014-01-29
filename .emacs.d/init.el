@@ -201,6 +201,9 @@
   )
 (add-hook 'js-mode-hook 'js-indent-hook)
 
+;; CoffeeScript
+(setq ac-modes (append ac-modes '(coffee-mode)))
+
 ;; Markdown
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
