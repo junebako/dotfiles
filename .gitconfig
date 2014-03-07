@@ -11,6 +11,8 @@
         st  = status
         df  = diff
         dfc = diff --cached
+        aa  = add --all
+        ap  = add -p
         ci  = commit
         co  = checkout
         b   = branch
