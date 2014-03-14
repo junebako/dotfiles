@@ -176,6 +176,15 @@
             (add-hook 'scss-mode-hook 'ac-css-mode-setup)
             ))
 
+;; Sass
+(add-hook 'sass-mode-hook
+          (lambda ()
+            (setq css-indent-offset 2)
+            (setq sass-compile-at-save nil)
+            (add-to-list 'ac-modes 'sass-mode)
+            (add-hook 'sass-mode-hook 'ac-css-mode-setup)
+            ))
+
 ;; YAML
 (when (require 'yaml-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.yml$"  . yaml-mode))
