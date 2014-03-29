@@ -6,7 +6,7 @@ alias g='hub'
 alias hub='git'
 alias r='rails'
 
-alias heroku='/usr/bin/heroku'
+alias heroku='/usr/local/heroku/bin/heroku'
 
 alias rm='rm -i'
 alias cp='cp -i'
