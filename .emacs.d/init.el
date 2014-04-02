@@ -11,6 +11,8 @@
 (add-to-load-path "elisp")
 
 
+;; Toolbar
+(tool-bar-mode 0)
 
 ;; Encode
 (set-language-environment "Japanese")
