@@ -1,5 +1,5 @@
 USERNAME="june29"
-PATH=$PATH:.:/usr/bin:/usr/local/sbin
+PATH=.:/usr/local/bin:/usr/local/sbin:/usr/bin:$PATH
 export USERNAME PATH
 export EDITOR="emacs"
 export SVN_EDITOR="emacs"
