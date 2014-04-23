@@ -8,18 +8,19 @@
 [color]
         ui = auto
 [alias]
-        st  = status
-        df  = diff
-        dfc = diff --cached
-        aa  = add --all
-        ap  = add -p
-        ci  = commit
-        co  = checkout
-        b   = branch
-        g   = grep -n
-        pl  = pull
-        pr  = pull --rebase
-        cp  = cherry-pick
+        st   = status
+        df   = diff
+        dfc  = diff --cached
+        aa   = add --all
+        ap   = add -p
+        ci   = commit
+        co   = checkout
+        b    = branch
+        g    = grep -n
+        pl   = pull
+        pr   = pull --rebase
+        cp   = cherry-pick
+        gsub = git-gsub
 [github]
         user = june29
 [push]
