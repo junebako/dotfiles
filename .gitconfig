@@ -25,3 +25,6 @@
         user = june29
 [push]
         default = simple
+[ghq]
+        root = ~/ghq
+        root = ~/dev/go/src
