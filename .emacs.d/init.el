@@ -40,16 +40,20 @@
     (color-theme-solarized-dark)))
 
 ;; Font
-(set-face-attribute 'default nil
-                    :family "Menlo"
-                    :height 120)
-(set-fontset-font
- nil 'japanese-jisx0208
- (font-spec :family "Hiragino Maru Gothic Pro"))
-(setq face-font-rescale-alist
-      '((".*Menlo.*" . 1.0)
-        (".*Hiragino_Maru_Gothic_Pro.*" . 1.2)
-        ("-cdac$" . 1.3)))
+(if (eq window-system 'ns)
+  (progn
+    (set-face-attribute 'default nil
+                        :family "Menlo"
+                        :height 120)
+    (set-fontset-font
+      nil 'japanese-jisx0208
+      (font-spec :family "Hiragino Maru Gothic ProN"))
+    (setq face-font-rescale-alist
+          '((".*Menlo.*" . 1.0)
+            (".*Hiragino_Maru_Gothic_ProN.*" . 1.2)
+            ("-cdac$" . 1.3)))
+  )
+)
 
 ;; Paren
 (setq show-paren-delay 0)
