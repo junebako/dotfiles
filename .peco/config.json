@@ -3,5 +3,12 @@
     "C-p": "peco.SelectPrevious",
     "C-n": "peco.SelectNext",
     "C-c": "peco.Cancel"
+  },
+  "Style": {
+    "Basic": ["on_default", "default"],
+    "SavedSelection": ["bold", "on_yellow", "white"],
+    "Selected": ["on_yellow", "black"],
+    "Query": ["magenta", "bold"],
+    "Matched": ["red"]
   }
 }
