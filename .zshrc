@@ -153,7 +153,7 @@ function peco-select-history() {
 }
 
 zle -N peco-select-history
-bindkey '^r' peco-select-history
+bindkey '^t' peco-select-history
 
 # Some settings
 
