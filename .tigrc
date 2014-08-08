@@ -2,3 +2,7 @@
 bind main o !hub browse -- commit/%(commit)
 bind diff o !hub browse -- commit/%(commit)
 bind log  o !hub browse -- commit/%(commit)
+
+# rebase -i HEAD~%(this commit)
+bind main R !git rebase -i %(commit)
+bind diff R !git rebase -i %(commit)
