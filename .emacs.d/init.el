@@ -155,6 +155,8 @@
 ;; Ruby - indent (http://willnet.in/13)
 (setq ruby-deep-indent-paren-style nil)
 
+(setq ruby-insert-encoding-magic-comment nil)
+
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
         indent offset)
