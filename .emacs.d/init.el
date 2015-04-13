@@ -80,6 +80,10 @@
 ;; Backspace by C-h
 (keyboard-translate ?\C-h ?\C-?)
 
+;; Scroll down and scroll up
+(define-key esc-map "n" 'scroll-up)
+(define-key esc-map "p" 'scroll-down)
+
 ;; Change window by C-t
 (define-key global-map (kbd "C-t") 'other-window)
 
