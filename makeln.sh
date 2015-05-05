@@ -12,3 +12,4 @@ ln -s $DOTFILES/.zshenv
 ln -s $DOTFILES/.zprofile
 ln -s $DOTFILES/.zsh.d
 ln -s $DOTFILES/.peco
+ln -s $DOTFILES/.rspec
