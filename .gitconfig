@@ -27,4 +27,3 @@
         default = simple
 [ghq]
         root = ~/ghq
-        root = ~/dev/go/src
