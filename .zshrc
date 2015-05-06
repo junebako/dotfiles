@@ -27,7 +27,7 @@ alias cp="cp -i"
 alias h="history"
 alias x="exit"
 
-alias e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
+alias e="/Users/june29/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
 
 alias tree="tree -CN"
 
