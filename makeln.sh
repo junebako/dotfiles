@@ -5,6 +5,7 @@ DOTFILES=~/.dotfiles
 cd ~/
 
 ln -s $DOTFILES/.emacs.d
+ln -s $DOTFILES/.gitconfig
 ln -s $DOTFILES/.screenrc
 ln -s $DOTFILES/.tigrc
 ln -s $DOTFILES/.zshrc
