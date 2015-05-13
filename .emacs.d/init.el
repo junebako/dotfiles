@@ -176,6 +176,12 @@
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
 
+;; Web
+;; web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.erb$"   . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?$" . web-mode))
+
 ;; Haml
 (setq ac-modes (append ac-modes '(haml-mode)))
 
