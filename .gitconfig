@@ -20,6 +20,7 @@
         pl   = pull
         pr   = pull --rebase
         cp   = cherry-pick
+        fp   = fetch --prune
         gsub = git-gsub
 [github]
         user = june29
