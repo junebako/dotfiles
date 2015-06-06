@@ -5,6 +5,7 @@
 alias g='hub'
 alias hub='git'
 alias r='rails'
+alias be='bundle exec'
 
 alias rm='rm -i'
 alias cp='cp -i'
