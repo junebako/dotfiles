@@ -7,6 +7,9 @@ alias hub='git'
 alias r='rails'
 alias be='bundle exec'
 
+alias cdrepo='cd $(ghq list -p | peco)'
+alias ghq-get='ghq get -p'
+
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
