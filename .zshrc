@@ -132,24 +132,6 @@ function rprompt-git-current-branch {
 RPROMPT='`rprompt-git-current-branch`'$PURPLE'[%~]'$DEFAULT
 setopt PROMPT_SUBST
 
-# History search with peco
-
-function peco-select-history() {
-    local tac
-    if which tac > /dev/null; then
-        tac="tac"
-    else
-        tac="tail -r"
-    fi
-    BUFFER=$(history -n 1 | \
-        eval $tac | \
-        peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-}
-
-zle -N peco-select-history
-bindkey '^t' peco-select-history
-
 # Some settings
 
 setopt autopushd
