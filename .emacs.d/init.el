@@ -10,6 +10,9 @@
 
 (add-to-load-path "elisp")
 
+;; exec-path-from-shell
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 ;; Toolbar
 (tool-bar-mode 0)
@@ -132,6 +135,8 @@
   (ac-config-default))
 
 
+;; editorconfig
+(load "editorconfig")
 
 ;; Dash
 (autoload 'dash-at-point "dash-at-point"
