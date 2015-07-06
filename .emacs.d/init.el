@@ -298,3 +298,7 @@
     (shell-command (concat "open -a safari " htmlize-and-browse-buffer-file-path))
   )
 )
+
+;; tramp
+(require 'tramp)
+(setq tramp-default-method "ssh")
