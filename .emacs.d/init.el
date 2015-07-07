@@ -11,8 +11,9 @@
 (add-to-load-path "elisp")
 
 ;; exec-path-from-shell
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+; (when (memq window-system '(mac ns))
+;   (require 'exec-path-from-shell)
+;   (exec-path-from-shell-initialize))
 
 ;; Toolbar
 (tool-bar-mode 0)
@@ -136,6 +137,7 @@
 
 
 ;; editorconfig
+(setq edconf-exec-path "/usr/local/bin/editorconfig")
 (load "editorconfig")
 
 ;; Dash
