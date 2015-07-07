@@ -75,6 +75,9 @@
 	  ((json
 	    (1 2 0)))
 	  "Yet Another Emacs integration for gist.github.com" single])
+ (xmlgen .
+	 [(0 4)
+	  nil "A DSL for generating XML." single])
  (xml-rpc .
 	  [(1 6 8)
 	   nil "An elisp implementation of clientside XML-RPC" single])
@@ -449,6 +452,15 @@
  (tron-theme .
 	     [(12)
 	      nil "A theme loosely based on Tron: Legacy colors" single])
+ (transmission .
+	       [(0 4 1)
+		((emacs
+		  (24 4))
+		 (let-alist
+		  (1 0 3))
+		 (seq
+		  (1 5)))
+		"Interface to a Transmission session" single])
  (tracking .
 	   [(1 6)
 	    ((shorten
@@ -490,6 +502,11 @@
  (thesaurus .
 	    [(2012 4 7)
 	     nil "replace a word with a synonym looked up in a web service." single])
+ (theme-looper .
+	       [(0 0 20150613)
+		((cl-lib
+		  (0 5)))
+		"Loop thru the available color-themes" single])
  (theme-changer .
 		[(2 1 0)
 		 nil "Sunrise/Sunset Theme Changer for Emacs" single])
@@ -1636,7 +1653,7 @@
 	       (6 1)))
 	     "basic support for magit links" single])
  (org-journal .
-	      [(1 9 4)
+	      [(1 9 5)
 	       nil "a simple org-mode based journaling mode" single])
  (org-gnome .
 	    [(0 1)
@@ -1792,6 +1809,13 @@
  (n3-mode .
 	  [(20071215)
 	   nil "mode for Notation 3" single])
+ (myterminal-controls .
+		      [(0 0 20150427)
+		       ((emacs
+			 (24))
+			(cl-lib
+			 (0 5)))
+		       "Quick toggle controls at a key-stroke" single])
  (my-packages .
 	      [(0 1 0)
 	       nil "Package Initialization." single])
@@ -2825,9 +2849,6 @@
  (gitattributes-mode .
 		     [(1 2 0)
 		      nil "Major mode for editing .gitattributes files" single])
- (git-rebase-mode .
-		  [(1 0 0)
-		   nil "Major mode for editing git rebase files" single])
  (git-gutter-fringe .
 		    [(0 12)
 		     ((git-gutter
@@ -2847,12 +2868,15 @@
 	     ((dash
 	       (2 9 0)))
 	     "draft git commit messages" single])
- (git-commit-mode .
-		  [(1 0 0)
-		   nil "Major mode for editing git commit messages" single])
  (git-commit .
-	     [(0 1)
-	      nil "Major mode for editing git commit messages" single])
+	     [(2 1 0)
+	      ((emacs
+		(24 4))
+	       (dash
+		(2 10 0))
+	       (with-editor
+		   (2 1 0)))
+	      "Edit Git commit messages" single])
  (git-auto-commit-mode .
 		       [(4 4 0)
 			nil "Emacs Minor mode to automatically commit and push" single])
@@ -4122,8 +4146,10 @@
 	 [(0 1 0)
 	  nil "eldoc mode for clojure" single])
  (clj-refactor .
-	       [(1 0 5)
-		((s
+	       [(1 1 0)
+		((emacs
+		  (24 3))
+		 (s
 		  (1 8 0))
 		 (dash
 		  (2 4 0))
@@ -4134,7 +4160,9 @@
 		 (multiple-cursors
 		  (1 2 2))
 		 (cider
-		  (0 8 1)))
+		  (0 9 1))
+		 (edn
+		  (1 1 1)))
 		"A collection of clojure refactoring functions" single])
  (clj-mode .
 	   [(0 9)
@@ -4424,9 +4452,11 @@
 		  (1 11 5)))
 		"Space align various Clojure forms" single])
  (alchemist .
-	    [(1 1 0)
+	    [(1 2 0)
 	     ((emacs
-	       (24)))
+	       (24 4))
+	      (company
+	       (0 8 0)))
 	     "Elixir tooling integration into Emacs" tar])
  (ahg .
       [(0 99)
