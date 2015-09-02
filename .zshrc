@@ -190,3 +190,7 @@ fi
 # rbenv
 
 eval "$(rbenv init -)"
+
+# nvm
+
+[[ -s "$HOME/.nvm" ]] && . "$HOME/.nvm/nvm.sh"
