@@ -15,3 +15,8 @@ export MAKEOPTS="-j4"
 
 export SYS_NOTIFIER="/usr/local/bin/terminal-notifier"
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
+
+# keychain
+
+keychain --nogui --quiet ~/.ssh/id_rsa
+source ~/.keychain/$HOST-sh
