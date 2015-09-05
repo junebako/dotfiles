@@ -119,12 +119,12 @@
   (auto-install-update-emacswiki-package-name t)
   (auto-install-compatibility-setup))
 
-
 ;; package.el
 (when (require 'package nil t)
-  (add-to-list 'package-archives
-               '("marmalade" . "http://marmalade-repo.org/packages/"))
-  (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
+  (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("ELPA" . "http://tromey.com/elpa/")
+                         ("melpa" . "http://melpa.org/packages/")))
   (package-initialize))
 
 
