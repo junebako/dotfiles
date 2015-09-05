@@ -264,6 +264,15 @@
 
 (add-hook 'before-save-hook 'gofmt-before-save)
 
+;; RubyMotion
+
+(add-to-list 'load-path "~/.emacs.d/elisp/motion-mode-20140919.1856")
+(require 'motion-mode)
+
+(add-hook 'ruby-mode-hook 'motion-recognize-project)
+(add-to-list 'ac-modes 'motion-mode)
+(add-to-list 'ac-sources 'ac-source-dictionary)
+
 ;; Htmlize
 (require 'htmlize)
 
