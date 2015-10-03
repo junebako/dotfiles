@@ -21,3 +21,8 @@
     showOnStartup: false
   "japanese-wrap":
     characterWidth: {}
+  "wercker-status":
+    Username: ""
+    Password: ""
+    Interval_Minutes: 2
+  "git-projects": {}
