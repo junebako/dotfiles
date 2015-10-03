@@ -9,6 +9,7 @@
     lineHeight: 1.4
     preferredLineLength: 120
     autoIndentOnPaste: false
+    fontSize: 12
   core:
     themes: [
       "one-dark-ui"
