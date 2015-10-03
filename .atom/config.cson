@@ -1,0 +1,21 @@
+"*":
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    softWrapAtPreferredLineLength: true
+    softWrap: true
+    fontFamily: "menlo"
+    lineHeight: 1.4
+    preferredLineLength: 120
+  core:
+    themes: [
+      "one-dark-ui"
+      "one-dark-syntax"
+    ]
+  "exception-reporting":
+    userId: "8a217b7e-aa24-1571-4b5d-d5dc2143d7a0"
+  welcome:
+    showOnStartup: false
+  "japanese-wrap":
+    characterWidth: {}

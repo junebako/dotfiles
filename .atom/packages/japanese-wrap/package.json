@@ -1,0 +1,43 @@
+{
+  "name": "japanese-wrap",
+  "main": "./lib/japanese-wrap",
+  "version": "0.2.10",
+  "description": "Word wrap for Japanese text",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raccy/japanese-wrap"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.189.0 <1.0.0"
+  },
+  "dependencies": {},
+  "readme": "# Japanese Wrap Package\n\nWord wrap for Japanese text (and may little help Chinese and Korean).\n\nThis package makes a correct soft wrap, if you use the double-width characters. And it considers breaking rules for Japanese.\n\n## Abount the future\n\nAtom 1.0 roadmap includes a task to fix [atom/atom#1783](https://github.com/atom/atom/issues/1783) that is the bug fixed by this package. So it will not be needed in the future! But the fix may not support miner breaking rules used for Japanese only. If so, I'll recreate this package, maybe.\n\n## Monospace font only\n\nThis package assumes the use of monospace fonts. If you use proportional fonts, it is better to use [atomicchar](https://atom.io/packages/atomicchar) forked by this package.\n\n## For Chinese and Korean users\n\nThis package does not correspond to Chinese or Korean. But if you may ignore the line breaking rule, it's useful. Please disable the setting \"日本語禁則処理を行う\" (to use the line breaking rule for Japanese).\n\nAnd see also [atomicchar](https://atom.io/packages/atomicchar).\n\n# 日本語用ワードラップパッケージ\n本パッケージは日本語文章での、画面幅(または指定文字数)での改行処理を行うAtomのパッケージです。標準のSoft Wrap機能を上書きする形となり、改行の際には下記処理を行います。\n\n* 英文のみの場合は標準のSoft Wrapとほぼ同じ処理をします。\n* 2倍幅の文字(主にShfit_JISにおける2バイト文字)を2倍幅で計算します。\n* 日本語における禁則処理を行います。\n\n文字コードに関してはUnicode 7.0を参照しています。禁則処理はW3Cの「日本語組版処理の要件」を参考にしています。\n\n## 使い方\n1. Atom標準のSoft Wrapを有効にします。関連のある設定は下記になります。\n    * Preferred Line Length\n    * Soft Wrap\n    * Soft Wrap At Preferred Line Length\n2. パッケージをインストールします。\n\n無効にする場合は、パッケージをDisabledにするか、Uninstallしてください。なお、標準のSoft Wrapが無効の場合は、ラップ機能は動作しませんので、ご注意ください。\n\n## 動かないときは？\n本パッケージはAtomの非標準APIを使用しています。Atom本体は常に開発されているため、DisplayBufferのSoft Wrap周りが変更されると動かないことがあります。うまく動作しない場合は、最新へアップデートしてみてください。現バージョン(v0.2.9)はv0.204.0で確認し、新しい1.0 APIsとchorme 41に対応しています。\n\n## その他\n本パッケージは等幅フォント専用です。プロポーショナルフォントを使いたい場合は、[atomicchar](https://atom.io/packages/atomicchar)を使ってみてください。\n\nAtom 1.0 では本パッケージの修正部分が対応されるため、不要になる予定です。ただし、マイナーな禁則処理の対応に特化したものに作り直すかもしれません。\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/raccy/japanese-wrap/issues"
+  },
+  "homepage": "https://github.com/raccy/japanese-wrap",
+  "_id": "japanese-wrap@0.2.10",
+  "_shasum": "874c3f597fe39b79046a4f289482229a6d08bd4b",
+  "_resolved": "file:../d-11562-871-67rqrc/package.tgz",
+  "_from": "../d-11562-871-67rqrc/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/character-classes.coffee",
+        "lib/character-regexp-util.coffee",
+        "lib/japanese-wrap-manager.coffee",
+        "lib/japanese-wrap.coffee",
+        "lib/unicode-util.coffee",
+        "lib/unicode.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
