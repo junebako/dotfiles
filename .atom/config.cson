@@ -8,6 +8,7 @@
     fontFamily: "menlo"
     lineHeight: 1.4
     preferredLineLength: 120
+    autoIndentOnPaste: false
   core:
     themes: [
       "one-dark-ui"
