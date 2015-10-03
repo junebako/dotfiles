@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Application Layout</title>
+  
+  <%= javascript_include_tag "application01", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag("application01", "data-turbolinks-track" => true) %>
+  <%= javascript_include_tag "application02/common", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "jquery.popular_library", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "/no_asset_pipeline" %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag("application", media: "all", "data-turbolinks-track" => true) %>
+  <%= stylesheet_link_tag    "application02/common" %>
+  <%= stylesheet_link_tag    "jquery.popular_style" %>
+  <%= stylesheet_link_tag    "/no_asset_pipeline" %>
+  <%= javascript_include_tag "my_library" %>
+  <%= stylesheet_link_tag    "my_style" %>
+  <%= javascript_include_tag "dynamic_script" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
