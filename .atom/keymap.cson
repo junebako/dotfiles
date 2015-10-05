@@ -26,3 +26,6 @@
 
 'atom-text-editor:not([mini])':
   'ctrl-i': 'editor:auto-indent'
+
+'atom-workspace atom-text-editor':
+  'ctrl-m': 'editor:newline'
