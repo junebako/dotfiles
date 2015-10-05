@@ -26,3 +26,5 @@
     Password: ""
     Interval_Minutes: 2
   "git-projects": {}
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
