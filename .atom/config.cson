@@ -13,7 +13,7 @@
   core:
     themes: [
       "one-dark-ui"
-      "one-dark-syntax"
+      "base16-tomorrow-dark-theme"
     ]
   "exception-reporting":
     userId: "8a217b7e-aa24-1571-4b5d-d5dc2143d7a0"
