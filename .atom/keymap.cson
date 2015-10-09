@@ -33,3 +33,6 @@
 
 'atom-workspace atom-text-editor':
   'ctrl-m': 'editor:newline'
+
+'atom-workspace':
+  'ctrl-x ctrl-g': 'fuzzy-grep:toggleLastSearch'

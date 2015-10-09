@@ -1,0 +1,30 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Fuzzy Grep Toggle'
+      'command': 'fuzzy-grep:toggle'
+    },
+    {
+      'label': 'Fuzzy Grep Toggle Last Search'
+      'command': 'fuzzy-grep:toggleLastSearch'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Fuzzy Grep'
+      'submenu': [
+        {
+          'label': 'Toggle'
+          'command': 'fuzzy-grep:toggle'
+        },
+        {
+          'label': 'Toggle Last Search'
+          'command': 'fuzzy-grep:toggleLastSearch'
+        }
+      ]
+    ]
+  }
+]
