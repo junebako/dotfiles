@@ -4,17 +4,23 @@
 path = require 'path'
 Runner = require './runner'
 escapeStringRegexp = require 'escape-string-regexp'
+fuzzyFilter = null
 
 module.exports =
 class GrepView extends SelectListView
-  minFilterLength: null
+  preserveLastSearch: false
+  maxItems: 100
+  minFilterLength: 3
+  showFullPath: false
   runner: null
   lastSearch: ''
+  isFileFiltering: false
 
   initialize: ->
     super
     @filterEditorView.getModel().getBuffer().onDidChange =>
-      @grepProject()
+      unless @isFileFiltering
+        @grepProject()
 
     @panel = atom.workspace.addModalPanel(item: this, visible: false)
     @addClass 'atom-fuzzy-grep'
@@ -30,19 +36,24 @@ class GrepView extends SelectListView
       @preserveLastSearch = atom.config.get('atom-fuzzy-grep.preserveLastSearch') is true
     atom.config.observe 'atom-fuzzy-grep.escapeSelectedText', =>
       @escapeSelectedText = atom.config.get('atom-fuzzy-grep.escapeSelectedText') is true
+    atom.config.observe 'atom-fuzzy-grep.showFullPath', =>
+      @showFullPath = atom.config.get 'atom-fuzzy-grep.showFullPath'
 
   getFilterKey: ->
+    if @isFileFiltering then 'filePath' else ''
 
-  getFilterQuery: -> ''
+  getFilterQuery: ->
+    if @isFileFiltering then @filterEditorView.getText() else ''
 
   viewForItem: ({filePath, line, content, error})->
+    that = @
     if error
       @setError error
       return
     $$ ->
       @li class: 'two-lines', =>
-        fileBasePath = path.basename filePath
-        @div "#{fileBasePath}:#{line+1}", class: 'primary-line file icon icon-file-text', 'data-name': fileBasePath
+        displayedPath = if that.showFullPath then filePath else path.basename filePath
+        @div "#{displayedPath}:#{line+1}", class: 'primary-line file icon icon-file-text', 'data-name': displayedPath
         @div content, class: 'secondary-line'
 
   confirmed: (item)->
@@ -69,6 +80,7 @@ class GrepView extends SelectListView
 
   cancelled: ->
     @items = []
+    @isFileFiltering = false
     @panel.hide()
     @killRunner()
 
@@ -112,3 +124,12 @@ class GrepView extends SelectListView
   toggleLastSearch: ->
     @toggle()
     @filterEditorView.setText(@lastSearch || '')
+
+  toggleFileFilter: ->
+    @isFileFiltering = !@isFileFiltering
+    if @isFileFiltering
+      @tmpSearchString = @filterEditorView.getText()
+      @filterEditorView.setText('')
+    else
+      @filterEditorView.setText(@tmpSearchString)
+      @tmpSearchString = ''
