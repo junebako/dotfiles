@@ -28,3 +28,10 @@
   "git-projects": {}
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
+  react: {}
+".js.jsx.source":
+  editor:
+    preferredLineLength: 300
+".coffee.jsx.source":
+  editor:
+    preferredLineLength: 300
