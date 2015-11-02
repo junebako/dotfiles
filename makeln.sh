@@ -16,3 +16,7 @@ ln -s $DOTFILES/.zprofile
 ln -s $DOTFILES/.zsh.d
 ln -s $DOTFILES/.peco
 ln -s $DOTFILES/.rspec
+
+cd ~/Library/Application\ Support/Karabiner
+
+ln -s $DOTFILES/karabiner/private.xml
