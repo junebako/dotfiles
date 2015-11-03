@@ -1,6 +1,6 @@
 {
   "name": "editorconfig",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Helps developers maintain consistent coding styles between different editors",
   "license": "MIT",
   "repository": {
@@ -43,10 +43,10 @@
     "url": "https://github.com/sindresorhus/atom-editorconfig/issues"
   },
   "homepage": "https://github.com/sindresorhus/atom-editorconfig#readme",
-  "_id": "editorconfig@1.2.1",
-  "_shasum": "aa59aa6f3cea0f7475ec1705a4f51a84d6806d7d",
-  "_resolved": "file:../d-115102-1320-1egem0i/package.tgz",
-  "_from": "../d-115102-1320-1egem0i/package.tgz",
+  "_id": "editorconfig@1.2.2",
+  "_shasum": "4b887978935c557410d3a99057e43c9d2bbab5e7",
+  "_resolved": "file:../d-115103-51141-15c5cqi/package.tgz",
+  "_from": "../d-115103-51141-15c5cqi/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
