@@ -1,9 +1,11 @@
 {Point} = require 'atom'
 
+cmp = (a, b) -> if a < b then -1 else if a > b then 1 else 0
+
 module.exports =
-  open: (state) ->
-    atom.workspace.open().then (editor) =>
-      @set(editor, state)
+class TestEditor
+
+  constructor: (@editor) ->
 
   # Set the state of the editor.
   #
@@ -12,12 +14,12 @@ module.exports =
   #
   # * [i]: Sets the head of cursor i at this location.
   # * (i): Sets the tail of cursor i at this location.
-  set: (editor, state) ->
-    editor.setText(state)
+  setState: (state) ->
+    @editor.setText(state)
     re = /\[(\d+)\]|\((\d+)\)/g
 
     descriptors = []
-    editor.scan re, (hit) ->
+    @editor.scan re, (hit) ->
       i = parseInt(hit.match[0].slice(1, 2), 10)
       descriptors[i] ?= {}
       if hit.match[1]?
@@ -33,37 +35,37 @@ module.exports =
       if not head
         throw "missing head of cursor #{i}"
 
-      cursor = editor.getCursors()[i]
+      cursor = @editor.getCursors()[i]
       if not cursor
-        cursor = editor.addCursorAtBufferPosition(head)
+        cursor = @editor.addCursorAtBufferPosition(head)
       else
         cursor.setBufferPosition(head)
 
     for descriptor, i in descriptors
       {head, tail} = descriptor or {}
       if tail
-        cursor = editor.getCursors()[i]
+        cursor = @editor.getCursors()[i]
         reversed = Point.min(head, tail) is head
         cursor.selection.setBufferRange([head, tail], reversed: reversed)
 
-    editor
-
   # Return the state (in the format described for set()) of the editor.
-  get: (editor) ->
-    buffer = editor.getBuffer()
+  getState: ->
+    buffer = @editor.getBuffer()
     linesWithEndings = (
       [buffer.lineForRow(i), buffer.lineEndingForRow(i)] \
       for i in [0...buffer.getLineCount()]
     )
 
     insertions = []
-    for cursor, i in editor.getCursors()
+    for cursor, i in @editor.getCursors()
       head = cursor.marker.getHeadBufferPosition()
       tail = cursor.marker.getTailBufferPosition()
       insertions.push([head.row, head.column, "[#{i}]"])
       insertions.push([tail.row, tail.column, "(#{i})"]) if not head.isEqual(tail)
 
-    for [row, column, text] in insertions.sort().reverse()
+    insertions.sort (a, b) -> cmp(a[0], b[0]) or cmp(a[1], b[1])
+    insertions.reverse()
+    for [row, column, text] in insertions
       [line, ending] = linesWithEndings[row]
       line = line.slice(0, column) + text + line.slice(column)
       linesWithEndings[row] = [line, ending]

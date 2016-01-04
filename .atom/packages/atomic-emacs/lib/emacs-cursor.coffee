@@ -1,12 +1,43 @@
+KillRing = require './kill-ring'
 Mark = require './mark'
+{CompositeDisposable} = require 'atom'
 
 OPENERS = {'(': ')', '[': ']', '{': '}', '\'': '\'', '"': '"', '`': '`'}
 CLOSERS = {')': '(', ']': '[', '}': '{', '\'': '\'', '"': '"', '`': '`'}
 
-# Wraps a Cursor to provide a nicer API for common operations.
-class CursorTools
+module.exports =
+class EmacsCursor
+  @for: (cursor) ->
+    cursor._atomicEmacs ?= new EmacsCursor(cursor)
+
   constructor: (@cursor) ->
     @editor = @cursor.editor
+    @_mark = null
+    @_localKillRing = null
+    @_yankMarker = null
+    @_disposable = @cursor.onDidDestroy => @destroy()
+
+  mark: ->
+    @_mark ?= new Mark(@cursor)
+
+  killRing: ->
+    if @editor.hasMultipleCursors()
+      @getLocalKillRing()
+    else
+      KillRing.global
+
+  getLocalKillRing: ->
+    @_localKillRing ?= KillRing.global.fork()
+
+  clearLocalKillRing: ->
+    @_localKillRing = null
+
+  destroy: ->
+    @_disposable.dispose()
+    @_disposable = null
+    @_yankMarker?.destroy()
+    @_mark?.destroy()
+    delete @cursor._atomicEmacs
 
   # Look for the previous occurrence of the given regexp.
   #
@@ -120,6 +151,91 @@ class CursorTools
     if not @goToMatchStartForward(regexp)
       @_goTo @editor.getEofBufferPosition()
 
+  horizontalSpaceRange: ->
+    @skipCharactersBackward(' \t')
+    start = @cursor.getBufferPosition()
+    @skipCharactersForward(' \t')
+    end = @cursor.getBufferPosition()
+    [start, end]
+
+  transformWord: (transformer) ->
+    @skipNonWordCharactersForward()
+    start = @cursor.getBufferPosition()
+    @skipWordCharactersForward()
+    end = @cursor.getBufferPosition()
+    range = [start, end]
+    text = @editor.getTextInBufferRange(range)
+    @editor.setTextInBufferRange(range, transformer(text))
+
+  backwardKillWord: (method) ->
+    @_killUnit method, =>
+      end = @cursor.getBufferPosition()
+      @skipNonWordCharactersBackward()
+      @skipWordCharactersBackward()
+      start = @cursor.getBufferPosition()
+      [start, end]
+
+  killWord: (method) ->
+    @_killUnit method, =>
+      start = @cursor.getBufferPosition()
+      @skipNonWordCharactersForward()
+      @skipWordCharactersForward()
+      end = @cursor.getBufferPosition()
+      [start, end]
+
+  killLine: (method) ->
+    @_killUnit method, =>
+      start = @cursor.getBufferPosition()
+      line = @editor.lineTextForBufferRow(start.row)
+      if /^\s*$/.test(line.slice(start.column))
+        end = [start.row + 1, 0]
+      else
+        end = [start.row, line.length]
+      [start, end]
+
+  killRegion: (method) ->
+    @_killUnit method, =>
+      position = @cursor.selection.getBufferRange()
+      [position, position]
+
+  _killUnit: (method='push', findRange) ->
+    if @cursor.selection? and not @cursor.selection.isEmpty()
+      range = @cursor.selection.getBufferRange()
+      @cursor.selection.clear()
+    else
+      range = findRange()
+
+    text = @editor.getTextInBufferRange(range)
+    @editor.setTextInBufferRange(range, '')
+    killRing = @killRing()
+    killRing[method](text)
+    killRing.getCurrentEntry()
+
+  yank: ->
+    killRing = @killRing()
+    return if killRing.isEmpty()
+    if @cursor.selection
+      range = @cursor.selection.getBufferRange()
+      @cursor.selection.clear()
+    else
+      position = @cursor.getBufferPosition()
+      range = [position, position]
+    newRange = @editor.setTextInBufferRange(range, killRing.getCurrentEntry())
+    @cursor.setBufferPosition(newRange.end)
+    @_yankMarker ?= @editor.markBufferPosition(@cursor.getBufferPosition())
+    @_yankMarker.setBufferRange(newRange)
+
+  rotateYank: (n) ->
+    return if @_yankMarker == null
+    entry = @killRing().rotate(n)
+    unless entry is null
+      range = @editor.setTextInBufferRange(@_yankMarker.getBufferRange(), entry)
+      @_yankMarker.setBufferRange(range)
+
+  yankComplete: ->
+    @_yankMarker?.destroy()
+    @_yankMarker = null
+
   _nextCharacterFrom: (position) ->
     lineLength = @editor.lineTextForBufferRow(position.row).length
     if position.column == lineLength
@@ -160,11 +276,78 @@ class CursorTools
 
   # Add the next sexp to the cursor's selection. Activate if necessary.
   markSexp: ->
-    mark = Mark.for(@cursor)
-    mark.activate() unless mark.isActive()
-    range = mark.getSelectionRange()
+    range = @cursor.getMarker().getBufferRange()
     newTail = @_sexpForwardFrom(range.end)
-    mark.setSelectionRange(range.start, newTail)
+    mark = @mark().set(newTail)
+    mark.activate() unless mark.isActive()
+
+  # Transpose the two characters around the cursor. At the beginning of a line,
+  # transpose the newline with the first character of the line. At the end of a
+  # line, transpose the last two characters. At the beginning of the buffer, do
+  # nothing. Weird, but that's Emacs!
+  transposeChars: ->
+    {row, column} = @cursor.getBufferPosition()
+    return if row == 0 and column == 0
+
+    line = @editor.lineTextForBufferRow(row)
+    if column == 0
+      previousLine = @editor.lineTextForBufferRow(row - 1)
+      pairRange = [[row - 1, previousLine.length], [row, 1]]
+    else if column == line.length
+      pairRange = [[row, column - 2], [row, column]]
+    else
+      pairRange = [[row, column - 1], [row, column + 1]]
+    pair = @editor.getTextInBufferRange(pairRange)
+    @editor.setTextInBufferRange(pairRange, (pair[1] or '') + pair[0])
+
+  # Transpose the word at the cursor with the next one. Move to the end of the
+  # next word.
+  transposeWords: ->
+    @skipNonWordCharactersBackward()
+
+    word1Range = @_wordRange()
+    @skipWordCharactersForward()
+    @skipNonWordCharactersForward()
+    if @editor.getEofBufferPosition().isEqual(@cursor.getBufferPosition())
+      # No second word - just go back.
+      @skipNonWordCharactersBackward()
+    else
+      word2Range = @_wordRange()
+      word1 = @editor.getTextInBufferRange(word1Range)
+      word2 = @editor.getTextInBufferRange(word2Range)
+
+      @editor.setTextInBufferRange(word2Range, word1)
+      @editor.setTextInBufferRange(word1Range, word2)
+      @cursor.setBufferPosition(word2Range[1])
+
+  # Transpose the line at the cursor with the one above it. Move to the
+  # beginning of the next line.
+  transposeLines: ->
+    row = @cursor.getBufferRow()
+    if row == 0
+      @_endLineIfNecessary()
+      @cursor.moveDown()
+      row += 1
+    @_endLineIfNecessary()
+
+    lineRange = [[row, 0], [row + 1, 0]]
+    text = @editor.getTextInBufferRange(lineRange)
+    @editor.setTextInBufferRange(lineRange, '')
+    @editor.setTextInBufferRange([[row - 1, 0], [row - 1, 0]], text)
+
+  _wordRange: ->
+    @skipWordCharactersBackward()
+    range = @locateNonWordCharacterBackward()
+    wordStart = if range then range.end else [0, 0]
+    range = @locateNonWordCharacterForward()
+    wordEnd = if range then range.start else @editor.getEofBufferPosition()
+    [wordStart, wordEnd]
+
+  _endLineIfNecessary: ->
+    row = @cursor.getBufferPosition().row
+    if row == @editor.getLineCount() - 1
+      length = @cursor.getCurrentBufferLine().length
+      @editor.setTextInBufferRange([[row, length], [row, length]], "\n")
 
   _sexpForwardFrom: (point) ->
     eob = @editor.getEofBufferPosition()
@@ -222,19 +405,6 @@ class CursorTools
     else
       @_locateBackwardFrom(point, /\W/i)?.end or BOB
 
-  # Delete and return the word at the cursor.
-  #
-  # If not in or at the start or end of a word, return the empty string and
-  # leave the buffer unmodified.
-  extractWord: (cursorTools) ->
-    @skipWordCharactersBackward()
-    range = @locateNonWordCharacterForward()
-    wordEnd = if range then range.start else @editor.getEofBufferPosition()
-    wordRange = [@cursor.getBufferPosition(), wordEnd]
-    word = @editor.getTextInBufferRange(wordRange)
-    @editor.setTextInBufferRange(wordRange, '')
-    word
-
   _locateBackwardFrom: (point, regExp) ->
     result = null
     @editor.backwardsScanInBufferRange regExp, [BOB, point], (hit) ->
@@ -272,5 +442,3 @@ escapeRegExp = (string) ->
     ''
 
 BOB = {row: 0, column: 0}
-
-module.exports = CursorTools
