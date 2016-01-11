@@ -6,7 +6,7 @@ export LC_NUMERIC=C
 export LC_TIME=C
 
 export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME
+export GOPATH=$HOME/.go
 export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 
 export MAKEOPTS="-j4"
