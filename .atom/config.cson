@@ -29,9 +29,9 @@
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
   react: {}
-".coffee.jsx.source":
+".js.jsx.source":
   editor:
     preferredLineLength: 300
-".js.jsx.source":
+".coffee.jsx.source":
   editor:
     preferredLineLength: 300

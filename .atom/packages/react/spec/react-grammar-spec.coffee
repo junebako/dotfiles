@@ -1,4 +1,10 @@
-{TextEditor} = require 'atom'
+TextEditor = null
+buildTextEditor = (params) ->
+  if atom.workspace.buildTextEditor?
+    atom.workspace.buildTextEditor(params)
+  else
+    TextEditor ?= require('atom').TextEditor
+    new TextEditor(params)
 
 describe "React grammar", ->
   grammar = null
@@ -95,7 +101,7 @@ describe "React grammar", ->
   describe "operators", ->
     it "tokenizes void correctly", ->
       {tokens} = grammar.tokenizeLine('void')
-      expect(tokens[0]).toEqual value: 'void', scopes: ['source.js.jsx', 'keyword.operator.js']
+      expect(tokens[0]).toEqual value: 'void', scopes: ['source.js.jsx', 'keyword.operator.void.js']
 
     it "tokenizes the / arithmetic operator when separated by newlines", ->
       lines = grammar.tokenizeLines """
@@ -192,7 +198,7 @@ describe "React grammar", ->
     editor = null
 
     beforeEach ->
-      editor = new TextEditor({})
+      editor = buildTextEditor()
       editor.setGrammar(grammar)
 
     expectPreservedIndentation = (text) ->
