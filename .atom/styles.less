@@ -51,6 +51,11 @@ atom-text-editor::shadow .cursor {
 
     .title {
       padding-right: 0px;
+
+      &:before {
+        display: inline-block;
+        width: 20px;
+      }
     }
 
     .close-icon {
@@ -69,6 +74,7 @@ atom-text-editor::shadow .cursor {
 
   .tab.modified:not(:hover) {
     .close-icon {
+      top: 27px;
       right: 7px;
     }
   }
