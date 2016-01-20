@@ -1,37 +1,37 @@
 "*":
-  editor:
-    invisibles: {}
-    showIndentGuide: true
-    showInvisibles: true
-    softWrapAtPreferredLineLength: true
-    softWrap: true
-    fontFamily: "menlo"
-    lineHeight: 1.4
-    preferredLineLength: 300
-    autoIndentOnPaste: false
-    fontSize: 11
   core:
     themes: [
-      "one-dark-ui"
+      "atom-dark-ui"
       "base16-tomorrow-dark-theme"
     ]
+  editor:
+    autoIndentOnPaste: false
+    fontFamily: "menlo"
+    fontSize: 11
+    invisibles: {}
+    lineHeight: 1.4
+    preferredLineLength: 300
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "8a217b7e-aa24-1571-4b5d-d5dc2143d7a0"
-  welcome:
-    showOnStartup: false
+  "git-projects": {}
   "japanese-wrap":
     characterWidth: {}
+  react: {}
+  welcome:
+    showOnStartup: false
   "wercker-status":
-    Username: ""
-    Password: ""
     Interval_Minutes: 2
-  "git-projects": {}
+    Password: ""
+    Username: ""
   whitespace:
     ignoreWhitespaceOnCurrentLine: false
-  react: {}
-".js.jsx.source":
+".coffee.jsx.source":
   editor:
     preferredLineLength: 300
-".coffee.jsx.source":
+".js.jsx.source":
   editor:
     preferredLineLength: 300
