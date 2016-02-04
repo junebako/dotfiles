@@ -29,13 +29,18 @@ atom-text-editor::shadow .cursor {
 .tab-bar {
   position: absolute;
   right: 0;
-  width: 240px;
+  width: 20px;
   height: 100%;
   padding: 0;
   background: #1C1F21;
   border-left: 1px solid #aaa;
   z-index: 1;
   -webkit-flex-direction: column;
+  transition: 0.3s;
+
+  &:hover {
+    width: 240px;
+  }
 
   .tab {
     top: 0;
