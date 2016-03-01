@@ -29,7 +29,12 @@
 .icon-book[data-name="Readme.md"]:before,
 .icon-book[data-name="readme.md"]:before { .medium-blue; }
 
-.file-icons-tab-pane-icon @{pane-tab-selector}, .icon-file-text, .icon-file-binary {
+
+.file-icons-tab-pane-icon @{pane-tab-selector},
+.icon-file-text,
+.icon-file-binary,
+.theme-flatland-dark-ui .icon-file-text,
+.theme-flatland-dark-ui .icon-book {
 
   &:before {
     .text-icon;
@@ -40,8 +45,8 @@
   &[data-name$="TODO"]:before { .checklist-icon; .medium-yellow; }
 
   // Makefile icon
-  &[data-name$="Makefile"]:before { .checklist-icon; .medium-yellow; }
-  &[data-name$="makefile"]:before { .checklist-icon; .medium-yellow; }
+  &[data-name*="Makefile"]:before { .checklist-icon; .medium-yellow; }
+  &[data-name*="makefile"]:before { .checklist-icon; .medium-yellow; }
   &[data-name$=".mk"]:before { .checklist-icon; .medium-yellow; }
   &[data-name$=".mak"]:before { .checklist-icon; .medium-yellow; }
 
@@ -163,11 +168,11 @@
   &[data-name="nodemon.json"]:before,
   &[data-name=".nodemonignore"]:before  { .gear-icon; .medium-green;  }
 
-  // NPM icon
-  &[data-name=".npmrc"]:before           { .node-icon; }
-  &[data-name=".npmignore"]:before       { .node-icon; }
-  &[data-name="npm-debug.log"]:before    { .node-icon; .medium-red; }
-  &[data-name="package.json"]:before    { .node-icon; .medium-red; }
+  // NPM (Node.js)
+  &[data-name=".npmrc"]:before           { .npm-icon; }
+  &[data-name=".npmignore"]:before       { .npm-icon; }
+  &[data-name="npm-debug.log"]:before    { .npm-icon; .medium-red; }
+  &[data-name="package.json"]:before     { .npm-icon; .medium-red; }
 
   // Bower icon
   &[data-name=".bowerrc"]:before     { .bower-icon; }
@@ -314,6 +319,16 @@
   &[data-name$=".m"]:before       { .objc-icon; .medium-blue; }
   &[data-name$=".mm"]:before      { .objc-icon; .medium-blue; }
   &[data-name$=".swift"]:before   { .swift-icon; .medium-green; }
+  
+  // OCaml
+  &[data-name$=".ml"]:before      { .ocaml-icon; .medium-orange; }
+  &[data-name$=".mli"]:before     { .ocaml-icon; .dark-orange;   }
+  &[data-name$=".eliom"]:before   { .ocaml-icon; .medium-red;    }
+  &[data-name$=".eliomi"]:before  { .ocaml-icon; .dark-red;      }
+  &[data-name$=".ml4"]:before     { .ocaml-icon; .medium-green;  }
+  &[data-name$=".mll"]:before     { .ocaml-icon; .dark-green;    }
+  &[data-name$=".mly"]:before     { .ocaml-icon; .dark-yellow;   }
+  
 
   // D lang
   &[data-name$=".d"]:before     { .dlang-icon; .medium-red; }
@@ -388,23 +403,23 @@
   &[data-name="composer.json"]:before { .composer-icon; .medium-yellow; }
 
   // Grunt icon
-  &[data-name="GRUNTFILE.js"]:before,
-  &[data-name="Gruntfile.js"]:before,
-  &[data-name="gruntfile.js"]:before { .grunt-icon; .medium-yellow; }
-  &[data-name="GRUNTFILE.coffee"]:before,
-  &[data-name="Gruntfile.coffee"]:before,
-  &[data-name="gruntfile.coffee"]:before { .grunt-icon; .medium-maroon; }
+  &[data-name$="GRUNTFILE.js"]:before,
+  &[data-name$="Gruntfile.js"]:before,
+  &[data-name$="gruntfile.js"]:before { .grunt-icon; .medium-yellow; }
+  &[data-name$="GRUNTFILE.coffee"]:before,
+  &[data-name$="Gruntfile.coffee"]:before,
+  &[data-name$="gruntfile.coffee"]:before { .grunt-icon; .medium-maroon; }
 
   // Gulp icon
-  &[data-name="GULPFILE.js"]:before,
-  &[data-name="Gulpfile.js"]:before,
-  &[data-name="gulpfile.js"]:before  { .gulp-icon; .medium-red; }
-  &[data-name="GULPFILE.coffee"]:before,
-  &[data-name="Gulpfile.coffee"]:before,
-  &[data-name="gulpfile.coffee"]:before { .gulp-icon; .medium-maroon; }
-  &[data-name="GULPFILE.babel.js"]:before,
-  &[data-name="Gulpfile.babel.js"]:before,
-  &[data-name="gulpfile.babel.js"]:before  { .gulp-icon; .medium-red; }
+  &[data-name$="GULPFILE.js"]:before,
+  &[data-name$="Gulpfile.js"]:before,
+  &[data-name$="gulpfile.js"]:before  { .gulp-icon; .medium-red; }
+  &[data-name$="GULPFILE.coffee"]:before,
+  &[data-name$="Gulpfile.coffee"]:before,
+  &[data-name$="gulpfile.coffee"]:before { .gulp-icon; .medium-maroon; }
+  &[data-name$="GULPFILE.babel.js"]:before,
+  &[data-name$="Gulpfile.babel.js"]:before,
+  &[data-name$="gulpfile.babel.js"]:before  { .gulp-icon; .medium-red; }
   
   // Riot.js
   &[data-name$=".tag"]:before { .riot-icon; .medium-red; }
