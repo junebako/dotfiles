@@ -573,6 +573,7 @@
 
   // PostCSS
   &[data-name$=".postcss"]:before { .postcss-icon; .dark-red; }
+  &[data-name$=".sss"]:before     { .postcss-icon; .dark-pink; }
 
 
   // Ada
@@ -603,6 +604,9 @@
 
   // Jade
   &[data-name$=".jade"]:before  { .jade-icon; .medium-red;  }
+  
+  // LLVM Assembly
+  &[data-name$=".ll"]:before { .llvm-icon; .dark-green; }
 
   // ESLint icon
   &[data-name$=".eslintrc"]:before,
@@ -630,5 +634,16 @@ body.file-icons-on-changes {
     .name.icon:before {
       color: inherit !important;
     }
+  }
+}
+
+
+// #gh-271: Undo styling applied by Remote-Edit
+@{pane-tab-selector}{
+  &.icon-globe::before{
+    display: inline;
+    line-height: inherit;
+    width: auto;
+    height: auto;
   }
 }
