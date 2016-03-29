@@ -1,6 +1,7 @@
 'body':
   'ctrl-g': 'core:cancel'
   'alt-x': 'command-palette:toggle'
+  'ctrl-x ctrl-c': 'application:quit'
   'ctrl-x k': 'core:close'
   'ctrl-x ctrl-f': 'fuzzy-finder:toggle-file-finder'
   'ctrl-x b': 'fuzzy-finder:toggle-buffer-finder'
@@ -59,6 +60,7 @@
   'ctrl-j': 'editor:newline'
   'ctrl-/': 'core:undo'
   'ctrl-_': 'core:undo'
+  'ctrl-x u': 'core:undo'
   'alt-/': 'autocomplete-plus:activate'
   'alt-q': 'autoflow:reflow-selection'
   'alt-;': 'editor:toggle-line-comments'
