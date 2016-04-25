@@ -4,10 +4,20 @@ All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+[1.7.7 - 2016-04-24]
+--------------------
+### Added
+- **New icons:** AMX, Inno Setup, Jupyter, Kotlin, KRL, LabVIEW, Lasso, Lean, LSL, Logtalk, LookML, Mako, Matlab, Max, Mercury, Metal, Mirah, Modula-2, Monkey-X, NetLogo, Nimrod, Nit, Nix, NSIS, NumPy, Objective-J, OpenCL, Processing, Sublime Text
+- **Support:** Certificate files (`.crt`, `.key`), GraphQL (`.gql`), JFlex (`.flex`, `.jflex`), JSONiq (`.jq`), Lex (`.lex`), Logos (`.x`, `.xm`, `.xi`), M (`.mumps`), Modelica (`.mo`), Module Management Systems (`.mmk`, `.mms`), MoonScript (`.moon`), MUF (`.muf`), Myghty (`.myt`), NCL (`.ncl`), Nu (`.nu`), Pure Data (`.pd`), QMake (`.pri`), Unity3D assets (`.anim`, `.asset`, `.mat`, `.meta`, `.prefab`, `.unity`)
+
+### Fixed
+- [[`#336`](https://github.com/DanBrooker/file-icons/issues/336)] Errors thrown for users of the [`sublime-panes`](https://atom.io/packages/sublime-panes) package
+
+
 [1.7.6] - 2016-04-22
 --------------------
 ### Added
-- **New icons:** BYOND, Clean, Click, Common Lisp, Coq, Creole, Cython, Darcs, Diff, E, Eagle, Ecere, Eiffel, EmberScript, Factor, Fancy, Fantom, Flux, FreeMarker, Frege, GameMaker, GAMS, GAP, Genshi, Gentoo, Godot, Golo, Gosu, Grammatical Framework, GraphQL, Graveviz, Harbour, Hashicorp, Hy, Idris, IGOR Pro, Inform 7, Io, Ioke, NVIDIA, Patch, Perl 6, Pointwise
+- **New icons:** BYOND, Clean, Click, Common Lisp, Coq, Creole, Cython, Darcs, Diff, E, Eagle, Ecere, Eiffel, EmberScript, Factor, Fancy, Fantom, Flux, FreeMarker, Frege, GameMaker, GAMS, GAP, Genshi, Gentoo, Godot, Golo, Gosu, Grammatical Framework, GraphQL, Graphviz, Harbour, Hashicorp, Hy, Idris, IGOR Pro, Inform 7, Io, Ioke, NVIDIA, Patch, Perl 6, Pointwise
 - **Support:** Composer (`composer.phar`), Cycript (`.cy`), DNS Zones (`.arpa`, `.zone`), Dust (`.dust`), Dylan (`.dylan`, `.dyl`, `.intr`, `.lid`), ECL (`.ecl`, `.eclxml`), Formatted (`.eam.fs`), Forth (`.4th`, `.fth`, `.forth`, `.frt`), G-code (`.gco`, `.gcode`), Grace (`.grace`), Graph Modelling Language (`.gml`)
 
 ### Changed
@@ -682,7 +692,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Initial release.
 
 
-[Unreleased]: https://github.com/DanBrooker/file-icons/compare/v1.7.6...HEAD
+[Unreleased]: https://github.com/DanBrooker/file-icons/compare/v1.7.7...HEAD
+[1.7.7]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.7
 [1.7.6]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.6
 [1.7.5]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.5
 [1.7.4]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.4

@@ -529,7 +529,12 @@
   &[data-name$=".forth"]:before          { .code-icon;           .medium-blue; }
   &[data-name$=".frt"]:before            { .code-icon;           .dark-purple; }
   &[data-name$=".grace"]:before          { .code-icon;         .medium-purple; }
-  
+  &[data-name$=".flex"]:before           { .code-icon;              .dark-red; }
+  &[data-name$=".jflex"]:before          { .code-icon;            .medium-red; }
+  &[data-name$=".lex"]:before            { .code-icon;           .medium-cyan; }
+  &[data-name$=".mumps"]:before          { .code-icon;            .medium-red; }
+  &[data-name$=".muf"]:before            { .code-icon;         .medium-orange; }
+  &[data-name$=".myt"]:before            { .code-icon;             .dark-blue; }
 
   // Generic format: Fonts
   &[data-name$=".eot"]:before            { .font-icon;           .light-green; }
@@ -614,6 +619,7 @@
   
   // GraphQL
   &[data-name$=".graphql"]:before        { .graphql-icon;        .medium-pink; }
+  &[data-name$=".gql"]:before            { .graphql-icon;      .medium-purple; }
   
   // Graphviz
   &[data-name$=".gv"]:before             { .graphviz-icon;       .medium-blue; }
@@ -678,6 +684,9 @@
   // Inform 7
   &[data-name$=".ni"]:before             { .inform7-icon;        .medium-blue; }
   &[data-name$=".i7x"]:before            { .inform7-icon;          .dark-blue; }
+  
+  // Inno Setup
+  &[data-name$=".iss"]:before            { .inno-icon;             .dark-blue; }
 
   // Isabelle
   &[data-name$=".thy"]:before            { .isabelle-icon;          .dark-red; }
@@ -723,6 +732,9 @@
   // Jinja
   &[data-name$=".jinja"]:before          { .jinja-icon;             .dark-red; }
   
+  // JSONiq
+  &[data-name$=".jq"]:before             { .sql-icon;            .medium-blue; }
+  
   // JSON-LD
   &[data-name$=".jsonld"]:before         { .jsonld-icon;         .medium-blue; }
 
@@ -731,8 +743,34 @@
   &[data-name$=".tsx"]:before            { .jsx-icon;             .light-blue; }
   &[data-name$=".react.js"]:before       { .react-icon;           .auto(blue); }
   
+  // Jupyter Notebook
+  &[data-name$=".ipynb"]:before          { .jupyter-icon;        .dark-orange; }
+  &[data-name="Notebook"]:before         { .jupyter-icon;          .dark-cyan; }
+  
   // Kivy
   &[data-name$=".kv"]:before             { .kivy-icon;           .dark-maroon; }
+  
+  // Kotlin
+  &[data-name$=".kt"]:before             { .kotlin-icon;           .dark-blue; }
+  &[data-name$=".ktm"]:before            { .kotlin-icon;         .medium-blue; }
+  &[data-name$=".kts"]:before            { .kotlin-icon;       .medium-orange; }
+  
+  // KRL
+  &[data-name$=".krl"]:before            { .krl-icon;            .medium-blue; }
+
+  // LabVIEW
+  &[data-name$=".lvproj"]:before         { .labview-icon;          .dark-blue; }
+  
+  // Lasso
+  &[data-name$=".lasso"]:before          { .lasso-icon;            .dark-blue; }
+  &[data-name$=".las"]:before            { .lasso-icon;            .dark-blue; }
+  &[data-name$=".lasso8"]:before         { .lasso-icon;          .medium-blue; }
+  &[data-name$=".lasso9"]:before         { .lasso-icon;        .medium-purple; }
+  &[data-name$=".ldml"]:before           { .lasso-icon;           .medium-red; }
+  
+  // Lean
+  &[data-name$=".lean"]:before           { .lean-icon;           .dark-purple; }
+  &[data-name$=".hlean"]:before          { .lean-icon;              .dark-red; }
 
   // Leiningen
   &[data-name$="project.clj"]:before     { .lein-icon; }
@@ -761,6 +799,22 @@
 
   // LLVM Assembly
   &[data-name$=".ll"]:before             { .llvm-icon;            .dark-green; }
+  
+  // Logos
+  &[data-name$=".xm"]:before             { .mobile-icon;           .dark-blue; }
+  &[data-name$=".x"]:before              { .mobile-icon;          .dark-green; }
+  &[data-name$=".xi"]:before             { .mobile-icon;            .dark-red; }
+
+  // Logtalk
+  &[data-name$=".logtalk"]:before,
+  &[data-name$=".lgt"]:before            { .logtalk-icon;         .medium-red; }
+  
+  // LookML
+  &[data-name$=".lookml"]:before         { .lookml-icon;       .medium-purple; }
+
+  // LSL
+  &[data-name$=".lsl"]:before            { .lsl-icon;            .medium-cyan; }
+  &[data-name$=".lslp"]:before           { .lsl-icon;              .dark-cyan; }
 
   // Lua
   &[data-name$=".lua"]:before            { .lua-icon;            .medium-blue; }
@@ -768,7 +822,7 @@
   &[data-name$=".rbxs"]:before           { .lua-icon;            .dark-purple; }
   &[data-name$=".wlua"]:before           { .lua-icon;               .dark-red; }
 
-  // Makefile
+  // Makefile / Build-systems
   &[data-name^="Makefile"]:before        { .checklist-icon;    .medium-yellow; }
   &[data-name="GNUmakefile"]:before      { .checklist-icon;     .medium-green; }
   &[data-name="Kbuild"]:before           { .checklist-icon;      .medium-blue; }
@@ -779,6 +833,13 @@
   &[data-name$=".am"]:before             { .checklist-icon;       .medium-red; }
   &[data-name$=".bb"]:before             { .checklist-icon;        .dark-blue; }
   &[data-name$=".ninja"]:before          { .checklist-icon;      .medium-blue; }
+  &[data-name$=".mms"]:before            { .checklist-icon;      .medium-blue; }
+  &[data-name$=".mmk"]:before            { .checklist-icon;       .light-blue; }
+  &[data-name$=".pri"]:before            { .checklist-icon;      .dark-purple; }
+  
+  // Mako
+  &[data-name$=".mako"]:before,
+  &[data-name$=".mao"]:before            { .mako-icon;             .dark-blue; }
 
   // Mapbox
   &[data-name$=".mss"]:before            { .mapbox-icon;         .medium-cyan; }
@@ -797,6 +858,26 @@
   // Marko
   &[data-name$=".marko"]:before          { .marko-icon;          .medium-blue; }
   &[data-name$=".marko.js"]:before       { .marko-icon;        .medium-maroon; }
+  
+  // Mathematica
+  &[data-name$=".mathematica"]:before    { .mathematica-icon;       .dark-red; }
+  &[data-name$=".cdf"]:before            { .mathematica-icon;     .medium-red; }
+  &[data-name$=".ma"]:before             { .mathematica-icon;  .medium-orange; }
+  &[data-name$=".mt"]:before             { .mathematica-icon;  .medium-maroon; }
+  &[data-name$=".nb"]:before             { .mathematica-icon;    .dark-orange; }
+  &[data-name$=".nbp"]:before            { .mathematica-icon;       .dark-red; }
+  &[data-name$=".wl"]:before             { .mathematica-icon;  .medium-yellow; }
+  &[data-name$=".wlt"]:before            { .mathematica-icon;    .dark-yellow; }
+  
+  // Matlab
+  &[data-name$=".matlab"]:before         { .matlab-icon;       .medium-yellow; }
+
+  // Max
+  &[data-name$=".maxpat"]:before         { .max-icon;            .dark-purple; }
+  &[data-name$=".maxhelp"]:before        { .max-icon;             .medium-red; }
+  &[data-name$=".maxproj"]:before        { .max-icon;            .medium-blue; }
+  &[data-name$=".mxt"]:before            { .max-icon;          .medium-purple; }
+  &[data-name$=".pat"]:before            { .max-icon;           .medium-green; }
 
   // MAXScript
   &[data-name$=".ms"]:before,
@@ -834,18 +915,66 @@
   // MediaWiki
   &[data-name$=".mediawiki"]:before      { .mediawiki-icon;    .medium-yellow; }
   &[data-name$=".wiki"]:before           { .mediawiki-icon;    .medium-orange; }
+  
+  // Mercury
+  &[data-name$=".moo"]:before            { .mercury-icon;        .medium-cyan; }
+  
+  // Metal
+  &[data-name$=".metal"]:before          { .metal-icon;            .dark-cyan; }
+  
+  // Mirah
+  &[data-name$=".druby"]:before,
+  &[data-name$=".duby"]:before           { .mirah-icon;          .medium-blue; }
+  &[data-name$=".mir"]:before,
+  &[data-name$=".mirah"]:before          { .mirah-icon;           .light-blue; }
+  
+  // Modelica
+  &[data-name$=".mo"]:before             { .circle-icon;           .light-red; }
+  
+  // Modula-2
+  &[data-name$=".MOD"]:before,
+  &[data-name$=".mod"]:before            { .modula2-icon;        .medium-blue; }
+  &[data-name$=".DEF"]:before,
+  &[data-name$=".def"]:before            { .modula2-icon;       .medium-green; }
+  &[data-name$=".m2"]:before             { .modula2-icon;         .medium-red; }
+  
+  // Monkey
+  &[data-name$=".monkey"]:before         { .monkey-icon;       .medium-maroon; }
+  
+  // MoonScript
+  &[data-name$=".moon"]:before           { .moon-icon;         .medium-yellow; }
 
   // Mustache / Handlebars
   &[data-name$=".hbs"]:before,
   &[data-name$=".handlebars"]:before,
   &[data-name$=".mustache"]:before       { .mustache-icon;     .medium-orange; }
+  
+  // NCAR Command Language (NCL)
+  &[data-name$=".ncl"]:before            { .earth-icon;         .medium-green; }
+
+  // NetLinx (AMX logo)
+  &[data-name$=".axs"]:before            { .amx-icon;            .medium-blue; }
+  &[data-name$=".axi"]:before            { .amx-icon;              .dark-blue; }
+  
+  // NetLogo
+  &[data-name$=".nlogo"]:before          { .netlogo-icon;         .medium-red; }
 
   // NGINX
   &[data-name="nginx.conf"]:before       { .nginx-icon;           .dark-green; }
   &[data-name$=".nginxconf"]:before      { .nginx-icon;         .medium-green; }
+  
+  // Nimrod
+  &[data-name$=".nim"]:before,
+  &[data-name$=".nimrod"]:before         { .nimrod-icon;        .medium-green; }
+  
+  // Nit
+  &[data-name$=".nit"]:before            { .nit-icon;             .dark-green; }
+  
+  // Nix
+  &[data-name$=".nix"]:before            { .nix-icon;            .medium-cyan; }
 
   // Nmap (Lua)
-  &[data-name$=".nse"]:before            { .nmap-icon;           .dark-blue; }
+  &[data-name$=".nse"]:before            { .nmap-icon;             .dark-blue; }
 
   // Nodemon
   &[data-name="nodemon.json"]:before,
@@ -856,6 +985,19 @@
   &[data-name=".npmignore"]:before       { .npm-icon;             .medium-red; }
   &[data-name="npm-debug.log"]:before    { .npm-icon;             .medium-red; }
   &[data-name="package.json"]:before     { .npm-icon;             .medium-red; }
+  
+  // NSIS
+  &[data-name$=".nsi"]:before            { .nsis-icon;           .medium-cyan; }
+  &[data-name$=".nsh"]:before            { .nsis-icon;             .dark-cyan; }
+
+  // Nu
+  &[data-name$=".nu"]:before             { .recycle-icon;        .light-green; }
+  &[data-name="Nukefile"]:before         { .recycle-icon;         .dark-green; }
+  
+  // NumPy
+  &[data-name$=".numpy"]:before          { .numpy-icon;            .dark-blue; }
+  &[data-name$=".numpyw"]:before         { .numpy-icon;          .medium-blue; }
+  &[data-name$=".numsc"]:before          { .numpy-icon;        .medium-orange; }
 
   // Nunjucks
   &[data-name$=".nunjucks"]:before,
@@ -887,6 +1029,10 @@
   &[data-name$=".cs"]:before             { .csharp-icon;          .auto(blue); }
   &[data-name$=".csx"]:before            { .csharp-icon;           .auto(red); }
   &[data-name="config.h.in"]:before      { .c-icon;               .medium-red; }
+  
+  // Objective-J
+  &[data-name$=".j"]:before              { .objj-icon;           .dark-orange; }
+  &[data-name$=".sj"]:before             { .objj-icon;              .dark-red; }
 
   // OCaml
   &[data-name$=".ml"]:before             { .ocaml-icon;        .medium-orange; }
@@ -896,6 +1042,9 @@
   &[data-name$=".ml4"]:before            { .ocaml-icon;         .medium-green; }
   &[data-name$=".mll"]:before            { .ocaml-icon;           .dark-green; }
   &[data-name$=".mly"]:before            { .ocaml-icon;          .dark-yellow; }
+
+  // OpenCL
+  &[data-name$=".opencl"]:before         { .opencl-icon;          .medium-red; }
 
   // OpenSCAD
   &[data-name$=".scad"]:before           { .scad-icon;         .medium-orange; }
@@ -914,7 +1063,6 @@
   &[data-name$=".dfm"]:before            { .pascal-icon;         .medium-blue; }
   &[data-name$=".dpr"]:before            { .pascal-icon;           .dark-blue; }
   &[data-name$=".lpr"]:before            { .pascal-icon;         .dark-purple; }
-
 
   // Perl
   &[data-name$=".pl"]:before,
@@ -952,6 +1100,9 @@
 
   // POD
   &[data-name$=".pod"]:before            { .pod-icon;            .medium-blue; }
+  
+  // Processing
+  &[data-name$=".pde"]:before            { .processing-icon;       .dark-blue; }
 
   // PostCSS
   &[data-name$=".postcss"]:before,
@@ -971,6 +1122,9 @@
   // Pug/Jade
   &[data-name$=".pug"]:before,
   &[data-name$=".jade"]:before           { .jade-icon;            .medium-red; }
+  
+  // Pure Data
+  &[data-name$=".pd"]:before             { .music-icon;           .dark-green; }
 
   // Python
   &[data-name$=".py"]:before             { .python-icon;           .dark-blue; }
@@ -1127,6 +1281,8 @@
   &[data-name^="id_rsa"]:before          { .key-icon;             .medium-red; }
   &[data-name$=".pub"]:before            { .key-icon;          .medium-yellow; }
   &[data-name$=".pem"]:before            { .key-icon;          .medium-orange; }
+  &[data-name$=".key"]:before            { .key-icon;            .medium-blue; }
+  &[data-name$=".crt"]:before            { .key-icon;            .medium-blue; }
 
   // Stylelint
   &[data-name$=".stylelintrc"]:before    { .stylelint-icon;                    }
@@ -1148,6 +1304,24 @@
   &[data-name$=".plb"]:before,
   &[data-name$=".plsql"]:before,
   &[data-name$=".pkb"]:before            { .sql-icon;             .medium-red; }
+  
+  // Sublime Text
+  &[data-name$=".sublime-build"]:before,
+  &[data-name$=".sublime-commands"]:before,
+  &[data-name$=".sublime-completions"]:before,
+  &[data-name$=".sublime-keymap"]:before,
+  &[data-name$=".sublime-macro"]:before,
+  &[data-name$=".sublime-menu"]:before,
+  &[data-name$=".sublime-mousemap"]:before,
+  &[data-name$=".sublime-project"]:before,
+  &[data-name$=".sublime-settings"]:before,
+  &[data-name$=".sublime-theme"]:before,
+  &[data-name$=".sublime-workspace"]:before,
+  &[data-name$=".sublime_metrics"]:before,
+  &[data-name$=".sublime_session"]:before,
+  &[data-name$=".sublime-snippet"]:before,
+  &[data-name$=".stTheme"]:before        { .sublime-icon;      .medium-orange; }
+  &[data-name$=".sublime-syntax"]:before { .sublime-icon;        .dark-orange; }
   
   // Tcl
   &[data-name$=".tcl"]:before            { .tcl-icon;            .dark-orange; }
@@ -1193,6 +1367,14 @@
 
   // TypeScript
   &[data-name$=".ts"]:before             { .ts-icon;             .medium-blue; }
+
+  // Unity3D
+  &[data-name$=".anim"]:before           { .unity3d-icon;          .dark-blue; }
+  &[data-name$=".asset"]:before          { .unity3d-icon;         .dark-green; }
+  &[data-name$=".mat"]:before            { .unity3d-icon;         .medium-red; }
+  &[data-name$=".meta"]:before           { .unity3d-icon;           .dark-red; }
+  &[data-name$=".prefab"]:before         { .unity3d-icon;          .dark-cyan; }
+  &[data-name$=".unity"]:before          { .unity3d-icon;        .medium-blue; }
 
   // Verilog
   &[data-name$=".v"]:before              { .verilog-icon;         .dark-green; }
