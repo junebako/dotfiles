@@ -79,6 +79,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 REPORTTIME=5
 
+# keychain
+
+keychain --nogui --quiet ~/.ssh/id_rsa
+source ~/.keychain/$HOST-sh
+
 # Prompt
 ## Show current ruby version
 ## Show git branch name
