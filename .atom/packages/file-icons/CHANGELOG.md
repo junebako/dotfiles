@@ -4,6 +4,24 @@ All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+[1.7.9 - 2016-05-05]
+--------------------
+### Added
+- **New icons:** Brakeman, CakePHP, Code Climate, Hack, Jenkins, Karma, Minecraft, New Relic, NuGet, PowerShell, Pug, SBT, Scrutinizer, Service Fabric, Shopify, Thor, TSX (React/Typescript), Vagrant
+- **Support:** Adobe Photoshop (`.psb`), ANSI Weather (`.ansiweatherrc`), `CNAME`, Config files (`.arcconfig`, `.codoopts`, `.ctags`, `.env.*`, `indent.pro`, `.pairs`, `.python-version`, `.yardopts`), Erlang (`.app.src`), Gears (`.dll`), Generic code (`.gdbinit`, `.resx`, `.fsh`, `.vsh`), Git (`.git*`), GNU (`.GPLv[2-3]`), Gradle (`gradlew`), Heroku (`.buildpacks`, `Procfile`, `.vendor_urls`), Images (`.apng`, `.bmp`, `.bpg`, `.cd5`, `.cpc`, `.dcm`, `.ecw`, `.exr`, `.fit`, `.fits`, `.flif`, `.fts`, `.hdp`, `.hdr`, `.heic`, `.heif`, `.icns`, `.iff`, `.jpf`, `.jps`, `.jxr`, `.lbm`, `.liff`, `.mpo`, `.nrrd`, `.ora`, `.pbm`, `.pcx`, `.pgf`, `.pict`, `.pxr`, `.raw`, `.sct`, `.tga`, `.wbm`, `.wdp`), Makefiles (`BSDmakefile`), Manual Pages (`.tmac`, `.tmac-u`, `.nroff`, `.troff`), `METADATA.pb`, Mention-bot configs (`.mention-bot`), Prolog (`.pro`, `.prolog`, `.yap`), Readme (`AUTHORS`, `CHANGELOG`, `CONTRIBUTING`, `CONTRIBUTORS`, `COPYING`, `HISTORY`, `INSTALL`, `LICENSE`, `NEWS`, `PROJECTS`, `.read.me`, `.readme`, `THANKS`), Shell (`bash_history`, `bash_logout`), Shockwave Flash (`.swf`), Tag files (`tags`, `.tags`), Texinfo (`.texi`), TextMate (`.JSON-tmLanguage`), Visual Studio (`.builds`), Windows shortcuts (`.lnk`)
+- Colour for default PDF icons
+- Command to toggle coloured icons. To use it, create a keybinding for `file-icons:toggle-colours` in your keymap
+
+### Changed
+- Clearer icon now used for Jenkinsfiles
+- Git icon used for `.mailmap` files
+- Prolog files now use a dedicated icon instead of a generic one
+
+### Fixed
+- [[`#341`](https://github.com/DanBrooker/file-icons/issues/341)] Yellow icons no longer share same colour as modification indicator
+- `.eslintrc.js` files are no longer overridden by JS icon
+
+
 [1.7.8 - 2016-04-28]
 --------------------
 ### Added
@@ -707,7 +725,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Initial release.
 
 
-[Unreleased]: https://github.com/DanBrooker/file-icons/compare/v1.7.8...HEAD
+[Unreleased]: https://github.com/DanBrooker/file-icons/compare/v1.7.9...HEAD
+[1.7.9]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.9
 [1.7.8]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.8
 [1.7.7]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.7
 [1.7.6]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.6

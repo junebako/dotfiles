@@ -24,6 +24,9 @@
 .icon-book[data-name="Readme.md"]:before,
 .icon-book[data-name="readme.md"]:before { .medium-blue; }
 
+// PDF
+.icon-file-pdf:before { .medium-red; }
+
 
 
 /*==[ DIRECTORY ICONS ]=======================================================*/
@@ -64,6 +67,7 @@
   // ActionScript
   &[data-name$=".as"]:before             { .as-icon;              .medium-red; }
   &[data-name$=".jsfl"]:before           { .as-icon;            .auto(yellow); }
+  &[data-name$=".swf"]:before            { .as-icon;             .medium-blue; }
 
   // Ada
   &[data-name$=".ada"]:before,
@@ -74,12 +78,16 @@
   &[data-name$=".ai"]:before             { .ai-icon;           .medium-orange; }
   &[data-name$=".ait"]:before            { .ai-icon;             .dark-orange; }
   &[data-name$=".psd"]:before            { .psd-icon;            .medium-blue; }
+  &[data-name$=".psb"]:before            { .psd-icon;            .dark-purple; }
 
   // Alloy
   &[data-name$=".als"]:before            { .alloy-icon;           .medium-red; }
 
   // AMPL
   &[data-name$=".ampl"]:before           { .ampl-icon;           .dark-maroon; }
+
+  // ANSI Weather
+  &[data-name$=".ansiweatherrc"]:before  { .sun-icon;           .auto(yellow); }
 
   // ANTLR
   &[data-name$=".g"]:before              { .antlr-icon;           .medium-red; }
@@ -200,6 +208,9 @@
 
   // Cakefile
   &[data-name="Cakefile"]:before         { .cake-icon;            .medium-red; }
+  
+  // CakePHP
+  &[data-name$=".ctp"]:before            { .cakephp-icon;         .medium-red; }
 
   // Ceylon
   &[data-name$=".ceylon"]:before         { .ceylon-icon;       .medium-orange; }
@@ -345,9 +356,10 @@
   &[data-name$=".diff"]:before           { .diff-icon;         .medium-orange; }
   &[data-name$=".patch"]:before          { .patch-icon;         .medium-green; }
   
-  // DNS Zone
+  // DNS Zone / CNAME
   &[data-name$=".zone"]:before           { .earth-icon;          .medium-blue; }
   &[data-name$=".arpa"]:before           { .earth-icon;         .medium-green; }
+  &[data-name="CNAME"]:before            { .earth-icon;            .dark-blue; }
 
   // Dockerfile
   &[data-name^="Dockerfile"]:before      { .docker-icon;           .dark-blue; }
@@ -407,6 +419,7 @@
   &[data-name$=".hrl"]:before            { .erlang-icon;       .medium-maroon; }
   &[data-name$=".xrl"]:before            { .erlang-icon;        .medium-green; }
   &[data-name$=".yrl"]:before            { .erlang-icon;          .dark-green; }
+  &[data-name$=".app.src"]:before        { .erlang-icon;         .dark-maroon; }
 
   // ESLint
   &[data-name$=".eslintrc"]:before,
@@ -473,7 +486,7 @@
 
   // Gear
   &[data-name$=".hgignore"]:before       { .gear-icon;                         }
-  &[data-name=".mailmap"]:before         { .gear-icon;                         }
+  &[data-name$=".arcconfig"]:before      { .gear-icon;             .dark-blue; }
   &[data-name$=".editorconfig"]:before   { .gear-icon;         .medium-orange; }
   &[data-name=".lesshintrc"]:before      { .gear-icon;           .dark-yellow; }
   &[data-name=".csscomb.json"]:before    { .gear-icon;         .medium-yellow; }
@@ -486,6 +499,12 @@
   &[data-name$=".module"]:before         { .gear-icon;           .medium-blue; }
   &[data-name=".htaccess"]:before        { .gear-icon;            .medium-red; }
   &[data-name=".htpasswd"]:before        { .gear-icon;         .medium-orange; }
+  &[data-name^=".env."]:before           { .gear-icon;            .dark-green; }
+  &[data-name$=".yardopts"]:before       { .gear-icon;            .medium-red; }
+  &[data-name$=".codoopts"]:before       { .gear-icon;         .medium-maroon; }
+  &[data-name=".pairs"]:before           { .gear-icon;            .dark-green; }
+  &[data-name=".python-version"]:before  { .gear-icon;             .dark-blue; }
+  &[data-name$=".ctags"]:before          { .gear-icon;           .dark-purple; }
 
   // Generic format: Audio
   &[data-name$=".mp3"]:before            { .audio-icon;           .medium-red; }
@@ -541,10 +560,12 @@
   &[data-name$=".flex"]:before           { .code-icon;              .dark-red; }
   &[data-name$=".forth"]:before          { .code-icon;           .medium-blue; }
   &[data-name$=".frt"]:before            { .code-icon;           .dark-purple; }
+  &[data-name$=".fsh"]:before            { .code-icon;              .dark-red; }
   &[data-name$=".fsproj"]:before         { .code-icon;              .dark-red; }
   &[data-name$=".fth"]:before            { .code-icon;             .dark-blue; }
   &[data-name$=".fun"]:before            { .code-icon;         .medium-orange; }
   &[data-name$=".fxml"]:before           { .code-icon;         .medium-maroon; }
+  &[data-name$=".gdbinit"]:before        { .code-icon;            .medium-red; }
   &[data-name$=".grace"]:before          { .code-icon;         .medium-purple; }
   &[data-name$=".grxml"]:before          { .code-icon;           .dark-orange; }
   &[data-name$=".iml"]:before            { .code-icon;            .medium-red; }
@@ -571,7 +592,6 @@
   &[data-name$=".mxml"]:before           { .code-icon;           .dark-maroon; }
   &[data-name$=".myt"]:before            { .code-icon;             .dark-blue; }
   &[data-name$=".nproj"]:before          { .code-icon;         .medium-purple; }
-  &[data-name$=".nuspec"]:before         { .code-icon;            .dark-green; }
   &[data-name$=".odd"]:before            { .code-icon;           .light-green; }
   &[data-name$=".omgrofl"]:before        { .code-icon;           .dark-purple; }
   &[data-name$=".osm"]:before            { .code-icon;           .dark-purple; }
@@ -579,11 +599,10 @@
   &[data-name$=".plist"]:before          { .code-icon;             .dark-cyan; }
   &[data-name$=".prg"]:before            { .code-icon;            .medium-red; }
   &[data-name$=".prw"]:before            { .code-icon;              .dark-red; }
-  &[data-name$=".pro"]:before            { .code-icon;           .medium-blue; }
-  &[data-name$=".prolog"]:before         { .code-icon;           .medium-cyan; }
   &[data-name$=".props"]:before          { .code-icon;           .medium-cyan; }
   &[data-name$=".psc1"]:before           { .code-icon;            .light-blue; }
   &[data-name$=".pt"]:before             { .code-icon;            .medium-red; }
+  &[data-name$=".resx"]:before           { .code-icon;           .medium-cyan; }
   &[data-name$=".rdf"]:before            { .code-icon;              .dark-red; }
   &[data-name$=".rl"]:before             { .code-icon;            .medium-red; }
   &[data-name$=".scxml"]:before          { .code-icon;            .light-cyan; }
@@ -600,6 +619,7 @@
   &[data-name$=".ui"]:before             { .code-icon;           .medium-blue; }
   &[data-name$=".urdf"]:before           { .code-icon;           .dark-orange; }
   &[data-name$=".ux"]:before             { .code-icon;          .light-orange; }
+  &[data-name$=".vsh"]:before            { .code-icon;           .medium-cyan; }
   &[data-name$=".vxml"]:before           { .code-icon;          .light-purple; }
   &[data-name$=".webidl"]:before         { .code-icon;            .medium-red; }
   &[data-name$=".wisp"]:before           { .code-icon;             .dark-cyan; }
@@ -622,7 +642,6 @@
   &[data-name$=".xul"]:before            { .code-icon;         .medium-orange; }
   &[data-name$=".y"]:before              { .code-icon;            .dark-green; }
   &[data-name$=".yacc"]:before           { .code-icon;          .medium-green; }
-  &[data-name$=".yap"]:before            { .code-icon;         .medium-purple; }
   &[data-name$=".yy"]:before             { .code-icon;           .medium-cyan; }
   &[data-name$=".zcml"]:before           { .code-icon;             .dark-pink; }
 
@@ -645,6 +664,45 @@
   &[data-name$=".JPG"]:before            { .image-icon;         .medium-green; }
   &[data-name$=".ICO"]:before            { .image-icon;          .medium-blue; }
   &[data-name$=".SVG"]:before            { .svg-icon;            .dark-yellow; }
+  &[data-name$=".apng"]:before           { .image-icon;        .medium-orange; }
+  &[data-name$=".BMP"]:before            { .image-icon;           .medium-red; }
+  &[data-name$=".bmp"]:before            { .image-icon;           .medium-red; }
+  &[data-name$=".bpg"]:before            { .image-icon;           .medium-red; }
+  &[data-name$=".cd5"]:before            { .image-icon;           .dark-green; }
+  &[data-name$=".cpc"]:before            { .image-icon;         .light-yellow; }
+  &[data-name$=".dcm"]:before            { .image-icon;          .medium-cyan; }
+  &[data-name$=".ecw"]:before            { .image-icon;           .light-blue; }
+  &[data-name$=".exr"]:before            { .image-icon;          .dark-yellow; }
+  &[data-name$=".fit"]:before            { .image-icon;          .medium-cyan; }
+  &[data-name$=".fits"]:before           { .image-icon;          .medium-cyan; }
+  &[data-name$=".flif"]:before           { .image-icon;             .dark-red; }
+  &[data-name$=".fts"]:before            { .image-icon;          .medium-cyan; }
+  &[data-name$=".hdp"]:before            { .image-icon;             .dark-red; }
+  &[data-name$=".hdr"]:before            { .image-icon;          .medium-blue; }
+  &[data-name$=".heic"]:before           { .image-icon;             .dark-red; }
+  &[data-name$=".heif"]:before           { .image-icon;             .dark-red; }
+  &[data-name$=".icns"]:before           { .image-icon;          .medium-pink; }
+  &[data-name$=".iff"]:before            { .image-icon;            .dark-blue; }
+  &[data-name$=".jpf"]:before            { .image-icon;           .dark-green; }
+  &[data-name$=".jps"]:before            { .image-icon;            .dark-cyan; }
+  &[data-name$=".jxr"]:before            { .image-icon;             .dark-red; }
+  &[data-name$=".lbm"]:before            { .image-icon;            .dark-blue; }
+  &[data-name$=".liff"]:before           { .image-icon;            .dark-blue; }
+  &[data-name$=".mpo"]:before            { .image-icon;          .medium-pink; }
+  &[data-name$=".nrrd"]:before           { .image-icon;            .dark-blue; }
+  &[data-name$=".ora"]:before            { .image-icon;        .medium-yellow; }
+  &[data-name$=".pbm"]:before            { .image-icon;          .medium-pink; }
+  &[data-name$=".pcx"]:before            { .image-icon;            .dark-blue; }
+  &[data-name$=".pgf"]:before            { .image-icon;            .light-red; }
+  &[data-name$=".pict"]:before           { .image-icon;         .light-purple; }
+  &[data-name$=".pxr"]:before            { .image-icon;        .medium-purple; }
+  &[data-name$=".raw"]:before            { .image-icon;          .dark-orange; }
+  &[data-name$=".sct"]:before            { .image-icon;           .light-blue; }
+  &[data-name$=".sgi"]:before            { .image-icon;        .medium-yellow; }
+  &[data-name$=".tga"]:before            { .image-icon;          .dark-orange; }
+  &[data-name$=".wbm"]:before            { .image-icon;          .dark-maroon; }
+  &[data-name$=".wdp"]:before            { .image-icon;             .dark-red; }
+
 
   // Generic format: Videos
   &[data-name$="avi"]:before             { .video-icon;          .medium-blue; }
@@ -671,12 +729,14 @@
   &[data-name$=".eclass"]:before         { .gentoo-icon;         .medium-blue; }
 
   // Git
+  &[data-name^=".git"]:before,
   &[data-name$=".gitattributes"]:before,
   &[data-name$=".gitconfig"]:before,
   &[data-name$=".gitignore_global"]:before,
   &[data-name$=".gitignore"]:before,
   &[data-name$=".gitkeep"]:before,
-  &[data-name$=".gitmodules"]:before     { .git-icon;             .medium-red; }
+  &[data-name$=".gitmodules"]:before,
+  &[data-name=".mailmap"]:before         { .git-icon;             .medium-red; }
 
   // Glade
   &[data-name$=".glade"]:before          { .glade-icon;         .medium-green; }
@@ -689,6 +749,11 @@
   &[data-name$=".plt"]:before,
   &[data-name$=".plot"]:before,
   &[data-name$=".gnuplot"]:before        { .graph-icon;           .medium-red; }
+  
+  // GNU
+  &[data-name$=".gplv2"]:before,         &[data-name$=".GPLv2"]:before,
+  &[data-name$=".GPLV2"]:before,         &[data-name$=".gplv3"]:before,
+  &[data-name$=".GPLv3"]:before,         &[data-name$=".GPLV3"]:before,
   &[data-name$=".gnu"]:before            { .gnu-icon;              .auto(red); }
 
   // Go
@@ -706,6 +771,7 @@
 
   // Gradle
   &[data-name$=".gradle"]:before         { .gradle-icon;         .medium-blue; }
+  &[data-name$="gradlew"]:before         { .gradle-icon;         .dark-purple; }
   
   // GraphQL
   &[data-name$=".graphql"]:before        { .graphql-icon;        .medium-pink; }
@@ -724,6 +790,9 @@
   &[data-name$=".gtpl"]:before,
   &[data-name$=".gsp"]:before,
   &[data-name$=".gvy"]:before            { .groovy-icon;          .light-blue; }
+
+  // Hack
+  &[data-name$=".hh"]:before             { .hack-icon;         .medium-orange; }
   
   // Harbour
   &[data-name$=".hb"]:before             { .harbour-icon;          .dark-blue; }
@@ -741,6 +810,11 @@
   &[data-name$=".hx"]:before,
   &[data-name$=".hxsl"]:before           { .haxe-icon;         .medium-orange; }
   &[data-name$=".hxml"]:before           { .checklist-icon;    .medium-orange; }
+  
+  // Heroku
+  &[data-name="Procfile"]:before         { .heroku-icon;       .medium-purple; }
+  &[data-name$=".buildpacks"]:before     { .heroku-icon;        .light-purple; }
+  &[data-name=".vendor_urls"]:before     { .heroku-icon;         .dark-purple; }
 
   // HTML
   &[data-name$=".html"]:before           { .html5-icon;        .medium-orange; }
@@ -749,13 +823,11 @@
   &[data-name$=".haml"]:before           { .haml-icon;         .medium-yellow; }
   &[data-name$=".hamlc"]:before          { .haml-icon;         .medium-maroon; }
   &[data-name$=".jsp"]:before            { .html5-icon;        .medium-purple; }
-  &[data-name$=".ctp"]:before            { .html5-icon;          .medium-blue; }
   &[data-name$=".ejs"]:before            { .html5-icon;         .medium-green; }
   &[data-name$=".swig"]:before           { .html5-icon;         .medium-green; }
   &[data-name$=".phtml"]:before          { .html5-icon;            .dark-blue; }
   &[data-name$=".cshtml"]:before         { .html5-icon;           .medium-red; }
   &[data-name$=".scaml"]:before          { .html5-icon;             .dark-red; }
-  &[data-name$=".liquid"]:before         { .html5-icon;          .medium-blue; }
   &[data-name$=".latte"]:before          { .html5-icon;           .medium-red; }
   &[data-name$=".kit"]:before            { .html5-icon;         .medium-green; }
   
@@ -831,12 +903,16 @@
 
   // JSX
   &[data-name$=".jsx"]:before            { .jsx-icon;             .auto(blue); }
-  &[data-name$=".tsx"]:before            { .jsx-icon;             .light-blue; }
+  &[data-name$=".tsx"]:before            { .tsx-icon;             .light-blue; }
   &[data-name$=".react.js"]:before       { .react-icon;           .auto(blue); }
   
   // Jupyter Notebook
   &[data-name$=".ipynb"]:before          { .jupyter-icon;        .dark-orange; }
   &[data-name="Notebook"]:before         { .jupyter-icon;          .dark-cyan; }
+  
+  // Karma
+  &[data-name$="karma.conf.js"]:before    { .karma-icon;         .medium-cyan; }
+  &[data-name$="karma.conf.coffee"]:before{ .karma-icon;       .medium-maroon; }
   
   // Kivy
   &[data-name$=".kv"]:before             { .kivy-icon;           .dark-maroon; }
@@ -920,6 +996,7 @@
   // Makefile / Build-systems
   &[data-name^="Makefile"]:before        { .checklist-icon;    .medium-yellow; }
   &[data-name="GNUmakefile"]:before      { .checklist-icon;     .medium-green; }
+  &[data-name="BSDmakefile"]:before      { .checklist-icon;       .medium-red; }
   &[data-name="Kbuild"]:before           { .checklist-icon;      .medium-blue; }
   &[data-name="makefile"]:before         { .checklist-icon;    .medium-yellow; }
   &[data-name="mkfile"]:before           { .checklist-icon;    .medium-yellow; }
@@ -1001,6 +1078,8 @@
   &[data-name$=".man"]:before,     &[data-name$=".mandoc"]:before,
   &[data-name$=".mdoc"]:before,    &[data-name$=".me"]:before,
   &[data-name$=".mom"]:before,     &[data-name$=".n"]:before,
+  &[data-name$=".tmac"]:before,    &[data-name$=".tmac-u"]:before,
+  &[data-name$=".nroff"]:before,   &[data-name$=".troff"]:before,
   &[data-name$=".tr"]:before       { .manpage-icon;         .dark-green; }
   &[data-name$=".rnh"]:before,
   &[data-name$=".rno"]:before,
@@ -1011,11 +1090,17 @@
   &[data-name$=".mediawiki"]:before      { .mediawiki-icon;    .medium-yellow; }
   &[data-name$=".wiki"]:before           { .mediawiki-icon;    .medium-orange; }
   
+  // Mention-bot config
+  &[data-name=".mention-bot"]:before     { .bullhorn-icon;     .medium-orange; }
+  
   // Mercury
   &[data-name$=".moo"]:before            { .mercury-icon;        .medium-cyan; }
   
   // Metal
   &[data-name$=".metal"]:before          { .metal-icon;            .dark-cyan; }
+  
+  // Minecraft
+  &[data-name="mcmod.info"]:before       { .minecraft-icon;       .dark-green; }
   
   // Mirah
   &[data-name$=".druby"]:before,
@@ -1100,6 +1185,10 @@
   // Nunjucks
   &[data-name$=".nunjucks"]:before,
   &[data-name$=".njk"]:before            { .nunjucks-icon;        .dark-green; }
+  
+  // NuGet
+  &[data-name$=".nuspec"]:before         { .nuget-icon;          .medium-blue; }
+  &[data-name$=".pkgproj"]:before        { .nuget-icon;          .dark-purple; }
 
   // Objective-C, C++, C
   &[data-name$=".c"]:before              { .c-icon;              .medium-blue; }
@@ -1224,7 +1313,6 @@
   &[data-name$=".php5"]:before,
   &[data-name$=".phps"]:before,
   &[data-name$=".phpt"]:before           { .php-icon;              .dark-blue; }
-  &[data-name$=".hh"]:before             { .php-icon;              .dark-blue; }
   &[data-name$=".blade.php"]:before      { .laravel-icon;        .dark-purple; }
   &[data-name^="Phakefile"]:before       { .php-icon;             .dark-green; }
   
@@ -1247,6 +1335,11 @@
   // Processing
   &[data-name$=".pde"]:before            { .processing-icon;       .dark-blue; }
   
+  // Prolog
+  &[data-name$=".pro"]:before            { .prolog-icon;         .medium-blue; }
+  &[data-name$=".prolog"]:before         { .prolog-icon;         .medium-cyan; }
+  &[data-name$=".yap"]:before            { .prolog-icon;       .medium-purple; }
+  
   // Propeller Spin
   &[data-name$=".spin"]:before           { .propeller-icon;    .medium-orange; }
 
@@ -1263,13 +1356,13 @@
   &[data-name$=".pov"]:before            { .povray-icon;           .dark-blue; }
 
   // PowerShell
-  &[data-name$=".ps1"]:before            { .terminal-icon;       .medium-blue; }
-  &[data-name$=".psd1"]:before           { .terminal-icon;       .medium-blue; }
-  &[data-name$=".psm1"]:before           { .terminal-icon;       .medium-blue; }
-  &[data-name$=".ps1xml"]:before         { .terminal-icon;       .medium-blue; }
+  &[data-name$=".ps1"]:before            { .powershell-icon;     .medium-blue; }
+  &[data-name$=".psd1"]:before           { .powershell-icon;       .dark-blue; }
+  &[data-name$=".psm1"]:before           { .powershell-icon;   .medium-purple; }
+  &[data-name$=".ps1xml"]:before         { .powershell-icon;     .dark-purple; }
 
   // Pug/Jade
-  &[data-name$=".pug"]:before,
+  &[data-name$=".pug"]:before            { .pug-icon;             .medium-red; }
   &[data-name$=".jade"]:before           { .jade-icon;            .medium-red; }
   
   // Puppet
@@ -1332,10 +1425,21 @@
   &[data-name$=".rbtbar"]:before         { .xojo-icon;           .medium-blue; }
   &[data-name$=".rbuistate"]:before      { .xojo-icon;             .dark-blue; }
 
-  // Readme
-  &[data-name="README.md"]:before,
-  &[data-name="Readme.md"]:before,
-  &[data-name="readme.md"]:before        { .book-icon;           .medium-blue; }
+  // Readme (and similar files)
+  &[data-name="README.md"]:before,       &[data-name="Readme.md"]:before,
+  &[data-name="readme.md"]:before,       &[data-name$=".readme"]:before,
+  &[data-name="read.me"]:before,         &[data-name$=".README"]:before,
+  &[data-name="Read.me"]:before,         &[data-name$=".ReadMe"]:before,
+  &[data-name="AUTHORS"]:before,         &[data-name="COPYING"]:before,
+  &[data-name="LICENSE"]:before,         &[data-name="LICENCE"]:before,
+  &[data-name="LICENSES"]:before,        &[data-name="LICENCES"]:before,
+  &[data-name="MIT-LICENSE"]:before,     &[data-name="INSTALL"]:before,
+  &[data-name="HISTORY"]:before,         &[data-name="ChangeLog"]:before,
+  &[data-name^="ChangeLog."]:before,     &[data-name="CHANGELOG"]:before,
+  &[data-name="changelog"]:before,       &[data-name="NEWS"]:before,
+  &[data-name="THANKS"]:before,          &[data-name="PROJECTS"]:before,
+  &[data-name="CONTRIBUTING"]:before,    &[data-name="CONTRIBUTORS"]:before,
+  &[data-name="Contributors"]:before     { .book-icon;           .medium-blue; }
   
   // Rebol
   &[data-name$=".rebol"]:before,
@@ -1383,8 +1487,7 @@
   &[data-name="Fastfile"]:before,        &[data-name="Guardfile"]:before,
   &[data-name="Jarfile"]:before,         &[data-name="Mavenfile"]:before,
   &[data-name="Podfile"]:before,         &[data-name="Puppetfile"]:before,
-  &[data-name="Snapfile"]:before,        &[data-name="Thorfile"]:before,
-  &[data-name="Vagrantfile"]:before,     &[data-name$=".erb"]:before,
+  &[data-name="Snapfile"]:before,        &[data-name$=".erb"]:before,
   &[data-name$=".gemspec"]:before,       &[data-name$=".god"]:before,
   &[data-name$=".irbrc"]:before,         &[data-name$=".mspec"]:before,
   &[data-name$=".pluginspec"]:before,    &[data-name$=".podspec"]:before,
@@ -1399,7 +1502,6 @@
   &[data-name$="_spec.rb"]:before        { .ruby-icon;           .light-green; }
   &[data-name="rails"]:before            { .rails-icon;           .medium-red; }
   &[data-name$=".gem"]:before            { .zip-icon;             .medium-red; }
-  &[data-name$=".thor"]:before           { .ruby-icon;           .dark-orange; }
   &[data-name$=".watchr"]:before         { .ruby-icon;           .dark-yellow; }
 
   // Rust
@@ -1422,9 +1524,9 @@
   &[data-name$=".scss"]:before           { .sass-icon;            .light-pink; }
 
   // Scala
-  &[data-name$=".sbt"]:before,
   &[data-name$=".sc"]:before,
   &[data-name$=".scala"]:before          { .scala-icon;           .medium-red; }
+  &[data-name$=".sbt"]:before            { .sbt-icon;            .dark-purple; }
   
   // Scheme
   &[data-name$=".scm"]:before            { .scheme-icon;          .medium-red; }
@@ -1447,6 +1549,9 @@
   &[data-name$=".csv"]:before            { .graph-icon;            .light-red; }
   &[data-name$=".tab"]:before,
   &[data-name$=".tsv"]:before            { .graph-icon;          .light-green; }
+  
+  // Service Fabric
+  &[data-name$=".sfproj"]:before         { .sf-icon;            .light-orange; }
 
   // Shell
   &[data-name$=".sh"]:before,
@@ -1457,13 +1562,12 @@
   &[data-name$=".command"]:before,
   &[data-name="install-sh"]:before,
   &[data-name="_osc"]:before,
-  &[data-name="PKGBUILD"]:before,
-  &[data-name="bashrc"]:before,
-  &[data-name=".bashrc"]:before,
-  &[data-name="bash_login"]:before,
-  &[data-name=".bash_login"]:before,
-  &[data-name="bash_profile"]:before,
-  &[data-name=".bash_profile"]:before    { .terminal-icon;     .medium-purple; }
+  &[data-name="bashrc"]:before,          &[data-name=".bashrc"]:before,
+  &[data-name="bash_login"]:before,      &[data-name=".bash_login"]:before,
+  &[data-name="bash_logout"]:before,     &[data-name=".bash_logout"]:before,
+  &[data-name="bash_profile"]:before,    &[data-name=".bash_profile"]:before,
+  &[data-name="bash_history"]:before,    &[data-name=".bash_history"]:before,
+  &[data-name="PKGBUILD"]:before         { .terminal-icon;     .medium-purple; }
   &[data-name$=".ksh"]:before            { .terminal-icon;       .dark-yellow; }
   &[data-name$=".sh-session"]:before     { .terminal-icon;      .auto(yellow); }
   &[data-name$=".zsh"]:before,
@@ -1489,6 +1593,9 @@
   
   // Shen
   &[data-name$=".shen"]:before           { .shen-icon;             .dark-cyan; }
+  
+  // Shopify
+  &[data-name$=".liquid"]:before         { .shopify-icon;       .medium-green; }
   
   // Sketch
   &[data-name$=".sketch"]:before         { .sketch-icon;       .medium-orange; }
@@ -1591,6 +1698,12 @@
   &[data-name$=".svh"]:before            { .sysverilog-icon;     .auto(green); }
   &[data-name$=".vh"]:before             { .sysverilog-icon;      .auto(cyan); }
   
+  // Tags file (Ctags)
+  &[data-name$=".tags"]:before,
+  &[data-name$=".TAGS"]:before,
+  &[data-name="tags"]:before,
+  &[data-name="TAGS"]:before             { .tag-icon;            .medium-blue; }
+  
   // Tcl
   &[data-name$=".tcl"]:before            { .tcl-icon;            .dark-orange; }
   &[data-name$=".adp"]:before            { .tcl-icon;          .medium-orange; }
@@ -1616,6 +1729,7 @@
   &[data-name$=".cls"]:before            { .tex-icon;           .auto(orange); }
   &[data-name$=".ins"]:before            { .tex-icon;            .auto(green); }
   &[data-name$=".lbx"]:before            { .tex-icon;             .auto(blue); }
+  &[data-name$=".texi"]:before           { .tex-icon;              .auto(red); }
   &[data-name$=".cbx"]:before            { .bibtex-icon;           .auto(red); }
   &[data-name$=".bbx"]:before            { .bibtex-icon;        .auto(orange); }
   &[data-name$=".bib"]:before            { .bibtex-icon;        .auto(yellow); }
@@ -1636,7 +1750,12 @@
   &[data-name$=".tmPreferences"]:before  { .textmate-icon;         .dark-blue; }
   &[data-name$=".tmSnippet"]:before      { .textmate-icon;         .dark-pink; }
   &[data-name$=".tmTheme"]:before        { .textmate-icon;       .medium-pink; }
+  &[data-name$=".JSON-tmLanguage"]:before{ .textmate-icon;     .medium-purple; }
   &[data-name$=".yaml-tmlanguage"]:before{ .textmate-icon;     .medium-orange; }
+  
+  // Thor
+  &[data-name$=".thor"]:before           { .thor-icon;         .medium-orange; }
+  &[data-name="Thorfile"]:before         { .thor-icon;           .dark-orange; }
 
   // Travis
   &[data-name^=".travis"]:before         { .travis-icon;          .medium-red; }
@@ -1671,6 +1790,9 @@
   &[data-name$=".ur"]:before             { .urweb-icon;        .medium-maroon; }
   &[data-name$=".urs"]:before            { .urweb-icon;            .dark-blue; }
   
+  // Vagrant
+  &[data-name="Vagrantfile"]:before      { .vagrant-icon;        .medium-cyan; }
+  
   // Vala
   &[data-name$=".vala"]:before           { .gnome-icon;        .medium-purple; }
   &[data-name$=".vapi"]:before           { .gnome-icon;          .dark-purple; }
@@ -1701,7 +1823,7 @@
   &[data-name="nvimrc"]:before,
   &[data-name="vimrc"]:before            { .vim-icon;           .medium-green; }
 
-  // Visual Basic
+  // Visual Studio
   &[data-name$=".vb"]:before,
   &[data-name$=".frm"]:before,
   &[data-name$=".frx"]:before,
@@ -1713,6 +1835,7 @@
   &[data-name$=".vbproj"]:before         { .vb-icon;                .dark-red; }
   &[data-name$=".vcxproj"]:before        { .vb-icon;             .dark-purple; }
   &[data-name$=".vssettings"]:before     { .vb-icon;              .dark-green; }
+  &[data-name$=".builds"]:before         { .vb-icon;           .medium-maroon; }
 
   // Vue
   &[data-name$=".vue"]:before            { .vue-icon;            .light-green; }
@@ -1730,6 +1853,8 @@
   &[data-name$=".com"]:before            { .windows-icon;                      }
   &[data-name$=".msi"]:before            { .windows-icon;                      }
   &[data-name$=".reg"]:before            { .windows-icon;        .medium-blue; }
+  &[data-name$=".dll"]:before            { .gears-icon;          .dark-orange; }
+  &[data-name$=".lnk"]:before            { .link-icon;           .medium-blue; }
 
   // XAML
   &[data-name$=".xaml"]:before           { .code-icon;           .medium-blue; }
@@ -1792,6 +1917,10 @@
   // Bower
   &[data-name=".bowerrc"]:before         { .bower-icon;                        }
   &[data-name="bower.json"]:before       { .bower-icon;          .auto(bower); }
+  
+  // Brakeman
+  &[data-name$="brakeman.yml"]:before    { .brakeman-icon;        .medium-red; }
+  &[data-name="brakeman.ignore"]:before  { .brakeman-icon;          .dark-red; }
 
   // Broccoli
   &[data-name^="Brocfile."]:before,
@@ -1801,14 +1930,31 @@
   &[data-name$="Cargo.toml"]:before      { .package-icon;       .light-orange; }
   &[data-name$="Cargo.lock"]:before      { .package-icon;        .dark-orange; }
 
-  // Riemann (Clojure)
-  &[data-name="riemann.config"]:before   { .clojure-icon;       .auto(maroon); }
+  // Code Climate
+  &[data-name=".codeclimate.yml"]:before { .cc-icon;            .medium-green; }
 
   // Composer
   &[data-name="composer.json"]:before,
   &[data-name="composer.lock"]:before    { .composer-icon;     .medium-yellow; }
   &[data-name="composer.phar"]:before    { .composer-icon;         .dark-blue; }
 
+  // Configs / Data sources
+  &[data-name="METADATA.pb"]:before      { .database-icon;        .medium-red; }
+  &[data-name$=".indent.pro"]:before     { .gear-icon;           .medium-blue;
+    
+    // Prolog's icon offset seems to be inherited here, so reset it
+    top: 1px;
+    left: 0;
+  }
+
+  // ESLint
+  &[data-name$=".eslintrc"]:before,
+  &[data-name$=".eslintrc.js"]:before,
+  &[data-name$=".eslintrc.json"]:before,
+  &[data-name$=".eslintrc.yaml"]:before,
+  &[data-name$=".eslintrc.yml"]:before   { .eslint-icon;         .light-purple }
+  &[data-name$=".eslintignore"]:before   { .eslint-icon;        .medium-purple }
+  
   // ERB combinations
   &[data-name$=".js.erb"]:before         { .js-icon;              .medium-red; }
   &[data-name$=".coffee.erb"]:before     { .coffee-icon;          .medium-red; }
@@ -1836,6 +1982,15 @@
   &[data-name$="GULPFILE.babel.js"]:before,
   &[data-name$="Gulpfile.babel.js"]:before,
   &[data-name$="gulpfile.babel.js"]:before { .gulp-icon;          .medium-red; }
+  
+  // New Relic
+  &[data-name^="newrelic.yml"]:before      { .newrelic-icon;     .medium-cyan; }
+
+  // Riemann
+  &[data-name="riemann.config"]:before   { .clojure-icon;       .auto(maroon); }
+
+  // Scrutinizer
+  &[data-name$=".scrutinizer.yml"]:before  { .scrutinizer-icon;    .dark-blue; }
 }
 
 
