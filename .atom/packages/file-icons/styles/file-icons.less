@@ -10,7 +10,8 @@
 .icon-file-text,
 .icon-file-directory,
 .icon-file-media,
-.icon-book {
+.icon-book,
+.icon-file-pdf {
   &:before { text-align: center; }
 }
 
@@ -505,7 +506,6 @@
   &[data-name$=".yardopts"]:before       { .gear-icon;            .medium-red; }
   &[data-name$=".codoopts"]:before       { .gear-icon;         .medium-maroon; }
   &[data-name=".pairs"]:before           { .gear-icon;            .dark-green; }
-  &[data-name=".python-version"]:before  { .gear-icon;             .dark-blue; }
   &[data-name$=".ctags"]:before          { .gear-icon;           .dark-purple; }
 
   // Generic format: Audio
@@ -575,7 +575,6 @@
   &[data-name$=".ivy"]:before            { .code-icon;            .dark-green; }
   &[data-name$=".jelly"]:before          { .code-icon;         .medium-yellow; }
   &[data-name$=".jflex"]:before          { .code-icon;            .medium-red; }
-  &[data-name$=".jl"]:before             { .code-icon;         .medium-purple; }
   &[data-name$=".jsproj"]:before         { .code-icon;           .dark-yellow; }
   &[data-name$=".lagda"]:before          { .code-icon;           .medium-cyan; }
   &[data-name$=".launch"]:before         { .code-icon;           .medium-blue; }
@@ -908,6 +907,9 @@
   &[data-name$=".tsx"]:before            { .tsx-icon;             .light-blue; }
   &[data-name$=".react.js"]:before       { .react-icon;           .auto(blue); }
   
+  // Julia
+  &[data-name$=".jl"]:before             { .julia-icon;        .medium-purple; }
+  
   // Jupyter Notebook
   &[data-name$=".ipynb"]:before          { .jupyter-icon;        .dark-orange; }
   &[data-name="Notebook"]:before         { .jupyter-icon;          .dark-cyan; }
@@ -1162,12 +1164,15 @@
   // Nmap (Lua)
   &[data-name$=".nse"]:before            { .nmap-icon;             .dark-blue; }
 
+  // NodeJS
+  &[data-name=".node-version"]:before    { .node-icon;          .medium-green; }
+
   // Nodemon
   &[data-name="nodemon.json"]:before,
   &[data-name=".nodemonignore"]:before   { .gear-icon;          .medium-green; }
 
   // NPM (Node.js)
-  &[data-name=".npmrc"]:before           { .npm-icon;             .medium-red; }
+  &[data-name="npmrc"]:before,           &[data-name=".npmrc"]:before,
   &[data-name=".npmignore"]:before       { .npm-icon;             .medium-red; }
   &[data-name="npm-debug.log"]:before    { .npm-icon;             .medium-red; }
   &[data-name="package.json"]:before     { .npm-icon;             .medium-red; }
@@ -1383,6 +1388,9 @@
   &[data-name$=".purs"]:before           { .purescript-icon;     .dark-purple; }
 
   // Python
+  &[data-name="pypirc"]:before,          &[data-name=".pypirc"]:before,
+  &[data-name="pythonrc"]:before,        &[data-name=".pythonrc"]:before,
+  &[data-name=".python-venv"]:before,    &[data-name=".python-version"]:before,
   &[data-name$=".py"]:before             { .python-icon;           .dark-blue; }
   &[data-name$=".bzl"]:before            { .python-icon;           .dark-blue; }
   &[data-name$=".ipy"]:before            { .python-icon;         .medium-blue; }
@@ -1481,8 +1489,9 @@
   &[data-name$=".rss"]:before            { .rss-icon;          .medium-orange; }
 
   // Ruby
-  &[data-name=".gemrc"]:before,
-  &[data-name=".pryrc"]:before,          &[data-name=".rspec"]:before,
+  &[data-name="gemrc"]:before,           &[data-name=".gemrc"]:before,
+  &[data-name="pryrc"]:before,           &[data-name=".pryrc"]:before,
+  &[data-name="rspec"]:before,           &[data-name=".rspec"]:before,
   &[data-name=".ruby-gemset"]:before,    &[data-name=".ruby-version"]:before,
   &[data-name="Appraisals"]:before,      &[data-name="Berksfile"]:before,
   &[data-name="buildfile"]:before,       &[data-name="Buildfile"]:before,
@@ -1573,12 +1582,13 @@
   &[data-name="PKGBUILD"]:before         { .terminal-icon;     .medium-purple; }
   &[data-name$=".ksh"]:before            { .terminal-icon;       .dark-yellow; }
   &[data-name$=".sh-session"]:before     { .terminal-icon;      .auto(yellow); }
-  &[data-name$=".zsh"]:before,
-  &[data-name=".zlogin"]:before,
-  &[data-name=".zlogout"]:before,
-  &[data-name=".zprofile"]:before,
-  &[data-name=".zshenv"]:before,
-  &[data-name=".zshrc"]:before           { .terminal-icon;       .medium-blue; }
+  &[data-name="zlogin"]:before,          &[data-name=".zlogin"]:before,
+  &[data-name="zlogout"]:before,         &[data-name=".zlogout"]:before,
+  &[data-name="zprofile"]:before,        &[data-name=".zprofile"]:before,
+  &[data-name="zshenv"]:before,          &[data-name=".zshenv"]:before,
+  &[data-name="zshrc"]:before,           &[data-name=".zshrc"]:before,
+  &[data-name$=".zsh-theme"]:before,
+  &[data-name$=".zsh"]:before            { .terminal-icon;       .medium-blue; }
   &[data-name$=".fish"]:before,
   &[data-name=".fishrc"]:before          { .terminal-icon;      .medium-green; }
   &[data-name$=".sh.in"]:before          { .terminal-icon;          .dark-red; }
@@ -1675,6 +1685,12 @@
   &[data-name$=".xql"]:before,
   &[data-name$=".xqm"]:before,
   &[data-name$=".xqy"]:before            { .sql-icon;               .dark-red; }
+  
+  // SQLite
+  &[data-name$=".sqlite"]:before         { .sqlite-icon;         .medium-blue; }
+  &[data-name$=".sqlite3"]:before        { .sqlite-icon;           .dark-blue; }
+  &[data-name$=".db"]:before             { .sqlite-icon;       .medium-purple; }
+  &[data-name$=".db3"]:before            { .sqlite-icon;         .dark-purple; }
   
   // Sublime Text
   &[data-name$=".sublime-build"]:before,
@@ -1959,9 +1975,14 @@
   &[data-name$=".eslintrc.yml"]:before   { .eslint-icon;         .light-purple }
   &[data-name$=".eslintignore"]:before   { .eslint-icon;        .medium-purple }
   
-  // ERB combinations
+  // ECR/ERB combinations
+  &[data-name$=".js.ecr"]:before         { .js-icon;             .medium-cyan; }
   &[data-name$=".js.erb"]:before         { .js-icon;              .medium-red; }
+  &[data-name$=".coffee.ecr"]:before     { .coffee-icon;         .medium-cyan; }
   &[data-name$=".coffee.erb"]:before     { .coffee-icon;          .medium-red; }
+  &[data-name$=".htm.ecr"]:before        { .html5-icon;          .medium-cyan; }
+  &[data-name$=".html.ecr"]:before       { .html5-icon;          .medium-cyan; }
+  &[data-name$=".htm.erb"]:before        { .html5-icon;           .medium-red; }
   &[data-name$=".html.erb"]:before       { .html5-icon;           .medium-red; }
   &[data-name$=".rhtml"]:before          { .html5-icon;           .medium-red; }
 
@@ -2012,6 +2033,7 @@ body.file-icons-colourless {
   .icon-file-media,
   .icon-file-binary,
   .icon-book,
+  .icon-file-pdf,
   atom-pane ul.tab-bar li.tab .title {
     &:before { color: inherit !important; }
   }
