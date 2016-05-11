@@ -70,7 +70,7 @@ atom-pane.pane {
     max-width: none;
     height: auto;
     margin: 0 0 0px 0;
-    padding: 0 20px 0 10px;
+    padding: 0 20px 0 8px;
     background: rgba(255,255,255,.05);
     box-shadow: 0 -1px 0 0 rgba(0,0,0,.3) inset;
 
@@ -99,7 +99,12 @@ atom-pane.pane {
     }
 
     .title {
-      padding-right: 10px;
+      padding-righ: 10px;
+
+      &:before {
+        display: inline-block;
+        width: 20px;
+      }
     }
 
     .close-icon {
