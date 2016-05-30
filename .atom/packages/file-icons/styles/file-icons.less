@@ -67,10 +67,11 @@
   // ABAP
   &[data-name$=".abap"]:before           { .abap-icon;         .medium-orange; }
 
-  // ActionScript
+  // ActionScript / Flash
   &[data-name$=".as"]:before             { .as-icon;              .medium-red; }
   &[data-name$=".jsfl"]:before           { .as-icon;            .auto(yellow); }
   &[data-name$=".swf"]:before            { .as-icon;             .medium-blue; }
+  &[data-name$=".swc"]:before            { .as-icon;                .dark-red; }
 
   // Ada
   &[data-name$=".ada"]:before,
@@ -170,6 +171,9 @@
   &[data-name$=".hats"]:before           { .ats-icon;            .medium-blue; }
   &[data-name$=".sats"]:before           { .ats-icon;            .dark-yellow; }
 
+  // Audacity
+  &[data-name$=".aup"]:before            { .audacity-icon;     .medium-yellow; }
+
   // Augeas
   &[data-name$=".aug"]:before            { .augeas-icon;         .dark-orange; }
 
@@ -195,6 +199,12 @@
 
   // Bison
   &[data-name$=".bison"]:before          { .gnu-icon;             .medium-red; }
+  
+  // Blender
+  &[data-name$=".blend"]:before          { .blender-icon;      .medium-orange; }
+  &[data-name$=".blend1"]:before,
+  &[data-name$=".blend2"]:before         { .blender-icon;        .dark-orange; }
+  &[data-name$=".bphys"]:before          { .blender-icon;          .dark-blue; }
 
   // Bluespec
   &[data-name$=".bsv"]:before            { .bluespec-icon;         .dark-blue; }
@@ -275,7 +285,6 @@
   // CMake
   &[data-name$=".cmake"]:before          { .cmake-icon;         .medium-green; }
   &[data-name$=".cmake.in"]:before       { .cmake-icon;          .medium-blue; }
-  &[data-name="CMakeLists.txt"]:before   { .cmake-icon;           .medium-red; }
 
   // CoffeeScript
   &[data-name$=".coffee"]:before         { .coffee-icon;       .medium-maroon; }
@@ -287,6 +296,9 @@
   &[data-name$=".cfc"]:before            { .cf-icon;              .light-cyan; }
   &[data-name$=".cfm"]:before            { .cf-icon;             .medium-cyan; }
   &[data-name$=".cfml"]:before           { .cf-icon;             .medium-cyan; }
+  
+  // COLLADA
+  &[data-name$=".dae"]:before            { .khronos-icon;      .medium-orange; }
 
   // Component Pascal
   &[data-name$=".cp"]:before             { .cp-icon;           .medium-maroon; }
@@ -321,7 +333,6 @@
   // CSS
   &[data-name$=".less"]:before           { .css3-icon;             .dark-blue; }
   &[data-name$=".css"]:before            { .css3-icon;           .medium-blue; }
-  &[data-name$=".styl"]:before           { .css3-icon;          .medium-green; }
   
   // Csound
   &[data-name$=".orc"]:before            { .csound-icon;       .medium-maroon; }
@@ -344,6 +355,9 @@
   // D lang
   &[data-name$=".d"]:before              { .dlang-icon;           .medium-red; }
   &[data-name$=".di"]:before             { .dlang-icon;           .medium-red; }
+  
+  // Danmakufu
+  &[data-name$=".dnh"]:before            { .yang-icon;            .medium-red; }
 
   // Darcs Patch
   &[data-name$=".darcspatch"]:before,
@@ -473,6 +487,9 @@
   // Fantom
   &[data-name$=".fan"]:before            { .fantom-icon;         .medium-blue; }
   
+  // FBX
+  &[data-name$=".fbx"]:before            { .fbx-icon;          .medium-maroon; }
+  
   // Frege
   &[data-name$=".fr"]:before             { .frege-icon;             .dark-red; }
 
@@ -570,6 +587,7 @@
   &[data-name$=".4th"]:before            { .code-icon;           .medium-blue; }
   &[data-name$=".aepx"]:before           { .code-icon;         .medium-purple; }
   &[data-name$=".agda"]:before           { .code-icon;             .dark-cyan; }
+  &[data-name$=".appxmanifest"]:before   { .code-icon;         .medium-orange; }
   &[data-name$=".ash"]:before            { .code-icon;           .medium-cyan; }
   &[data-name$=".axml"]:before           { .code-icon;             .dark-blue; }
   &[data-name$=".befunge"]:before        { .code-icon;         .medium-orange; }
@@ -676,6 +694,7 @@
   &[data-name$=".xliff"]:before          { .code-icon;            .medium-red; }
   &[data-name$=".xmi"]:before            { .code-icon;          .medium-green; }
   &[data-name$=".xml"]:before            { .code-icon;           .medium-blue; }
+  &[data-name$=".xml.dist"]:before       { .code-icon;           .medium-blue; }
   &[data-name$=".xproj"]:before          { .code-icon;              .dark-red; }
   &[data-name$=".xsd"]:before            { .code-icon;             .dark-blue; }
   &[data-name$=".xsl"]:before            { .code-icon;           .medium-cyan; }
@@ -712,6 +731,7 @@
   &[data-name$=".cd5"]:before            { .image-icon;           .dark-green; }
   &[data-name$=".cpc"]:before            { .image-icon;         .light-yellow; }
   &[data-name$=".dcm"]:before            { .image-icon;          .medium-cyan; }
+  &[data-name$=".dds"]:before            { .image-icon;           .dark-green; }
   &[data-name$=".ecw"]:before            { .image-icon;           .light-blue; }
   &[data-name$=".exr"]:before            { .image-icon;          .dark-yellow; }
   &[data-name$=".fit"]:before            { .image-icon;          .medium-cyan; }
@@ -1021,6 +1041,10 @@
   // Leiningen
   &[data-name$="project.clj"]:before     { .lein-icon; }
   
+  // LightWave 3D
+  &[data-name$=".lwo"]:before            { .lightwave-icon;       .medium-red; }
+  &[data-name$=".lws"]:before            { .lightwave-icon;      .medium-blue; }
+  
   // LilyPond
   &[data-name$=".ly"]:before             { .music-icon;         .medium-green; }
   &[data-name$=".ily"]:before            { .music-icon;           .dark-green; }
@@ -1128,9 +1152,17 @@
   &[data-name$=".pat"]:before            { .max-icon;           .medium-green; }
 
   // MAXScript
-  &[data-name$=".ms"]:before,
-  &[data-name$=".mce"]:before,
-  &[data-name$=".mcr"]:before            { .maxscript-icon;        .dark-blue; }
+  &[data-name$=".ms"]:before            { .maxscript-icon;        .dark-blue; }
+  &[data-name$=".mcr"]:before           { .maxscript-icon;      .dark-purple; }
+  &[data-name$=".mce"]:before           { .maxscript-icon;       .medium-red; }
+  &[data-name$=".max"]:before           { .maxscript-icon;        .dark-cyan; }
+  &[data-name$=".3ds"]:before           { .maxscript-icon;      .medium-cyan; }
+
+  // Maya
+  &[data-name$=".mb"]:before            { .maya-icon;             .dark-cyan; }
+  &[data-name$=".mel"]:before           { .maya-icon;             .dark-blue; }
+  &[data-name$=".mcfi"]:before,
+  &[data-name$=".mcfp"]:before          { .maya-icon;           .dark-purple; }
 
   // Manual pages
   &[data-name$=".1"]:before,       &[data-name$=".1b"]:before,
@@ -1261,6 +1293,9 @@
   // NGINX
   &[data-name="nginx.conf"]:before       { .nginx-icon;           .dark-green; }
   &[data-name$=".nginxconf"]:before      { .nginx-icon;         .medium-green; }
+  
+  // Nib
+  &[data-name$=".nib"]:before            { .nib-icon;            .dark-orange; }
   
   // Nimrod
   &[data-name$=".nim"]:before,
@@ -1776,6 +1811,7 @@
   &[data-name$=".der"]:before            { .key-icon;          .medium-purple; }
   &[data-name$=".key"]:before            { .key-icon;            .medium-blue; }
   &[data-name$=".crt"]:before            { .key-icon;            .medium-blue; }
+  &[data-name="git-credential-osxkeychain"]:before{ .key-icon;  .medium-green; }
   
   // Stan
   &[data-name$=".stan"]:before           { .stan-icon;            .medium-red; }
@@ -1789,10 +1825,6 @@
   &[data-name$=".matah"]:before          { .stata-icon;           .light-cyan; }
   &[data-name$=".sthlp"]:before          { .stata-icon;        .medium-purple; }
 
-  // Stylelint
-  &[data-name$=".stylelintrc"]:before    { .stylelint-icon;    .medium-purple; }
-  &[data-name$=".stylelintignore"]:before{ .stylelint-icon;        .dark-blue; }
-  
   // SAS
   &[data-name$=".sas"]:before            { .sas-icon;            .medium-blue; }
 
@@ -1827,6 +1859,9 @@
   
   // Strings
   &[data-name$=".strings"]:before        { .strings-icon;         .medium-red; }
+  
+  // Stylus
+  &[data-name$=".styl"]:before           { .stylus-icon;        .medium-green; }
   
   // Sublime Text
   &[data-name$=".sublime-build"]:before,
@@ -1935,12 +1970,16 @@
   &[data-name$=".meta"]:before           { .unity3d-icon;           .dark-red; }
   &[data-name$=".prefab"]:before         { .unity3d-icon;          .dark-cyan; }
   &[data-name$=".unity"]:before          { .unity3d-icon;        .medium-blue; }
+  &[data-name$=".unityproj"]:before      { .unity3d-icon;      .medium-maroon; }
   
   // Uno
   &[data-name$=".uno"]:before            { .uno-icon;              .dark-blue; }
   
   // UnrealScript
   &[data-name$=".uc"]:before             { .unreal-icon; }
+  
+  // URL
+  &[data-name$=".url"]:before            { .link-icon;             .dark-blue; }
   
   // UrWeb
   &[data-name$=".ur"]:before             { .urweb-icon;        .medium-maroon; }
@@ -1992,12 +2031,10 @@
   &[data-name$=".vcxproj"]:before        { .vb-icon;             .dark-purple; }
   &[data-name$=".vssettings"]:before     { .vb-icon;              .dark-green; }
   &[data-name$=".builds"]:before         { .vb-icon;           .medium-maroon; }
+  &[data-name$=".sln"]:before            { .vb-icon;           .medium-orange; }
 
   // Vue
   &[data-name$=".vue"]:before            { .vue-icon;            .light-green; }
-  
-  // Wavefront OBJ
-  &[data-name$=".obj"]:before            { .obj-icon;             .medium-red; }
   
   // Web Ontology Language / OWL
   &[data-name$=".owl"]:before            { .owl-icon;              .dark-blue; }
@@ -2058,6 +2095,11 @@
   &[data-name$=".zmpl"]:before,
   &[data-name$=".zpl"]:before            { .zimpl-icon;        .medium-orange; }
 
+  // 3D Models
+  &[data-name$=".obj"]:before            { .model-icon;           .medium-red; }
+  &[data-name$=".mtl"]:before            { .model-icon;            .dark-blue; }
+  &[data-name$=".stl"]:before            { .model-icon;           .dark-green; }
+  &[data-name$=".u3d"]:before            { .model-icon;        .medium-orange; }
 
   /*============================================================================
        THESE RULES MUST BE LISTED LAST TO AVOID BEING OVERRIDDEN BY OTHERS
@@ -2092,6 +2134,9 @@
   // Cargo
   &[data-name$="Cargo.toml"]:before      { .package-icon;       .light-orange; }
   &[data-name$="Cargo.lock"]:before      { .package-icon;        .dark-orange; }
+
+  // CMake
+  &[data-name="CMakeLists.txt"]:before   { .cmake-icon;           .medium-red; }
 
   // Code Climate
   &[data-name=".codeclimate.yml"]:before { .cc-icon;            .medium-green; }
@@ -2165,6 +2210,12 @@
 
   // Scrutinizer
   &[data-name$=".scrutinizer.yml"]:before  { .scrutinizer-icon;    .dark-blue; }
+  
+  // Stylelint
+  &[data-name^=".stylelintrc"]:before,
+  &[data-name$=".stylelintrc"]:before    { .stylelint-icon;    .medium-purple; }
+  &[data-name$=".stylelintignore"]:before{ .stylelint-icon;        .dark-blue; }
+  &[data-name="stylelint.config.js"]:before{ .stylelint-icon;   .auto(yellow); }
   
   // Swap files
   &[data-name$=".swp"]:before              { .binary-icon;        .dark-green; }
