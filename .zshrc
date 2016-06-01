@@ -201,3 +201,7 @@ eval "$(rbenv init -)"
 # nvm
 
 [[ -s "$HOME/.nvm" ]] && . "$HOME/.nvm/nvm.sh"
+
+# nodebrew
+
+export PATH=$HOME/.nodebrew/current/bin:$PATH
