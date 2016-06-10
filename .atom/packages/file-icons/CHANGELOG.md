@@ -4,6 +4,17 @@ All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+[1.7.14] - 2016-06-10
+---------------------
+### Added
+- **New icons:** Alpine Linux, Knockout, Rollup, Stylus (alternate icons)
+- Added NodeJS icon to `node_modules` folder
+
+### Changed
+- Stylus icon changed to use the logotype's first letter, [as per Stylus's favicon](http://stylus-lang.com/favicon.ico). The previous icon is still included at codepoint `\E9F7`.
+
+
+
 [1.7.13] - 2016-05-30
 ---------------------
 ### Added
@@ -781,11 +792,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Initial release.
 
 
-[Unreleased]: https://github.com/DanBrooker/file-icons/compare/v1.7.13...HEAD
-[1.7.13]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.13
-[1.7.12]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.12
-[1.7.11]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.11
-[1.7.10]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.10
+[Unpublished]: https://github.com/DanBrooker/file-icons/compare/v1.7.14...HEAD
+[1.7.14]: https://github.com/DanBrooker/file-icons/releases/tag/v1.7.14
+[1.7.13]: https://github.com/DanBrooker/file-icons/releases/tag/v1.7.13
+[1.7.12]: https://github.com/DanBrooker/file-icons/releases/tag/v1.7.12
+[1.7.11]: https://github.com/DanBrooker/file-icons/releases/tag/v1.7.11
+[1.7.10]: https://github.com/DanBrooker/file-icons/releases/tag/v1.7.10
 [1.7.9]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.9
 [1.7.8]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.8
 [1.7.7]:  https://github.com/DanBrooker/file-icons/releases/tag/v1.7.7
