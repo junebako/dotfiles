@@ -20,7 +20,7 @@
 # - growlnotify
 #   http://growl.info/extras.php/#growlnotify
 
-local term_id title icon_switch
+local term_id title icon_switch the_tty
 local -a otitle oicon
 zparseopts t:=otitle -icon:=oicon
 
@@ -29,7 +29,7 @@ title=$otitle[2]
 message=$(<&0)
 
 [[ -z "$SYS_NOTIFIER" ]] \
-  && SYS_NOTIFIER="/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier"
+  && SYS_NOTIFIER="/usr/local/bin/terminal-notifier"
 
 [[ -z "$GROWL_NOTIFIER" ]] \
   && GROWL_NOTIFIER="/usr/local/bin/growlnotify"
@@ -39,13 +39,29 @@ if [[ "$TERM_PROGRAM" == 'iTerm.app' ]]; then
 elif [[ "$TERM_PROGRAM" == 'Apple_Terminal' ]]; then
   term_id='com.apple.terminal'
 else
-  echo "Unsupported terminal: $TERM_PROGRAM" > /dev/stderr 
+  # echo "Unsupported terminal: $TERM_PROGRAM" > /dev/stderr 
   return 1;
 fi
 
+if [[ -n ${TMUX+1} ]]; then
+  the_tty=`tmux display-message -p '#{client_tty}'`
+else
+  the_tty=$TTY
+fi
+
 if [[ $term_id == 'com.googlecode.iterm2' ]]; then
-  TT='tell-iterm2'
-  if [[ `$TT <<< "frontmost and (tty of (current session of current terminal) is equal to \"$TTY\")"` == "true" ]]; then
+  # Use System Events as there's no frontmost property at least in current nightly
+  local iterm_frontmost tty_active
+  iterm_frontmost=`osascript <<OSA
+        tell application "System Events"
+            tell item 1 of (application processes whose bundle identifier is "com.googlecode.iterm2") to ¬
+                get its frontmost
+        end tell
+OSA`
+
+  tty_active=`tell-iterm2 <<< "tty of (current session of current tab of current window) is equal to \"$the_tty\""`
+
+  if [[ $iterm_frontmost == "true" && $tty_active == "true" ]]; then
     return 2
   fi
 else
@@ -60,10 +76,10 @@ fi
 
 
 if [[ -x "$SYS_NOTIFIER" ]]; then
-  "$SYS_NOTIFIER" -activate "$term_id" -title "$title" -message "$message" 1>/dev/null 
+  "$SYS_NOTIFIER" -activate "$term_id" -sender "$term_id" -title "$title" -message "$message" 1>/dev/null 
 elif [[ -x "$GROWL_NOTIFIER" ]]; then
   [[ ! -z "$icon" ]] && icon_switch="--iconpath $icon"
-  echo "$message" | "$GROWL_NOTIFIER" "$title" 
+  echo "$message" | "$GROWL_NOTIFIER" "$title"
 else
   echo "No notifier program found." > /dev/stderr
   return 1
