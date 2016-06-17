@@ -36,6 +36,9 @@
 
 .icon-file-directory {
 
+  // Atom
+  &[data-name=".atom"]:before { .atom-icon; }
+
   // Git
   &[data-name=".git"]:before     { .git-icon; }
 
@@ -47,9 +50,12 @@
 
   // Meteor
   &[data-name=".meteor"]:before  { .meteor-icon; }
-  
+
   // Node Modules
   &[data-name="node_modules"]:before { .node-icon; .medium-green; }
+
+  // Bower Components
+  &[data-name="bower_components"]:before { .bower-icon; .auto(bower); }
 }
 
 
@@ -403,6 +409,10 @@
 
   // dBASE
   &[data-name$=".dbf"]:before            { .dbase-icon;           .medium-red; }
+
+  // Debian
+  &[data-name="control"]:before          { .debian-icon;           .dark-cyan; }
+  &[data-name="rules"]:before            { .debian-icon;         .medium-cyan; }
 
   // Diff/Patch
   &[data-name$=".diff"]:before           { .diff-icon;         .medium-orange; }
@@ -1632,6 +1642,9 @@
   &[data-name$=".red"]:before            { .red-icon;             .medium-red; }
   &[data-name$=".reds"]:before           { .red-icon;              .light-red; }
 
+  // Red Hat
+  &[data-name$=".spec"]:before           { .red-hat-icon;           .dark-red; }
+
   // Ren'Py (Python)
   &[data-name$=".rpy"]:before            { .python-icon;         .medium-pink; }
   &[data-name$=".rpyb"]:before           { .binary-icon;          .medium-red; }
@@ -1742,7 +1755,6 @@
   &[data-name$=".bats"]:before,
   &[data-name$=".bash"]:before,
   &[data-name$=".tool"]:before,
-  &[data-name$=".install"]:before,
   &[data-name$=".command"]:before,
   &[data-name="install-sh"]:before,
   &[data-name="_osc"]:before,
@@ -1751,7 +1763,6 @@
   &[data-name="bash_logout"]:before,     &[data-name=".bash_logout"]:before,
   &[data-name="bash_profile"]:before,    &[data-name=".bash_profile"]:before,
   &[data-name="bash_history"]:before,    &[data-name=".bash_history"]:before,
-  &[data-name="PKGBUILD"]:before         { .terminal-icon;     .medium-purple; }
   &[data-name$=".ksh"]:before            { .terminal-icon;       .dark-yellow; }
   &[data-name$=".sh-session"]:before     { .terminal-icon;      .auto(yellow); }
   &[data-name="zlogin"]:before,          &[data-name=".zlogin"]:before,
@@ -1968,6 +1979,9 @@
   // TXL
   &[data-name$=".txl"]:before            { .txl-icon;          .medium-orange; }
 
+  // TypeDoc
+  &[data-name="typedoc.json"]:before     { .typedoc-icon;        .dark-purple; }
+
   // TypeScript
   &[data-name$=".ts"]:before             { .ts-icon;             .medium-blue; }
 
@@ -2050,7 +2064,11 @@
   &[data-name$=".owl"]:before            { .owl-icon;              .dark-blue; }
 
   // Webpack
-  &[data-name*="webpack.config."]:before { .webpack-icon;        .medium-blue; }
+  &[data-name*="webpack"] {
+    &[data-name*=".config."]:before      { .webpack-icon;        .medium-blue; }
+  }
+
+  &[data-name="webpackfile.js"]:before   { .webpack-icon;        .medium-blue; }
 
   // Windows-specific
   &[data-name$=".bat"]:before            { .windows-icon;      .medium-purple; }
@@ -2128,6 +2146,14 @@
 
   // Appveyor
   &[data-name="appveyor.yml"]:before     { .appveyor-icon;       .medium-blue; }
+
+  // Arch Linux
+  &[data-name=".install"]:before         { .archlinux-icon;      .dark-purple; }
+  &[data-name=".SRCINFO"]:before         { .archlinux-icon;      .dark-maroon; }
+  &[data-name="pacman.conf"]:before      { .archlinux-icon;      .dark-yellow; }
+  &[data-name="pamac.conf"]:before       { .archlinux-icon;     .light-yellow; }
+  &[data-name="PKGBUILD"]:before         { .archlinux-icon;        .dark-cyan; }
+  &[data-name$="yaourtrc"]:before        { .archlinux-icon;     .light-yellow; }
 
   // Bower
   &[data-name=".bowerrc"]:before         { .bower-icon;                        }
@@ -2217,7 +2243,7 @@
 
   // Riemann
   &[data-name="riemann.config"]:before     { .clojure-icon;     .auto(maroon); }
-  
+
   // Rollup
   &[data-name^="rollup.config."]:before    { .rollup-icon;         .auto(red); }
 
@@ -2264,7 +2290,8 @@ body.file-icons-force-show-icons {
 
 // Show colours only when files have been modified
 body.file-icons-on-changes {
-  .file.entry.list-item:not(.status-modified) {
+  .file.entry.list-item:not(.status-modified),
+  .directory.entry:not(.status-modified){
     .name.icon:before {
       color: inherit !important;
     }
