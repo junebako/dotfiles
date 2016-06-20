@@ -1,7 +1,7 @@
 {
   "name": "atomic-emacs",
   "main": "./lib/atomic-emacs",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "An atomic implementation of emacs keybindings",
   "activationCommands": {
     "atom-text-editor": [
@@ -60,10 +60,10 @@
     "url": "https://github.com/avendael/atomic-emacs/issues"
   },
   "homepage": "https://github.com/avendael/atomic-emacs#readme",
-  "_id": "atomic-emacs@0.9.1",
-  "_shasum": "e1076545449ac9129dcb8788c8e97aa9e25b1087",
-  "_resolved": "file:../d-116229-20985-2kd5g4/package.tgz",
-  "_from": "../d-116229-20985-2kd5g4/package.tgz",
+  "_id": "atomic-emacs@0.9.2",
+  "_shasum": "a714338110fb37d3887eb01360dca6204022208f",
+  "_resolved": "file:../d-116520-35367-2h0d4z/package.tgz",
+  "_from": "../d-116520-35367-2h0d4z/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],
