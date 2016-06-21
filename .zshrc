@@ -44,6 +44,7 @@ alias grep="grep --color=auto"
 alias -g L="|& lv"
 alias -g G="| grep"
 alias -g C="| pbcopy"
+alias -g B='`git branch | peco | sed -e "s/^\*[ ]*//g"`' # http://k0kubun.hatenablog.com/entry/2014/07/06/033336
 
 # history pattern search
 
