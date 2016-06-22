@@ -2,6 +2,10 @@
   editor = emacs
   pager = lv -c
   quotepath = false
+[pager]
+  log  = diff-highlight | lv
+  show = diff-highlight | lv
+  diff = diff-highlight | lv
 [user]
   name = june29
   email = june29.jp@gmail.com
