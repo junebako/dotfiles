@@ -1,47 +1,47 @@
 [core]
-        editor = emacs
-        pager = lv -c
-        quotepath = false
+  editor = emacs
+  pager = lv -c
+  quotepath = false
 [user]
-        name = june29
-        email = june29.jp@gmail.com
+  name = june29
+  email = june29.jp@gmail.com
 [color]
-        ui = auto
+  ui = auto
 [alias]
-        st   = status
-        df   = diff
-        dfc  = diff --cached
-        aa   = add --all
-        ap   = add -p
-        ci   = commit
-        co   = checkout
-        b    = branch
-        g    = grep -n
-        pl   = pull
-        pr   = pull --rebase
-        cp   = cherry-pick
-        fp   = fetch --prune
-        gsub = git-gsub
-        branches = branch -a
-        tags     = tag
-        stashes  = stash list
-        remotes  = remote -v
-        unstage  = reset -q HEAD --
-        discard  = checkout --
-        uncommit = reset --mixed HEAD~
-        amend    = commit --amend
+  st   = status
+  df   = diff
+  dfc  = diff --cached
+  aa   = add --all
+  ap   = add -p
+  ci   = commit
+  co   = checkout
+  b    = branch
+  g    = grep -n
+  pl   = pull
+  pr   = pull --rebase
+  cp   = cherry-pick
+  fp   = fetch --prune
+  gsub = git-gsub
+  branches = branch -a
+  tags     = tag
+  stashes  = stash list
+  remotes  = remote -v
+  unstage  = reset -q HEAD --
+  discard  = checkout --
+  uncommit = reset --mixed HEAD~
+  amend    = commit --amend
 [github]
-        user = june29
+  user = june29
 [push]
-        default = simple
+  default = simple
 [ghq]
-        root = ~/ghq
-        root = ~/.go/src
+  root = ~/ghq
+  root = ~/.go/src
 [include]
-        path = ~/.gitconfig.local
+  path = ~/.gitconfig.local
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [diff]
-	compactionHeuristic = true
+  compactionHeuristic = true
