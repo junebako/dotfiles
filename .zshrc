@@ -112,7 +112,7 @@ precmd() {
     RUBY_VERSION="$(rbenv version | sed -e 's/ .*//')"
 }
 
-PROMPT=$RED'(💎  $RUBY_VERSION) %(!.#.💕 ) '$DEFAULT
+PROMPT=$RED'💎  $RUBY_VERSION %(!.#.💕 ) '$DEFAULT
 setopt PROMPT_SUBST
 
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
