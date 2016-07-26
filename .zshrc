@@ -2,11 +2,6 @@
 
 # User specific aliases and functions
 
-alias g='hub'
-alias hub='git'
-alias r='rails'
-alias be='bundle exec'
-
 alias cdr='cd $(ghq list -p | peco)'
 alias glsa='git ls-files | peco | xargs atom'
 alias ghq-get='ghq get -p'
@@ -36,6 +31,16 @@ alias x="exit"
 alias e="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
 
 alias tree="tree -CN"
+
+# Ruby
+
+alias r='rails'
+alias be='bundle exec'
+
+# Git
+
+alias g='hub'
+alias hub='git'
 
 # http://www.clear-code.com/blog/2011/9/5.html
 
