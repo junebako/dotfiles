@@ -41,6 +41,7 @@ alias be='bundle exec'
 
 alias g='hub'
 alias hub='git'
+alias gtmp='git add .; git commit -m "tmp"'
 alias gfpr='git checkout master; git fetch --prune origin; git pull --rebase origin master'
 
 # http://www.clear-code.com/blog/2011/9/5.html
