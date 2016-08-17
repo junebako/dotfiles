@@ -10,8 +10,9 @@ skip_tags: true
 
 environment:
   GOPATH: c:\gopath
-  GOVERSION: 1.6.2
+  GOVERSION: 1.6.3
   APM_TEST_PACKAGES: environment
+  ATOM_LINT_WITH_BUNDLED_NODE: "false"
 
   matrix:
   - ATOM_CHANNEL: stable
