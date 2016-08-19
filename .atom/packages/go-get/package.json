@@ -10,7 +10,7 @@
     "dependencies"
   ],
   "main": "./lib/main",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joefitzgerald/go-get.git"
@@ -29,14 +29,10 @@
     "url": "https://github.com/joefitzgerald/go-get/issues"
   },
   "dependencies": {
-    "atom-package-deps": "4.0.1"
+    "atom-package-deps": "4.2.0"
   },
   "devDependencies": {
-    "eslint": "^2.4.0",
-    "babel-eslint": "^6.0.0-beta.6",
-    "eslint-config-standard": "^5.1.0",
-    "eslint-plugin-standard": "^1.3.2",
-    "eslint-plugin-promise": "^1.1.0"
+    "standard": "^8.0.0-beta.4"
   },
   "package-deps": [
     "go-config"
@@ -64,16 +60,16 @@
   },
   "readme": "# `go-get` [![Build Status](https://travis-ci.org/joefitzgerald/go-get.svg?branch=master)](https://travis-ci.org/joefitzgerald/go-get) [![Build status](https://ci.appveyor.com/api/projects/status/qdu5k1n7a5cgm1hp?svg=true)](https://ci.appveyor.com/project/joefitzgerald/go-get)\n\nAn Atom package that uses the `go` tool to fetch and update dependencies. An Atom [`service`](https://atom.io/docs/latest/behind-atom-interacting-with-other-packages-via-services) is provided so that other packages can prompt a user to install a go library or tool.\n\n### Prerequisites\n\nThis package requires the following packages to be installed:\n\n* [`environment`](https://atom.io/packages/environment)\n* [`go-config`](https://atom.io/packages/go-config)\n",
   "readmeFilename": "README.md",
-  "_id": "go-get@1.0.3",
-  "_shasum": "be0ca8b767d1d076c2b9a88cdcf795d298c1c492",
-  "_resolved": "file:../d-116613-42746-1xekqg8/package.tgz",
-  "_from": "../d-116613-42746-1xekqg8/package.tgz",
+  "_id": "go-get@1.0.4",
+  "_shasum": "89f4ca88444321dfc1a5b52fbed8a2f8669f1954",
+  "_resolved": "file:../d-116719-16148-3v0m8/package.tgz",
+  "_from": "../d-116719-16148-3v0m8/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
       {
         "name": "atom-package-deps",
-        "version": "4.0.1",
+        "version": "4.2.0",
         "path": "node_modules/atom-package-deps/lib/index.js"
       },
       {
@@ -85,6 +81,31 @@
         "name": "sb-callsite",
         "version": "1.1.2",
         "path": "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/lib/main.js"
+      },
+      {
+        "name": "sb-exec",
+        "version": "2.0.5",
+        "path": "node_modules/atom-package-deps/node_modules/sb-exec/lib/index.js"
+      },
+      {
+        "name": "consistent-env",
+        "version": "1.2.0",
+        "path": "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/consistent-env/lib/index.js"
+      },
+      {
+        "name": "sb-npm-path",
+        "version": "1.0.1",
+        "path": "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/lib/index.js"
+      },
+      {
+        "name": "sb-memoize",
+        "version": "1.0.2",
+        "path": "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-memoize/lib/index.js"
+      },
+      {
+        "name": "sb-promisify",
+        "version": "1.3.0",
+        "path": "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-promisify/lib/index.js"
       }
     ],
     "extensions": {
@@ -92,15 +113,37 @@
         "lib/get-dialog.js",
         "lib/main.js",
         "lib/manager.js",
+        "node_modules/atom-package-deps/decls/atom.js",
+        "node_modules/atom-package-deps/decls/jasmine.js",
+        "node_modules/atom-package-deps/decls/package-deps.js",
         "node_modules/atom-package-deps/lib/helpers.js",
         "node_modules/atom-package-deps/lib/index.js",
+        "node_modules/atom-package-deps/lib/types.js",
         "node_modules/atom-package-deps/lib/view.js",
         "node_modules/atom-package-deps/node_modules/atom-package-path/lib/index.js",
-        "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/lib/main.js"
+        "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/lib/main.js",
+        "node_modules/atom-package-deps/node_modules/sb-exec/lib/helpers.js",
+        "node_modules/atom-package-deps/node_modules/sb-exec/lib/index.js",
+        "node_modules/atom-package-deps/node_modules/sb-exec/lib/types.js",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/consistent-env/lib/helpers.js",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/consistent-env/lib/index.js",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/lib/helpers.js",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/lib/index.js",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-memoize/lib/index.js",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-promisify/lib/index.js"
       ],
       ".json": [
+        "node_modules/atom-package-deps/.eslintrc.json",
         "node_modules/atom-package-deps/node_modules/atom-package-path/node_modules/sb-callsite/package.json",
         "node_modules/atom-package-deps/node_modules/atom-package-path/package.json",
+        "node_modules/atom-package-deps/node_modules/sb-exec/.eslintrc.json",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/consistent-env/package.json",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/.eslintrc.json",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-memoize/.eslintrc.json",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-memoize/package.json",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/node_modules/sb-promisify/package.json",
+        "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/package.json",
+        "node_modules/atom-package-deps/node_modules/sb-exec/package.json",
         "node_modules/atom-package-deps/package.json",
         "package.json"
       ]
@@ -114,16 +157,18 @@
           "spec"
         ],
         "dependencies": {
-          "atom-package-deps": "4.0.1"
+          "atom-package-deps": "4.2.0"
         }
       },
       {
         "paths": [
-          "node_modules/atom-package-deps/lib",
-          "node_modules/atom-package-deps"
+          "node_modules/atom-package-deps",
+          "node_modules/atom-package-deps/decls",
+          "node_modules/atom-package-deps/lib"
         ],
         "dependencies": {
-          "atom-package-path": "^1.1.0"
+          "atom-package-path": "^1.1.0",
+          "sb-exec": "^2.0.5"
         }
       },
       {
@@ -134,6 +179,27 @@
         ],
         "dependencies": {
           "sb-callsite": "^1.1.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-package-deps/node_modules/sb-exec",
+          "node_modules/atom-package-deps/node_modules/sb-exec/lib"
+        ],
+        "dependencies": {
+          "consistent-env": "^1.2.0",
+          "sb-npm-path": "^1.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path",
+          "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/lib",
+          "node_modules/atom-package-deps/node_modules/sb-exec/node_modules/sb-npm-path/spec"
+        ],
+        "dependencies": {
+          "sb-memoize": "^1.0.1",
+          "sb-promisify": "^1.2.0"
         }
       }
     ]

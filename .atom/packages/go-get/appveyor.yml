@@ -10,8 +10,9 @@ skip_tags: true
 
 environment:
   GOPATH: c:\gopath
-  GOVERSION: 1.6
-  APM_TEST_PACKAGES: environment go-config
+  GOVERSION: 1.7
+  APM_TEST_PACKAGES: go-config go-get
+  ATOM_LINT_WITH_BUNDLED_NODE: "false"
 
   matrix:
   - ATOM_CHANNEL: stable
@@ -25,10 +26,10 @@ install:
   - go version
   - go env
   - mkdir c:\gopath
-  - ps: Install-Product node 5
+  - ps: Install-Product node 6
 
 build_script:
-  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/atom/ci/master/build-package.ps1'))
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/joefitzgerald/ci/go-plus/build-package.ps1'))
 
 test: off
 deploy: off
