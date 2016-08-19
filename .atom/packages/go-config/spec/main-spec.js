@@ -6,9 +6,6 @@ describe('go-config', () => {
 
   beforeEach(() => {
     waitsForPromise(() => {
-      return atom.packages.activatePackage('environment')
-    })
-    waitsForPromise(() => {
       return atom.packages.activatePackage('go-config').then((pack) => {
         goconfigMain = pack.mainModule
       })

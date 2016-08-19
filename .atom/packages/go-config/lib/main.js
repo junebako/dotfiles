@@ -11,9 +11,9 @@ export default {
 
   activate () {
     this.subscriptions = new CompositeDisposable()
-    if (semver.satisfies(this.version(), '<1.8.0')) {
+    if (semver.satisfies(this.version(), '<1.9.9')) {
       atom.notifications.addError('Please Update Atom', {
-        detail: 'You are running an old version of Atom. Please update Atom to the latest version or a version >= v1.8.0.',
+        detail: 'You are running an old version of Atom. Please update Atom to the latest version or a version >= v1.9.9.',
         dismissable: true
       })
     }

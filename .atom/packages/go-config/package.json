@@ -9,7 +9,7 @@
     "config"
   ],
   "main": "./lib/main",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joefitzgerald/go-config.git"
@@ -33,12 +33,8 @@
     "semver": "^5.2.0"
   },
   "devDependencies": {
+    "standard": "^8.0.0-beta.4",
     "fs-extra": "^0.30.0",
-    "eslint": "3.2.2",
-    "babel-eslint": "^6.1.0",
-    "eslint-config-standard": "^5.3.5",
-    "eslint-plugin-standard": "^2.0.0",
-    "eslint-plugin-promise": "^2.0.1",
     "temp": "^0.8.3"
   },
   "providedServices": {
@@ -66,10 +62,10 @@
   },
   "readme": "# `go-config` For Atom [![Build Status](https://travis-ci.org/joefitzgerald/go-config.svg)](https://travis-ci.org/joefitzgerald/go-config) [![Build status](https://ci.appveyor.com/api/projects/status/sh7nepkf0cvt7r6j?svg=true)](https://ci.appveyor.com/project/joefitzgerald/go-config)\n\n`go-config` detects your go installation(s), tool(s), and associated configuration. You can optionally configure the package to provide hints for go installations tools.\n\nThis package provides an API via an Atom service. This API can be used by other packages that need to work with the `go` tool, other related tools (e.g. `gofmt`, `vet`, etc.) or `$GOPATH/bin` tools (e.g. `goimports`, `goreturns`, etc.).\n\n## Configuration\n\nYou can configure the GOPATH in the `go-config` package settings, however _it is not recommended_ to configure the package in this way. Please see https://github.com/joefitzgerald/go-config/wiki/GOPATH for further information.\n",
   "readmeFilename": "README.md",
-  "_id": "go-config@1.2.2",
-  "_shasum": "6f019454a91d7cb869716c52a8cf3d6fc78e798c",
-  "_resolved": "file:../d-116717-11697-1am9qor/package.tgz",
-  "_from": "../d-116717-11697-1am9qor/package.tgz",
+  "_id": "go-config@1.2.3",
+  "_shasum": "a512b9a613faee40962d339322a88f4b334ed09d",
+  "_resolved": "file:../d-116719-20282-1pjb9ms/package.tgz",
+  "_from": "../d-116719-20282-1pjb9ms/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
