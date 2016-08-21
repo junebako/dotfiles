@@ -38,7 +38,7 @@ class Formatter {
     this.toolLocations = {
       gofmt: false,
       goimports: 'golang.org/x/tools/cmd/goimports',
-      goreturns: 'sourcegraph.com/sqs/goreturns'
+      goreturns: 'github.com/sqs/goreturns'
     }
   }
 

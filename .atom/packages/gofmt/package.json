@@ -11,7 +11,7 @@
     "formatter"
   ],
   "main": "./lib/main",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joefitzgerald/gofmt.git"
@@ -81,10 +81,10 @@
   },
   "readme": "# `gofmt` Atom Formatter [![Build Status](https://travis-ci.org/joefitzgerald/gofmt.svg?branch=master)](https://travis-ci.org/joefitzgerald/gofmt) [![Build status](https://ci.appveyor.com/api/projects/status/03gyxrjik1vuhu0e/branch/master?svg=true)](https://ci.appveyor.com/project/joefitzgerald/gofmt/branch/master)\n\n`gofmt` runs [`gofmt`](https://golang.org/cmd/gofmt/), [`goimports`](https://godoc.org/golang.org/x/tools/cmd/goimports), or [`goreturns`](https://github.com/sqs/goreturns) on save. It also provides commands to run them on-demand.\n\nIt depends on the following packages:\n\n* [`go-config`](https://atom.io/packages/go-config)\n* [`go-get`](https://atom.io/packages/go-get)\n",
   "readmeFilename": "README.md",
-  "_id": "gofmt@1.1.7",
-  "_shasum": "8bbfecabc1e705b25c144ce13069d0908d3dbe70",
-  "_resolved": "file:../d-116719-14295-bqm78d/package.tgz",
-  "_from": "../d-116719-14295-bqm78d/package.tgz",
+  "_id": "gofmt@1.1.8",
+  "_shasum": "237198aa50da0aaa5f9d469803c87e3900a840fd",
+  "_resolved": "file:../d-116721-48617-4bzvlz/package.tgz",
+  "_from": "../d-116721-48617-4bzvlz/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
