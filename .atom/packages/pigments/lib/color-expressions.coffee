@@ -382,7 +382,7 @@ registry.createExpression 'pigments:gray', strip("
 colors = Object.keys(SVGColors.allCases)
 colorRegexp = "(?:#{namePrefixes})(#{colors.join('|')})\\b(?![ \\t]*[-\\.:=\\(])"
 
-registry.createExpression 'pigments:named_colors', colorRegexp, ['css', 'less', 'styl', 'stylus', 'sass', 'scss'], (match, expression, context) ->
+registry.createExpression 'pigments:named_colors', colorRegexp, [], (match, expression, context) ->
   [_,name] = match
 
   @colorExpression = @name = name
@@ -852,7 +852,7 @@ registry.createExpression 'pigments:contrast_1_argument', strip("
   {@rgb} = context.contrast(baseColor)
 
 # color(green tint(50%))
-registry.createExpression 'pigments:css_color_function', "(?:#{namePrefixes})(#{insensitive 'color'}#{ps}(#{notQuote})#{pe})", ['css', 'less', 'sass', 'scss', 'styl', 'stylus'], (match, expression, context) ->
+registry.createExpression 'pigments:css_color_function', "(?:#{namePrefixes})(#{insensitive 'color'}#{ps}(#{notQuote})#{pe})", ['css'], (match, expression, context) ->
   try
     [_,expr] = match
     for k,v of context.vars
@@ -1364,6 +1364,13 @@ registry.createExpression 'pigments:latex_predefined', strip('
 '), ['tex'], (match, expression, context) ->
   [_, name] = match
   @hex = context.SVGColors.allCases[name].replace('#','')
+
+
+registry.createExpression 'pigments:latex_predefined_dvipnames', strip('
+  \\{(Apricot|Aquamarine|Bittersweet|Black|Blue|BlueGreen|BlueViolet|BrickRed|Brown|BurntOrange|CadetBlue|CarnationPink|Cerulean|CornflowerBlue|Cyan|Dandelion|DarkOrchid|Emerald|ForestGreen|Fuchsia|Goldenrod|Gray|Green|GreenYellow|JungleGreen|Lavender|LimeGreen|Magenta|Mahogany|Maroon|Melon|MidnightBlue|Mulberry|NavyBlue|OliveGreen|Orange|OrangeRed|Orchid|Peach|Periwinkle|PineGreen|Plum|ProcessBlue|Purple|RawSienna|Red|RedOrange|RedViolet|Rhodamine|RoyalBlue|RoyalPurple|RubineRed|Salmon|SeaGreen|Sepia|SkyBlue|SpringGreen|Tan|TealBlue|Thistle|Turquoise|Violet|VioletRed|White|WildStrawberry|Yellow|YellowGreen|YellowOrange)\\}
+'), ['tex'], (match, expression, context) ->
+  [_, name] = match
+  @hex = context.DVIPnames[name].replace('#','')
 
 registry.createExpression 'pigments:latex_mix', strip('
   \\{([^!\\n\\}]+[!][^\\}\\n]+)\\}
