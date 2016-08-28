@@ -1,6 +1,6 @@
-{Emitter, CompositeDisposable} = require 'atom'
 {registerOrUpdateElement, EventsDelegation} = require 'atom-utils'
-ColorMarkerElement = require './color-marker-element'
+
+[ColorMarkerElement, Emitter, CompositeDisposable] = []
 
 nextHighlightId = 0
 
@@ -8,6 +8,9 @@ class ColorBufferElement extends HTMLElement
   EventsDelegation.includeInto(this)
 
   createdCallback: ->
+    unless Emitter?
+      {Emitter, CompositeDisposable} = require 'atom'
+
     [@editorScrollLeft, @editorScrollTop] = [0, 0]
     @emitter = new Emitter
     @subscriptions = new CompositeDisposable
@@ -83,6 +86,8 @@ class ColorBufferElement extends HTMLElement
       @editorConfigChanged()
 
     @subscriptions.add atom.config.observe 'pigments.markerType', (type) =>
+      ColorMarkerElement ?= require './color-marker-element'
+
       if ColorMarkerElement::rendererType isnt type
         ColorMarkerElement.setMarkerType(type)
 
@@ -162,6 +167,8 @@ class ColorBufferElement extends HTMLElement
     @isNativeDecorationType(@previousType)
 
   isNativeDecorationType: (type) ->
+    ColorMarkerElement ?= require './color-marker-element'
+
     ColorMarkerElement.isNativeDecorationType(type)
 
   initializeNativeDecorations: (type) ->
@@ -424,6 +431,8 @@ class ColorBufferElement extends HTMLElement
     if @unusedMarkers.length
       view = @unusedMarkers.shift()
     else
+      ColorMarkerElement ?= require './color-marker-element'
+
       view = new ColorMarkerElement
       view.setContainer(this)
       view.onDidRelease ({marker}) =>
@@ -582,9 +591,3 @@ class ColorBufferElement extends HTMLElement
 module.exports =
 ColorBufferElement =
 registerOrUpdateElement 'pigments-markers', ColorBufferElement.prototype
-
-ColorBufferElement.registerViewProvider = (modelClass) ->
-  atom.views.addViewProvider modelClass, (model) ->
-    element = new ColorBufferElement
-    element.setModel(model)
-    element

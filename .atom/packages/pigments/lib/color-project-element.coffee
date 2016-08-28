@@ -1,5 +1,5 @@
-{CompositeDisposable} = require 'atom'
 {SpacePenDSL, EventsDelegation, registerOrUpdateElement} = require 'atom-utils'
+CompositeDisposable = null
 
 capitalize = (s) -> s.replace /^./, (m) -> m.toUpperCase()
 
@@ -93,6 +93,8 @@ class ColorProjectElement extends HTMLElement
           """)
 
   createdCallback: ->
+    {CompositeDisposable} = require 'atom' unless CompositeDisposable?
+
     @subscriptions = new CompositeDisposable
 
   setModel: (@project) ->
@@ -151,19 +153,8 @@ class ColorProjectElement extends HTMLElement
 
   getIconName: -> "pigments"
 
-  serialize: -> {deserializer: @constructor.name}
+  serialize: -> {deserializer: 'ColorProjectElement'}
 
 module.exports =
 ColorProjectElement =
 registerOrUpdateElement 'pigments-color-project', ColorProjectElement.prototype
-
-ColorProjectElement.deserialize = (state) ->
-  element = new ColorProjectElement
-  element.setModel(atom.packages.getActivePackage('pigments').mainModule.getProject())
-  element
-
-ColorProjectElement.registerViewProvider = (modelClass) ->
-  atom.views.addViewProvider modelClass, (model) ->
-    element = new ColorProjectElement
-    element.setModel(model)
-    element
