@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-15859-1b6hjs6/package.tgz",
+        "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116828-56805-1fdixty/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-15859-1b6hjs6/package.tgz",
-        "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-15859-1b6hjs6/package.tgz",
+        "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116828-56805-1fdixty/package.tgz",
+        "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116828-56805-1fdixty/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116827-15859-1awxnc"
+      "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116828-56805-1qhx6za"
     ]
   ],
-  "_from": "../d-116827-15859-1b6hjs6/package.tgz",
-  "_id": "pigments@0.35.1",
+  "_from": "../d-116828-56805-1fdixty/package.tgz",
+  "_id": "pigments@0.35.2",
   "_inCache": true,
   "_installable": true,
   "_location": "/pigments",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-15859-1b6hjs6/package.tgz",
+    "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116828-56805-1fdixty/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-15859-1b6hjs6/package.tgz",
-    "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-15859-1b6hjs6/package.tgz",
+    "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116828-56805-1fdixty/package.tgz",
+    "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116828-56805-1fdixty/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-116827-15859-1b6hjs6/package.tgz",
-  "_shasum": "d6d2e1d58954fa8f693824f661085ddae405cc8c",
+  "_resolved": "file:../d-116828-56805-1fdixty/package.tgz",
+  "_shasum": "a27a25b2f52c5271b1763abd9543c5720b1523e5",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-15859-1b6hjs6/package.tgz",
-  "_where": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116827-15859-1awxnc",
+  "_spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116828-56805-1fdixty/package.tgz",
+  "_where": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116828-56805-1qhx6za",
   "bugs": {
     "url": "https://github.com/abe33/atom-pigments/issues"
   },
@@ -274,7 +274,7 @@
     "type": "git",
     "url": "git+https://github.com/abe33/atom-pigments.git"
   },
-  "version": "0.35.1",
+  "version": "0.35.2",
   "viewProviders": [
     "pigmentsViewProvider"
   ]
