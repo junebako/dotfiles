@@ -30,7 +30,7 @@ export default {
   },
 
   provide () {
-    return this.getProvider()
+    return this.provide200()
   },
 
   getManager () {
@@ -42,15 +42,24 @@ export default {
     return this.manager
   },
 
-  getProvider () {
+  provide200 () {
     return {
       get: (options) => {
         return this.getManager().get(options)
       },
-      check: (options) => {
-        return this.getManager().check(options)
+      register: (pack, callback) => {
+        return this.getManager().register(pack, callback)
       }
     }
+  },
+
+  provide100 () {
+    let provider = this.provide200()
+    provider.check = () => {
+      return Promise.resolve(true)
+    }
+    delete provider.register
+    return provider
   },
 
   getGoconfig () {

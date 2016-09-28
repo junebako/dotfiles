@@ -1,15 +1,29 @@
 'use babel'
 
-import {CompositeDisposable} from 'atom'
+import {CompositeDisposable, Disposable} from 'atom'
 import {GetDialog} from './get-dialog'
 import path from 'path'
+import os from 'os'
 
 class Manager {
   constructor (goconfigFunc) {
     this.goconfig = goconfigFunc
+    this.packages = new Map()
+    this.onDidUpdatePackages = new Set()
     this.subscriptions = new CompositeDisposable()
-    this.subscriptions.add(atom.commands.add(atom.views.getView(atom.workspace), 'go-get:get-package', () => {
+    this.subscriptions.add(atom.commands.add(atom.views.getView(atom.workspace), 'golang:get-package', () => {
       this.getPackage()
+    }))
+    this.subscriptions.add(atom.commands.add(atom.views.getView(atom.workspace), 'golang:update-packages', () => {
+      let progress = atom.notifications.addInfo('Updating Tools...')
+      this.updatePackages().then((outcome) => {
+        progress.dismiss()
+        if (!outcome) {
+          return
+        }
+
+        this.displayResults(outcome)
+      })
     }))
   }
 
@@ -55,22 +69,131 @@ class Manager {
     return selections[0].getText()
   }
 
+  register (importPath, callback) {
+    if (!importPath || !importPath.length) {
+      return
+    }
+    let count = 1
+    if (this.packages.has(importPath)) {
+      count = this.packages.get(importPath) + 1
+    }
+    this.packages.set(importPath, count)
+    if (callback && this.onDidUpdatePackages && !this.onDidUpdatePackages.has(callback)) {
+      this.onDidUpdatePackages.add(callback)
+    }
+
+    return new Disposable(() => {
+      let count = this.packages.get(importPath)
+      if (count === 1) {
+        this.packages.delete(importPath)
+      } else if (count > 1) {
+        this.packages.set(importPath, count - 1)
+      }
+      if (callback && this.onDidUpdatePackages && this.onDidUpdatePackages.has(callback)) {
+        this.onDidUpdatePackages.delete(callback)
+      }
+    })
+  }
+
+  updatePackages () {
+    if (!this.packages || this.packages.size === 0) {
+      return Promise.resolve()
+    }
+    return this.performGet([...this.packages.keys()]).then((outcome) => {
+      if (this.onDidUpdatePackages) {
+        for (let cb of this.onDidUpdatePackages) {
+          cb(outcome)
+        }
+      }
+      return outcome
+    })
+  }
+
   // Shows a dialog which can be used to perform `go get -u {pack}`. Optionally
   // populates the dialog with the selected text from the active editor.
   getPackage () {
     let selectedText = this.getSelectedText()
     let dialog = new GetDialog(selectedText, (pack) => {
-      this.performGet(pack)
+      this.performGet(pack).then((outcome) => {
+        this.displayResult(pack, outcome)
+      })
     })
     dialog.attach()
+  }
+
+  displayResults (outcome) {
+    let detail = ''
+    for (let result of outcome.results) {
+      let item = 'go ' + result.args.join(' ')
+      if (result.stdout && result.stdout.trim().length) {
+        item = item + os.EOL + result.stdout
+      }
+      if (result.stderr && result.stderr.trim().length) {
+        item = item + os.EOL + result.stderr
+      }
+      item = item + os.EOL
+      detail = detail + item
+    }
+    detail = detail.trim()
+
+    if (outcome.success) {
+      atom.notifications.addSuccess('Updated Tools', {
+        dismissable: true,
+        icon: 'cloud-download',
+        detail: detail
+      })
+    } else {
+      atom.notifications.addError('Updating Tools', {
+        dismissable: true,
+        icon: 'cloud-download',
+        detail: detail
+      })
+    }
+  }
+
+  displayResult (pack, outcome) {
+    let r = outcome.result
+    if (r.error) {
+      if (r.error.code === 'ENOENT') {
+        atom.notifications.addError('Missing Go Tool', {
+          detail: 'The go tool is required to perform a get. Please ensure you have a go runtime installed: http://golang.org.',
+          dismissable: true
+        })
+      } else {
+        console.log(r.error)
+        atom.notifications.addError('Error Getting Package', {
+          detail: r.error.message,
+          dismissable: true
+        })
+      }
+      return
+    }
+
+    if (r.exitcode !== 0 || r.stderr && r.stderr.trim() !== '') {
+      let message = r.stderr.trim() + '\r\n' + r.stdout.trim()
+      atom.notifications.addWarning('Error Getting Package', {
+        detail: message.trim(),
+        dismissable: true
+      })
+      return
+    }
+
+    atom.notifications.addSuccess('go get -u ' + pack)
   }
 
   // Runs `go get -u {pack}`.
   // * `options` (optional) {Object} to pass to the go-config executor.
   performGet (pack, options = {}) {
-    if (!pack || pack.trim() === '') {
+    if (!pack) {
       return Promise.resolve(false)
     }
+    if (!Array.isArray(pack) && typeof pack === 'string' && pack.trim() !== '') {
+      pack = [pack]
+    }
+    if (!Array.isArray(pack) || pack.length < 1) {
+      return Promise.resolve(false)
+    }
+
     let config = this.goconfig()
     return config.locator.findTool('go', this.getLocatorOptions()).then((cmd) => {
       if (!cmd) {
@@ -80,35 +203,33 @@ class Manager {
         })
         return {success: false}
       }
-      let args = ['get', '-u', pack]
-      return config.executor.exec(cmd, args, this.getExecutorOptions()).then((r) => {
-        if (r.error) {
-          if (r.error.code === 'ENOENT') {
-            atom.notifications.addError('Missing Go Tool', {
-              detail: 'The go tool is required to perform a get. Please ensure you have a go runtime installed: http://golang.org.',
-              dismissable: true
-            })
-          } else {
-            console.log(r.error)
-            atom.notifications.addError('Error Getting Package', {
-              detail: r.error.message,
-              dismissable: true
-            })
+
+      let promises = []
+      for (let pkg of pack) {
+        let args = ['get', '-u', pkg]
+        promises.push(config.executor.exec(cmd, args, this.getExecutorOptions()).then((r) => {
+          r.cmd = cmd
+          r.pack = pkg
+          r.args = args
+          return r
+        }))
+      }
+
+      return Promise.all(promises).then((results) => {
+        if (!results || results.length < 1) {
+          return {success: false, r: null}
+        }
+
+        let success = true
+        let result = results[0]
+
+        for (let r of results) {
+          if (r.error || r.exitcode !== 0 || (r.stderr && r.stderr.trim() !== '')) {
+            success = false
           }
-          return {success: false, result: r}
         }
 
-        if (r.exitcode !== 0 || r.stderr && r.stderr.trim() !== '') {
-          let message = r.stderr.trim() + '\r\n' + r.stdout.trim()
-          atom.notifications.addWarning('Error Getting Package', {
-            detail: message.trim(),
-            dismissable: true
-          })
-          return {success: false, result: r}
-        }
-
-        atom.notifications.addSuccess(cmd + ' ' + args.join(' '))
-        return {success: true, result: r}
+        return {success: success, result: result, results: results}
       })
     })
   }
@@ -143,7 +264,9 @@ class Manager {
           onDidClick: () => {
             wasClicked = true
             notification.dismiss()
-            resolve(this.performGet(options.packagePath))
+            resolve(this.performGet(options.packagePath).then((outcome) => {
+              this.displayResult(options.packagePath, outcome)
+            }))
           }
         }]
       })
@@ -155,17 +278,14 @@ class Manager {
     })
   }
 
-  // Check returns true if a package is up to date, and false if a package is missing or outdated.
-  check (options) {
-    return Promise.resolve(true)
-  }
-
   dispose () {
     if (this.subscriptions) {
       this.subscriptions.dispose()
     }
     this.subscriptions = null
     this.goconfig = null
+    this.packages = null
+    this.onDidUpdatePackages = null
   }
 }
 export {Manager}
