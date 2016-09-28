@@ -9,6 +9,7 @@ export default {
   goconfig: null,
   formatter: null,
   subscriptions: null,
+  toolRegistered: null,
 
   activate () {
     this.subscriptions = new CompositeDisposable()
@@ -70,5 +71,15 @@ export default {
 
   consumeGoget (service) {
     this.goget = service
+    this.registerTool()
+  },
+
+  registerTool () {
+    if (this.toolRegistered || !this.goget) {
+      return
+    }
+    this.subscriptions.add(this.goget.register('golang.org/x/tools/cmd/goimports'))
+    this.subscriptions.add(this.goget.register('github.com/sqs/goreturns'))
+    this.toolRegistered = true
   }
 }

@@ -27,7 +27,7 @@ install:
   - go env
   - mkdir c:\gopath
   - go get -u golang.org/x/tools/cmd/goimports
-  - go get -u sourcegraph.com/sqs/goreturns
+  - go get -u github.com/sqs/goreturns
   - ps: Install-Product node 6
 
 build_script:
