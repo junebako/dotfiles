@@ -37,18 +37,25 @@ export default {
     if (this.manager) {
       return this.manager
     }
+    if (!this.subscriptions) {
+      return
+    }
     this.manager = new Manager(() => { return this.getGoconfig() })
     this.subscriptions.add(this.manager)
     return this.manager
   },
 
   provide200 () {
+    let m = this.getManager()
+    if (!m) {
+      return
+    }
     return {
       get: (options) => {
-        return this.getManager().get(options)
+        return m.get(options)
       },
       register: (pack, callback) => {
-        return this.getManager().register(pack, callback)
+        return m.register(pack, callback)
       }
     }
   },

@@ -67,7 +67,7 @@ describe('go-get', () => {
       })
 
       waitsForPromise({timeout: 30000}, () => {
-        return manager.updatePackages().then((o) => {
+        return manager.updateTools().then((o) => {
           outcome = o
         })
       })
@@ -98,7 +98,7 @@ describe('go-get', () => {
       })
 
       waitsForPromise({timeout: 30000}, () => {
-        return manager.updatePackages().then((o) => {
+        return manager.updateTools().then((o) => {
           outcome = o
         })
       })

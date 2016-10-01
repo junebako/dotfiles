@@ -9,14 +9,14 @@ class Manager {
   constructor (goconfigFunc) {
     this.goconfig = goconfigFunc
     this.packages = new Map()
-    this.onDidUpdatePackages = new Set()
+    this.onDidUpdateTools = new Set()
     this.subscriptions = new CompositeDisposable()
     this.subscriptions.add(atom.commands.add(atom.views.getView(atom.workspace), 'golang:get-package', () => {
       this.getPackage()
     }))
-    this.subscriptions.add(atom.commands.add(atom.views.getView(atom.workspace), 'golang:update-packages', () => {
-      let progress = atom.notifications.addInfo('Updating Tools...')
-      this.updatePackages().then((outcome) => {
+    this.subscriptions.add(atom.commands.add(atom.views.getView(atom.workspace), 'golang:update-tools', () => {
+      let progress = atom.notifications.addInfo('Updating Tools...', {dismissable: true})
+      this.updateTools().then((outcome) => {
         progress.dismiss()
         if (!outcome) {
           return
@@ -78,30 +78,33 @@ class Manager {
       count = this.packages.get(importPath) + 1
     }
     this.packages.set(importPath, count)
-    if (callback && this.onDidUpdatePackages && !this.onDidUpdatePackages.has(callback)) {
-      this.onDidUpdatePackages.add(callback)
+    if (callback && this.onDidUpdateTools && !this.onDidUpdateTools.has(callback)) {
+      this.onDidUpdateTools.add(callback)
     }
 
     return new Disposable(() => {
+      if (!this.packages) {
+        return
+      }
       let count = this.packages.get(importPath)
       if (count === 1) {
         this.packages.delete(importPath)
       } else if (count > 1) {
         this.packages.set(importPath, count - 1)
       }
-      if (callback && this.onDidUpdatePackages && this.onDidUpdatePackages.has(callback)) {
-        this.onDidUpdatePackages.delete(callback)
+      if (callback && this.onDidUpdateTools && this.onDidUpdateTools.has(callback)) {
+        this.onDidUpdateTools.delete(callback)
       }
     })
   }
 
-  updatePackages () {
+  updateTools () {
     if (!this.packages || this.packages.size === 0) {
       return Promise.resolve()
     }
     return this.performGet([...this.packages.keys()]).then((outcome) => {
-      if (this.onDidUpdatePackages) {
-        for (let cb of this.onDidUpdatePackages) {
+      if (this.onDidUpdateTools) {
+        for (let cb of this.onDidUpdateTools) {
           cb(outcome)
         }
       }
@@ -204,18 +207,42 @@ class Manager {
         return {success: false}
       }
 
+      let promiseWaterfall = (tasks) => {
+        let p = Promise.resolve()
+        let results = []
+        let finalTaskPromise = tasks.reduce((prevTaskPromise, task) => {
+          return prevTaskPromise.then((r) => {
+            if (r) {
+              results.push(r)
+            }
+
+            return task()
+          })
+        }, p)
+
+        return finalTaskPromise.then((r) => {
+          if (r) {
+            results.push(r)
+          }
+
+          return results
+        })
+      }
+
       let promises = []
       for (let pkg of pack) {
         let args = ['get', '-u', pkg]
-        promises.push(config.executor.exec(cmd, args, this.getExecutorOptions()).then((r) => {
-          r.cmd = cmd
-          r.pack = pkg
-          r.args = args
-          return r
-        }))
+        promises.push(() => {
+          return config.executor.exec(cmd, args, this.getExecutorOptions()).then((r) => {
+            r.cmd = cmd
+            r.pack = pkg
+            r.args = args
+            return r
+          })
+        })
       }
 
-      return Promise.all(promises).then((results) => {
+      return promiseWaterfall(promises).then((results) => {
         if (!results || results.length < 1) {
           return {success: false, r: null}
         }
@@ -285,7 +312,7 @@ class Manager {
     this.subscriptions = null
     this.goconfig = null
     this.packages = null
-    this.onDidUpdatePackages = null
+    this.onDidUpdateTools = null
   }
 }
 export {Manager}
