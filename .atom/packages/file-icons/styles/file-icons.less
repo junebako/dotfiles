@@ -56,6 +56,12 @@
 
   // Bower Components
   &[data-name="bower_components"]:before { .bower-icon; .auto(bower); }
+
+  // SVN
+  &[data-name=".svn"]:before { .svn-icon; }
+
+  // Vagrant
+  &[data-name=".vagrant"]:before { .vagrant-icon; }
 }
 
 
@@ -438,6 +444,9 @@
 
   // Doxyfile
   &[data-name="Doxyfile"]:before         { .doxygen-icon;        .medium-blue; }
+
+  // DyLib
+  &[data-name$=".dylib"]:before          { .dylib-icon;          .medium-cyan; }
 
   // E
   &[data-name$=".E"]:before              { .e-icon;             .medium-green; }
@@ -861,6 +870,7 @@
   &[data-name$=".gitignore"]:before,
   &[data-name$=".gitkeep"]:before,
   &[data-name$=".gitmodules"]:before,
+  &[data-name$=".keep"]:before,
   &[data-name=".mailmap"]:before         { .git-icon;             .medium-red; }
 
   // Git: Commit
@@ -1316,6 +1326,9 @@
 
   // MoonScript
   &[data-name$=".moon"]:before           { .moon-icon;         .medium-yellow; }
+
+  // Mruby
+  &[data-name$=".mrb"]:before            { .mruby-icon;           .medium-red; }
 
   // MuPAD
   &[data-name$=".mu"]:before             { .mupad-icon;           .medium-red; }
@@ -1997,6 +2010,7 @@
 
   // Terraform
   &[data-name$=".tf"]:before             { .terraform-icon;      .dark-purple; }
+  &[data-name$=".tfvars"]:before         { .terraform-icon;      .dark-purple; }
 
   // TeX
   &[data-name$=".tex"]:before            { .tex-icon;             .auto(blue); }
@@ -2341,6 +2355,9 @@
   // Typings
   &[data-name="typings.json"]:before       { .typings-icon;    .medium-maroon; }
 
+  // Wercker
+  &[data-name="wercker.yml"]:before        { .wercker-icon;    .medium-purple; }
+
   // Yeoman
   &[data-name$=".yo-rc.json"]:before       { .yeoman-icon;       .medium-cyan; }
 }
@@ -2377,6 +2394,10 @@ body.file-icons-on-changes {
     .name.icon:before {
       color: inherit !important;
     }
+  }
+
+  .tab-bar .title:not(.status-modified):not(.status-added):before{
+    color: inherit !important;
   }
 }
 
