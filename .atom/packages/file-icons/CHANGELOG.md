@@ -4,6 +4,18 @@ All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+[1.7.22] - 2016-10-14
+---------------------
+### Added
+- **New icons:** Glyphs (`.glyphs`), Yarn (`yarn.lock`)
+
+### Fixed
+- [[`#435`](https://github.com/DanBrooker/file-icons/issues/435)] Icon of [`markdown-preview`] misaligned after reloading
+- [[`#437`](https://github.com/DanBrooker/file-icons/issues/437)] Ambiguous wording of package settings
+
+[`markdown-preview`]: https://github.com/atom/markdown-preview
+
+
 [1.7.21] - 2016-10-12
 ---------------------
 ### Added
@@ -868,7 +880,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 Initial release.
 
 
-[Unpublished]: https://github.com/DanBrooker/file-icons/compare/v1.7.21...HEAD
+[Unpublished]: https://github.com/DanBrooker/file-icons/compare/v1.7.22...HEAD
+[1.7.22]: https://github.com/DanBrooker/file-icons/releases/tag/v1.7.22
 [1.7.21]: https://github.com/DanBrooker/file-icons/releases/tag/v1.7.21
 [1.7.20]: https://github.com/DanBrooker/file-icons/releases/tag/v1.7.20
 [1.7.19]: https://github.com/DanBrooker/file-icons/releases/tag/v1.7.19
