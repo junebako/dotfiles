@@ -43,6 +43,7 @@ alias g='hub'
 alias hub='git'
 alias gtmp='git add .; git commit -m "tmp"'
 alias gfpr='git checkout master; git fetch --prune origin; git pull --rebase origin master'
+alias gmbd='git branch --merged master | grep -vE "^\*|master$" | xargs -I % git branch -d %'
 
 # http://www.clear-code.com/blog/2011/9/5.html
 
