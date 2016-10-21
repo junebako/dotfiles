@@ -100,6 +100,8 @@ function observeActivePaneItem(editor) {
 		if (editor.getBuffer().editorconfig) {
 			editor.getBuffer().editorconfig.applySettings();
 		}
+	} else {
+		statusTile().update('subtle');
 	}
 }
 
@@ -155,9 +157,11 @@ function initializeTextBuffer(buffer) {
 
 				if (settings.insert_final_newline !== 'auto') {
 					if (settings.insert_final_newline) {
-						if (getText().endsWith(settings.end_of_line) === false) {
-							finalText = getText().concat(settings.end_of_line);
+						let eol = '\n';
+						if (settings.end_of_line !== 'auto') {
+							eol = settings.end_of_line;
 						}
+						finalText = getText().replace(/[\n\r]+$/g, '').concat(eol);
 					} else {
 						while (getText().length > 0 &&
 								getText().charAt(getText().length - 1).search(/\r|\n/) > -1) {
@@ -174,7 +178,10 @@ function initializeTextBuffer(buffer) {
 						preservedPosition = activeTextEditor.getCursorBufferPosition();
 					}
 
-					buffer.setText(finalText);
+					buffer.setTextInRange(buffer.getRange(), finalText, {
+						normalizeLineEndings: false,
+						undo: 'skip'
+					});
 
 					if (preservedPosition &&
 						activeTextEditor &&
