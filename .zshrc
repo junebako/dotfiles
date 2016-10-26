@@ -179,6 +179,12 @@ setopt auto_cd
 
 source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 
+# emoji-cli
+# https://github.com/b4b4r07/emoji-cli
+
+EMOJI_CLI_KEYBIND='^j'
+source ~/.zsh.d/emoji-cli/emoji-cli.zsh
+
 # screen
 
 if [ "$TERM" = "screen" ]; then
