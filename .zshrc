@@ -182,7 +182,7 @@ source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 # emoji-cli
 # https://github.com/b4b4r07/emoji-cli
 
-EMOJI_CLI_KEYBIND='^j'
+EMOJI_CLI_KEYBIND='^u'
 source ~/.zsh.d/emoji-cli/emoji-cli.zsh
 
 # screen
