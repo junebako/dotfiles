@@ -77,7 +77,7 @@ stty stop undef
 
 # History
 
-HISTFILE=$HOME/.zsh-history
+HISTFILE=$HOME/Dropbox/dotfiles/.zsh-history
 HISTSIZE=530000
 SAVEHIST=530000
 setopt extended_history
