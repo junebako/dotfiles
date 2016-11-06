@@ -60,6 +60,24 @@ module.exports =
       type: 'boolean'
       default: false
       order: 8
+    showprice:
+      title: 'Do you get paid per word?'
+      description: 'Shows the price for the text per word'
+      type: 'boolean'
+      default: false
+      order: 9
+    wordprice:
+      title: 'How much do you get paid per word?'
+      description: 'Allows you to find out how much do you get paid per word'
+      type: 'string'
+      default: '0.15'
+      order: 10
+    currencysymbol:
+      title: 'Set a different currency symbol'
+      description: 'Allows you to change the currency you get paid with'
+      type: 'string'
+      default: '$'
+      order: 11
 
   activate: (state) ->
     view = new WordcountView()
@@ -78,7 +96,7 @@ module.exports =
 
   update_goal: (item) ->
     if item is 0
-      view.css('background', 'transparent')
+      view.element.style.background = 'transparent'
 
   show_or_hide_for_item: (item) ->
     {alwaysOn, extensions, noextension} = atom.config.get('wordcount')
@@ -89,16 +107,15 @@ module.exports =
     untitled_tab = buffer?.file is null
     current_file_extension = buffer?.file?.path.match(/\.(\w+)$/)?[1].toLowerCase()
 
-    if noextension and (not current_file_extension? or untitled_tab)
-      no_extension = true
+    no_extension = noextension and (not current_file_extension? or untitled_tab)
 
     if alwaysOn or no_extension or current_file_extension in extensions
-      view.css("display", "inline-block") unless not_text_editor
+      view.element.style.display = "inline-block" unless not_text_editor
     else
-      view.css("display", "none")
+      view.element.style.display = "none"
 
   consumeStatusBar: (statusBar) ->
-    tile = statusBar.addRightTile(item: view, priority: 100)
+    tile = statusBar.addRightTile(item: view.element, priority: 100)
 
   deactivate: ->
     tile?.destroy()
