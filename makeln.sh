@@ -16,6 +16,7 @@ ln -s $DOTFILES/.zprofile
 ln -s $DOTFILES/.zsh.d
 ln -s $DOTFILES/.peco
 ln -s $DOTFILES/.rspec
+ln -s $DOTFILES/.gemrc
 
 cd ~/Library/Application\ Support/Karabiner
 
