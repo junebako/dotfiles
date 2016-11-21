@@ -17,6 +17,7 @@ alias la="ls -aF"
 alias ll="ls -l"
 
 alias rm="rm -i"
+alias rmd="rm *競合コピー*"
 alias rmback="rm *~;rm .*~;rm *.bak"
 alias rmbackr="rm **/*~"
 alias rmbackd="rm ~/Dropbox/**/*~"
