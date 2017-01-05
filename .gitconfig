@@ -50,6 +50,6 @@
 [diff]
   compactionHeuristic = true
 [gpg]
-  rogram = gpg2
+  program = gpg2
 [commit]
   gpgsign = true
