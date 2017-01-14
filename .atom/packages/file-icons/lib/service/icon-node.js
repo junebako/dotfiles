@@ -7,6 +7,7 @@ const Options = require("../options.js");
 const UI = require("../ui.js");
 
 const iconsByElement = new WeakMap();
+const iconDisposables = new WeakMap();
 
 
 class IconNode{
@@ -34,13 +35,13 @@ class IconNode{
 			})
 		);
 		
-		if(!resource.isDirectory)
+		if(resource.isFile)
 			this.disposables.add(
 				Options.onDidChange("defaultIconClass", _=> this.refresh())
 			);
 		
 		else if(delegate.getCurrentIcon())
-			this.element.classList.remove("icon-file-directory");
+			element.classList.remove(...delegate.getFallbackClasses());
 		
 		this.refresh();
 	}
@@ -146,8 +147,8 @@ class IconNode{
 		if(!element) return null;
 		const icon = iconsByElement.get(element);
 		
-		if(icon && !icon.destroyed)
-			return icon;
+		if(icon && !icon.destroyed && iconDisposables.has(icon))
+			return iconDisposables.get(icon);
 		
 		else{
 			if(!path)
@@ -156,8 +157,27 @@ class IconNode{
 			const rsrc = FileSystem.get(path);
 			const node = new IconNode(rsrc, element);
 			
-			return new Disposable(() => node.destroy());
+			const disp = new Disposable(() => {
+				iconDisposables.delete(node);
+				node.destroy();
+			});
+			iconDisposables.set(node, disp);
+			return disp;
 		}
+	}
+	
+	
+	/**
+	 * Retrieve a previously-created {IconNode} for a DOM element.
+	 *
+	 * @param {HTMLElement} element
+	 * @return {IconNode}
+	 * @private
+	 */
+	static getIcon(element){
+		return element
+			? iconsByElement.get(element) || null
+			: null;
 	}
 }
 

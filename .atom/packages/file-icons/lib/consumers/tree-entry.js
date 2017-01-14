@@ -21,13 +21,13 @@ class TreeEntry{
 		iconEl.className = "name icon";
 		
 		this.resource = FileSystem.get(this.path);
-		this.iconNode = new IconNode(this.resource, iconEl);
-		this.disposables.add(this.resource.onDidDestroy(() => this.destroy()));
 		
 		// Directory
-		if(this.resource.isDirectory){
-			this.resource.isSubmodule = !!source.submodule;
+		if(this.isDirectory = this.resource.isDirectory){
 			this.entries = new WeakSet();
+			
+			if(source.submodule)
+				this.resource.isSubmodule = true;
 			
 			"function" === typeof source.onDidExpand
 				? this.disposables.add(source.onDidExpand(() => this.scanEntries()))
@@ -37,6 +37,9 @@ class TreeEntry{
 				? this.disposables.add(source.onDidAddEntries(() => this.scanEntries()))
 				: Log.error("Oddball - `onDidAddEntries` expected on directory", this.path, source);
 		}
+		
+		this.iconNode = new IconNode(this.resource, iconEl);
+		this.disposables.add(this.resource.onDidDestroy(() => this.destroy()));
 	}
 	
 	
@@ -69,7 +72,7 @@ class TreeEntry{
 	
 	
 	get isExpanded(){
-		return this.resource.isDirectory && this.source.expansionState.isExpanded;
+		return this.isDirectory && this.source.expansionState.isExpanded;
 	}
 	
 	

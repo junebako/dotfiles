@@ -4,6 +4,37 @@ All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+[2.0.9] - 2017-01-13
+--------------------
+### Fixed
+- [[`#497`][]] Tree-view not showing when adding new project in empty window
+- [[`#509`][]] Breakage with hashbangs with `#!/usr/bin/env` but no interpreter
+- [[`#514`][]] Breakage if `document.styleSheets` is null
+- Submodule icons not showing
+
+[`#497`]: https://github.com/file-icons/atom/issues/497
+[`#509`]: https://github.com/file-icons/atom/issues/509
+[`#514`]: https://github.com/file-icons/atom/issues/514
+
+
+[2.0.8] - 2017-01-11
+--------------------
+### Added
+- [[`#471`][]] [Partial Nuclide support][2.0.8]
+- [[`#501`][]] Support for DTML files
+- Colour for SQL filetypes
+- **Support:** Emacs (`Cask`, `.emacs.d` folders), SQL (`.mysql`)
+
+### Fixed
+- [[`#505`][]] Wrong icons used for certain `.tpl` files
+- [[`#506`][]] Error thrown when changing project paths in Nuclide
+
+[`#471`]: https://github.com/file-icons/atom/issues/471#issuecomment-271532231
+[`#501`]: https://github.com/file-icons/atom/issues/501
+[`#505`]: https://github.com/file-icons/atom/issues/505
+[`#506`]: https://github.com/file-icons/atom/issues/506
+
+
 [2.0.7] - 2017-01-04
 --------------------
 ### Fixed
@@ -1002,7 +1033,9 @@ Contributors should take heed of the new [submission process](https://github.com
 Initial release.
 
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.0.7...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.0.9...HEAD
+[2.0.9]:  https://github.com/file-icons/atom/releases/tag/v2.0.9
+[2.0.8]:  https://github.com/file-icons/atom/releases/tag/v2.0.8
 [2.0.7]:  https://github.com/file-icons/atom/releases/tag/v2.0.7
 [2.0.6]:  https://github.com/file-icons/atom/releases/tag/v2.0.6
 [2.0.5]:  https://github.com/file-icons/atom/releases/tag/v2.0.5
