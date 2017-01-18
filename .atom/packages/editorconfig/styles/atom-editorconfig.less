@@ -6,16 +6,6 @@
 	box-sizing: border-box;
 }
 
-atom-text-editor.editor .ecfg-wrap-guide {
-	height: 100%;
-	width: 1px;
-	z-index: 3;
-	position: absolute;
-	top: 0;
-	background-color: @syntax-wrap-guide-color;
-	-webkit-transform: translateZ(0);
-}
-
 @font-face {
 	font-family: 'Editorconfig';
 	src: url('atom://editorconfig/fonts/AtomEditorconfig-Regular.woff') format('woff');
@@ -23,7 +13,8 @@ atom-text-editor.editor .ecfg-wrap-guide {
 	font-style: normal;
 }
 
-[class*='aec-icon'] {
+[class*='aec-icon'],
+[class*='aec-icon']:before {
 	font-family: 'Editorconfig';
 	font-style: normal;
 	font-weight: normal;
