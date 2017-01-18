@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-38601-mskdlu/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-38601-mskdlu/package.tgz",
-        "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-38601-mskdlu/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116827-38601-1jj7u4j"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117018-1327-1sac8qd"
     ]
   ],
-  "_from": "../d-116827-38601-mskdlu/package.tgz",
-  "_id": "atom-material-syntax-dark@0.2.5",
+  "_from": "../d-117018-1327-ba276b/package.tgz",
+  "_id": "atom-material-syntax-dark@0.2.7",
   "_inCache": true,
   "_installable": true,
   "_location": "/atom-material-syntax-dark",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-38601-mskdlu/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-38601-mskdlu/package.tgz",
-    "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-38601-mskdlu/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-116827-38601-mskdlu/package.tgz",
-  "_shasum": "8174986ca9425daff0a2a067060220ab86faf8a6",
+  "_resolved": "file:../d-117018-1327-ba276b/package.tgz",
+  "_shasum": "a4d85437843cbe4769bda462c3a88d8214909b73",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116827-38601-mskdlu/package.tgz",
-  "_where": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116827-38601-1jj7u4j",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117018-1327-1sac8qd",
   "bugs": {
     "url": "https://github.com/silvestreh/atom-material-syntax-dark/issues"
   },
@@ -43,7 +43,7 @@
   "description": "A darker syntax theme for Atom that uses Google's Material Design color palette",
   "devDependencies": {},
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": ">=1.13.0 <2.0.0"
   },
   "homepage": "https://github.com/silvestreh/atom-material-syntax-dark#readme",
   "keywords": [
@@ -62,5 +62,5 @@
     "url": "git+https://github.com/silvestreh/atom-material-syntax-dark.git"
   },
   "theme": "syntax",
-  "version": "0.2.5"
+  "version": "0.2.7"
 }
