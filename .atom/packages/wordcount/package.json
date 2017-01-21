@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116117-8182-7yw3r4/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117021-29248-1w81np8/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116117-8182-7yw3r4/package.tgz",
-        "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116117-8182-7yw3r4/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117021-29248-1w81np8/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117021-29248-1w81np8/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116117-8182-1c6dsrr"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117021-29248-svxvsv"
     ]
   ],
-  "_from": "../d-116117-8182-7yw3r4/package.tgz",
-  "_id": "wordcount@2.10.2",
+  "_from": "../d-117021-29248-1w81np8/package.tgz",
+  "_id": "wordcount@2.10.3",
   "_inCache": true,
   "_installable": true,
   "_location": "/wordcount",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116117-8182-7yw3r4/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117021-29248-1w81np8/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116117-8182-7yw3r4/package.tgz",
-    "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116117-8182-7yw3r4/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117021-29248-1w81np8/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117021-29248-1w81np8/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-116117-8182-7yw3r4/package.tgz",
-  "_shasum": "8e38308e8c0db6737f286dc6fc9b094e516cda45",
+  "_resolved": "file:../d-117021-29248-1w81np8/package.tgz",
+  "_shasum": "2dbbbec0a1e9f739a35531076d189c95df2d0970",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116117-8182-7yw3r4/package.tgz",
-  "_where": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116117-8182-1c6dsrr",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117021-29248-1w81np8/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117021-29248-svxvsv",
   "bugs": {
     "url": "https://github.com/nesQuick/atom-wordcount/issues"
   },
@@ -76,5 +76,5 @@
     "type": "git",
     "url": "git+https://github.com/nesQuick/atom-wordcount.git"
   },
-  "version": "2.10.2"
+  "version": "2.10.3"
 }
