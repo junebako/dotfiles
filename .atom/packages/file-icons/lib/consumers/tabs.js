@@ -126,6 +126,7 @@ class Tabs extends Consumer {
 	
 	
 	fixIcon(tab){
+		if(!tab) return;
 		
 		// TODO: Remove check/updateIcon() once atom/tabs#402 is public
 		if("function" === typeof tab.updateIcon)
@@ -145,19 +146,6 @@ class Tabs extends Consumer {
 	closeAll(){
 		const workspace = atom.views.getView(atom.workspace);
 		atom.commands.dispatch(workspace, "tabs:close-all-tabs");
-	}
-	
-	
-	// TODO: A hot cup of Chai. Now.
-	ls(){
-		const tabs = [];
-		for(const paneItem of atom.workspace.getPaneItems()){
-			const name = paneItem.getFileName();
-			const tab = this.tabForEditor(paneItem);
-			tabs.push(tab);
-			Object.defineProperty(tabs, name, {value: tab.itemTitle});
-		}
-		return tabs;
 	}
 }
 
