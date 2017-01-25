@@ -7,7 +7,7 @@
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
-      "atom-material-syntax-dark"
+      "one-dark-syntax"
     ]
   editor:
     autoIndentOnPaste: false
