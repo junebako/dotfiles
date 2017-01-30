@@ -39,10 +39,10 @@ class FileSystem {
 		this.emitter.dispose();
 		this.paths.forEach(path => path.destroy());
 		this.inodes.clear();
-		this.inodes = null;
-		this.paths = null;
-		this.emitter = null;
-		this.disposables = null;
+		this.inodes = new Map();
+		this.paths = new Map();
+		this.emitter = new Emitter();
+		this.disposables = new CompositeDisposable();
 	}
 	
 	
@@ -113,6 +113,7 @@ class FileSystem {
 				resource.onDidChangeRealPath(path => this.fixSymlink(resource, path.to)),
 				new Disposable(() => {
 					this.paths.delete(resource.path);
+					this.paths.delete(resource.path.replace(/\//g, "\\"));
 					if(inode && resource.stats.nlink < 2)
 						this.inodes.delete(inode);
 				})

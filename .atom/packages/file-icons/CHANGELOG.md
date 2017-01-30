@@ -4,6 +4,20 @@ All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+[2.0.13] - 2017-01-28
+---------------------
+### Added
+- **Support:** Gear (`.htmlhintrc`), NodeJS (`.node`)
+
+### Fixed
+- [[`#528`][]] Deleted files not cleared from memory on Windows
+- [[`#530`][]] Error thrown after deactivating package
+- Errors thrown when deactivating/reactivating package
+
+[`#528`]: https://github.com/file-icons/atom/issues/528
+[`#530`]: https://github.com/file-icons/atom/issues/530
+
+
 [2.0.12] - 2017-01-24
 ---------------------
 ### Fixed
@@ -1060,7 +1074,8 @@ Contributors should take heed of the new [submission process](https://github.com
 Initial release.
 
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.0.12...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.0.13...HEAD
+[2.0.13]: https://github.com/file-icons/atom/releases/tag/v2.0.13
 [2.0.12]: https://github.com/file-icons/atom/releases/tag/v2.0.12
 [2.0.11]: https://github.com/file-icons/atom/releases/tag/v2.0.11
 [2.0.10]: https://github.com/file-icons/atom/releases/tag/v2.0.10
