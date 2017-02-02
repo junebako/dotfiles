@@ -4,6 +4,7 @@
   editor = emacs
   pager = lv -c
   quotepath = false
+  excludesfile = ~/.gitignore_global
 [pager]
   log  = diff-highlight | lv
   show = diff-highlight | lv

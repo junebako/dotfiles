@@ -7,6 +7,7 @@ cd ~/
 ln -s $DOTFILES/.emacs.d
 ln -s $DOTFILES/.gitconfig
 ln -s $DOTFILES/.gitconfig.local
+ln -s $DOTFILES/.gitignore_global
 ln -s $DOTFILES/.screenrc
 ln -s $DOTFILES/.tmux.conf
 ln -s $DOTFILES/.tigrc
