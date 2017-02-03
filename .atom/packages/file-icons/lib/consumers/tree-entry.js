@@ -1,11 +1,11 @@
 "use strict";
 
 const {CompositeDisposable, Emitter} = require("atom");
+const {normalisePath} = require("../utils/general.js");
 const IconDelegate = require("../service/icon-delegate.js");
 const FileSystem   = require("../filesystem/filesystem.js");
 const System       = require("../filesystem/system.js");
 const IconNode     = require("../service/icon-node.js");
-const Log          = require("../log.js").tag("TREE ENTRY");
 
 
 class TreeEntry{
@@ -13,7 +13,7 @@ class TreeEntry{
 	constructor(source, element){
 		this.disposables = new CompositeDisposable();
 		this.emitter = new Emitter();
-		this.path = source.path;
+		this.path = normalisePath(source.path);
 		this.source = source;
 		this.element = element;
 		
@@ -29,13 +29,11 @@ class TreeEntry{
 			if(source.submodule)
 				this.resource.isSubmodule = true;
 			
-			"function" === typeof source.onDidExpand
-				? this.disposables.add(source.onDidExpand(() => this.scanEntries()))
-				: Log.error("Oddball - `onDidExpand` expected on directory", this.path, source);
+			if("function" === typeof source.onDidExpand)
+				this.disposables.add(source.onDidExpand(() => this.scanEntries()));
 			
-			"function" === typeof source.onDidAddEntries
-				? this.disposables.add(source.onDidAddEntries(() => this.scanEntries()))
-				: Log.error("Oddball - `onDidAddEntries` expected on directory", this.path, source);
+			if("function" === typeof source.onDidAddEntries)
+				this.disposables.add(source.onDidAddEntries(() => this.scanEntries()));
 		}
 		
 		this.iconNode = new IconNode(this.resource, iconEl);
