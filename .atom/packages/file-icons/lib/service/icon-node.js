@@ -52,6 +52,8 @@ class IconNode{
 		if(!this.destroyed){
 			this.disposables.dispose();
 			iconsByElement.delete(this.element);
+			this.appliedClasses = null;
+			this.classes   = null;
 			this.resource  = null;
 			this.element   = null;
 			this.destroyed = true;
@@ -190,4 +192,5 @@ class IconNode{
 }
 
 
+IconNode.prototype.destroyed = false;
 module.exports = IconNode;

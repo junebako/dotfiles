@@ -1,7 +1,7 @@
 "use strict";
 
-const {dirname, join, resolve} = require("path");
-const {lstat, statify, realpath} = require("../utils/fs.js");
+const {realpath} = require("../utils/fs.js");
+const {normalisePath} = require("../utils/general.js");
 const IconDelegate = require("../service/icon-delegate.js");
 const EntityType = require("./entity-type.js");
 const Resource = require("./resource.js");
@@ -15,23 +15,38 @@ class Directory extends Resource {
 		
 		// Root directory/Project folder
 		for(const root of atom.project.rootDirectories)
-			if(root && path === resolve(root.path)){
+			if(root && path === normalisePath(root.path)){
 				this.isRoot = true;
 				break;
 			}
 		
-		// Git repo
+		// VCS repo
 		if(null !== this.repo){
-			const {repo} = this.repo;
-			if(repo.isWorkingDirectory(path))
-				this.isRepository = true;
+			const repoType = this.repo.getType();
 			
-			// Submodule
-			const submodule = repo.submoduleForPath(path) || null;
-			if(null !== submodule){
-				this.submodule = submodule;
-				if(submodule.isWorkingDirectory(realpath(path)))
-					this.isSubmodule = true;
+			if("git" === repoType){
+				const {repo} = this.repo;
+				if(repo.isWorkingDirectory(path))
+					this.isRepository = true;
+				
+				// Submodule
+				const submodule = repo.submoduleForPath(path) || null;
+				if(null !== submodule){
+					this.submodule = submodule;
+					if(submodule.isWorkingDirectory(realpath(path)))
+						this.isSubmodule = true;
+				}
+			}
+			
+			else{
+				const repoPath = this.repo.workingDirectory || this.repo.path;
+				if(path === normalisePath(repoPath))
+					this.isRepository = true;
+				if(!repoPath){
+					const {logInfo} = require("../utils/dev.js");
+					const {path, repo} = this;
+					logInfo({title: "Unknown VCS", path, repo, repoType});
+				}
 			}
 		}
 	}
