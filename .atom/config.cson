@@ -3,6 +3,8 @@
     tabs: {}
     treeView:
       compactList: true
+  "auto-encoding":
+    ignorePattern: "md$"
   core:
     telemetryConsent: "limited"
     themes: [
