@@ -33,6 +33,7 @@ class EmacsCursor
     @_localKillRing = null
 
   destroy: ->
+    @clearLocalKillRing()
     @_disposable.dispose()
     @_disposable = null
     @_yankMarker?.destroy()
@@ -187,10 +188,13 @@ class EmacsCursor
     @_killUnit method, =>
       start = @cursor.getBufferPosition()
       line = @editor.lineTextForBufferRow(start.row)
-      if /^\s*$/.test(line.slice(start.column))
-        end = [start.row + 1, 0]
+      if start.column == 0 and atom.config.get("atomic-emacs.killWholeLine")
+          end = [start.row + 1, 0]
       else
-        end = [start.row, line.length]
+        if /^\s*$/.test(line.slice(start.column))
+          end = [start.row + 1, 0]
+        else
+          end = [start.row, line.length]
       [start, end]
 
   killRegion: (method) ->
@@ -313,12 +317,22 @@ class EmacsCursor
       @skipNonWordCharactersBackward()
     else
       word2Range = @_wordRange()
-      word1 = @editor.getTextInBufferRange(word1Range)
-      word2 = @editor.getTextInBufferRange(word2Range)
+      @_transposeRanges(word1Range, word2Range)
 
-      @editor.setTextInBufferRange(word2Range, word1)
-      @editor.setTextInBufferRange(word1Range, word2)
-      @cursor.setBufferPosition(word2Range[1])
+  # Transpose the sexp at the cursor with the next one. Move to the end of the
+  # next sexp.
+  transposeSexps: ->
+    @skipSexpBackward()
+    start1 = @cursor.getBufferPosition()
+    @skipSexpForward()
+    end1 = @cursor.getBufferPosition()
+
+    @skipSexpForward()
+    end2 = @cursor.getBufferPosition()
+    @skipSexpBackward()
+    start2 = @cursor.getBufferPosition()
+
+    @_transposeRanges([start1, end1], [start2, end2])
 
   # Transpose the line at the cursor with the one above it. Move to the
   # beginning of the next line.
@@ -348,6 +362,15 @@ class EmacsCursor
     if row == @editor.getLineCount() - 1
       length = @cursor.getCurrentBufferLine().length
       @editor.setTextInBufferRange([[row, length], [row, length]], "\n")
+
+  _transposeRanges: (range1, range2) ->
+    text1 = @editor.getTextInBufferRange(range1)
+    text2 = @editor.getTextInBufferRange(range2)
+
+    # Update range2 first so it doesn't change range1.
+    @editor.setTextInBufferRange(range2, text1)
+    @editor.setTextInBufferRange(range1, text2)
+    @cursor.setBufferPosition(range2[1])
 
   _sexpForwardFrom: (point) ->
     eob = @editor.getEofBufferPosition()

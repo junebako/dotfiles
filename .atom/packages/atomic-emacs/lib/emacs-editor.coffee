@@ -1,3 +1,4 @@
+{CompositeDisposable} = require 'atom'
 EmacsCursor = require './emacs-cursor'
 KillRing = require './kill-ring'
 Mark = require './mark'
@@ -9,12 +10,19 @@ class EmacsEditor
     editor._atomicEmacs ?= new EmacsEditor(editor)
 
   constructor: (@editor) ->
-    @disposable = @editor.onDidRemoveCursor =>
+    @disposable = new CompositeDisposable
+    @disposable.add @editor.onDidRemoveCursor =>
       cursors = @editor.getCursors()
       if cursors.length == 1
         EmacsCursor.for(cursors[0]).clearLocalKillRing()
+    @disposable.add @editor.onDidDestroy =>
+      @destroy()
 
   destroy: ->
+    # Neither cursor.did-destroy nor TextEditor.did-remove-cursor seems to fire
+    # when the editor is destroyed. (Atom bug?) So we destroy EmacsCursors here.
+    for cursor in @getEmacsCursors()
+      cursor.destroy()
     @disposable.dispose()
 
   getEmacsCursors: () ->
@@ -209,6 +217,11 @@ class EmacsEditor
       @moveEmacsCursors (emacsCursor) =>
         emacsCursor.transposeLines()
 
+  transposeSexps: ->
+    @editor.transact =>
+      @moveEmacsCursors (emacsCursor) =>
+        emacsCursor.transposeSexps()
+
   downcase = (s) -> s.toLowerCase()
   upcase = (s) -> s.toUpperCase()
   capitalize = (s) -> s.slice(0, 1).toUpperCase() + s.slice(1).toLowerCase()
@@ -268,20 +281,20 @@ class EmacsEditor
 
   recenterTopBottom: ->
     return unless @editor
-    editorElement = atom.views.getView(@editor)
+    view = atom.views.getView(@editor)
     minRow = Math.min((c.getBufferRow() for c in @editor.getCursors())...)
     maxRow = Math.max((c.getBufferRow() for c in @editor.getCursors())...)
-    minOffset = editorElement.pixelPositionForBufferPosition([minRow, 0])
-    maxOffset = editorElement.pixelPositionForBufferPosition([maxRow, 0])
+    minOffset = view.pixelPositionForBufferPosition([minRow, 0])
+    maxOffset = view.pixelPositionForBufferPosition([maxRow, 0])
 
     switch State.recenters
       when 0
-        @editor.setScrollTop((minOffset.top + maxOffset.top - @editor.getHeight())/2)
+        view.setScrollTop((minOffset.top + maxOffset.top - view.getHeight())/2)
       when 1
         # Atom applies a (hardcoded) 2-line buffer while scrolling -- do that here.
-        @editor.setScrollTop(minOffset.top - 2*@editor.getLineHeightInPixels())
+        view.setScrollTop(minOffset.top - 2*@editor.getLineHeightInPixels())
       when 2
-        @editor.setScrollTop(maxOffset.top + 3*@editor.getLineHeightInPixels() - @editor.getHeight())
+        view.setScrollTop(maxOffset.top + 3*@editor.getLineHeightInPixels() - view.getHeight())
 
     State.recentered()
 

@@ -1,5 +1,6 @@
 {EmacsCursor, EmacsEditor, KillRing, State, activate, deactivate} =
   require '../lib/atomic-emacs'
+
 TestEditor = require './test-editor'
 
 describe "AtomicEmacs", ->
@@ -457,6 +458,9 @@ describe "AtomicEmacs", ->
       expect(KillRing.global.getEntries()).toEqual(['aaa bbb'])
 
   describe "atomic-emacs:kill-line", ->
+    beforeEach ->
+      atom.config.set 'atomic-emacs.killWholeLine', false
+
     it "deletes from the cursor to the end of the line if there is text to the right", ->
       @testEditor.setState("aaa b[0]bb\nccc")
       atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
@@ -481,6 +485,50 @@ describe "AtomicEmacs", ->
       @testEditor.setState("aaa b(0)b[0]b ccc")
       atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
       expect(@testEditor.getState()).toEqual("aaa b[0]b ccc")
+
+    it "deletes on the head position", ->
+      @testEditor.setState("aaa \n[0]bbb\nccc")
+      atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
+      expect(@testEditor.getState()).toEqual("aaa \n[0]\nccc")
+
+    it "operates on multiple cursors", ->
+      @testEditor.setState("aaa b[0]bb\nc[1]cc ddd")
+      atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
+      expect(@testEditor.getState()).toEqual("aaa b[0]\nc[1]")
+
+  describe "atomic-emacs:kill-line when killWholeLine option is on", ->
+    beforeEach ->
+      atom.config.set 'atomic-emacs.killWholeLine', true
+
+    it "deletes from the cursor to the end of the line if there is text to the right", ->
+      @testEditor.setState("aaa b[0]bb\nccc")
+      atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
+      expect(@testEditor.getState()).toEqual("aaa b[0]\nccc")
+
+    it "deletes the rest of this line if there is only whitespace to the right", ->
+      @testEditor.setState("aaa [0] \t\n bbb")
+      atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
+      expect(@testEditor.getState()).toEqual("aaa [0] bbb")
+
+    it "deletes the next newline if there is nothing to the right", ->
+      @testEditor.setState("aaa [0]\n bbb")
+      atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
+      expect(@testEditor.getState()).toEqual("aaa [0] bbb")
+
+    it "deletes nothing if at the end of the buffer", ->
+      @testEditor.setState("aaa[0]")
+      atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
+      expect(@testEditor.getState()).toEqual("aaa[0]")
+
+    it "deletes any selected text", ->
+      @testEditor.setState("aaa b(0)b[0]b ccc")
+      atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
+      expect(@testEditor.getState()).toEqual("aaa b[0]b ccc")
+
+    it "deletes on the head position", ->
+      @testEditor.setState("aaa \n[0]bbb\nccc")
+      atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
+      expect(@testEditor.getState()).toEqual("aaa \n[0]ccc")
 
     it "operates on multiple cursors", ->
       @testEditor.setState("aaa b[0]bb\nc[1]cc ddd")
@@ -1208,6 +1256,10 @@ describe "AtomicEmacs", ->
       expect(@testEditor.getState()).toEqual("a[0]d e[1]h")
       result = (EmacsCursor.for(c).mark().isActive() for c in @editor.getCursors())
       expect(result).toEqual([false, false])
+
+    it "properly cleans up if the editor is closed while the mark is active", ->
+      atom.commands.dispatch @editorView, 'atomic-emacs:set-mark'
+      atom.commands.dispatch atom.views.getView(atom.workspace), 'core:close'
 
   describe "atomic-emacs:mark-sexp", ->
     it "marks a symbol forward of the cursor", ->

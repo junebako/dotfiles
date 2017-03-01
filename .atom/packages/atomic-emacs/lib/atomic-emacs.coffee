@@ -20,10 +20,7 @@ afterCommand = (event) ->
 
 getEditor = (event) ->
   # Get editor from the event if possible so we can target mini-editors.
-  if event.target?.getModel
-    editor = event.target.getModel()
-  else
-    editor = atom.workspace.getActiveTextEditor()
+  editor = event.target?.getModel?() ? atom.workspace.getActiveTextEditor()
   EmacsEditor.for(editor)
 
 closeOtherPanes = (event) ->
@@ -40,7 +37,21 @@ module.exports =
   Mark: Mark
   State: State
 
+  config:
+    alwaysUseKillRing:
+      type: 'boolean',
+      default: false,
+      title: 'Use kill ring for built-in copy & cut commands.'
+    killWholeLine:
+      type: 'boolean',
+      default: false,
+      title: 'Always Kill whole line.'
+
   activate: ->
+    if @disposable
+      console.log "atomic-emacs activated twice -- aborting"
+      return
+
     State.initialize()
     document.getElementsByTagName('atom-workspace')[0]?.classList?.add('atomic-emacs')
     @disposable = new CompositeDisposable
@@ -70,6 +81,16 @@ module.exports =
       "atomic-emacs:yank": (event) -> getEditor(event).yank()
       "atomic-emacs:yank-pop": (event) -> getEditor(event).yankPop()
       "atomic-emacs:yank-shift": (event) -> getEditor(event).yankShift()
+      "atomic-emacs:cut": (event) ->
+        if atom.config.get('atomic-emacs.alwaysUseKillRing')
+          getEditor(event).killRegion()
+        else
+          event.abortKeyBinding()
+      "atomic-emacs:copy": (event) ->
+        if atom.config.get('atomic-emacs.alwaysUseKillRing')
+          getEditor(event).copyRegionAsKill()
+        else
+          event.abortKeyBinding()
 
       # Editing
       "atomic-emacs:delete-horizontal-space": (event) -> getEditor(event).deleteHorizontalSpace()
@@ -78,6 +99,7 @@ module.exports =
       "atomic-emacs:just-one-space": (event) -> getEditor(event).justOneSpace()
       "atomic-emacs:transpose-chars": (event) -> getEditor(event).transposeChars()
       "atomic-emacs:transpose-lines": (event) -> getEditor(event).transposeLines()
+      "atomic-emacs:transpose-sexps": (event) -> getEditor(event).transposeSexps()
       "atomic-emacs:transpose-words": (event) -> getEditor(event).transposeWords()
       "atomic-emacs:downcase-word-or-region": (event) -> getEditor(event).downcaseWordOrRegion()
       "atomic-emacs:upcase-word-or-region": (event) -> getEditor(event).upcaseWordOrRegion()

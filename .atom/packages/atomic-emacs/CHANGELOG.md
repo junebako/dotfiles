@@ -1,3 +1,12 @@
+## LATEST
+
+* Add transpose-sexps (ctrl-alt-t).
+* Setting to make built-in cut & copy commands use the kill ring.
+* Fix error when closing a tab with the mark active.
+* Fix some bindings being shadowed by Atom Core on Linux & Windows.
+* Fix commands potentially firing twice after upgrading Atomic Emacs.
+* Address deprecation warnings in recent Atom versions.
+
 ## 0.9.2 (2016-06-18)
 
 * Fix scroll-{up,down} in an empty editor.
