@@ -3,14 +3,32 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.0.16...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.0.17...HEAD
+
+
+[2.0.17] - 2017-03-01
+---------------------
+### Added
+- **New icons:** ESDoc (`esdoc.json`), JSONT (`.jsont`), Twine (`.tw`), and Phoenix (`phoenix.{ex,js}`)
+- **Support:** PostCSS (`.postcssrc.{js,json,yaml}`)
+- Commands to toggle package settings: `file-icons:toggle-changed-only`, `file-icons:toggle-tab-icons` (no default keybindings).
+
+### Fixed
+- [[`#550`][]]: Icons still displayed in tabs after disabling `tabPaneIcon` setting
+- [[`#550`][]]: Switching projects in [`project-plus`][+stahp] broke connection with `tree-view` entries. Files quit refreshing and directories reverted to default-icons.
+- [`Tabs`][] not clearing memory when switching projects in [`project-plus`][+stahp].
+
+[2.0.17]: https://github.com/file-icons/atom/releases/tag/v2.0.17
+[`Tabs`]: https://github.com/file-icons/atom/commit/b3051db1d
+[+stahp]: https://atom.io/packages/project-plus
+[`#550`]: https://github.com/file-icons/atom/issues/550
 
 
 [2.0.16] - 2017-02-27
 ---------------------
 ### Added
 - **New icons:** AngelScript (`.acs`, `.angelscript`), Bazel (`.bzl`, `BUILD`, `WORKSPACE`), BEM (`.bemjson.js`), Caddy (`Caddyfile`), DeviceTree (`.dts`, `.dtsi`), Franca (`.fdl`, `.fidl`, `.fdepl`), Jison (`.jison`, `.jisonlex`), Meson (`meson.build`, `meson_options.txt`), MiniZinc (`.mzn`, `.dzn`), Miranda (`.m`), Nanoc (`.nanoc.yaml`), P4 (`.p4`), Watchman (`.watchmanconfig`, `watchman.json`)
-- **Support:** Generic code (`.bc`, `.dtd`, `.fo`, `.fidl`, `.stellaris`, `.spthy`, `.wlp4`), Markdown (`.gfm`, `.pfm`), PostCSS (`.postcssrc.{js, json, yaml}`)
+- **Support:** Generic code (`.bc`, `.dtd`, `.fo`, `.fidl`, `.stellaris`, `.spthy`, `.wlp4`), Markdown (`.gfm`, `.pfm`)
 
 [2.0.16]: https://github.com/file-icons/atom/releases/tag/v2.0.16
 
