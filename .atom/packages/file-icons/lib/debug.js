@@ -1,14 +1,13 @@
 "use strict";
 
-const FileSystem     = require.resolve("../filesystem/filesystem.js");
-const ArchiveView    = require.resolve("../consumers/archive-view.js");
-const FindAndReplace = require.resolve("../consumers/find-and-replace.js");
-const FuzzyFinder    = require.resolve("../consumers/fuzzy-finder.js");
-const Tabs           = require.resolve("../consumers/tabs.js");
-const TreeView       = require.resolve("../consumers/tree-view.js");
-const Consumers      = require.resolve("../consumers/all.js");
-const Options        = require.resolve("../options.js");
-const Storage        = require.resolve("../storage.js");
+const ArchiveView    = require.resolve("./consumers/archive-view.js");
+const FindAndReplace = require.resolve("./consumers/find-and-replace.js");
+const FuzzyFinder    = require.resolve("./consumers/fuzzy-finder.js");
+const Tabs           = require.resolve("./consumers/tabs.js");
+const TreeView       = require.resolve("./consumers/tree-view.js");
+const Consumers      = require.resolve("./consumers/all.js");
+const Options        = require.resolve("./options.js");
+const Storage        = require.resolve("./storage.js");
 
 const log = [];
 
@@ -17,7 +16,7 @@ module.exports = {
 	get options (){ return require(Options)},
 	get storage (){ return require(Storage)},
 	get paths   (){ return this.fs.paths},
-	get fs      (){ return require(FileSystem)},
+	get fs      (){ return require("atom-fs")},
 	get log     (){ return Array.from(log)},
 	get print   (){ return require("print")},
 	
