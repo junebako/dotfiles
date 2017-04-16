@@ -4,7 +4,8 @@
     treeView:
       compactList: true
   "auto-encoding":
-    ignorePattern: "md$"
+    alwaysAutoDetect: false
+    ignorePattern: "(md|rb)$"
   core:
     telemetryConsent: "limited"
     themes: [
