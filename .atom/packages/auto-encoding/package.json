@@ -2,46 +2,47 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117115-3807-wmwc6k/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117316-3720-bzzf87.ty4xjkbj4i/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117115-3807-wmwc6k/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117115-3807-wmwc6k/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117316-3720-bzzf87.ty4xjkbj4i/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117316-3720-bzzf87.ty4xjkbj4i/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117115-3807-g0uoss"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117316-3720-t5p6bu.l6hzd7vi"
     ]
   ],
-  "_from": "../d-117115-3807-wmwc6k/package.tgz",
-  "_id": "auto-encoding@0.6.3",
+  "_from": "../d-117316-3720-bzzf87.ty4xjkbj4i/package.tgz",
+  "_id": "auto-encoding@0.7.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/auto-encoding",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117115-3807-wmwc6k/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117316-3720-bzzf87.ty4xjkbj4i/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117115-3807-wmwc6k/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117115-3807-wmwc6k/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117316-3720-bzzf87.ty4xjkbj4i/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117316-3720-bzzf87.ty4xjkbj4i/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-117115-3807-wmwc6k/package.tgz",
-  "_shasum": "9b2dfbb922c5e354a634e83a22b86adf1452d974",
+  "_resolved": "file:../d-117316-3720-bzzf87.ty4xjkbj4i/package.tgz",
+  "_shasum": "abb3fff12f63a96c87571146f0a19926f5dcc547",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117115-3807-wmwc6k/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117115-3807-g0uoss",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117316-3720-bzzf87.ty4xjkbj4i/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117316-3720-t5p6bu.l6hzd7vi",
   "bugs": {
     "url": "https://github.com/t-ishii/auto-encoding/issues"
   },
   "dependencies": {
     "iconv-lite": "^0.4.15",
-    "jschardet": "^1.4.1"
+    "jschardet": "^1.4.1",
+    "lodash": "^4.17.4"
   },
   "description": "Auto detect",
   "devDependencies": {},
@@ -59,5 +60,5 @@
     "type": "git",
     "url": "git+https://github.com/t-ishii/auto-encoding.git"
   },
-  "version": "0.6.3"
+  "version": "0.7.0"
 }
