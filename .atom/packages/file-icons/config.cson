@@ -89,6 +89,10 @@ directoryIcons:
 		icon: "chef"
 		match: /\.chef$/
 
+	CircleCI:
+		icon: "circleci"
+		match: /^\.circleci$/
+
 	Dropbox:
 		icon: "dropbox"
 		match: /^(Dropbox|\.dropbox\.cache)$/
@@ -2041,8 +2045,10 @@ fileIcons:
 	Jest:
 		icon: "jest"
 		priority: 2
-		match: /^jest(\.config)?\.json$/i
-		colour: "medium-red"
+		match: [
+			[/^jest(\.config)?\.json$/i, "medium-red"]
+			[".js.snap", "auto-yellow"]
+		]
 
 	Jinja:
 		icon: "jinja"
@@ -2056,6 +2062,13 @@ fileIcons:
 		match: [
 			[".jison", "medium-blue", "jison"]
 			[".jisonlex", "medium-cyan", "JisonLex"]
+		]
+
+	Jolie:
+		icon: "jolie"
+		match: [
+			[".ol", "dark-pink", "jolie"]
+			[".iol", "medium-red"]
 		]
 
 	jQuery:
@@ -2331,7 +2344,7 @@ fileIcons:
 	Markdown:
 		icon: "markdown"
 		scope: /(^|\.)[gp]fm|markdown(\.|$)/i
-		match: /\.(md|mdown|markdown|mkd|mkdown|mkdn|rmd|ron|pmd)$/i
+		match: /\.(md|mdown|markdown|mkd|mkdown|mdwn|mkdn|rmd|ron|pmd)$/i
 		alias: /^(CommonMark|GFM|Pandoc)$|\bMarkdown\b/i
 		colour: "medium-blue"
 
@@ -2549,6 +2562,8 @@ fileIcons:
 		match: [
 			[".obj", "medium-red", scope: "wavefront.obj"]
 			[".mtl", "dark-blue",  scope: "wavefront.mtl"]
+			[".shader", "medium-cyan", alias: "ShaderLab", scope: /\.(shader(code|lab)|cg)(?=\.|$)/i]
+			[".cginc", "dark-cyan"]
 			[".stl", "dark-green"]
 			[".u3d", "medium-orange"]
 		]
@@ -2616,7 +2631,7 @@ fileIcons:
 			[/\.midi?$/i, "dark-blue", signature: /^MThd/]
 
 			# LilyPond
-			[".ly", "medium-green", scope: /\.(At)?lilypond-/i, alias: /^Lily\s*Pond$/i]
+			[".ly", "medium-green", scope: /\.(At)?lilypond/i, alias: /^Lily\s*Pond$/i]
 			[".ily", "dark-green"]
 
 			# Pure Data
@@ -2629,6 +2644,12 @@ fileIcons:
 		alias: /^(hbs|htmlbars|handlebars)$/i
 		match: /\.(hbs|handlebars|mustache)$/i
 		colour: "medium-orange"
+
+	Nano:
+		icon: "nano"
+		match: ".nanorc"
+		colour: "medium-blue"
+		scope: /\.nanorc(?=\.|$)/i
 
 	Nanoc:
 		icon: "nanoc"
@@ -2962,6 +2983,13 @@ fileIcons:
 		colour: "medium-red"
 		signature: /^%PDF/
 
+	PegJS:
+		icon: "peg"
+		match: [
+			[".pegjs", "medium-red", "pegjs"]
+			[".pegcoffee", "medium-maroon", "pegcoffee"]
+		]
+
 	Perl:
 		icon: "perl"
 		match: [
@@ -3187,6 +3215,7 @@ fileIcons:
 			[".pyp", "dark-purple"]
 			[".pyt", "dark-green"]
 			[".py3", "dark-blue"]
+			[".pyi", "medium-blue"]
 			[".pyw", "medium-maroon"]
 			[".tac", "dark-pink"]
 			[".wsgi", "dark-red"]
@@ -4106,6 +4135,8 @@ fileIcons:
 			[/\.vcx?proj$/i, "dark-purple"]
 			[/\.vssettings(\.json)?$/i, "dark-green", priority: 2]
 			[/\.vscodeignore(\.json)?$/i, "medium-blue", priority: 2]
+			[".vstemplate", "medium-purple"]
+			[".vsixmanifest", "dark-orange"]
 			[".builds", "medium-maroon"]
 			[".sln", "medium-orange"]
 		]
@@ -4195,6 +4226,11 @@ fileIcons:
 		icon: "x11"
 		match: /\.X(authority|clients|initrc|profile|resources|session-errors|screensaver)$/i
 		colour: "medium-orange"
+
+	Xamarin:
+		icon: "xamarin"
+		match: ".workbook"
+		colour: "light-blue"
 
 	XC:
 		icon: "xmos"

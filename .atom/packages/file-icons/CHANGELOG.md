@@ -3,7 +3,25 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.3...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.4...HEAD
+
+
+[v2.1.4] - 2017-04-26
+---------------------
+### Added
+- **New icons:** Jolie (`.ol`, `.iol`), Nano (`.nanorc`), PegJS (`.pegjs`, `.pegcoffee`), Xamarin (`.workbook`)
+- **Support:** 3D Assets (`.cginc`, `.shader`), Circle CI (`.circleci` directories), Jest (`.js.snap`), Markdown (`.mdwn`), Python (`.pyi`), Visual Studio (`.vsixmanifest`, `.vstemplate`)
+
+### Fixed
+- [[`#559`][]]: Occasional error thrown when opening `fuzzy-finder`
+- [[`#586`][]]: Classes not removed when disposing of `addIconToElement` disposable
+- [[`#590`][]]: Unhandled exception thrown from [`project-plus`][`Tabs`] fix.
+
+[v2.1.4]: https://github.com/file-icons/atom/releases/tag/v2.1.4
+[`#559`]: https://github.com/file-icons/atom/issues/559
+[`#586`]: https://github.com/file-icons/atom/issues/586
+[`#590`]: https://github.com/file-icons/atom/issues/590
+
 
 
 [v2.1.3] - 2017-04-13
