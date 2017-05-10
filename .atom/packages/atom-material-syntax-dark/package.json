@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117410-19801-8ufaat.yvw6z5b3xr/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117410-19801-8ufaat.yvw6z5b3xr/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117410-19801-8ufaat.yvw6z5b3xr/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117018-1327-1sac8qd"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117410-19801-1suh00h.v2pig4x6r"
     ]
   ],
-  "_from": "../d-117018-1327-ba276b/package.tgz",
-  "_id": "atom-material-syntax-dark@0.2.7",
+  "_from": "../d-117410-19801-8ufaat.yvw6z5b3xr/package.tgz",
+  "_id": "atom-material-syntax-dark@1.0.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/atom-material-syntax-dark",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117410-19801-8ufaat.yvw6z5b3xr/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117410-19801-8ufaat.yvw6z5b3xr/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117410-19801-8ufaat.yvw6z5b3xr/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-117018-1327-ba276b/package.tgz",
-  "_shasum": "a4d85437843cbe4769bda462c3a88d8214909b73",
+  "_resolved": "file:../d-117410-19801-8ufaat.yvw6z5b3xr/package.tgz",
+  "_shasum": "48c52cf9b740197ab38913287974842757f59e1b",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117018-1327-ba276b/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117018-1327-1sac8qd",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117410-19801-8ufaat.yvw6z5b3xr/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117410-19801-1suh00h.v2pig4x6r",
   "bugs": {
     "url": "https://github.com/silvestreh/atom-material-syntax-dark/issues"
   },
@@ -55,12 +55,12 @@
   "license": "MIT",
   "name": "atom-material-syntax-dark",
   "optionalDependencies": {},
-  "readme": "![](http://i.imgur.com/f58FC9u.png)\n---\n\nA darker variant of [Atom Material Syntax](https://github.com/silvestreh/atom-material-ui) for [Atom Material UI](https://github.com/silvestreh/atom-material-ui). Inspired by Mattia Astorino's [SublimeText theme](https://github.com/equinusocio/material-theme).\n\n![](http://i.imgur.com/s23XB6r.png)\n",
+  "readme": "![](http://i.imgur.com/f58FC9u.png)\n---\n\nA darker variant of [Atom Material Syntax](https://github.com/silvestreh/atom-material-ui) for [Atom Material UI](https://github.com/silvestreh/atom-material-ui). Inspired by Mattia Astorino's [SublimeText theme](https://github.com/equinusocio/material-theme).\n\n![](http://i.imgur.com/2mxpDcl.png)\n",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/silvestreh/atom-material-syntax-dark.git"
   },
   "theme": "syntax",
-  "version": "0.2.7"
+  "version": "1.0.0"
 }
