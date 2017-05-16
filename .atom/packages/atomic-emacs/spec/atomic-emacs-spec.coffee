@@ -10,6 +10,7 @@ describe "AtomicEmacs", ->
   beforeEach ->
     waitsForPromise =>
       atom.workspace.open().then (@editor) =>
+        atom.config.set 'atomic-emacs.killToClipboard', true
         @emacsEditor = new EmacsEditor(@editor)
         @testEditor = new TestEditor(@editor)
         @editorView = atom.views.getView(@editor)
@@ -121,9 +122,9 @@ describe "AtomicEmacs", ->
 
   describe "atomic-emacs:backward-sexp", ->
     it "moves all cursors backward one symbolic expression", ->
-      @testEditor.setState("aa [0]\n(bb cc)[1]\n")
+      @testEditor.setState("(aa bb)\naa [0]\n(bb cc)[1]\n")
       atom.commands.dispatch @editorView, 'atomic-emacs:backward-sexp'
-      expect(@testEditor.getState()).toEqual("[0]aa \n[1](bb cc)\n")
+      expect(@testEditor.getState()).toEqual("(aa bb)\n[0]aa \n[1](bb cc)\n")
 
     it "merges cursors that coincide", ->
       @testEditor.setState("aa[0] [1]")
@@ -132,9 +133,9 @@ describe "AtomicEmacs", ->
 
   describe "atomic-emacs:forward-sexp", ->
     it "moves all cursors forward one symbolic expression", ->
-      @testEditor.setState("[0]  aa\n[1](bb cc)\n")
+      @testEditor.setState("[0]aa\n[1](bb cc)\n")
       atom.commands.dispatch @editorView, 'atomic-emacs:forward-sexp'
-      expect(@testEditor.getState()).toEqual("  aa[0]\n(bb cc)[1]\n")
+      expect(@testEditor.getState()).toEqual("aa[0]\n(bb cc)[1]\n")
 
     it "merges cursors that coincide", ->
       @testEditor.setState("[0] [1]aa")
@@ -334,18 +335,35 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:backward-kill-word'
         expect(atom.clipboard.read()).toEqual('b')
 
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill on the clipboard", ->
+          atom.commands.dispatch @editorView, 'atomic-emacs:backward-kill-word'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
+
     describe "when there are multiple cursors", ->
       it "kills to a cursor-local kill ring", ->
         @testEditor.setState("a(0)b[0]c d(1)e[1]f")
         atom.commands.dispatch @editorView, 'atomic-emacs:backward-kill-word'
         expect(@getKillRing(0).getEntries()).toEqual(['b'])
         expect(@getKillRing(1).getEntries()).toEqual(['e'])
-        expect(KillRing.global.getEntries()).toEqual([])
+        expect(KillRing.global.getEntries()).toEqual(['b\ne'])
 
       it "puts the kills on the clipboard separated by newlines", ->
         @testEditor.setState("a(0)b[0]c d(1)e[1]f")
         atom.commands.dispatch @editorView, 'atomic-emacs:backward-kill-word'
         expect(atom.clipboard.read()).toEqual("b\ne")
+
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill clipboard separated by newlines", ->
+          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+          atom.commands.dispatch @editorView, 'atomic-emacs:backward-kill-word'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
       it "merges cursors", ->
         @testEditor.setState("a[1]b[0]c")
@@ -422,18 +440,35 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-word'
         expect(atom.clipboard.read()).toEqual('b')
 
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill on the clipboard", ->
+          atom.commands.dispatch @editorView, 'atomic-emacs:kill-word'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
+
     describe "when there are multiple cursors", ->
       it "kills to a cursor-local kill ring", ->
         @testEditor.setState("a[0]b(0)c d[1]e(1)f")
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-word'
         expect(@getKillRing(0).getEntries()).toEqual(['b'])
         expect(@getKillRing(1).getEntries()).toEqual(['e'])
-        expect(KillRing.global.getEntries()).toEqual([])
+        expect(KillRing.global.getEntries()).toEqual(['b\ne'])
 
       it "puts the kills on the clipboard separated by newlines", ->
         @testEditor.setState("a(0)b[0]c d(1)e[1]f")
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-word'
         expect(atom.clipboard.read()).toEqual("b\ne")
+
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill on the clipboard separated by newlines", ->
+          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+          atom.commands.dispatch @editorView, 'atomic-emacs:kill-word'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
       it "merges cursors", ->
         @testEditor.setState("a[0]b[1]c")
@@ -547,6 +582,14 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
         expect(atom.clipboard.read()).toEqual('bc')
 
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill on the clipboard", ->
+          atom.commands.dispatch @editorView, 'atomic-emacs:kill-word'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
+
     describe "when there are multiple cursors", ->
       beforeEach ->
         @testEditor.setState("a[0]bc\n d[1]ef")
@@ -555,12 +598,21 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
         expect(@getKillRing(0).getEntries()).toEqual(['bc'])
         expect(@getKillRing(1).getEntries()).toEqual(['ef'])
-        expect(KillRing.global.getEntries()).toEqual([])
+        expect(KillRing.global.getEntries()).toEqual(['bc\nef'])
 
       it "puts the kills on the clipboard separated by newlines", ->
         @testEditor.setState("a(0)b[0]c d(1)e[1]f")
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
         expect(atom.clipboard.read()).toEqual("b\ne")
+
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill on the clipboard separated by newlines", ->
+          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+          atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
       it "merges cursors", ->
         @testEditor.setState("a[0]b\n[1]c")
@@ -604,6 +656,14 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-region'
         expect(atom.clipboard.read()).toEqual('b')
 
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill on the clipboard", ->
+          atom.commands.dispatch @editorView, 'atomic-emacs:kill-region'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
+
     describe "when there are multiple cursors", ->
       beforeEach ->
         @testEditor.setState("a(0)b[0]c d[1]e(1)f")
@@ -612,12 +672,21 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-region'
         expect(@getKillRing(0).getEntries()).toEqual(['b'])
         expect(@getKillRing(1).getEntries()).toEqual(['e'])
-        expect(KillRing.global.getEntries()).toEqual([])
+        expect(KillRing.global.getEntries()).toEqual(['b\ne'])
 
       it "puts the kills on the clipboard separated by newlines", ->
         @testEditor.setState("a(0)b[0]c d(1)e[1]f")
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-region'
         expect(atom.clipboard.read()).toEqual("b\ne")
+
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill on the clipboard separated by newlines", ->
+          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+          atom.commands.dispatch @editorView, 'atomic-emacs:kill-region'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
       it "merges cursors", ->
         @testEditor.setState("a(0)a[0](1)b[1]b")
@@ -679,6 +748,14 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
         expect(atom.clipboard.read()).toEqual('b')
 
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill on the clipboard", ->
+          atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
+
     describe "when there are multiple cursors", ->
       beforeEach ->
         @testEditor.setState("a(0)b[0]c d[1]e(1)f")
@@ -687,12 +764,21 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
         expect(@getKillRing(0).getEntries()).toEqual(['b'])
         expect(@getKillRing(1).getEntries()).toEqual(['e'])
-        expect(KillRing.global.getEntries()).toEqual([])
+        expect(KillRing.global.getEntries()).toEqual(['b\ne'])
 
       it "puts the kills on the clipboard separated by newlines", ->
         @testEditor.setState("a(0)b[0]c d(1)e[1]f")
         atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
         expect(atom.clipboard.read()).toEqual("b\ne")
+
+      describe "When atomic-emacs.killToClipboard is off", ->
+        beforeEach ->
+          atom.config.set 'atomic-emacs.killToClipboard', false
+
+        it "doesn't put the kill on the clipboard separated by newlines", ->
+          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+          atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
+          expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
     it "appends to the last kill ring entry if killing", ->
       @testEditor.setState("a[0]b(0)")

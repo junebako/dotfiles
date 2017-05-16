@@ -42,6 +42,14 @@ module.exports =
       type: 'boolean',
       default: false,
       title: 'Use kill ring for built-in copy & cut commands.'
+    killToClipboard:
+      type: 'boolean',
+      default: true,
+      title: 'Send kills to the system clipboard'
+    yankFromClipboard:
+      type: 'boolean',
+      default: false,
+      title: 'Yank changed text from the system clipboard'
     killWholeLine:
       type: 'boolean',
       default: false,

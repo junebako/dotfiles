@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11721-1309-jim2uz/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117416-2063-1u7t5j8.kw81y30udi/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11721-1309-jim2uz/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11721-1309-jim2uz/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117416-2063-1u7t5j8.kw81y30udi/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117416-2063-1u7t5j8.kw81y30udi/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11721-1309-b7snln"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117416-2063-1uc22o8.1okdbwqaor"
     ]
   ],
-  "_from": "../d-11721-1309-jim2uz/package.tgz",
-  "_id": "atomic-emacs@0.10.0",
+  "_from": "../d-117416-2063-1u7t5j8.kw81y30udi/package.tgz",
+  "_id": "atomic-emacs@0.11.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/atomic-emacs",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11721-1309-jim2uz/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117416-2063-1u7t5j8.kw81y30udi/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11721-1309-jim2uz/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11721-1309-jim2uz/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117416-2063-1u7t5j8.kw81y30udi/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117416-2063-1u7t5j8.kw81y30udi/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11721-1309-jim2uz/package.tgz",
-  "_shasum": "686710453d14a5f871f02d9abf5441ab1d98245a",
+  "_resolved": "file:../d-117416-2063-1u7t5j8.kw81y30udi/package.tgz",
+  "_shasum": "4deb84f208c8d4c75c4fadaf8ba614d54ec93a75",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11721-1309-jim2uz/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11721-1309-b7snln",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117416-2063-1u7t5j8.kw81y30udi/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117416-2063-1uc22o8.1okdbwqaor",
   "activationCommands": {
     "atom-text-editor": [
       "atomic-emacs:backward-char",
@@ -94,11 +94,11 @@
   "main": "./lib/atomic-emacs",
   "name": "atomic-emacs",
   "optionalDependencies": {},
-  "readme": "## Atomic Emacs\n\nEmacs keybindings for Atom.\n![Build Status](https://travis-ci.org/avendael/atomic-emacs.svg?branch=master)\n\n## Commands\n\n### Navigation\n\n    'ctrl-b': 'atomic-emacs:backward-char'\n    'left': 'atomic-emacs:backward-char'\n    'ctrl-f': 'atomic-emacs:forward-char'\n    'right': 'atomic-emacs:forward-char'\n    'alt-b': 'atomic-emacs:backward-word'\n    'alt-left': 'atomic-emacs:backward-word'\n    'alt-f': 'atomic-emacs:forward-word'\n    'alt-right': 'atomic-emacs:forward-word'\n    'ctrl-alt-b': 'atomic-emacs:backward-sexp'\n    'ctrl-alt-f': 'atomic-emacs:forward-sexp'\n    'alt-{': 'atomic-emacs:backward-paragraph'\n    'alt-}': 'atomic-emacs:forward-paragraph'\n    'alt-m': 'atomic-emacs:back-to-indentation'\n    'ctrl-a': 'editor:move-to-beginning-of-line'\n    'ctrl-s': 'find-and-replace:show'\n    'ctrl-r': 'find-and-replace:show'\n    'alt-<': 'core:move-to-top'\n    'alt->': 'core:move-to-bottom'\n\n### Killing & Yanking\n\n    'alt-backspace': 'atomic-emacs:backward-kill-word'\n    'alt-delete': 'atomic-emacs:backward-kill-word'\n    'alt-d': 'atomic-emacs:kill-word'\n    'ctrl-k': 'atomic-emacs:kill-line'\n    'ctrl-w': 'atomic-emacs:kill-region'\n    'alt-w': 'atomic-emacs:copy-region-as-kill'\n    'ctrl-alt-w': 'atomic-emacs:append-next-kill'\n    'ctrl-y': 'atomic-emacs:yank'\n    'alt-y': 'atomic-emacs:yank-pop'\n    'alt-shift-y': 'atomic-emacs:yank-shift'\n\nNote that Atomic Emacs does not (yet) support prefix arguments, so to rotate the\nkill ring forward, use `yank-shift` (equivalent to `yank-pop` in Emacs with a\nprefix argument of -1).\n\n### Editing\n\n    'alt-\\\\': 'atomic-emacs:delete-horizontal-space'\n    'alt-^': 'atomic-emacs:delete-indentation'\n    'ctrl-o': 'atomic-emacs:open-line'\n    'alt-space': 'atomic-emacs:just-one-space'\n    'ctrl-t': 'atomic-emacs:transpose-chars'\n    'alt-t': 'atomic-emacs:transpose-words'\n    'ctrl-x ctrl-t': 'atomic-emacs:transpose-lines'\n    'ctrl-x ctrl-l': 'atomic-emacs:downcase-word-or-region'\n    'alt-l': 'atomic-emacs:downcase-word-or-region'\n    'ctrl-x ctrl-u': 'atomic-emacs:upcase-word-or-region'\n    'alt-u': 'atomic-emacs:upcase-word-or-region'\n    'alt-c': 'atomic-emacs:capitalize-word-or-region'\n    'ctrl-j': 'editor:newline'\n    'ctrl-/': 'core:undo'\n    'ctrl-_': 'core:undo'\n    'alt-/': 'autocomplete-plus:activate'\n    'alt-q': 'autoflow:reflow-selection'\n    'alt-;': 'editor:toggle-line-comments'\n\n### Marking & Selecting\n\n    'ctrl-space': 'atomic-emacs:set-mark'\n    'ctrl-alt-space': 'atomic-emacs:mark-sexp'\n    'ctrl-x h': 'atomic-emacs:mark-whole-buffer'\n    'ctrl-x ctrl-x': 'atomic-emacs:exchange-point-and-mark'\n\n### UI\n\n    'ctrl-g': 'core:cancel'\n    'ctrl-x ctrl-s': 'core:save'\n    'alt-x': 'command-palette:toggle'\n    'alt-.': 'symbols-view:toggle-file-symbols'\n    'ctrl-x ctrl-f': 'fuzzy-finder:toggle-file-finder'\n    'ctrl-x b': 'fuzzy-finder:toggle-buffer-finder'\n    'ctrl-x k': 'core:close'\n    'ctrl-x 0': 'pane:close'\n    'ctrl-x 1': 'atomic-emacs:close-other-panes'\n    'ctrl-x 2': 'pane:split-down'\n    'ctrl-x 3': 'pane:split-right'\n    'ctrl-x o': 'window:focus-next-pane'\n\n### Something missing?\n\nFeel free to suggest features on the Github issue tracker, or better yet, send a\npull request!\n\n## Windows Note\n\nSome common Emacs keystrokes conflict with the default key bindings on Atom for\nWindows in unexpected ways. For example, `ctrl-k` (kill-line on emacs) is a\nprefix key for a set of pane management commands in Atom for Windows. The result\nis that after pressing `ctrl-k`, Atom will wait for 2 seconds to determine if it\nshould treat this as a full command, or the beginning of another command, making\n`kill-line` feel \"slow\".\n\nYou can of course disable this by disabling the all built-in key bindings that\nstart with `ctrl-k` in your `keymaps.config` file. You can also do this a little\neasier with the [disable-keybindings][disable-keybindings] package.\n\n[disable-keybindings]: https://atom.io/packages/disable-keybindings\n\n## Contributing\n\n* [Bug reports](https://github.com/avendael/atomic-emacs/issues)\n* [Source](https://github.com/avendael/atomic-emacs)\n* Patches: Fork on Github, send pull request.\n * Include tests where practical.\n * Leave the version alone, or bump it in a separate commit.\n",
+  "readme": "## Atomic Emacs\n\nEmacs keybindings for Atom.\n![Build Status](https://travis-ci.org/avendael/atomic-emacs.svg?branch=master)\n\n## Commands\n\n### Navigation\n\n    'ctrl-b': 'atomic-emacs:backward-char'\n    'left': 'atomic-emacs:backward-char'\n    'ctrl-f': 'atomic-emacs:forward-char'\n    'right': 'atomic-emacs:forward-char'\n    'alt-b': 'atomic-emacs:backward-word'\n    'alt-left': 'atomic-emacs:backward-word'\n    'alt-f': 'atomic-emacs:forward-word'\n    'alt-right': 'atomic-emacs:forward-word'\n    'ctrl-alt-b': 'atomic-emacs:backward-sexp'\n    'ctrl-alt-f': 'atomic-emacs:forward-sexp'\n    'alt-{': 'atomic-emacs:backward-paragraph'\n    'alt-}': 'atomic-emacs:forward-paragraph'\n    'alt-m': 'atomic-emacs:back-to-indentation'\n    'ctrl-a': 'editor:move-to-beginning-of-line'\n    'ctrl-s': 'find-and-replace:show'\n    'ctrl-r': 'find-and-replace:show'\n    'alt-<': 'core:move-to-top'\n    'alt->': 'core:move-to-bottom'\n\n### Killing & Yanking\n\n    'alt-backspace': 'atomic-emacs:backward-kill-word'\n    'alt-delete': 'atomic-emacs:backward-kill-word'\n    'alt-d': 'atomic-emacs:kill-word'\n    'ctrl-k': 'atomic-emacs:kill-line'\n    'ctrl-w': 'atomic-emacs:kill-region'\n    'alt-w': 'atomic-emacs:copy-region-as-kill'\n    'ctrl-alt-w': 'atomic-emacs:append-next-kill'\n    'ctrl-y': 'atomic-emacs:yank'\n    'alt-y': 'atomic-emacs:yank-pop'\n    'alt-shift-y': 'atomic-emacs:yank-shift'\n\nNote that Atomic Emacs does not (yet) support prefix arguments, so to rotate the\nkill ring forward, use `yank-shift` (equivalent to `yank-pop` in Emacs with a\nprefix argument of -1).\n\n### Editing\n\n    'alt-\\\\': 'atomic-emacs:delete-horizontal-space'\n    'alt-^': 'atomic-emacs:delete-indentation'\n    'ctrl-o': 'atomic-emacs:open-line'\n    'alt-space': 'atomic-emacs:just-one-space'\n    'ctrl-t': 'atomic-emacs:transpose-chars'\n    'alt-t': 'atomic-emacs:transpose-words'\n    'ctrl-x ctrl-t': 'atomic-emacs:transpose-lines'\n    'ctrl-x ctrl-l': 'atomic-emacs:downcase-word-or-region'\n    'alt-l': 'atomic-emacs:downcase-word-or-region'\n    'ctrl-x ctrl-u': 'atomic-emacs:upcase-word-or-region'\n    'alt-u': 'atomic-emacs:upcase-word-or-region'\n    'alt-c': 'atomic-emacs:capitalize-word-or-region'\n    'ctrl-j': 'editor:newline'\n    'ctrl-/': 'core:undo'\n    'ctrl-_': 'core:undo'\n    'alt-/': 'autocomplete-plus:activate'\n    'alt-q': 'autoflow:reflow-selection'\n    'alt-;': 'editor:toggle-line-comments'\n\n### Marking & Selecting\n\n    'ctrl-space': 'atomic-emacs:set-mark'\n    'ctrl-alt-space': 'atomic-emacs:mark-sexp'\n    'ctrl-x h': 'atomic-emacs:mark-whole-buffer'\n    'ctrl-x ctrl-x': 'atomic-emacs:exchange-point-and-mark'\n\n### UI\n\n    'ctrl-g': 'core:cancel'\n    'ctrl-x ctrl-s': 'core:save'\n    'ctrl-x ctrl-w': 'core:save-as'\n    'alt-x': 'command-palette:toggle'\n    'alt-.': 'symbols-view:toggle-file-symbols'\n    'ctrl-x ctrl-f': 'fuzzy-finder:toggle-file-finder'\n    'ctrl-x b': 'fuzzy-finder:toggle-buffer-finder'\n    'ctrl-x k': 'core:close'\n    'ctrl-x 0': 'pane:close'\n    'ctrl-x 1': 'atomic-emacs:close-other-panes'\n    'ctrl-x 2': 'pane:split-down'\n    'ctrl-x 3': 'pane:split-right'\n    'ctrl-x o': 'window:focus-next-pane'\n\n### Something missing?\n\nFeel free to suggest features on the Github issue tracker, or better yet, send a\npull request!\n\n## Windows Note\n\nSome common Emacs keystrokes conflict with the default key bindings on Atom for\nWindows in unexpected ways. For example, `ctrl-k` (kill-line on emacs) is a\nprefix key for a set of pane management commands in Atom for Windows. The result\nis that after pressing `ctrl-k`, Atom will wait for 2 seconds to determine if it\nshould treat this as a full command, or the beginning of another command, making\n`kill-line` feel \"slow\".\n\nYou can of course disable this by disabling the all built-in key bindings that\nstart with `ctrl-k` in your `keymaps.config` file. You can also do this a little\neasier with the [disable-keybindings][disable-keybindings] package.\n\n[disable-keybindings]: https://atom.io/packages/disable-keybindings\n\n## Contributing\n\n* [Bug reports](https://github.com/avendael/atomic-emacs/issues)\n* [Source](https://github.com/avendael/atomic-emacs)\n* Patches: Fork on Github, send pull request.\n * Include tests where practical.\n * Leave the version alone, or bump it in a separate commit.\n",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/avendael/atomic-emacs.git"
   },
-  "version": "0.10.0"
+  "version": "0.11.0"
 }
