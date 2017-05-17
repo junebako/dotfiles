@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-1161015-26546-x2ln84/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117417-4294-1okqa4h.m11w0zfr/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-1161015-26546-x2ln84/package.tgz",
-        "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-1161015-26546-x2ln84/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117417-4294-1okqa4h.m11w0zfr/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117417-4294-1okqa4h.m11w0zfr/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-1161015-26546-1qufwem"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117417-4294-1baf016.a9xry66r"
     ]
   ],
-  "_from": "../d-1161015-26546-x2ln84/package.tgz",
-  "_id": "language-haml@0.24.1",
+  "_from": "../d-117417-4294-1okqa4h.m11w0zfr/package.tgz",
+  "_id": "language-haml@0.24.2",
   "_inCache": true,
   "_installable": true,
   "_location": "/language-haml",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-1161015-26546-x2ln84/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117417-4294-1okqa4h.m11w0zfr/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-1161015-26546-x2ln84/package.tgz",
-    "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-1161015-26546-x2ln84/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117417-4294-1okqa4h.m11w0zfr/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117417-4294-1okqa4h.m11w0zfr/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-1161015-26546-x2ln84/package.tgz",
-  "_shasum": "eddb56988110411940f3f6db9f63fd2c52749909",
+  "_resolved": "file:../d-117417-4294-1okqa4h.m11w0zfr/package.tgz",
+  "_shasum": "097159a62845461e0334cede7752ad5f2d2138b4",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-1161015-26546-x2ln84/package.tgz",
-  "_where": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-1161015-26546-1qufwem",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117417-4294-1okqa4h.m11w0zfr/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117417-4294-1baf016.a9xry66r",
   "bugs": {
     "url": "https://github.com/cannikin/language-haml/issues"
   },
@@ -60,5 +60,5 @@
     "type": "git",
     "url": "git+https://github.com/cannikin/language-haml.git"
   },
-  "version": "0.24.1"
+  "version": "0.24.2"
 }
