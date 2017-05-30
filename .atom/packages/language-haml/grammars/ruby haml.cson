@@ -18,6 +18,9 @@
     ]
   }
   {
+    'include': '#continuation'
+  }
+  {
     'match': '^(!!!)($|\\s.*)'
     'name': 'meta.prolog.haml'
     'captures':
@@ -78,14 +81,14 @@
       }
       {
         'begin': '(?<!\\#)\\{(?=.+(,|(do)|\\{|\\}|\\||(\\#.*))\\s*)'
-        'end': '\\s*\\}(?!\\s*\\,)(?!\\s*\\|)(?!\\#\\{.*\\})'
+        'end': '\\s*\\}'
         'name': 'meta.section.attributes.haml'
         'patterns': [
           {
-            'include': 'source.ruby.rails'
+            'include': '#continuation'
           }
           {
-            'include': '#continuation'
+            'include': 'source.ruby.rails'
           }
           {
             'include': '#rubyline'
@@ -147,10 +150,10 @@
         'name': 'meta.section.object.haml'
         'patterns': [
           {
-            'include': 'source.ruby.rails'
+            'include': '#continuation'
           }
           {
-            'include': '#continuation'
+            'include': 'source.ruby.rails'
           }
           {
             'include': '#rubyline'
@@ -288,7 +291,7 @@
 ]
 'repository':
   'continuation':
-    'match': '(\\|)\\s*\\n'
+    'match': '(\\|)\\s*$\\n?'
     'captures':
       '1':
         'name': 'punctuation.separator.continuation.haml'
@@ -360,7 +363,7 @@
   'rubyline':
     {
       'begin': '(&amp|!)?(=|-|~)'
-      'end': '((do|\\{)( \\|[.*]+\\|)?)$|$|^(?!.*\\|\\s*$)\\n?'
+      'end': '((do|\\{)( \\|[.*]+\\|)?)$|$|^(?!.*\\|\\s*)$\\n?'
       'name': 'meta.line.ruby.haml'
       'contentName': 'source.ruby.embedded.haml'
       'endCaptures':
@@ -400,6 +403,25 @@
               'name': 'keyword.control.php'
         }
         # End PHP keywords
+        {
+          'begin': '"'
+          'beginCaptures':
+            '0':
+              'name': 'punctuation.definition.string.end.ruby'
+          'end': '"'
+          'endCaptures':
+            '0':
+              'name': 'punctuation.definition.string.end.ruby'
+          'name': 'string.quoted.double.ruby'
+          'patterns': [
+            {
+              'include': 'source.ruby#interpolated_ruby'
+            }
+            {
+              'include': 'source.ruby#escaped_char'
+            }
+          ]
+        }
         {
           'match': '(\\||,|<|do|\\{)\\s*(\\#.*)?$\\n?'
           'name': 'source.ruby'
