@@ -1391,7 +1391,7 @@ fileIcons:
 
 	Flow:
 		icon: "flow"
-		match: /\.(flowconfig|js\.flow)$/i
+		match: /\.(flowconfig|js\.flow|flow)$/i
 		colour: "medium-orange"
 
 	FLUX:
@@ -1594,7 +1594,7 @@ fileIcons:
 			[".lid", "medium-purple"]
 			[".lol", "medium-pink"]
 			[".lp", "dark-purple"]
-			[".m4", "medium-red"]
+			[".m4", "medium-red", "m4"]
 			[".manifest", "medium-blue"]
 			[".mask", "medium-red"]
 			[".mdpolicy", "dark-blue"]
@@ -2075,7 +2075,7 @@ fileIcons:
 		priority: 2
 		match: [
 			[/^jest(\.config)?\.json$/i, "medium-red"]
-			[".js.snap", "auto-yellow"]
+			[/\.jsx?\.snap$/i, "auto-yellow"]
 		]
 
 	Jinja:
@@ -2134,6 +2134,13 @@ fileIcons:
 		match: ".jl"
 		colour: "medium-purple"
 		interpreter: "julia"
+
+	Junos:
+		icon: "junos"
+		match: ".jos"
+		colour: "medium-cyan"
+		alias: /^(Juniper\W*)Jun\s*os(\W*Config)?$/i
+		scope: "junos"
 
 	"Jupyter Notebook":
 		icon: "jupyter"
@@ -2359,7 +2366,7 @@ fileIcons:
 				interpreter: /man|mandoc|([gnt]|dit)roff/i
 				signature: /^\.TH[ \t]+(?:\S+)|^'\\" [tre]+(?=\s|$)|^\.so[ \t]+man(\w+)\/.+\.\1(?=\s|$)|^\.(EQ|PS|cstart)\n|^\x27{3}\t\\\x22 /]
 			[/\.(rnh|rno|run|runoff)$/i, "dark-maroon", "runoff"]
-			[/^tmac\.|^(mmn|mmt)$/i, "dark-green", priority: 2]
+			[/^tmac\.|^(mmn|mmt|toc\.entries)$/i, "dark-green", priority: 2]
 			[/([\\\/])(?:man(\w+)\1[^\\\/]+\.\2|(?:tmac|eqnchar)\.d\1(?:ms\.)?[^\\\/.]+(?:\.in)?)$/, "dark-green", matchPath: true]
 		]
 
@@ -2535,6 +2542,22 @@ fileIcons:
 			[".dotm", "dark-maroon"]
 			[".dotx", "medium-cyan"]
 			[".wri", "medium-orange"]
+		]
+
+	"Microsoft Visio":
+		icon: "visio"
+		match: [
+			[".vsdx", "dark-blue"]
+			[".vdw", "dark-purple"]
+			[".vdx", "medium-red"]
+			[".vsd", "medium-blue"]
+			[".vsdm", "dark-maroon"]
+			[".vsw", "medium-green"]
+			[".vsx", "dark-red"]
+			[".vtx", "dark-red"]
+			[".vrd", "medium-cyan"]
+			[".vsl", "medium-orange"]
+			[/\.vs[st][mx]?$/i, "dark-blue"]
 		]
 
 	Minecraft:
@@ -2796,6 +2819,7 @@ fileIcons:
 			[".nvmrc", "medium-green"]
 			[".node", "dark-green"]
 			[".node-version", "dark-green"]
+			[/^BUNDLED_NODE_VERSION$/, "dark-green"]
 		]
 
 	Nodemon:
@@ -3339,7 +3363,7 @@ fileIcons:
 		icon: "book"
 		match: [
 			[/^README(\b|_)|^(licen[sc]es?(\.mysql)?|(read|readme|click|delete|keep|test)\.me)$|\.(readme|1st|licen[sc]es?)$/i, "medium-blue", priority: 2]
-			[/^(notice|bugs|changes|change[-_]?log([-._]?\d+)?|contribute|contributing|contributors|copying(\.regex)?|hacking|history|install|maintainers|manifest|more\.stuff|notes|problems|projects|revision|terms|thanks)(_gr)?$/i, "dark-blue", priority: 2]
+			[/^(notice|bugs|changes|change[-_]?log([-._]?\d+)?|contribute|contributing|contributors|copying(\.regex)?|hacking|history|install|maintainers|manifest|more\.stuff|notes|problems|projects|revision|terms|thanks|warnings)(_\w+)?$/i, "dark-blue", priority: 2]
 			[/\b(changelog|copying(v?\d)?|install|read[-_]?me)\b|^licen[sc]es?[-._]/i, "medium-blue", priority: 0]
 			[/^news([-_.]?[-\d]+)?$/i, "dark-blue", priority: 0]
 		]
@@ -3880,6 +3904,13 @@ fileIcons:
 		match: ".tea"
 		colour: "medium-orange"
 
+	Telegram:
+		icon: "telegram"
+		match: ".tl"
+		scope: "tl"
+		colour: "medium-blue"
+		alias: /Type\s*Language/i
+
 	"Template Toolkit":
 		icon: "tt"
 		match: [
@@ -4079,6 +4110,7 @@ fileIcons:
 		alias: /^(ts|Type[-\s]*Script)$/i
 		match: ".ts"
 		colour: "medium-blue"
+		interpreter: /\b(tsc|ts-node)$/
 
 	Typings:
 		icon: "typings"
@@ -4243,7 +4275,7 @@ fileIcons:
 	WebAssembly:
 		icon: "wasm"
 		match: [
-			[/\.was?t$/i, "medium-blue", scope: /(^|\.)was[mt](\.|$)/i, alias: /^was[mt]$/i]
+			[/\.was?t$/i, "medium-blue", scope: /(^|\.)(webassembly|was[mt])(\.|$)/i, alias: /^was[mt]$/i]
 			[".wasm", "medium-red"]
 		]
 
