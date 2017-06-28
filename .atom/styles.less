@@ -8,12 +8,6 @@
  * http://www.lesscss.org
  */
 
-.left {
-  .list-inline {
-    display: none;
-  }
-}
-
 .tree-view {
   font-family: "Menlo";
   font-size: 11px;
@@ -40,102 +34,4 @@ atom-text-editor {
 // To style other content in the text editor's shadow DOM, use the ::shadow
 // expression
 atom-text-editor::shadow .cursor {
-}
-
-atom-pane.pane {
-  -webkit-flex-direction: row;
-  -webkit-flex-wrap: wrap;
-
-  .item-views {
-    box-shadow: -1px 0 0 0 rgba(0,0,0,.5);
-  }
-}
-
-.tab-bar {
-  order: 1;
-  width: 250px;
-  height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-flex-direction: column;
-  padding: 0;
-  box-shadow: inset 0 -8px 8px -4px rgba(0, 0, 0, 0.15), 0 -1px 0 0 rgba(0,0,0,.5);
-
-  &:after {
-    display: none;
-  }
-
-  &.list-inline > li:first-child {
-    padding-left: 10px;
-  }
-
-  .placeholder {
-    position: relative;
-    width: auto;
-    height: 1px;
-    margin: 0;
-    box-shadow: none;
-
-    &:after {
-      display: none;
-    }
-  }
-
-  .tab {
-    -webkit-flex: 0 0 auto;
-    top: 0;
-    max-width: none;
-    height: auto;
-    margin: 0 0 0px 0;
-    padding: 0 20px 0 8px;
-    background: rgba(255,255,255,.05);
-    box-shadow: 0 -1px 0 0 rgba(0,0,0,.3) inset;
-
-    // For 'Atom Material' theme
-    line-height: 2.2rem;
-
-    &.is-dragging {
-      background: rgba(0,0,0, .65);
-    }
-
-    &:before, &:after {
-      display: none;
-    }
-
-    &.is-dragging {
-      box-shadow: 0 0 0 1px #484848;
-    }
-
-    &:not(.is-dragging):hover {
-      background: rgba(255,255,255,.1);
-      box-shadow: 0 0 6px 0 #000, 0 -1px 0 0 rgba(0,0,0,.5) inset;
-    }
-
-    &.active {
-      -webkit-flex: 0 0 auto;
-      width: auto;
-      background: none;
-      box-shadow: 0 0 6px 0 #000;
-    }
-
-    .title {
-      padding-righ: 10px;
-
-      &:before {
-        display: inline-block;
-        width: 20px;
-      }
-    }
-
-    .close-icon {
-      right: 10px;
-      line-height: 1%;
-    }
-
-    &.modified:not(:hover) {
-      .close-icon {
-        right: 10px;
-      }
-    }
-  }
 }
