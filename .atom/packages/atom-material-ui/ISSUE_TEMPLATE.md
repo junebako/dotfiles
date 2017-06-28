@@ -1,3 +1,9 @@
+<!--
+
+Have you read Atom's Code of Conduct? By filing an Issue, you are expected to comply with it, including treating everyone with respect: https://github.com/atom/atom/blob/master/CODE_OF_CONDUCT.md
+
+-->
+
 [Short description of problem here]
 
 **Reproduction Steps:**

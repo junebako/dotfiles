@@ -1,15 +1,19 @@
 .title-bar {
     background: @app-background-color;
     border-bottom: none;
-    color: @accent-text-color;
+    color: @text-color;
+    font-size: @font-size;
 
-    .panel-contrast & {
+    .amu-panel-contrast & {
         background: darken(@app-background-color, 2%);
     }
-    .tinted-tab-bar & {
+
+    .amu-tinted-tab-bar & {
         background: @base-color;
+        color: @accent-text-color;
     }
-    .panel-contrast.tinted-tab-bar & {
+
+    .amu-panel-contrast.amu-tinted-tab-bar & {
         background: darken(@base-color, 5%);
     }
 }

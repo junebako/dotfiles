@@ -5,6 +5,7 @@ atom-notifications {
     padding: 2rem 0.5rem;
     z-index: 9999;
 }
+
 atom-notification {
     padding: 0;
     border-radius: 0 0.125rem 0.125rem 0;
@@ -24,12 +25,14 @@ atom-notification {
             padding-top: 0;
         }
     }
+
     .btn-toolbar {
         line-height: 3rem;
 
         .btn {
             margin-right: 2rem;
         }
+
         .btn-copy-report {
             color: @text-color;
             line-height: 1;
@@ -37,12 +40,15 @@ atom-notification {
             top: -0.25rem;
         }
     }
+
     .detail {
         background: none;
     }
+
     .item {
         border: none;
     }
+
     .close-all.btn {
         height: 1.75rem;
         line-height: 1.75rem;
@@ -50,13 +56,16 @@ atom-notification {
         color: @text-color;
         padding: 0 0.5rem;
     }
+
     &.icon::before {
         display: none;
     }
+
     .close, .close:hover {
         color: @text-color;
         opacity: 1;
     }
+
     &.success, &.error, &.info, &.warning, &.fatal {
         border-left: 0.125rem solid transparent;
 
@@ -64,6 +73,7 @@ atom-notification {
             background-color: darken(@app-background-color, 5%);
             color: @text-color;
         }
+
         .close-all.btn, .close-all.btn:hover {
             border-color: transparent;
             color: fade(@text-color, 50%);
@@ -74,11 +84,13 @@ atom-notification {
                 .z-depth-1;
             }
         }
+
         code {
-            background-color: lighten(@md-red, 5%);
+            background-color: lighten(@text-color-error, 5%);
             color: #FFF;
             font-size: 0.75rem;
         }
+
         .btn {
             max-width: 18rem;
             overflow: hidden;
@@ -90,43 +102,50 @@ atom-notification {
             }
         }
     }
+
     &.success {
-        border-color: @md-light-green;
+        border-color: @text-color-success;
 
         a {
-            color: @md-light-green;
+            color: @text-color-success;
         }
     }
+
     &.error, &.fatal {
-        border-color: @md-red;
+        border-color: @text-color-error;
 
         a {
-            color: @md-red;
+            color: @text-color-error;
         }
     }
+
     &.info {
-        border-color: @md-light-blue;
+        border-color: @text-color-info;
 
         a {
-            color: @md-light-blue;
+            color: @text-color-info;
         }
     }
+
     &.warning {
-        border-color: @md-amber;
+        border-color: @text-color-warning;
 
         a {
-            color: @md-amber;
+            color: @text-color-warning;
         }
     }
+
     &.has-close {
         .content > div {
             padding-right: 4rem;
         }
+
         &:only-child {
             .content > div {
                 padding-right: 4rem;
             }
         }
+
         &:first-child:not(:only-child) {
             .content > div:first-child {
                 padding-top: 3rem;
@@ -134,8 +153,9 @@ atom-notification {
             }
         }
     }
+
     &.has-stack .stack-toggle {
-        color: @md-red;
+        color: @text-color-error;
 
         .icon {
             position: relative;

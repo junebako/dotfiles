@@ -1,131 +1,62 @@
-linter-panel {
-    .panel-contrast & {
-        background-color: darken(@app-background-color, 2.5%);
-    }
-    .panel-shadows & {
-        box-shadow: 0 -0.125rem 0.125rem rgba(0, 0, 0, 0.1);
-    }
-}
-linter-bottom-container {
-    margin-right: 1rem;
-}
-linter-bottom-tab {
-    background: fade(@text-color, 10%);
-    color: @text-color;
+.linter-status-count {
+    .highlight, .highlight-error,
+    .highlight-warning, .highlight-info {
+        border-radius: 0;
+        background: fade(@text-color, 10%);
 
-    &.active {
-        background: @base-color;
-        color: @accent-text-color;
-    }
-    &[hidden] {
-        &:first-child + linter-bottom-tab {
-            border-radius: 0.125rem 0 0 0.125rem;
+        &:first-child {
+            border-radius: .125em 0 0 .125em;
+        }
+
+        &:last-child {
+            border-radius: 0 .125em .125em 0;
         }
     }
-    &:nth-last-child(2) {
-        border-radius: 0 0.125rem 0.125rem;
-        margin-right: 0.5rem;
+
+    .highlight-error {
+        background-color: fade(@text-color-error, 80%);
+        color: rgba(255, 255, 255, .8);
+    }
+
+    .highlight-info {
+        background-color: fade(@text-color-info, 80%);
+        color: rgba(255, 255, 255, .8);
+    }
+
+    .highlight-warning {
+        background-color: fade(@text-color-warning, 80%);
+        color: darken(@text-color-warning, 35%);
     }
 }
-.linter-highlight {
-    margin-left: 0.25rem;
 
-    &.status-success {
-        color: @md-green;
-    }
-    &.status-error {
-        color: @md-red;
-    }
-    &:first-child {
-        margin-left: 0;
-    }
-}
-linter-message {
-    background-color: transparent;
-    line-height: 2rem;
-    display: block;
-    padding-left: 0.25rem;
+.sb-table, .nuclide-ui-table {
+    thead th {
+        background-color: darken(@app-background-color, 1.5%);
 
-    + linter-message {
-        border-top: 1px solid fade(@text-color, 5%);
-    }
-    span:last-child {
-        margin-left: 0.5rem;
-    }
-    .linter-message-link {
-        margin-left: 0.5rem;
-
-        span {
-            margin: 0;
+        &:nth-of-type(even) {
+            background-color: darken(@app-background-color, 2.5%);
         }
     }
-}
-#linter-inline {
-    background: @text-color;
-    padding: 0.25rem;
-    .z-depth-2;
 
-    &::before {
-        border-color: transparent transparent @text-color @text-color;
-    }
-    linter-message {
-        min-height: 1.85rem;
-
-        span:last-child {
-            color: @app-background-color;
-        }
-    }
-    a, a.eslint {
-        color: currentColor;
-    }
-}
-atom-text-editor, atom-text-editor.editor {
-    .decoration.linter-row {
-        .linter-gutter.linter-highlight {
-            &.warning {
-                background-color: @md-amber;
+    tbody {
+        tr {
+            &:nth-of-type(even), &:nth-of-type(even):hover {
+                background-color: lighten(@app-background-color, 1%);
             }
-            &.error {
-                background-color: @md-red;
+
+            &:hover {
+                background-color: inherit;
             }
         }
+
+        td:nth-of-type(even) {
+            background-color: fade(darken(@app-background-color, 2%), 50%);
+        }
     }
 }
-linter-new-panel, linter-default-panel {
-    .panel-heading {
-        padding: 0.25rem 0.5rem;
-        font-size: 0.7rem;
+
+.linter-gutter {
+    &.icon::before {
         margin: 0;
-
-        .heading-status {
-            margin: 0;
-        }
     }
-    .heading-title {
-        line-height: 1.125rem;
-        display: none;
-    }
-    .heading-status {
-        > * {
-            margin-right: 0.5rem;
-        }
-    }
-    .status-success {
-        color: @md-green;
-    }
-    .status-error {
-        color: @md-red;
-    }
-    .status-warning {
-        color: @md-amber;
-    }
-    .panel-contrast & {
-        background: darken(@app-background-color, 2%);
-    }
-    .panel-shadows & {
-        .z-depth-2;
-    }
-}
-.sb-table.linter tbody {
-    background-color: @app-background-color;
 }

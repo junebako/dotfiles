@@ -6,10 +6,12 @@
         margin: 0.5rem 0;
         border-bottom: none;
     }
+
     &.tool-bar-horizontal {
         &.tool-bar-top {
             background: @app-background-color;
         }
+
         &.tool-bar-bottom {
             background: @app-background-color;
 
@@ -17,27 +19,43 @@
                 color: @text-color;
             }
         }
+
         .tool-bar-spacer {
             margin: 0 0.5rem;
             border-left: none;
         }
     }
-    &.tool-bar-horizontal, &.tool-bar-vertical {
+
+    &.tool-bar-horizontal,
+    &.tool-bar-vertical {
         .tool-bar-spacer {
             border-color: fade(@text-color, 5%);
         }
+
+        &.gutter-bottom,
+        &.gutter-top {
+            &::before, &::after {
+                opacity: .5;
+            }
+        }
     }
-    &.tool-bar-12px, &.tool-bar-16px, &.tool-bar-24px, &.tool-bar-32px {
+
+    &.tool-bar-12px,
+    &.tool-bar-16px,
+    &.tool-bar-24px,
+    &.tool-bar-32px {
         &.tool-bar-horizontal {
             .tool-bar-spacer {
                 height: 100%;
             }
         }
+
         &.tool-bar-vertical {
             .tool-bar-spacer {
                 width: 100%;
             }
         }
+
         .tool-bar-btn {
             margin: 0;
             padding: 0;
@@ -50,9 +68,10 @@
                 color: @text-color;
 
                 &:hover:not(:first-child) {
-                    color: @text-color-dark;
+                    color: darken(@text-color, 10%);
                 }
             }
+
             &.tool-bar-mode-dev {
                 position: relative;
                 color: @text-color;
@@ -72,94 +91,106 @@
                     text-align: center;
                     width: 0.75rem;
                     height: 0.75rem;
-                    background: @md-red;
+                    background: @md-red-500;
                     border-radius: 50%;
                     border: 0.125rem solid @text-color-error;
                     box-sizing: content-box;
                     .z-depth-1;
                 }
+
                 &:hover {
                     color: @text-color;
                 }
             }
         }
     }
+
     &.tool-bar-12px {
         .tool-bar-btn {
-            width: 2rem;
-            height: 2rem;
+            width: @font-size * 2.65;
+            height: @font-size * 2.65;
 
             &::before {
-                font-size: 1rem;
-                line-height: 2rem;
+                font-size: @font-size * 1.33;
+                line-height: @font-size * 2.65;
             }
         }
     }
+
     &.tool-bar-16px {
         .tool-bar-btn {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: @font-size * 3.33;
+            height: @font-size * 3.33;
 
             &::before {
-                font-size: 1.125rem;
-                line-height: 2.5rem;
+                font-size: @font-size * 1.5;
+                line-height: @font-size * 3.33;
             }
         }
     }
+
     &.tool-bar-24px {
         .tool-bar-btn {
-            width: 3rem;
-            height: 3rem;
+            width: @font-size * 4;
+            height: @font-size * 4;
 
             &::before {
-                font-size: 1.25rem;
-                line-height: 3rem;
+                font-size: @font-size * 1.66;
+                line-height: @font-size * 4;
             }
         }
     }
+
     &.tool-bar-32px {
         .tool-bar-btn {
-            width: 3.75rem;
-            height: 3.75rem;
+            width: @font-size * 5;
+            height: @font-size * 5;
 
             &::before {
-                font-size: 1.5rem;
-                line-height: 3.75rem;
+                font-size: @font-size * 2;
+                line-height: @font-size * 5;
             }
         }
     }
-    .panel-shadows & {
+
+    .amu-panel-shadows & {
         &.tool-bar-vertical {
             .tool-bar-btn:first-child {
                 .z-depth-1;
             }
         }
     }
-    .panel-contrast & {
+
+    .amu-panel-contrast & {
         &.tool-bar-vertical {
             &.tool-bar-left {
                 background-color: darken(@app-background-color, 3.5%);
             }
+
             &.tool-bar-right {
                 background-color: darken(@app-background-color, 2.5%);
             }
         }
+
         &.tool-bar-horizontal {
             &.tool-bar-bottom {
                 background-color: darken(@app-background-color, 2.5%);
             }
         }
     }
-    .tinted-tab-bar & {
+
+    .amu-tinted-tab-bar & {
         &.tool-bar-vertical {
             .tool-bar-btn {
                 background: @base-color;
                 color: @accent-text-color;
 
-                svg path, svg polygon {
+                svg path,
+                svg polygon {
                     fill: @accent-text-color;
                 }
             }
+
             .tool-bar-btn.tool-bar-item-align-end,
             .tool-bar-btn:not(.tool-bar-item-align-end) + .tool-bar-btn,
             .tool-bar-spacer + .tool-bar-btn {
@@ -167,34 +198,41 @@
                 color: @text-color;
             }
         }
+
         &.tool-bar-top {
             background: @base-color;
 
             .tool-bar-btn {
                 color: @accent-text-color;
 
-                svg path, svg polygon {
+                svg path,
+                svg polygon {
                     fill: @accent-text-color;
                 }
+
                 &.tool-bar-mode-dev {
                     color: @accent-text-color;
                 }
             }
+
             .tool-bar-spacer {
                 border-color: fade(@accent-text-color, 15%);
             }
         }
     }
-    .tinted-tab-bar.panel-contrast & {
+
+    .amu-tinted-tab-bar.amu-panel-contrast & {
         &.tool-bar-vertical {
             .tool-bar-btn {
                 background: darken(@base-color, 5%);
                 color: @accent-text-color;
 
-                svg path, svg polygon {
+                svg path,
+                svg polygon {
                     fill: @accent-text-color;
                 }
             }
+
             .tool-bar-btn.tool-bar-item-align-end,
             .tool-bar-btn:not(.tool-bar-item-align-end) + .tool-bar-btn,
             .tool-bar-spacer + .tool-bar-btn {
@@ -203,28 +241,34 @@
             }
         }
     }
-    .compact-tab-bar & {
-        &.tool-bar-16px, &.tool-bar-24px, &.tool-bar-32px {
+
+    .amu-compact-tab-bar & {
+        &.tool-bar-16px,
+        &.tool-bar-24px,
+        &.tool-bar-32px {
             .tool-bar-btn {
-                width: 2.5rem;
-                height: 2.5rem;
+                width: @font-size * 3.33;
+                height: @font-size * 3.33;
 
                 &::before {
-                    line-height: 2.5rem;
+                    line-height: @font-size * 3.33;
                 }
+
                 &.tool-bar-mode-dev::after {
-                    right: 0.25rem;
-                    bottom: 0.25rem;
+                    right: @font-size * 0.33;
+                    bottom: @font-size * 0.33;
                 }
             }
+
             &.tool-bar-horizontal {
                 .tool-bar-spacer {
-                    height: 1.5rem;
+                    height: @font-size * 2;
                 }
             }
+
             &.tool-bar-vertical {
                 .tool-bar-spacer {
-                    width: 1.5rem;
+                    width: @font-size * 2;
                 }
             }
         }

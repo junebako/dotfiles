@@ -1,63 +1,66 @@
-.tooltip {
-    transition: opacity 500ms @md-timing-function, transform 500ms @md-timing-function;
-    z-index: 9999;
+@tip-background-color: @md-grey-700;
+@tip-text-color: @md-grey-50;
 
-    .no-animations & {
-        transition: none;
-    }
-    .tooltip-arrow {
-        display: none;
-    }
+.tooltip {
+    white-space: nowrap;
+    transition: opacity 250ms;
+    font-size: @font-size * .9;
+
     .keystroke {
-        color: fade(@tip-text-color, 30%);
-        padding-left: 0.125rem;
+        font-family: Helvetica, Arial, sans-serif;
+        color: @tip-text-color;
+        padding: 0 @font-size * .5;
+        border-radius: @component-border-radius;
+        display: inline-block;
+        vertical-align: middle;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.125);
+        margin-left: @component-padding / 2;
+        margin-right: -@component-padding / 2.5;
     }
+
+    &.in {
+        opacity: 1;
+    }
+
     .tooltip-inner {
-        line-height: 1.5rem;
-        padding: 0 0.5rem;
+        line-height: @font-size * 1.8;
         border-radius: @component-border-radius;
         background-color: @tip-background-color;
         color: @tip-text-color;
-        max-width: 20rem;
-        word-wrap: break-word;
-        word-break: keep-all;
-
-        span {
-            color: fade(@tip-text-color, 80%);
-        }
+        white-space: nowrap;
+        max-width: none;
     }
-    &.top, &.bottom {
-        margin: auto;
-        padding: 0.8rem 0;
-    }
-    &.top {
-        margin-bottom: 0.8rem;
-        transform: translateY(1rem);
 
-        &.in {
-            transform: translateY(0);
-        }
+    &.top .tooltip-arrow {
+        border-top-color: @tip-background-color;
     }
-    &.bottom {
-        margin-top: 0;
-        transform: translateY(-1rem);
 
-        &.in {
-            transform: translateY(0);
-        }
+    &.top-left .tooltip-arrow {
+        border-top-color: @tip-background-color;
     }
-    &.right {
-        transform: translateX(-1rem);
 
-        &.in {
-            transform: translateX(0);
-        }
+    &.top-right .tooltip-arrow {
+        border-top-color: @tip-background-color;
     }
-    &.left {
-        transform: translateX(1rem);
 
-        &.in {
-            transform: translateX(0);
-        }
+    &.right .tooltip-arrow {
+        border-right-color: @tip-background-color;
+    }
+
+    &.left .tooltip-arrow {
+        border-left-color: @tip-background-color;
+    }
+
+    &.bottom .tooltip-arrow {
+        border-bottom-color: @tip-background-color;
+    }
+
+    &.bottom-left .tooltip-arrow {
+        border-bottom-color: @tip-background-color;
+    }
+
+    &.bottom-right .tooltip-arrow {
+        border-bottom-color: @tip-background-color;
     }
 }

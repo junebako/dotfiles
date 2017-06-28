@@ -1,21 +1,48 @@
-atom-overlay {
-    background: @app-background-color;
-    z-index: 90;
+.overlay,
+atom-panel.modal {
+    color: @text-color;
+    background-color: @overlay-background-color;
+    font-size: @font-size;
+    padding: @component-padding;
+    box-shadow: 0 0 10px @base-border-color;
+    border-radius: @component-border-radius;
+    overflow: hidden;
+    .z-depth-3;
 
-    .popover-list {
-        border-radius: 0.125rem;
-        z-index: 100;
-        .z-depth-2;
+    atom-text-editor[mini] {
+        margin-bottom: @component-padding;
+    }
 
-        atom-text-editor[mini] {
-            margin: 0.5rem;
-        }
+    &.select-list ol.list-group,
+    .select-list ol.list-group {
+        margin: 0 -@component-padding -@component-padding;
+
         li {
-            padding: 0 1rem;
-        }
-        .error-message, .loading {
-            line-height: 2.5rem;
-            padding: 0 1rem;
+            padding: @component-padding;
+            border-bottom: 1px solid fade(@text-color, 2.5%);
+
+            &.two-lines {
+                padding: @component-padding/2 @component-padding;
+            }
+
+            .status.icon {
+                float: right;
+                margin-left: @component-icon-padding;
+
+                &::before {
+                    margin-right: 0;
+                }
+            }
+
+            &.selected {
+                .status.icon {
+                    color: @text-color-selected;
+                }
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
         }
     }
 }
