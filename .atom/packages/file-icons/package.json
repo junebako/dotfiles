@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117528-43163-1l9rdm4.jpauelv7vi/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2145-1h6aedn.nz705m6lxr/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117528-43163-1l9rdm4.jpauelv7vi/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117528-43163-1l9rdm4.jpauelv7vi/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2145-1h6aedn.nz705m6lxr/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2145-1h6aedn.nz705m6lxr/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117528-43163-wzrpu7.x5crk65hfr"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117711-2145-187oeu0.dpfmv7k3xr"
     ]
   ],
-  "_from": "../d-117528-43163-1l9rdm4.jpauelv7vi/package.tgz",
-  "_id": "file-icons@2.1.8",
+  "_from": "../d-117711-2145-1h6aedn.nz705m6lxr/package.tgz",
+  "_id": "file-icons@2.1.10",
   "_inCache": true,
   "_location": "/file-icons",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117528-43163-1l9rdm4.jpauelv7vi/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2145-1h6aedn.nz705m6lxr/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117528-43163-1l9rdm4.jpauelv7vi/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117528-43163-1l9rdm4.jpauelv7vi/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2145-1h6aedn.nz705m6lxr/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2145-1h6aedn.nz705m6lxr/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-117528-43163-1l9rdm4.jpauelv7vi/package.tgz",
-  "_shasum": "75003478bfc451465680051982fdf8950a0da711",
+  "_resolved": "file:../d-117711-2145-1h6aedn.nz705m6lxr/package.tgz",
+  "_shasum": "19aadfd40ab66484ad582e7d06976a63c972d9a7",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117528-43163-1l9rdm4.jpauelv7vi/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117528-43163-wzrpu7.x5crk65hfr",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2145-1h6aedn.nz705m6lxr/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117711-2145-187oeu0.dpfmv7k3xr",
   "atomTestRunner": "atom-mocha",
   "bugs": {
     "url": "https://github.com/file-icons/atom/issues"
@@ -146,13 +146,13 @@
       }
     }
   },
-  "readme": "File Icons\n==========\nFile-specific icons in Atom for improved visual grepping.\n\n<img alt=\"Icon previews\" width=\"850\" src=\"https://raw.githubusercontent.com/file-icons/atom/6714706f268e257100e03c9eb52819cb97ad570b/preview.png\" />\n\nSupports the following packages:\n\n* [`tree-view`](https://atom.io/packages/tree-view)\n* [`tabs`](https://atom.io/packages/tabs)\n* [`fuzzy-finder`](https://atom.io/packages/fuzzy-finder)\n* [`find-and-replace`](https://atom.io/packages/find-and-replace)\n* [`archive-view`](https://atom.io/packages/archive-view)\n\n\nInstallation\n------------\nOpen **Settings** → **Install** and search for `file-icons`.\n\nAlternatively, install through command-line:\n\n\tapm install file-icons\n\n\nCustomisation\n-------------\nEverything is handled using CSS classes. Use your [stylesheet][1] to change or tweak icons.\n\nConsult the package stylesheets to see what classes are used:\n\n* **Icons:**   [`styles/icons.less`](./styles/icons.less)\n* **Colours:** [`styles/colours.less`](./styles/colours.less)\n* **Fonts:**   [`styles/fonts.less`](./styles/fonts.less)\n\n\n#### Icon reference\n* [**File-Icons**](https://github.com/file-icons/source/blob/master/charmap.md) \n* [**FontAwesome 4.7.0**](http://fontawesome.io/cheatsheet/)\n* [**Mfizz**](https://github.com/file-icons/MFixx/blob/master/charmap.md)\n* [**Devicons**](https://github.com/file-icons/DevOpicons/blob/master/charmap.md)\n\n\n#### Examples\n\n* <a name=\"resize-an-icon\"></a>\n**Resize an icon:**\n\t~~~less\n\t.html5-icon:before{\n\t\tfont-size: 18px;\n\t}\n\t\n\t// Resize in tab-pane only:\n\t.tab > .html5-icon:before{\n\t\tfont-size: 18px;\n\t\ttop: 3px;\n\t}\n\t~~~\n\n\n* <a name=\"choose-your-own-shades-of-orange\"></a>\n**Choose your own shades of orange:**\n\t~~~css\n\t.dark-orange   { color: #6a1e05; }\n\t.medium-orange { color: #b8743d; }\n\t.light-orange  { color: #cf9b67; }\n\t~~~\n\n\n* <a name=\"bring-back-the-blue-shield-php-icon\"></a>\n**Bring back PHP's blue-shield icon:**\n\t~~~css\n\t.php-icon:before{\n\t\tfont-family: MFizz;\n\t\tcontent: \"\\f147\";\n\t}\n\t~~~\n\n\n* <a name=\"assign-icons-by-file-extension\"></a>\n**Assign icons by file extension:**\n\t~~~css\n\t.icon[data-name$=\".js\"]:before{\n\t\tfont-family: Devicons;\n\t\tcontent: \"\\E64E\";\n\t}\n\t~~~\n\n\n* <a name=\"assign-icons-to-directories\"></a>\n**Assign icons to directories:**\n\t~~~less\n\t.directory > .header > .icon{\n\t\t\n\t\t&[data-path$=\".atom/packages\"]:before{\n\t\t\tfont-family: \"Octicons Regular\";\n\t\t\tcontent: \"\\f0c4\";\n\t\t}\n\t}\n\t~~~\n\n\n\nTroubleshooting\n---------------\n\n<a name=\"error-after-installing\"></a>\n**I see this error after installing:**  \n> _\"Cannot read property 'onDidChangeIcon' of undefined\"_  \n\nA restart is needed to complete installation. Reload the window, or restart Atom.\n\nIf this doesn't help, [please file an issue][7].\n\n\n<a name=\"npm-error-when-installing\"></a>\n**Installation halts with an `npm` error:**  \n> _npm ERR! cb() never called!_  \n\nThere might be a corrupted download in your local cache.\nDelete `~/.atom/.apm`, then try again:\n\n\trm -rf ~/.atom/.apm\n\tapm install --production file-icons\n\n\n<a name=\"an-icon-has-stopped-updating\"></a>\n**An icon has stopped updating:**  \nIt's probably a caching issue. Do the following:\n\n1. Open the command palette: <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>\n2. Run `file-icons:clear-cache`\n3. Reload the window, or restart Atom\n\n\n<a name=\"the-tree-views-files-are-borked\"></a>\n**The tree-view's files are borked and [look like this][6]:**  \nIf you haven't restarted Atom since upgrading to [File-Icons v2][v2.0], do so now.\n\nIf restarting doesn't help, your stylesheet probably needs updating. See below.\n\n\n<a name=\"the-tree-view-keeps-opening-by-itself\"></a>\n**The tree-view keeps opening by itself when opening a project window:**  \n1. Open the dev-tools: **View** → **Developer** → **Toggle Developer Tools**\n2. Click the **Console** tab\n3. Run the following line, then restart Atom:\n\n~~~js\natom.config.set(\"file-icons.revealTreeView\", false);\n~~~\n\n\n<a name=\"my-stylesheet-has-errors-since-updating\"></a>\n**My stylesheet has errors since updating:**  \nAs of [v2.0][], classes are used for displaying icons instead of mixins. Delete lines like these from your stylesheet:\n\n~~~diff\n-@import \"packages/file-icons/styles/icons\";\n-@import \"packages/file-icons/styles/items\";\n-@{pane-tab-selector},\n.icon-file-directory {\n\t&[data-name=\".git\"]:before {\n-\t\t.git-icon;\n+\t\tfont-family: Devicons;\n+\t\tcontent: \"\\E602\";\n\t}\n}\n~~~\n\nInstead of `@pane-tab…` variables, use `.tab > .icon[data-path]`:\n\n~~~diff\n-@pane-tab-selector,\n-@pane-tab-temp-selector,\n-@pane-tab-override {\n+.tab > .icon {\n \t&[data-path$=\".to.file\"] {\n \t\t\n \t}\n}\n~~~\n\nThese CSS classes are no longer used, so delete them:\n\n~~~diff\n-.file-icons-force-show-icons,\n-.file-icons-tab-pane-icon,\n-.file-icons-on-changes\n~~~\n\n\n**It's something else.**  \nPlease [file an issue][7]. Include screenshots if necessary.\n\n\nIntegration with other packages\n-------------------------------\nIf you're a package author, you can integrate File-Icons using Atom's services API:\n\nFirst, add this to your `package.json` file:\n\n```json\n\"consumedServices\": {\n\t\"file-icons.element-icons\": {\n\t\t\"versions\": {\n\t\t\t\"1.0.0\": \"consumeElementIcons\"\n\t\t}\n\t}\n}\n```\n\nSecondly, add a function named `consumeElementIcons` (or whatever you named it) to your package's main export:\n\n```js\nlet addIconToElement;\nmodule.exports.consumeElementIcons = function(func){\n\taddIconToElement = func;\n};\n```\n\nThen call the function it gets passed to display icons in the DOM:\n\n```js\nlet fileIcon = document.querySelector(\"li.file-entry > span.icon\");\naddIconToElement(fileIcon, \"/path/to/file.txt\");\n```\n\nThe returned value is a [`Disposable`][10] which clears the icon from memory once it's no longer needed:\n\n```js\nconst disposable = addIconToElement(fileIcon, \"/path/to/file.txt\");\nfileIcon.onDestroy(() => disposable.dispose());\n```\n\n**NOTE:** Remember to remove any default icon-classes before calling the service handler.\n\n```diff\n let fileIcon = document.querySelector(\"li.file-entry > span.icon\");\n+fileIcon.classList.remove(\"icon-file-text\");\n const disposable = addIconToElement(fileIcon, \"/path/to/file.txt\");\n```\n\n\nAcknowledgements\n----------------\nOriginally based on [sommerper/filetype-color][8], but now sporting a shiny new file-icons API in `v2` thanks to [Alhadis][11]!\nAlso thanks to all the [contributors][9]\n\n\n[Referenced links]: ____________________________________________________\n[1]: http://flight-manual.atom.io/using-atom/sections/basic-customization/#style-tweaks\n[4]: https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors\n[5]: https://github.com/Alhadis/DevOpicons/blob/master/charmap.md#JavaScript\n[6]: https://cloud.githubusercontent.com/assets/714197/21516010/4b79a8a8-cd39-11e6-8394-1e3ab778af92.png\n[7]: https://github.com/file-icons/atom/issues/new\n[8]: https://github.com/sommerper/filetype-color\n[9]: https://github.com/file-icons/atom/graphs/contributors\n[10]: https://atom.io/docs/api/latest/Disposable\n[11]: https://github.com/Alhadis\n[v2.0]: https://github.com/file-icons/atom/releases/tag/v2.0.0\n",
+  "readme": "File Icons\n==========\nFile-specific icons in Atom for improved visual grepping.\n\n<img alt=\"Icon previews\" width=\"850\" src=\"https://raw.githubusercontent.com/file-icons/atom/6714706f268e257100e03c9eb52819cb97ad570b/preview.png\" />\n\nSupports the following core packages:\n\n* [`tree-view`](https://atom.io/packages/tree-view)\n* [`tabs`](https://atom.io/packages/tabs)\n* [`fuzzy-finder`](https://atom.io/packages/fuzzy-finder)\n* [`find-and-replace`](https://atom.io/packages/find-and-replace)\n* [`archive-view`](https://atom.io/packages/archive-view)\n\nAn API is offered for packages not listed above. See the [integration steps][13] for more info.\n\n\nInstallation\n------------\nOpen **Settings** → **Install** and search for `file-icons`.\n\nAlternatively, install through command-line:\n\n\tapm install file-icons\n\n\nCustomisation\n-------------\nEverything is handled using CSS classes. Use your [stylesheet][1] to change or tweak icons.\n\nConsult the package stylesheets to see what classes are used:\n\n* **Icons:**   [`styles/icons.less`](./styles/icons.less)\n* **Colours:** [`styles/colours.less`](./styles/colours.less)\n* **Fonts:**   [`styles/fonts.less`](./styles/fonts.less)\n\n\n#### Icon reference\n* [**File-Icons**](https://github.com/file-icons/source/blob/master/charmap.md) \n* [**FontAwesome 4.7.0**](http://fontawesome.io/cheatsheet/)\n* [**Mfizz**](https://github.com/file-icons/MFixx/blob/master/charmap.md)\n* [**Devicons**](https://github.com/file-icons/DevOpicons/blob/master/charmap.md)\n\n\n### Examples ####################################################################\n\n#### Resize an icon\n~~~less\n.html5-icon:before{\n\tfont-size: 18px;\n}\n\n// Resize in tab-pane only:\n.tab > .html5-icon:before{\n\tfont-size: 18px;\n\ttop: 3px;\n}\n~~~\n\n\n#### Choose your own shades of orange\n~~~css\n.dark-orange   { color: #6a1e05; }\n.medium-orange { color: #b8743d; }\n.light-orange  { color: #cf9b67; }\n~~~\n\n\n#### Bring back PHP's blue-shield icon\n~~~css\n.php-icon:before{\n\tfont-family: MFizz;\n\tcontent: \"\\f147\";\n}\n~~~\n\n\n#### Assign icons by file extension\nThe following examples use [attribute selectors][12] to target specific pathnames:\n\n~~~css\n.icon[data-name$=\".js\"]:before{\n\tfont-family: Devicons;\n\tcontent: \"\\E64E\";\n}\n~~~\n\n\n#### Assign icons to directories\n~~~less\n.directory > .header > .icon{\n\t&[data-path$=\".atom/packages\"]:before{\n\t\tfont-family: \"Octicons Regular\";\n\t\tcontent: \"\\f0c4\";\n\t}\n}\n~~~\n\n\n\nTroubleshooting\n---------------\n\n<a name=\"error-after-installing\"></a>\n#### I see this error after installing:\n> _\"Cannot read property 'onDidChangeIcon' of undefined\"_\n\nA restart is needed to complete installation. Reload the window, or restart Atom.\n\nIf this doesn't help, [please file an issue][7].\n\n\n\n<a name=\"npm-error-when-installing\"></a>\n#### Installation halts with an `npm` error:\n> _npm ERR! cb() never called!_\n\nThere might be a corrupted download in your local cache.\nDelete `~/.atom/.apm`, then try again:\n\n~~~shell\nrm -rf ~/.atom/.apm\napm install --production file-icons\n~~~\n\n\n\n<a name=\"an-icon-has-stopped-updating\"></a>\n#### An icon has stopped updating:\nIt's probably a caching issue. Do the following:\n\n1. Open the command palette: <kbd>Cmd/Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>\n2. Run `file-icons:clear-cache`\n3. Reload the window, or restart Atom\n\n\n\n<a name=\"the-tree-views-files-are-borked\"></a>\n#### The tree-view's files are borked and [look like this][6]:\nIf you haven't restarted Atom since upgrading to [File-Icons v2][v2.0], do so now.\n\nIf restarting doesn't help, your stylesheet probably needs updating. See below.\n\n\n\n<a name=\"the-tree-view-keeps-opening-by-itself\"></a>\n#### The tree-view keeps opening by itself when opening a project window:\n\n1. Open the dev-tools: **View** → **Developer** → **Toggle Developer Tools**\n2. Click the **Console** tab\n3. Run the following line, then restart Atom:\n\n~~~js\natom.config.set(\"file-icons.revealTreeView\", false);\n~~~\n\n\n\n<a name=\"my-stylesheet-has-errors-since-updating\"></a>\n#### My stylesheet has errors since updating:\nAs of [v2.0][], classes are used for displaying icons instead of mixins. Delete lines like these from your stylesheet:\n\n~~~diff\n-@import \"packages/file-icons/styles/icons\";\n-@import \"packages/file-icons/styles/items\";\n-@{pane-tab-selector},\n.icon-file-directory {\n\t&[data-name=\".git\"]:before {\n-\t\t.git-icon;\n+\t\tfont-family: Devicons;\n+\t\tcontent: \"\\E602\";\n\t}\n}\n~~~\n\n\nInstead of `@pane-tab…` variables, use `.tab > .icon[data-path]`:\n\n~~~diff\n-@pane-tab-selector,\n-@pane-tab-temp-selector,\n-@pane-tab-override {\n+.tab > .icon {\n \t&[data-path$=\".to.file\"] {\n \t\t\n \t}\n}\n~~~\n\n\nThese CSS classes are no longer used, so delete them:\n\n~~~diff\n-.file-icons-force-show-icons,\n-.file-icons-tab-pane-icon,\n-.file-icons-on-changes\n~~~\n\n\n#### It's something else.\nPlease [file an issue][7]. Include screenshots if necessary.\n\n\n\nIntegration with other packages\n-----------------------------------------------------------------------------------\nIf you're a package author, you can integrate File-Icons using Atom's services API.\n\nFirst, add this to your `package.json` file:\n\n```json\n\"consumedServices\": {\n\t\"file-icons.element-icons\": {\n\t\t\"versions\": {\n\t\t\t\"1.0.0\": \"consumeElementIcons\"\n\t\t}\n\t}\n}\n```\n\nSecondly, add a function named `consumeElementIcons` (or whatever you named it) to your package's main export:\n\n```js\nlet addIconToElement;\nmodule.exports.consumeElementIcons = function(func){\n\taddIconToElement = func;\n};\n```\n\nThen call the function it gets passed to display icons in the DOM:\n\n```js\nlet fileIcon = document.querySelector(\"li.file-entry > span.icon\");\naddIconToElement(fileIcon, \"/path/to/file.txt\");\n```\n\nThe returned value is a [`Disposable`][10] which clears the icon from memory once it's no longer needed:\n\n```js\nconst disposable = addIconToElement(fileIcon, \"/path/to/file.txt\");\nfileIcon.onDestroy(() => disposable.dispose());\n```\n\n**NOTE:** Remember to remove any default icon-classes *before* calling the service handler!\n\n```diff\n let fileIcon = document.querySelector(\"li.file-entry > span.icon\");\n+fileIcon.classList.remove(\"icon-file-text\");\n const disposable = addIconToElement(fileIcon, \"/path/to/file.txt\");\n```\n\n\nAcknowledgements\n------------------------------------------------------------------------------------------\nOriginally based on [sommerper/filetype-color][8], but now sporting a shiny new file-icons\nAPI in `v2` thanks to [Alhadis][11]! Also thanks to all the [contributors][9].\n\n\n[Referenced links]: ____________________________________________________\n[1]: https://flight-manual.atom.io/using-atom/sections/basic-customization/#style-tweaks\n[4]: https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors\n[5]: https://github.com/file-icons/DevOpicons/blob/master/charmap.md#JavaScript\n[6]: https://cloud.githubusercontent.com/assets/714197/21516010/4b79a8a8-cd39-11e6-8394-1e3ab778af92.png\n[7]: https://github.com/file-icons/atom/issues/new\n[8]: https://github.com/sommerper/filetype-color\n[9]: https://github.com/file-icons/atom/graphs/contributors\n[10]: https://atom.io/docs/api/latest/Disposable\n[11]: https://github.com/Alhadis\n[12]: https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors\n[13]: https://github.com/file-icons/atom#integration-with-other-packages\n[v2.0]: https://github.com/file-icons/atom/releases/tag/v2.0.0\n",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/file-icons/atom.git"
   },
-  "version": "2.1.8",
+  "version": "2.1.10",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -168,7 +168,7 @@
       },
       {
         "name": "arr-flatten",
-        "version": "1.0.3",
+        "version": "1.1.0",
         "path": "node_modules/arr-flatten/index.js"
       },
       {
@@ -203,7 +203,7 @@
       },
       {
         "name": "is-descriptor",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "path": "node_modules/base/node_modules/is-descriptor/index.js"
       },
       {
@@ -213,7 +213,7 @@
       },
       {
         "name": "kind-of",
-        "version": "3.2.2",
+        "version": "5.0.2",
         "path": "node_modules/base/node_modules/kind-of/index.js"
       },
       {
@@ -238,12 +238,12 @@
       },
       {
         "name": "is-descriptor",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "path": "node_modules/class-utils/node_modules/is-descriptor/index.js"
       },
       {
         "name": "kind-of",
-        "version": "3.2.2",
+        "version": "5.0.2",
         "path": "node_modules/class-utils/node_modules/kind-of/index.js"
       },
       {
@@ -283,12 +283,12 @@
       },
       {
         "name": "is-descriptor",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "path": "node_modules/expand-brackets/node_modules/is-descriptor/index.js"
       },
       {
         "name": "kind-of",
-        "version": "3.2.2",
+        "version": "5.0.2",
         "path": "node_modules/expand-brackets/node_modules/kind-of/index.js"
       },
       {
@@ -308,12 +308,12 @@
       },
       {
         "name": "is-descriptor",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "path": "node_modules/extglob/node_modules/is-descriptor/index.js"
       },
       {
         "name": "kind-of",
-        "version": "3.2.2",
+        "version": "5.0.2",
         "path": "node_modules/extglob/node_modules/kind-of/index.js"
       },
       {
@@ -388,12 +388,12 @@
       },
       {
         "name": "is-descriptor",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "path": "node_modules/is-descriptor/index.js"
       },
       {
         "name": "kind-of",
-        "version": "3.2.2",
+        "version": "5.0.2",
         "path": "node_modules/is-descriptor/node_modules/kind-of/index.js"
       },
       {
@@ -423,7 +423,7 @@
       },
       {
         "name": "is-plain-object",
-        "version": "2.0.3",
+        "version": "2.0.4",
         "path": "node_modules/is-plain-object/index.js"
       },
       {
@@ -433,7 +433,7 @@
       },
       {
         "name": "isobject",
-        "version": "3.0.0",
+        "version": "3.0.1",
         "path": "node_modules/isobject/index.js"
       },
       {
@@ -458,7 +458,7 @@
       },
       {
         "name": "micromatch",
-        "version": "3.0.3",
+        "version": "3.0.4",
         "path": "node_modules/micromatch/index.js"
       },
       {
@@ -488,8 +488,13 @@
       },
       {
         "name": "is-descriptor",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "path": "node_modules/object-copy/node_modules/is-descriptor/index.js"
+      },
+      {
+        "name": "kind-of",
+        "version": "5.0.2",
+        "path": "node_modules/object-copy/node_modules/is-descriptor/node_modules/kind-of/index.js"
       },
       {
         "name": "kind-of",
@@ -573,12 +578,12 @@
       },
       {
         "name": "is-descriptor",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "path": "node_modules/snapdragon/node_modules/is-descriptor/index.js"
       },
       {
         "name": "kind-of",
-        "version": "3.2.2",
+        "version": "5.0.2",
         "path": "node_modules/snapdragon/node_modules/kind-of/index.js"
       },
       {
@@ -628,12 +633,12 @@
       },
       {
         "name": "is-descriptor",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "path": "node_modules/static-extend/node_modules/is-descriptor/index.js"
       },
       {
         "name": "kind-of",
-        "version": "3.2.2",
+        "version": "5.0.2",
         "path": "node_modules/static-extend/node_modules/kind-of/index.js"
       },
       {
@@ -658,12 +663,12 @@
       },
       {
         "name": "is-descriptor",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "path": "node_modules/to-regex/node_modules/is-descriptor/index.js"
       },
       {
         "name": "kind-of",
-        "version": "3.2.2",
+        "version": "5.0.2",
         "path": "node_modules/to-regex/node_modules/kind-of/index.js"
       },
       {
@@ -698,12 +703,12 @@
       },
       {
         "name": "is-descriptor",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "path": "node_modules/use/node_modules/is-descriptor/index.js"
       },
       {
         "name": "kind-of",
-        "version": "3.2.2",
+        "version": "5.0.2",
         "path": "node_modules/use/node_modules/kind-of/index.js"
       }
     ],
@@ -763,7 +768,6 @@
         "node_modules/base/index.js",
         "node_modules/base/node_modules/define-property/index.js",
         "node_modules/base/node_modules/is-descriptor/index.js",
-        "node_modules/base/node_modules/is-descriptor/utils.js",
         "node_modules/base/node_modules/isobject/index.js",
         "node_modules/base/node_modules/kind-of/index.js",
         "node_modules/base/utils.js",
@@ -777,7 +781,6 @@
         "node_modules/class-utils/index.js",
         "node_modules/class-utils/node_modules/define-property/index.js",
         "node_modules/class-utils/node_modules/is-descriptor/index.js",
-        "node_modules/class-utils/node_modules/is-descriptor/utils.js",
         "node_modules/class-utils/node_modules/kind-of/index.js",
         "node_modules/class-utils/utils.js",
         "node_modules/collection-visit/index.js",
@@ -797,7 +800,6 @@
         "node_modules/expand-brackets/lib/utils.js",
         "node_modules/expand-brackets/node_modules/define-property/index.js",
         "node_modules/expand-brackets/node_modules/is-descriptor/index.js",
-        "node_modules/expand-brackets/node_modules/is-descriptor/utils.js",
         "node_modules/expand-brackets/node_modules/kind-of/index.js",
         "node_modules/extend-shallow/index.js",
         "node_modules/extglob/index.js",
@@ -807,7 +809,6 @@
         "node_modules/extglob/lib/utils.js",
         "node_modules/extglob/node_modules/define-property/index.js",
         "node_modules/extglob/node_modules/is-descriptor/index.js",
-        "node_modules/extglob/node_modules/is-descriptor/utils.js",
         "node_modules/extglob/node_modules/kind-of/index.js",
         "node_modules/extglob/node_modules/to-regex/index.js",
         "node_modules/extglob/node_modules/to-regex/node_modules/regex-not/index.js",
@@ -825,7 +826,6 @@
         "node_modules/is-data-descriptor/node_modules/kind-of/index.js",
         "node_modules/is-descriptor/index.js",
         "node_modules/is-descriptor/node_modules/kind-of/index.js",
-        "node_modules/is-descriptor/utils.js",
         "node_modules/is-extendable/index.js",
         "node_modules/is-extglob/index.js",
         "node_modules/is-number/index.js",
@@ -855,7 +855,7 @@
         "node_modules/object-copy/index.js",
         "node_modules/object-copy/node_modules/define-property/index.js",
         "node_modules/object-copy/node_modules/is-descriptor/index.js",
-        "node_modules/object-copy/node_modules/is-descriptor/utils.js",
+        "node_modules/object-copy/node_modules/is-descriptor/node_modules/kind-of/index.js",
         "node_modules/object-copy/node_modules/kind-of/index.js",
         "node_modules/object-visit/index.js",
         "node_modules/object-visit/node_modules/isobject/index.js",
@@ -878,7 +878,6 @@
         "node_modules/snapdragon/lib/utils.js",
         "node_modules/snapdragon/node_modules/define-property/index.js",
         "node_modules/snapdragon/node_modules/is-descriptor/index.js",
-        "node_modules/snapdragon/node_modules/is-descriptor/utils.js",
         "node_modules/snapdragon/node_modules/kind-of/index.js",
         "node_modules/snapdragon-node/index.js",
         "node_modules/snapdragon-util/index.js",
@@ -906,14 +905,12 @@
         "node_modules/static-extend/index.js",
         "node_modules/static-extend/node_modules/define-property/index.js",
         "node_modules/static-extend/node_modules/is-descriptor/index.js",
-        "node_modules/static-extend/node_modules/is-descriptor/utils.js",
         "node_modules/static-extend/node_modules/kind-of/index.js",
         "node_modules/to-object-path/index.js",
         "node_modules/to-object-path/node_modules/kind-of/index.js",
         "node_modules/to-regex/index.js",
         "node_modules/to-regex/node_modules/define-property/index.js",
         "node_modules/to-regex/node_modules/is-descriptor/index.js",
-        "node_modules/to-regex/node_modules/is-descriptor/utils.js",
         "node_modules/to-regex/node_modules/kind-of/index.js",
         "node_modules/to-regex-range/index.js",
         "node_modules/union-value/index.js",
@@ -922,7 +919,6 @@
         "node_modules/use/index.js",
         "node_modules/use/node_modules/define-property/index.js",
         "node_modules/use/node_modules/is-descriptor/index.js",
-        "node_modules/use/node_modules/is-descriptor/utils.js",
         "node_modules/use/node_modules/kind-of/index.js",
         "node_modules/use/utils.js"
       ],
@@ -995,6 +991,7 @@
         "node_modules/ms/package.json",
         "node_modules/nanomatch/package.json",
         "node_modules/object-copy/node_modules/define-property/package.json",
+        "node_modules/object-copy/node_modules/is-descriptor/node_modules/kind-of/package.json",
         "node_modules/object-copy/node_modules/is-descriptor/package.json",
         "node_modules/object-copy/node_modules/kind-of/package.json",
         "node_modules/object-copy/package.json",
@@ -1106,8 +1103,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
+          "kind-of": "^5.0.0"
         }
       },
       {
@@ -1116,14 +1112,6 @@
         ],
         "dependencies": {
           "isarray": "1.0.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/base/node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
         }
       },
       {
@@ -1189,16 +1177,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/class-utils/node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
+          "kind-of": "^5.0.0"
         }
       },
       {
@@ -1258,16 +1237,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/expand-brackets/node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
+          "kind-of": "^5.0.0"
         }
       },
       {
@@ -1309,16 +1279,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/extglob/node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
+          "kind-of": "^5.0.0"
         }
       },
       {
@@ -1407,16 +1368,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/is-descriptor/node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
+          "kind-of": "^5.0.0"
         }
       },
       {
@@ -1448,7 +1400,7 @@
           "node_modules/is-plain-object"
         ],
         "dependencies": {
-          "isobject": "^3.0.0"
+          "isobject": "^3.0.1"
         }
       },
       {
@@ -1551,8 +1503,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
+          "kind-of": "^5.0.0"
         }
       },
       {
@@ -1653,16 +1604,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/snapdragon/node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
+          "kind-of": "^5.0.0"
         }
       },
       {
@@ -1736,16 +1678,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/static-extend/node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
+          "kind-of": "^5.0.0"
         }
       },
       {
@@ -1789,16 +1722,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/to-regex/node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
+          "kind-of": "^5.0.0"
         }
       },
       {
@@ -1855,16 +1779,7 @@
         "dependencies": {
           "is-accessor-descriptor": "^0.1.6",
           "is-data-descriptor": "^0.1.4",
-          "kind-of": "^3.0.2",
-          "lazy-cache": "^2.0.2"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/use/node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
+          "kind-of": "^5.0.0"
         }
       }
     ]
