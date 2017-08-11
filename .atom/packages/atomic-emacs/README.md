@@ -3,6 +3,20 @@
 Emacs keybindings for Atom.
 ![Build Status](https://travis-ci.org/avendael/atomic-emacs.svg?branch=master)
 
+## Installation
+
+On the command line:
+
+ * `apm install atomic-emacs`
+
+Or in Atom:
+
+ * In `Preferences`, click the `Install` tab.
+ * Type `atomic-emacs` in the search box, and click the `Packages` button.
+ * Click `Install` on the `atomic-emacs` package.
+
+There's no need to restart Atom.
+
 ## Commands
 
 ### Navigation
@@ -17,6 +31,8 @@ Emacs keybindings for Atom.
     'alt-right': 'atomic-emacs:forward-word'
     'ctrl-alt-b': 'atomic-emacs:backward-sexp'
     'ctrl-alt-f': 'atomic-emacs:forward-sexp'
+    'ctrl-alt-p': 'atomic-emacs:backward-list'
+    'ctrl-alt-n': 'atomic-emacs:forward-list'
     'alt-{': 'atomic-emacs:backward-paragraph'
     'alt-}': 'atomic-emacs:forward-paragraph'
     'alt-m': 'atomic-emacs:back-to-indentation'
@@ -49,6 +65,7 @@ prefix argument of -1).
     'alt-^': 'atomic-emacs:delete-indentation'
     'ctrl-o': 'atomic-emacs:open-line'
     'alt-space': 'atomic-emacs:just-one-space'
+    'ctrl-x ctrl-o': 'atomic-emacs:delete-blank-lines'
     'ctrl-t': 'atomic-emacs:transpose-chars'
     'alt-t': 'atomic-emacs:transpose-words'
     'ctrl-x ctrl-t': 'atomic-emacs:transpose-lines'
@@ -58,6 +75,7 @@ prefix argument of -1).
     'alt-u': 'atomic-emacs:upcase-word-or-region'
     'alt-c': 'atomic-emacs:capitalize-word-or-region'
     'ctrl-j': 'editor:newline'
+    'ctrl-m': 'editor:newline'
     'ctrl-/': 'core:undo'
     'ctrl-_': 'core:undo'
     'alt-/': 'autocomplete-plus:activate'
@@ -78,7 +96,7 @@ prefix argument of -1).
     'ctrl-x ctrl-w': 'core:save-as'
     'alt-x': 'command-palette:toggle'
     'alt-.': 'symbols-view:toggle-file-symbols'
-    'ctrl-x ctrl-f': 'fuzzy-finder:toggle-file-finder'
+    'ctrl-x ctrl-f': 'atomic-emacs:find-file'
     'ctrl-x b': 'fuzzy-finder:toggle-buffer-finder'
     'ctrl-x k': 'core:close'
     'ctrl-x 0': 'pane:close'
@@ -86,6 +104,14 @@ prefix argument of -1).
     'ctrl-x 2': 'pane:split-down'
     'ctrl-x 3': 'pane:split-right'
     'ctrl-x o': 'window:focus-next-pane'
+
+### Other Packages
+
+For a more Emacs-like version of `find-file`, install
+[`advanced-open-file`](https://atom.io/packages/advanced-open-file). Atomic
+Emacs will use that package if it exists by default instead of Atom's
+fuzzy-finder. This may be disabled in settings, but note that fuzzy-finder
+cannot create new files.
 
 ### Something missing?
 

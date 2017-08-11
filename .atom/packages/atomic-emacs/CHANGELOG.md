@@ -1,3 +1,14 @@
+## LATEST
+
+* Add delete-blank-lines (ctrl-x ctrl-o).
+* Add {forward,backward}-list (ctrl-alt-n, ctrl-alt-p). [Philip Larie]
+* Bind editor:newline to ctrl-m.
+* Use advanced-open-file if installed for ctrl-x ctrl-f (can be disabled in
+  settings).
+* Fix killing & yanking with multiple cursors.
+* Fix open-line moving the cursor if autoindentation is on.
+* Fix editing commands in settings pane under Atom 1.19.
+
 ## 0.11.0 (2017-05-15)
 
 * Add option to have clipboard copies appended to kill ring. [Marty Gentillon]

@@ -20,8 +20,16 @@ afterCommand = (event) ->
 
 getEditor = (event) ->
   # Get editor from the event if possible so we can target mini-editors.
-  editor = event.target?.getModel?() ? atom.workspace.getActiveTextEditor()
+  editor = event.target?.closest('atom-text-editor')?.getModel?() ? atom.workspace.getActiveTextEditor()
   EmacsEditor.for(editor)
+
+findFile = (event) ->
+  haveAOF = atom.packages.isPackageLoaded('advanced-open-file')
+  useAOF = atom.config.get('atomic-emacs.useAdvancedOpenFile')
+  if haveAOF and useAOF
+    atom.commands.dispatch(event.target, 'advanced-open-file:toggle')
+  else
+    atom.commands.dispatch(event.target, 'fuzzy-finder:toggle-file-finder')
 
 closeOtherPanes = (event) ->
   activePane = atom.workspace.getActivePane()
@@ -38,10 +46,14 @@ module.exports =
   State: State
 
   config:
+    useAdvancedOpenFile:
+      type: 'boolean',
+      default: true,
+      title: 'Use advanced-open-file for find-file if available'
     alwaysUseKillRing:
       type: 'boolean',
       default: false,
-      title: 'Use kill ring for built-in copy & cut commands.'
+      title: 'Use kill ring for built-in copy & cut commands'
     killToClipboard:
       type: 'boolean',
       default: true,
@@ -73,6 +85,8 @@ module.exports =
       "atomic-emacs:forward-word": (event) -> getEditor(event).forwardWord()
       "atomic-emacs:backward-sexp": (event) -> getEditor(event).backwardSexp()
       "atomic-emacs:forward-sexp": (event) -> getEditor(event).forwardSexp()
+      "atomic-emacs:backward-list": (event) -> getEditor(event).backwardList()
+      "atomic-emacs:forward-list": (event) -> getEditor(event).forwardList()
       "atomic-emacs:previous-line": (event) -> getEditor(event).previousLine()
       "atomic-emacs:next-line": (event) -> getEditor(event).nextLine()
       "atomic-emacs:backward-paragraph": (event) -> getEditor(event).backwardParagraph()
@@ -105,6 +119,7 @@ module.exports =
       "atomic-emacs:delete-indentation": (event) -> getEditor(event).deleteIndentation()
       "atomic-emacs:open-line": (event) -> getEditor(event).openLine()
       "atomic-emacs:just-one-space": (event) -> getEditor(event).justOneSpace()
+      "atomic-emacs:delete-blank-lines": (event) -> getEditor(event).deleteBlankLines()
       "atomic-emacs:transpose-chars": (event) -> getEditor(event).transposeChars()
       "atomic-emacs:transpose-lines": (event) -> getEditor(event).transposeLines()
       "atomic-emacs:transpose-sexps": (event) -> getEditor(event).transposeSexps()
@@ -125,6 +140,7 @@ module.exports =
       "atomic-emacs:scroll-up": (event) -> getEditor(event).scrollUp()
 
       # UI
+      "atomic-emacs:find-file": (event) -> findFile(event)
       "atomic-emacs:close-other-panes": (event) -> closeOtherPanes(event)
       "core:cancel": (event) -> getEditor(event).keyboardQuit()
 

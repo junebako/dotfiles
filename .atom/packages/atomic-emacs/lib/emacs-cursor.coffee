@@ -152,12 +152,44 @@ class EmacsCursor
     if not @goToMatchStartForward(regexp)
       @_goTo @editor.getEofBufferPosition()
 
+  # Insert the given text after this cursor.
+  insertAfter: (text) ->
+    position = @cursor.getBufferPosition()
+    @editor.setTextInBufferRange([position, position], "\n")
+    @cursor.setBufferPosition(position)
+
   horizontalSpaceRange: ->
     @skipCharactersBackward(' \t')
     start = @cursor.getBufferPosition()
     @skipCharactersForward(' \t')
     end = @cursor.getBufferPosition()
     [start, end]
+
+  deleteBlankLines: ->
+    eof = @editor.getEofBufferPosition()
+    blankLineRe = /^[ \t]*$/
+
+    point = @cursor.getBufferPosition()
+    s = e = point.row
+    while blankLineRe.test(@cursor.editor.lineTextForBufferRow(e)) and e <= eof.row
+      e += 1
+    while s > 0 and blankLineRe.test(@cursor.editor.lineTextForBufferRow(s - 1))
+      s -= 1
+
+    if s == e
+      # No blanks: delete blanks ahead.
+      e += 1
+      while blankLineRe.test(@cursor.editor.lineTextForBufferRow(e)) and e <= eof.row
+        e += 1
+      @cursor.editor.setTextInBufferRange([[s + 1, 0], [e, 0]], '')
+    else if e == s + 1
+      # One blank: delete it.
+      @cursor.editor.setTextInBufferRange([[s, 0], [e, 0]], '')
+      @cursor.setBufferPosition([s, 0])
+    else
+      # Multiple blanks: delete all but one.
+      @cursor.editor.setTextInBufferRange([[s, 0], [e, 0]], '\n')
+      @cursor.setBufferPosition([s, 0])
 
   transformWord: (transformer) ->
     @skipNonWordCharactersForward()
@@ -277,6 +309,18 @@ class EmacsCursor
     point = @cursor.getBufferPosition()
     target = @_sexpBackwardFrom(point)
     @cursor.setBufferPosition(target)
+
+  # Skip to the end of the current or next list.
+  skipListForward: ->
+    point = @cursor.getBufferPosition()
+    target = @_listForwardFrom(point)
+    @cursor.setBufferPosition(target) if target
+
+  # Skip to the beginning of the current or previous list.
+  skipListBackward: ->
+    point = @cursor.getBufferPosition()
+    target = @_listBackwardFrom(point)
+    @cursor.setBufferPosition(target) if target
 
   # Add the next sexp to the cursor's selection. Activate if necessary.
   markSexp: ->
@@ -427,6 +471,19 @@ class EmacsCursor
       result or point
     else
       @_locateBackwardFrom(point, /[\W\n]/i)?.end or BOB
+
+  _listForwardFrom: (point) ->
+    eob = @editor.getEofBufferPosition()
+    if !(match = @_locateForwardFrom(point, /[()[\]{}]/i))
+      return null
+    end = this._sexpForwardFrom(match.start)
+    if end.isEqual(match.start) then null else end
+
+  _listBackwardFrom: (point) ->
+    if !(match = @_locateBackwardFrom(point, /[()[\]{}]/i))
+      return null
+    start = this._sexpBackwardFrom(match.end)
+    if start.isEqual(match.end) then null else start
 
   _locateBackwardFrom: (point, regExp) ->
     result = null

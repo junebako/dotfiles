@@ -142,6 +142,28 @@ describe "AtomicEmacs", ->
       atom.commands.dispatch @editorView, 'atomic-emacs:forward-sexp'
       expect(@testEditor.getState()).toEqual(" aa[0]")
 
+  describe "atomic-emacs:backward-list", ->
+    it "moves all cursors backward one list expression", ->
+      @testEditor.setState("(aa {bb})\naa [0]\n(bb cc)[1]\n")
+      atom.commands.dispatch @editorView, 'atomic-emacs:backward-list'
+      expect(@testEditor.getState()).toEqual("[0](aa {bb})\naa \n[1](bb cc)\n")
+
+    it "merges cursors that coincide", ->
+      @testEditor.setState("(a)[0] [1]")
+      atom.commands.dispatch @editorView, 'atomic-emacs:backward-list'
+      expect(@testEditor.getState()).toEqual("[0](a) ")
+
+  describe "atomic-emacs:forward-list", ->
+    it "moves all cursors forward one list expression", ->
+      @testEditor.setState("[0]a{a}\n[1](bb cc)\n")
+      atom.commands.dispatch @editorView, 'atomic-emacs:forward-list'
+      expect(@testEditor.getState()).toEqual("a{a}[0]\n(bb cc)[1]\n")
+
+    it "merges cursors that coincide", ->
+      @testEditor.setState("[0] (a)[1]")
+      atom.commands.dispatch @editorView, 'atomic-emacs:forward-list'
+      expect(@testEditor.getState()).toEqual(" (a)[0]")
+
   describe "atomic-emacs:previous-line", ->
     it "moves the cursor up one line", ->
       @testEditor.setState("ab\na[0]b\n")
@@ -344,24 +366,24 @@ describe "AtomicEmacs", ->
           expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
     describe "when there are multiple cursors", ->
-      it "kills to a cursor-local kill ring", ->
+      beforeEach ->
         @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+
+      it "kills to a cursor-local kill ring", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:backward-kill-word'
         expect(@getKillRing(0).getEntries()).toEqual(['b'])
         expect(@getKillRing(1).getEntries()).toEqual(['e'])
-        expect(KillRing.global.getEntries()).toEqual(['b\ne'])
 
-      it "puts the kills on the clipboard separated by newlines", ->
-        @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+      it "puts all kills on the global kill ring & clipboard", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:backward-kill-word'
-        expect(atom.clipboard.read()).toEqual("b\ne")
+        expect(KillRing.global.getEntries()).toEqual(['b\ne\n'])
+        expect(atom.clipboard.read()).toEqual("b\ne\n")
 
       describe "When atomic-emacs.killToClipboard is off", ->
         beforeEach ->
           atom.config.set 'atomic-emacs.killToClipboard', false
 
         it "doesn't put the kill clipboard separated by newlines", ->
-          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
           atom.commands.dispatch @editorView, 'atomic-emacs:backward-kill-word'
           expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
@@ -449,24 +471,24 @@ describe "AtomicEmacs", ->
           expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
     describe "when there are multiple cursors", ->
-      it "kills to a cursor-local kill ring", ->
+      beforeEach ->
         @testEditor.setState("a[0]b(0)c d[1]e(1)f")
+
+      it "kills to a cursor-local kill ring", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-word'
         expect(@getKillRing(0).getEntries()).toEqual(['b'])
         expect(@getKillRing(1).getEntries()).toEqual(['e'])
-        expect(KillRing.global.getEntries()).toEqual(['b\ne'])
 
-      it "puts the kills on the clipboard separated by newlines", ->
-        @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+      it "puts all kills on the global kill ring & clipboard", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-word'
-        expect(atom.clipboard.read()).toEqual("b\ne")
+        expect(KillRing.global.getEntries()).toEqual(['b\ne\n'])
+        expect(atom.clipboard.read()).toEqual("b\ne\n")
 
       describe "When atomic-emacs.killToClipboard is off", ->
         beforeEach ->
           atom.config.set 'atomic-emacs.killToClipboard', false
 
         it "doesn't put the kill on the clipboard separated by newlines", ->
-          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
           atom.commands.dispatch @editorView, 'atomic-emacs:kill-word'
           expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
@@ -598,19 +620,17 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
         expect(@getKillRing(0).getEntries()).toEqual(['bc'])
         expect(@getKillRing(1).getEntries()).toEqual(['ef'])
-        expect(KillRing.global.getEntries()).toEqual(['bc\nef'])
 
-      it "puts the kills on the clipboard separated by newlines", ->
-        @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+      it "puts all kills on the global kill ring & clipboard", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
-        expect(atom.clipboard.read()).toEqual("b\ne")
+        expect(KillRing.global.getEntries()).toEqual(['bc\nef\n'])
+        expect(atom.clipboard.read()).toEqual("bc\nef\n")
 
       describe "When atomic-emacs.killToClipboard is off", ->
         beforeEach ->
           atom.config.set 'atomic-emacs.killToClipboard', false
 
         it "doesn't put the kill on the clipboard separated by newlines", ->
-          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
           atom.commands.dispatch @editorView, 'atomic-emacs:kill-line'
           expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
@@ -672,19 +692,17 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-region'
         expect(@getKillRing(0).getEntries()).toEqual(['b'])
         expect(@getKillRing(1).getEntries()).toEqual(['e'])
-        expect(KillRing.global.getEntries()).toEqual(['b\ne'])
 
-      it "puts the kills on the clipboard separated by newlines", ->
-        @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+      it "puts all kills on the global kill ring & clipboard", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:kill-region'
-        expect(atom.clipboard.read()).toEqual("b\ne")
+        expect(KillRing.global.getEntries()).toEqual(['b\ne\n'])
+        expect(atom.clipboard.read()).toEqual("b\ne\n")
 
       describe "When atomic-emacs.killToClipboard is off", ->
         beforeEach ->
           atom.config.set 'atomic-emacs.killToClipboard', false
 
         it "doesn't put the kill on the clipboard separated by newlines", ->
-          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
           atom.commands.dispatch @editorView, 'atomic-emacs:kill-region'
           expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
@@ -764,19 +782,17 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
         expect(@getKillRing(0).getEntries()).toEqual(['b'])
         expect(@getKillRing(1).getEntries()).toEqual(['e'])
-        expect(KillRing.global.getEntries()).toEqual(['b\ne'])
 
-      it "puts the kills on the clipboard separated by newlines", ->
-        @testEditor.setState("a(0)b[0]c d(1)e[1]f")
+      it "puts all kills on the global kill ring & clipboard", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
-        expect(atom.clipboard.read()).toEqual("b\ne")
+        expect(KillRing.global.getEntries()).toEqual(['b\ne\n'])
+        expect(atom.clipboard.read()).toEqual("b\ne\n")
 
       describe "When atomic-emacs.killToClipboard is off", ->
         beforeEach ->
           atom.config.set 'atomic-emacs.killToClipboard', false
 
         it "doesn't put the kill on the clipboard separated by newlines", ->
-          @testEditor.setState("a(0)b[0]c d(1)e[1]f")
           atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
           expect(atom.clipboard.read()).toEqual('initial clipboard content')
 
@@ -1098,6 +1114,28 @@ describe "AtomicEmacs", ->
       atom.commands.dispatch @editorView, 'atomic-emacs:just-one-space'
       atom.commands.dispatch @editorView, 'core:undo'
       expect(@testEditor.getState()).toEqual("a [0] b\n\t[1]\t")
+
+  describe "atomic-emacs:delete-blank-lines", ->
+    it "deletes all surrounding blank lines (leaving one) if on a nonisolated blank line", ->
+      @testEditor.setState(" \n [0]\n \nx\n [1]\n \nx\n [2]\n \n \nx\n \n \n [3]\nx\n \n [4]\n \n ")
+      atom.commands.dispatch @editorView, 'atomic-emacs:delete-blank-lines'
+      expect(@testEditor.getState()).toEqual("[0]\nx\n[1]\nx\n[2]\nx\n[3]\nx\n[4]\n")
+
+    it "deletes that one (unless it's at eof) if on an isolated blank line", ->
+      @testEditor.setState(" [0]\nx\n [1]\nx\n [2]")
+      atom.commands.dispatch @editorView, 'atomic-emacs:delete-blank-lines'
+      expect(@testEditor.getState()).toEqual("[0]x\n[1]x\n[2]")
+
+    it "deletes any immediately following blank lines if on a nonblank line", ->
+      @testEditor.setState("a[0]b\nx\na[1]b\n \n \nx\na[2]b\n \n ")
+      atom.commands.dispatch @editorView, 'atomic-emacs:delete-blank-lines'
+      expect(@testEditor.getState()).toEqual("a[0]b\nx\na[1]b\nx\na[2]b\n")
+
+    it "creates a single history entry for multiple changes", ->
+      @testEditor.setState("a\n[0]\n\na\n[1]\n")
+      atom.commands.dispatch @editorView, 'atomic-emacs:delete-blank-lines'
+      atom.commands.dispatch @editorView, 'core:undo'
+      expect(@testEditor.getState()).toEqual("a\n[0]\n\na\n[1]\n")
 
   describe "atomic-emacs:transpose-chars", ->
     it "transposes the current character with the one after it", ->
