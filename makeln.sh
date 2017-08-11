@@ -19,6 +19,6 @@ ln -s $DOTFILES/.peco
 ln -s $DOTFILES/.rspec
 ln -s $DOTFILES/.gemrc
 
-cd ~/Library/Application\ Support/Karabiner
+cd ~/.config
 
-ln -s $DOTFILES/karabiner/private.xml
+ln -s $DOTFILES/.config/karabiner
