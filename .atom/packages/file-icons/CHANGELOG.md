@@ -3,7 +3,21 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.10...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.11...HEAD
+
+
+[v2.1.11] - 2017-08-17
+----------------------
+### Added
+- **Support:** GIMP (`.gpl`), Minecraft (`.mcfunction`, `pack.mcmeta`, `.png.mcmeta`)
+
+### Fixed
+- [[`#639`][]]: Rare exception thrown when loading `.gitattributes` files
+- Regression with reading contents of opened text-buffers
+
+[v2.1.11]: https://github.com/file-icons/atom/releases/tag/v2.1.11
+[`#639`]:  https://github.com/file-icons/atom/issues/639
+
 
 
 [v2.1.10] - 2017-08-06
