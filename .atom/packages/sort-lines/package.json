@@ -1,8 +1,40 @@
 {
-  "name": "sort-lines",
-  "main": "./lib/sort-lines",
-  "version": "0.14.0",
-  "description": "Sorts your lines. Never gets tired.",
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117728-3643-clkk13.sh62inewmi/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117728-3643-clkk13.sh62inewmi/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117728-3643-clkk13.sh62inewmi/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117728-3643-1pcuqhm.m9my6cg14i"
+    ]
+  ],
+  "_from": "../d-117728-3643-clkk13.sh62inewmi/package.tgz",
+  "_id": "sort-lines@0.15.0",
+  "_inCache": true,
+  "_location": "/sort-lines",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117728-3643-clkk13.sh62inewmi/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117728-3643-clkk13.sh62inewmi/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117728-3643-clkk13.sh62inewmi/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-117728-3643-clkk13.sh62inewmi/package.tgz",
+  "_shasum": "712907999747e1af53185b65c08b4a6038c24db9",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117728-3643-clkk13.sh62inewmi/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117728-3643-1pcuqhm.m9my6cg14i",
   "activationCommands": {
     "atom-text-editor": [
       "sort-lines:sort",
@@ -12,37 +44,62 @@
       "sort-lines:natural"
     ]
   },
+  "bugs": {
+    "url": "https://github.com/atom/sort-lines/issues"
+  },
+  "dependencies": {
+    "javascript-natural-sort": "^0.7.1"
+  },
+  "description": "Sorts your lines. Never gets tired.",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.4.0 <2.0.0"
+  },
+  "homepage": "https://github.com/atom/sort-lines#readme",
+  "license": "MIT",
+  "main": "./lib/sort-lines",
+  "name": "sort-lines",
+  "optionalDependencies": {},
+  "readme": "# Sort Lines Package [![Build Status](https://travis-ci.org/atom/sort-lines.svg?branch=master)](https://travis-ci.org/atom/sort-lines)\n\nSorts your lines in Atom. Never gets tired.\n\n![sort-lines-demo](https://f.cloud.github.com/assets/2988/1796891/85e69ff2-6a93-11e3-89ac-31927f604592.gif)\n\n### Installation\n\nFrom within Atom: Settings -> Install -> search for \"sort-lines\" and click \"Install\" OR\n\nFrom CLI: `apm install sort-lines` and restart Atom.\n\n### Commands and Keybindings\n\nAll of the following commands are under the `atom-text-editor` selector.\n\nIf any lines are selected in the active buffer, the commands operate on the selected lines. Otherwise, the commands operate on all lines in the active buffer.\n\n|Command|Description|Keybinding|\n|-------|-----------|----------|\n|`sort-lines:sort`|Sorts the lines (case sensitive)|<kbd>F5</kbd>\n|`sort-lines:case-insensitive-sort`|Sorts the lines (case insensitive)|\n|`sort-lines:natural`|Sorts the lines ([\"natural\" order](https://www.npmjs.com/package/javascript-natural-sort))|\n|`sort-lines:reverse-sort`|Sorts the lines in reverse order (case sensitive)|\n|`sort-lines:unique`|Removes duplicate lines|\n\nCustom keybindings can be added by referencing the above commands.  To learn more, visit the [Using Atom: Basic Customization](http://flight-manual.atom.io/using-atom/sections/basic-customization/#customizing-keybindings) or [Behind Atom: Keymaps In-Depth](http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth) sections in the flight manual.\n",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atom/sort-lines.git"
   },
-  "license": "MIT",
-  "engines": {
-    "atom": ">=1.4.0 <2.0.0"
-  },
-  "dependencies": {},
-  "readme": "# Sort Lines Package [![Build Status](https://travis-ci.org/atom/sort-lines.svg?branch=master)](https://travis-ci.org/atom/sort-lines)\n\nSorts your lines in Atom, never gets tired.\n\n![sort-lines-demo](https://f.cloud.github.com/assets/2988/1796891/85e69ff2-6a93-11e3-89ac-31927f604592.gif)\n",
-  "readmeFilename": "README.md",
-  "bugs": {
-    "url": "https://github.com/atom/sort-lines/issues"
-  },
-  "homepage": "https://github.com/atom/sort-lines#readme",
-  "_id": "sort-lines@0.14.0",
-  "_shasum": "ca019973a26ce699408c3cca7284655e6baa4915",
-  "_resolved": "file:../d-116029-12531-arljfu/package.tgz",
-  "_from": "../d-116029-12531-arljfu/package.tgz",
+  "version": "0.15.0",
   "_atomModuleCache": {
     "version": 1,
-    "dependencies": [],
+    "dependencies": [
+      {
+        "name": "javascript-natural-sort",
+        "version": "0.7.1",
+        "path": "node_modules/javascript-natural-sort/naturalSort.js"
+      }
+    ],
     "extensions": {
       ".coffee": [
         "lib/range-finder.coffee",
         "lib/sort-lines.coffee"
       ],
+      ".js": [
+        "node_modules/javascript-natural-sort/naturalSort.js"
+      ],
       ".json": [
+        "node_modules/javascript-natural-sort/package.json",
         "package.json"
       ]
     },
-    "folders": []
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "javascript-natural-sort": "^0.7.1"
+        }
+      }
+    ]
   }
 }
