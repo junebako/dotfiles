@@ -1,4 +1,9 @@
-## LATEST
+## 0.12.1 (2017-09-06)
+
+* Fix finding a file when no tabs are open.
+* Don't close docks when calling close-other-panes.
+
+## 0.12.0 (2017-08-15)
 
 * Add delete-blank-lines (ctrl-x ctrl-o).
 * Add {forward,backward}-list (ctrl-alt-n, ctrl-alt-p). [Philip Larie]
@@ -7,7 +12,7 @@
   settings).
 * Fix killing & yanking with multiple cursors.
 * Fix open-line moving the cursor if autoindentation is on.
-* Fix editing commands in settings pane under Atom 1.19.
+* Fix editing commands in settings pane under Atom 1.19 [Adrien Delessert].
 
 ## 0.11.0 (2017-05-15)
 

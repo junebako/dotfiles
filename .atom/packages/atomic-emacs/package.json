@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2607-1detloa.4f0q1l9pb9/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11787-1327-1fa2yft.qrchr27qfr/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2607-1detloa.4f0q1l9pb9/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2607-1detloa.4f0q1l9pb9/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11787-1327-1fa2yft.qrchr27qfr/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11787-1327-1fa2yft.qrchr27qfr/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117711-2607-7m42ff.l59r6647vi"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11787-1327-19aa3ck.nweraa714i"
     ]
   ],
-  "_from": "../d-117711-2607-1detloa.4f0q1l9pb9/package.tgz",
-  "_id": "atomic-emacs@0.12.0",
+  "_from": "../d-11787-1327-1fa2yft.qrchr27qfr/package.tgz",
+  "_id": "atomic-emacs@0.12.1",
   "_inCache": true,
   "_location": "/atomic-emacs",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2607-1detloa.4f0q1l9pb9/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11787-1327-1fa2yft.qrchr27qfr/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2607-1detloa.4f0q1l9pb9/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2607-1detloa.4f0q1l9pb9/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11787-1327-1fa2yft.qrchr27qfr/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11787-1327-1fa2yft.qrchr27qfr/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-117711-2607-1detloa.4f0q1l9pb9/package.tgz",
-  "_shasum": "f692c39e34032e71375d63846f941ac8e6053bd1",
+  "_resolved": "file:../d-11787-1327-1fa2yft.qrchr27qfr/package.tgz",
+  "_shasum": "b97a91a846e64ec20c212eaa8f90a20f18ea6d23",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117711-2607-1detloa.4f0q1l9pb9/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117711-2607-7m42ff.l59r6647vi",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11787-1327-1fa2yft.qrchr27qfr/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11787-1327-19aa3ck.nweraa714i",
   "activationCommands": {
     "atom-text-editor": [
       "atomic-emacs:backward-char",
@@ -77,7 +77,9 @@
       "atomic-emacs:exchange-point-and-mark",
       "atomic-emacs:recenter-top-bottom",
       "atomic-emacs:scroll-down",
-      "atomic-emacs:scroll-up",
+      "atomic-emacs:scroll-up"
+    ],
+    "atom-workspace": [
       "atomic-emacs:find-file",
       "atomic-emacs:close-other-panes"
     ]
@@ -102,7 +104,7 @@
     "type": "git",
     "url": "git+https://github.com/avendael/atomic-emacs.git"
   },
-  "version": "0.12.0",
+  "version": "0.12.1",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [],

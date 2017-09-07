@@ -32,9 +32,10 @@ findFile = (event) ->
     atom.commands.dispatch(event.target, 'fuzzy-finder:toggle-file-finder')
 
 closeOtherPanes = (event) ->
-  activePane = atom.workspace.getActivePane()
-  return if not activePane
-  for pane in atom.workspace.getPanes()
+  container = atom.workspace.getPaneContainers().find((c) => c.getLocation() == 'center')
+  activePane = container?.getActivePane()
+  return if not activePane?
+  for pane in container.getPanes()
     unless pane is activePane
       pane.close()
 
@@ -140,9 +141,11 @@ module.exports =
       "atomic-emacs:scroll-up": (event) -> getEditor(event).scrollUp()
 
       # UI
+      "core:cancel": (event) -> getEditor(event).keyboardQuit()
+
+    @disposable.add atom.commands.add 'atom-workspace',
       "atomic-emacs:find-file": (event) -> findFile(event)
       "atomic-emacs:close-other-panes": (event) -> closeOtherPanes(event)
-      "core:cancel": (event) -> getEditor(event).keyboardQuit()
 
   deactivate: ->
     document.getElementsByTagName('atom-workspace')[0]?.classList?.remove('atomic-emacs')
