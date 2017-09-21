@@ -3,7 +3,22 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.11...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.12...HEAD
+
+
+[v2.1.12] - 2017-09-19
+----------------------
+### Added
+- **New icons:** Carthage (`Cartfile.*`), CocoaPods (`.podspec`), DataWeave (`.dwl`), Nomad (`.nomad`), PyPi (`requirements.in`), Stencil (`.stencil`)
+- **Support:** Checklist (`todo.txt`), Compressed files (`.wgt`), Config (`buildozer.spec`), Circuit Board (`.cir`, `.ckt`, `.tech`, `.struct`), Data (`.ejson`), Email/Author lists (`CODEOWNERS`), Generic (`.bal`), Git commit messages (`ATOM_COMMIT_EDITMSG`), Python tests (`{tests,test}/test_*.py`), Terraform (`.tf.json`), Xcode (`.xcworkspace`)
+
+### Fixed
+- Buggy handling of `.gitattributes` files where unrelated lines preceded a `linguist-language` assignment
+- `.gitattributes` patterns pointing to project's base directory (`/*.file`) matched nothing
+- Patched `tree-view` consumer in preparation for [`atom/tree-view#1169`](https://github.com/atom/tree-view/pull/1169)
+
+[v2.1.12]: https://github.com/file-icons/atom/releases/tag/v2.1.12
+
 
 
 [v2.1.11] - 2017-08-17

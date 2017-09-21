@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117718-2197-1qmss6b.twgyb3ayvi/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117821-39361-19b36u9.epxp0t3xr/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117718-2197-1qmss6b.twgyb3ayvi/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117718-2197-1qmss6b.twgyb3ayvi/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117821-39361-19b36u9.epxp0t3xr/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117821-39361-19b36u9.epxp0t3xr/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117718-2197-1wulvmm.3exkhs38fr"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117821-39361-cabve2.za6wobhuxr"
     ]
   ],
-  "_from": "../d-117718-2197-1qmss6b.twgyb3ayvi/package.tgz",
-  "_id": "file-icons@2.1.11",
+  "_from": "../d-117821-39361-19b36u9.epxp0t3xr/package.tgz",
+  "_id": "file-icons@2.1.12",
   "_inCache": true,
   "_location": "/file-icons",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117718-2197-1qmss6b.twgyb3ayvi/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117821-39361-19b36u9.epxp0t3xr/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117718-2197-1qmss6b.twgyb3ayvi/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117718-2197-1qmss6b.twgyb3ayvi/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117821-39361-19b36u9.epxp0t3xr/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117821-39361-19b36u9.epxp0t3xr/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-117718-2197-1qmss6b.twgyb3ayvi/package.tgz",
-  "_shasum": "601d77c7d9eecb392543177e4fb0371300aa3962",
+  "_resolved": "file:../d-117821-39361-19b36u9.epxp0t3xr/package.tgz",
+  "_shasum": "d2cbe8fb38c12a23f28ae84c96a41fea29c5e250",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117718-2197-1qmss6b.twgyb3ayvi/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117718-2197-1wulvmm.3exkhs38fr",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117821-39361-19b36u9.epxp0t3xr/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117821-39361-cabve2.za6wobhuxr",
   "atomTestRunner": "atom-mocha",
   "bugs": {
     "url": "https://github.com/file-icons/atom/issues"
@@ -152,7 +152,7 @@
     "type": "git",
     "url": "git+https://github.com/file-icons/atom.git"
   },
-  "version": "2.1.11",
+  "version": "2.1.12",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
@@ -193,28 +193,8 @@
       },
       {
         "name": "base",
-        "version": "0.11.1",
+        "version": "0.11.2",
         "path": "node_modules/base/index.js"
-      },
-      {
-        "name": "define-property",
-        "version": "0.2.5",
-        "path": "node_modules/base/node_modules/define-property/index.js"
-      },
-      {
-        "name": "is-descriptor",
-        "version": "0.1.6",
-        "path": "node_modules/base/node_modules/is-descriptor/index.js"
-      },
-      {
-        "name": "isobject",
-        "version": "2.1.0",
-        "path": "node_modules/base/node_modules/isobject/index.js"
-      },
-      {
-        "name": "kind-of",
-        "version": "5.0.2",
-        "path": "node_modules/base/node_modules/kind-of/index.js"
       },
       {
         "name": "braces",
@@ -223,7 +203,7 @@
       },
       {
         "name": "cache-base",
-        "version": "0.8.5",
+        "version": "1.0.1",
         "path": "node_modules/cache-base/index.js"
       },
       {
@@ -242,13 +222,8 @@
         "path": "node_modules/class-utils/node_modules/is-descriptor/index.js"
       },
       {
-        "name": "kind-of",
-        "version": "5.0.2",
-        "path": "node_modules/class-utils/node_modules/kind-of/index.js"
-      },
-      {
         "name": "collection-visit",
-        "version": "0.2.3",
+        "version": "1.0.0",
         "path": "node_modules/collection-visit/index.js"
       },
       {
@@ -287,44 +262,14 @@
         "path": "node_modules/expand-brackets/node_modules/is-descriptor/index.js"
       },
       {
-        "name": "kind-of",
-        "version": "5.0.2",
-        "path": "node_modules/expand-brackets/node_modules/kind-of/index.js"
-      },
-      {
         "name": "extend-shallow",
         "version": "2.0.1",
         "path": "node_modules/extend-shallow/index.js"
       },
       {
         "name": "extglob",
-        "version": "1.1.0",
+        "version": "2.0.2",
         "path": "node_modules/extglob/index.js"
-      },
-      {
-        "name": "define-property",
-        "version": "0.2.5",
-        "path": "node_modules/extglob/node_modules/define-property/index.js"
-      },
-      {
-        "name": "is-descriptor",
-        "version": "0.1.6",
-        "path": "node_modules/extglob/node_modules/is-descriptor/index.js"
-      },
-      {
-        "name": "kind-of",
-        "version": "5.0.2",
-        "path": "node_modules/extglob/node_modules/kind-of/index.js"
-      },
-      {
-        "name": "to-regex",
-        "version": "2.1.0",
-        "path": "node_modules/extglob/node_modules/to-regex/index.js"
-      },
-      {
-        "name": "regex-not",
-        "version": "0.1.2",
-        "path": "node_modules/extglob/node_modules/to-regex/node_modules/regex-not/index.js"
       },
       {
         "name": "fill-range",
@@ -348,18 +293,18 @@
       },
       {
         "name": "has-value",
-        "version": "0.3.1",
+        "version": "1.0.0",
         "path": "node_modules/has-value/index.js"
       },
       {
-        "name": "isobject",
-        "version": "2.1.0",
-        "path": "node_modules/has-value/node_modules/isobject/index.js"
+        "name": "has-values",
+        "version": "1.0.0",
+        "path": "node_modules/has-values/index.js"
       },
       {
-        "name": "has-values",
-        "version": "0.1.4",
-        "path": "node_modules/has-values/index.js"
+        "name": "kind-of",
+        "version": "4.0.0",
+        "path": "node_modules/has-values/node_modules/kind-of/index.js"
       },
       {
         "name": "is-accessor-descriptor",
@@ -392,19 +337,9 @@
         "path": "node_modules/is-descriptor/index.js"
       },
       {
-        "name": "kind-of",
-        "version": "5.0.2",
-        "path": "node_modules/is-descriptor/node_modules/kind-of/index.js"
-      },
-      {
         "name": "is-extendable",
         "version": "0.1.1",
         "path": "node_modules/is-extendable/index.js"
-      },
-      {
-        "name": "is-extglob",
-        "version": "2.1.1",
-        "path": "node_modules/is-extglob/index.js"
       },
       {
         "name": "is-number",
@@ -438,7 +373,7 @@
       },
       {
         "name": "kind-of",
-        "version": "4.0.0",
+        "version": "5.0.2",
         "path": "node_modules/kind-of/index.js"
       },
       {
@@ -453,12 +388,12 @@
       },
       {
         "name": "map-visit",
-        "version": "0.1.5",
+        "version": "1.0.0",
         "path": "node_modules/map-visit/index.js"
       },
       {
         "name": "micromatch",
-        "version": "3.0.4",
+        "version": "3.1.0",
         "path": "node_modules/micromatch/index.js"
       },
       {
@@ -473,7 +408,7 @@
       },
       {
         "name": "nanomatch",
-        "version": "1.2.0",
+        "version": "1.2.3",
         "path": "node_modules/nanomatch/index.js"
       },
       {
@@ -503,23 +438,13 @@
       },
       {
         "name": "object-visit",
-        "version": "0.3.4",
+        "version": "1.0.1",
         "path": "node_modules/object-visit/index.js"
       },
       {
-        "name": "isobject",
-        "version": "2.1.0",
-        "path": "node_modules/object-visit/node_modules/isobject/index.js"
-      },
-      {
         "name": "object.pick",
-        "version": "1.2.0",
+        "version": "1.3.0",
         "path": "node_modules/object.pick/index.js"
-      },
-      {
-        "name": "isobject",
-        "version": "2.1.0",
-        "path": "node_modules/object.pick/node_modules/isobject/index.js"
       },
       {
         "name": "pascalcase",
@@ -563,8 +488,13 @@
       },
       {
         "name": "set-value",
-        "version": "0.4.3",
+        "version": "2.0.0",
         "path": "node_modules/set-value/index.js"
+      },
+      {
+        "name": "split-string",
+        "version": "3.0.2",
+        "path": "node_modules/set-value/node_modules/split-string/index.js"
       },
       {
         "name": "snapdragon",
@@ -580,11 +510,6 @@
         "name": "is-descriptor",
         "version": "0.1.6",
         "path": "node_modules/snapdragon/node_modules/is-descriptor/index.js"
-      },
-      {
-        "name": "kind-of",
-        "version": "5.0.2",
-        "path": "node_modules/snapdragon/node_modules/kind-of/index.js"
       },
       {
         "name": "snapdragon-node",
@@ -603,7 +528,7 @@
       },
       {
         "name": "source-map",
-        "version": "0.5.6",
+        "version": "0.5.7",
         "path": "node_modules/source-map/source-map.js"
       },
       {
@@ -637,11 +562,6 @@
         "path": "node_modules/static-extend/node_modules/is-descriptor/index.js"
       },
       {
-        "name": "kind-of",
-        "version": "5.0.2",
-        "path": "node_modules/static-extend/node_modules/kind-of/index.js"
-      },
-      {
         "name": "to-object-path",
         "version": "0.3.0",
         "path": "node_modules/to-object-path/index.js"
@@ -667,24 +587,39 @@
         "path": "node_modules/to-regex/node_modules/is-descriptor/index.js"
       },
       {
-        "name": "kind-of",
-        "version": "5.0.2",
-        "path": "node_modules/to-regex/node_modules/kind-of/index.js"
-      },
-      {
         "name": "to-regex-range",
         "version": "2.1.1",
         "path": "node_modules/to-regex-range/index.js"
       },
       {
         "name": "union-value",
-        "version": "0.2.4",
+        "version": "1.0.0",
         "path": "node_modules/union-value/index.js"
       },
       {
+        "name": "set-value",
+        "version": "0.4.3",
+        "path": "node_modules/union-value/node_modules/set-value/index.js"
+      },
+      {
         "name": "unset-value",
-        "version": "0.1.2",
+        "version": "1.0.0",
         "path": "node_modules/unset-value/index.js"
+      },
+      {
+        "name": "has-value",
+        "version": "0.3.1",
+        "path": "node_modules/unset-value/node_modules/has-value/index.js"
+      },
+      {
+        "name": "isobject",
+        "version": "2.1.0",
+        "path": "node_modules/unset-value/node_modules/has-value/node_modules/isobject/index.js"
+      },
+      {
+        "name": "has-values",
+        "version": "0.1.4",
+        "path": "node_modules/unset-value/node_modules/has-values/index.js"
       },
       {
         "name": "urix",
@@ -705,11 +640,6 @@
         "name": "is-descriptor",
         "version": "0.1.6",
         "path": "node_modules/use/node_modules/is-descriptor/index.js"
-      },
-      {
-        "name": "kind-of",
-        "version": "5.0.2",
-        "path": "node_modules/use/node_modules/kind-of/index.js"
       }
     ],
     "extensions": {
@@ -766,25 +696,17 @@
         "node_modules/atom-fs/lib/system-task.js",
         "node_modules/atom-fs/lib/system.js",
         "node_modules/base/index.js",
-        "node_modules/base/node_modules/define-property/index.js",
-        "node_modules/base/node_modules/is-descriptor/index.js",
-        "node_modules/base/node_modules/isobject/index.js",
-        "node_modules/base/node_modules/kind-of/index.js",
-        "node_modules/base/utils.js",
         "node_modules/braces/index.js",
         "node_modules/braces/lib/braces.js",
         "node_modules/braces/lib/compilers.js",
         "node_modules/braces/lib/parsers.js",
         "node_modules/braces/lib/utils.js",
         "node_modules/cache-base/index.js",
-        "node_modules/cache-base/utils.js",
         "node_modules/class-utils/index.js",
         "node_modules/class-utils/node_modules/define-property/index.js",
         "node_modules/class-utils/node_modules/is-descriptor/index.js",
-        "node_modules/class-utils/node_modules/kind-of/index.js",
         "node_modules/class-utils/utils.js",
         "node_modules/collection-visit/index.js",
-        "node_modules/collection-visit/utils.js",
         "node_modules/component-emitter/index.js",
         "node_modules/copy-descriptor/index.js",
         "node_modules/debug/karma.conf.js",
@@ -800,34 +722,26 @@
         "node_modules/expand-brackets/lib/utils.js",
         "node_modules/expand-brackets/node_modules/define-property/index.js",
         "node_modules/expand-brackets/node_modules/is-descriptor/index.js",
-        "node_modules/expand-brackets/node_modules/kind-of/index.js",
         "node_modules/extend-shallow/index.js",
         "node_modules/extglob/index.js",
         "node_modules/extglob/lib/compilers.js",
         "node_modules/extglob/lib/extglob.js",
         "node_modules/extglob/lib/parsers.js",
         "node_modules/extglob/lib/utils.js",
-        "node_modules/extglob/node_modules/define-property/index.js",
-        "node_modules/extglob/node_modules/is-descriptor/index.js",
-        "node_modules/extglob/node_modules/kind-of/index.js",
-        "node_modules/extglob/node_modules/to-regex/index.js",
-        "node_modules/extglob/node_modules/to-regex/node_modules/regex-not/index.js",
         "node_modules/fill-range/index.js",
         "node_modules/for-in/index.js",
         "node_modules/fragment-cache/index.js",
         "node_modules/get-value/index.js",
         "node_modules/has-value/index.js",
-        "node_modules/has-value/node_modules/isobject/index.js",
         "node_modules/has-values/index.js",
+        "node_modules/has-values/node_modules/kind-of/index.js",
         "node_modules/is-accessor-descriptor/index.js",
         "node_modules/is-accessor-descriptor/node_modules/kind-of/index.js",
         "node_modules/is-buffer/index.js",
         "node_modules/is-data-descriptor/index.js",
         "node_modules/is-data-descriptor/node_modules/kind-of/index.js",
         "node_modules/is-descriptor/index.js",
-        "node_modules/is-descriptor/node_modules/kind-of/index.js",
         "node_modules/is-extendable/index.js",
-        "node_modules/is-extglob/index.js",
         "node_modules/is-number/index.js",
         "node_modules/is-number/node_modules/kind-of/index.js",
         "node_modules/is-odd/index.js",
@@ -839,7 +753,6 @@
         "node_modules/lazy-cache/index.js",
         "node_modules/map-cache/index.js",
         "node_modules/map-visit/index.js",
-        "node_modules/map-visit/utils.js",
         "node_modules/micromatch/index.js",
         "node_modules/micromatch/lib/cache.js",
         "node_modules/micromatch/lib/compilers.js",
@@ -858,9 +771,7 @@
         "node_modules/object-copy/node_modules/is-descriptor/node_modules/kind-of/index.js",
         "node_modules/object-copy/node_modules/kind-of/index.js",
         "node_modules/object-visit/index.js",
-        "node_modules/object-visit/node_modules/isobject/index.js",
         "node_modules/object.pick/index.js",
-        "node_modules/object.pick/node_modules/isobject/index.js",
         "node_modules/pascalcase/index.js",
         "node_modules/posix-character-classes/index.js",
         "node_modules/print/print.js",
@@ -870,6 +781,7 @@
         "node_modules/resolve-url/resolve-url.js",
         "node_modules/set-getter/index.js",
         "node_modules/set-value/index.js",
+        "node_modules/set-value/node_modules/split-string/index.js",
         "node_modules/snapdragon/index.js",
         "node_modules/snapdragon/lib/compiler.js",
         "node_modules/snapdragon/lib/parser.js",
@@ -878,7 +790,6 @@
         "node_modules/snapdragon/lib/utils.js",
         "node_modules/snapdragon/node_modules/define-property/index.js",
         "node_modules/snapdragon/node_modules/is-descriptor/index.js",
-        "node_modules/snapdragon/node_modules/kind-of/index.js",
         "node_modules/snapdragon-node/index.js",
         "node_modules/snapdragon-util/index.js",
         "node_modules/snapdragon-util/node_modules/kind-of/index.js",
@@ -905,21 +816,22 @@
         "node_modules/static-extend/index.js",
         "node_modules/static-extend/node_modules/define-property/index.js",
         "node_modules/static-extend/node_modules/is-descriptor/index.js",
-        "node_modules/static-extend/node_modules/kind-of/index.js",
         "node_modules/to-object-path/index.js",
         "node_modules/to-object-path/node_modules/kind-of/index.js",
         "node_modules/to-regex/index.js",
         "node_modules/to-regex/node_modules/define-property/index.js",
         "node_modules/to-regex/node_modules/is-descriptor/index.js",
-        "node_modules/to-regex/node_modules/kind-of/index.js",
         "node_modules/to-regex-range/index.js",
         "node_modules/union-value/index.js",
+        "node_modules/union-value/node_modules/set-value/index.js",
         "node_modules/unset-value/index.js",
+        "node_modules/unset-value/node_modules/has-value/index.js",
+        "node_modules/unset-value/node_modules/has-value/node_modules/isobject/index.js",
+        "node_modules/unset-value/node_modules/has-values/index.js",
         "node_modules/urix/index.js",
         "node_modules/use/index.js",
         "node_modules/use/node_modules/define-property/index.js",
         "node_modules/use/node_modules/is-descriptor/index.js",
-        "node_modules/use/node_modules/kind-of/index.js",
         "node_modules/use/utils.js"
       ],
       ".json": [
@@ -931,16 +843,11 @@
         "node_modules/atob/bower.json",
         "node_modules/atob/package.json",
         "node_modules/atom-fs/package.json",
-        "node_modules/base/node_modules/define-property/package.json",
-        "node_modules/base/node_modules/is-descriptor/package.json",
-        "node_modules/base/node_modules/isobject/package.json",
-        "node_modules/base/node_modules/kind-of/package.json",
         "node_modules/base/package.json",
         "node_modules/braces/package.json",
         "node_modules/cache-base/package.json",
         "node_modules/class-utils/node_modules/define-property/package.json",
         "node_modules/class-utils/node_modules/is-descriptor/package.json",
-        "node_modules/class-utils/node_modules/kind-of/package.json",
         "node_modules/class-utils/package.json",
         "node_modules/collection-visit/package.json",
         "node_modules/component-emitter/package.json",
@@ -950,31 +857,23 @@
         "node_modules/define-property/package.json",
         "node_modules/expand-brackets/node_modules/define-property/package.json",
         "node_modules/expand-brackets/node_modules/is-descriptor/package.json",
-        "node_modules/expand-brackets/node_modules/kind-of/package.json",
         "node_modules/expand-brackets/package.json",
         "node_modules/extend-shallow/package.json",
-        "node_modules/extglob/node_modules/define-property/package.json",
-        "node_modules/extglob/node_modules/is-descriptor/package.json",
-        "node_modules/extglob/node_modules/kind-of/package.json",
-        "node_modules/extglob/node_modules/to-regex/node_modules/regex-not/package.json",
-        "node_modules/extglob/node_modules/to-regex/package.json",
         "node_modules/extglob/package.json",
         "node_modules/fill-range/package.json",
         "node_modules/for-in/package.json",
         "node_modules/fragment-cache/package.json",
         "node_modules/get-value/package.json",
-        "node_modules/has-value/node_modules/isobject/package.json",
         "node_modules/has-value/package.json",
+        "node_modules/has-values/node_modules/kind-of/package.json",
         "node_modules/has-values/package.json",
         "node_modules/is-accessor-descriptor/node_modules/kind-of/package.json",
         "node_modules/is-accessor-descriptor/package.json",
         "node_modules/is-buffer/package.json",
         "node_modules/is-data-descriptor/node_modules/kind-of/package.json",
         "node_modules/is-data-descriptor/package.json",
-        "node_modules/is-descriptor/node_modules/kind-of/package.json",
         "node_modules/is-descriptor/package.json",
         "node_modules/is-extendable/package.json",
-        "node_modules/is-extglob/package.json",
         "node_modules/is-number/node_modules/kind-of/package.json",
         "node_modules/is-number/package.json",
         "node_modules/is-odd/package.json",
@@ -995,9 +894,7 @@
         "node_modules/object-copy/node_modules/is-descriptor/package.json",
         "node_modules/object-copy/node_modules/kind-of/package.json",
         "node_modules/object-copy/package.json",
-        "node_modules/object-visit/node_modules/isobject/package.json",
         "node_modules/object-visit/package.json",
-        "node_modules/object.pick/node_modules/isobject/package.json",
         "node_modules/object.pick/package.json",
         "node_modules/pascalcase/package.json",
         "node_modules/posix-character-classes/package.json",
@@ -1009,10 +906,10 @@
         "node_modules/resolve-url/component.json",
         "node_modules/resolve-url/package.json",
         "node_modules/set-getter/package.json",
+        "node_modules/set-value/node_modules/split-string/package.json",
         "node_modules/set-value/package.json",
         "node_modules/snapdragon/node_modules/define-property/package.json",
         "node_modules/snapdragon/node_modules/is-descriptor/package.json",
-        "node_modules/snapdragon/node_modules/kind-of/package.json",
         "node_modules/snapdragon/package.json",
         "node_modules/snapdragon-node/package.json",
         "node_modules/snapdragon-util/node_modules/kind-of/package.json",
@@ -1027,21 +924,22 @@
         "node_modules/split-string/package.json",
         "node_modules/static-extend/node_modules/define-property/package.json",
         "node_modules/static-extend/node_modules/is-descriptor/package.json",
-        "node_modules/static-extend/node_modules/kind-of/package.json",
         "node_modules/static-extend/package.json",
         "node_modules/to-object-path/node_modules/kind-of/package.json",
         "node_modules/to-object-path/package.json",
         "node_modules/to-regex/node_modules/define-property/package.json",
         "node_modules/to-regex/node_modules/is-descriptor/package.json",
-        "node_modules/to-regex/node_modules/kind-of/package.json",
         "node_modules/to-regex/package.json",
         "node_modules/to-regex-range/package.json",
+        "node_modules/union-value/node_modules/set-value/package.json",
         "node_modules/union-value/package.json",
+        "node_modules/unset-value/node_modules/has-value/node_modules/isobject/package.json",
+        "node_modules/unset-value/node_modules/has-value/package.json",
+        "node_modules/unset-value/node_modules/has-values/package.json",
         "node_modules/unset-value/package.json",
         "node_modules/urix/package.json",
         "node_modules/use/node_modules/define-property/package.json",
         "node_modules/use/node_modules/is-descriptor/package.json",
-        "node_modules/use/node_modules/kind-of/package.json",
         "node_modules/use/package.json",
         "package.json"
       ]
@@ -1077,41 +975,13 @@
           "node_modules/base"
         ],
         "dependencies": {
-          "arr-union": "^3.1.0",
-          "cache-base": "^0.8.4",
-          "class-utils": "^0.3.4",
+          "cache-base": "^1.0.1",
+          "class-utils": "^0.3.5",
           "component-emitter": "^1.2.1",
-          "define-property": "^0.2.5",
-          "isobject": "^2.1.0",
-          "lazy-cache": "^2.0.1",
-          "mixin-deep": "^1.1.3",
+          "define-property": "^1.0.0",
+          "isobject": "^3.0.1",
+          "mixin-deep": "^1.2.0",
           "pascalcase": "^0.1.1"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/base/node_modules/define-property"
-        ],
-        "dependencies": {
-          "is-descriptor": "^0.1.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/base/node_modules/is-descriptor"
-        ],
-        "dependencies": {
-          "is-accessor-descriptor": "^0.1.6",
-          "is-data-descriptor": "^0.1.4",
-          "kind-of": "^5.0.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/base/node_modules/isobject"
-        ],
-        "dependencies": {
-          "isarray": "1.0.0"
         }
       },
       {
@@ -1138,16 +1008,15 @@
           "node_modules/cache-base"
         ],
         "dependencies": {
-          "collection-visit": "^0.2.1",
+          "collection-visit": "^1.0.0",
           "component-emitter": "^1.2.1",
-          "get-value": "^2.0.5",
-          "has-value": "^0.3.1",
-          "isobject": "^3.0.0",
-          "lazy-cache": "^2.0.1",
-          "set-value": "^0.4.2",
+          "get-value": "^2.0.6",
+          "has-value": "^1.0.0",
+          "isobject": "^3.0.1",
+          "set-value": "^2.0.0",
           "to-object-path": "^0.3.0",
-          "union-value": "^0.2.3",
-          "unset-value": "^0.1.1"
+          "union-value": "^1.0.0",
+          "unset-value": "^1.0.0"
         }
       },
       {
@@ -1185,9 +1054,8 @@
           "node_modules/collection-visit"
         ],
         "dependencies": {
-          "lazy-cache": "^2.0.1",
-          "map-visit": "^0.1.5",
-          "object-visit": "^0.3.4"
+          "map-visit": "^1.0.0",
+          "object-visit": "^1.0.0"
         }
       },
       {
@@ -1255,41 +1123,13 @@
         ],
         "dependencies": {
           "array-unique": "^0.3.2",
-          "define-property": "^0.2.5",
-          "expand-brackets": "^2.0.1",
+          "define-property": "^1.0.0",
+          "expand-brackets": "^2.1.4",
           "extend-shallow": "^2.0.1",
-          "fragment-cache": "^0.2.0",
+          "fragment-cache": "^0.2.1",
           "regex-not": "^1.0.0",
           "snapdragon": "^0.8.1",
-          "to-regex": "^2.1.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/extglob/node_modules/define-property"
-        ],
-        "dependencies": {
-          "is-descriptor": "^0.1.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/extglob/node_modules/is-descriptor"
-        ],
-        "dependencies": {
-          "is-accessor-descriptor": "^0.1.6",
-          "is-data-descriptor": "^0.1.4",
-          "kind-of": "^5.0.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/extglob/node_modules/to-regex"
-        ],
-        "dependencies": {
-          "define-property": "^0.2.5",
-          "extend-shallow": "^2.0.1",
-          "regex-not": "^0.1.1"
+          "to-regex": "^3.0.1"
         }
       },
       {
@@ -1316,17 +1156,26 @@
           "node_modules/has-value"
         ],
         "dependencies": {
-          "get-value": "^2.0.3",
-          "has-values": "^0.1.4",
-          "isobject": "^2.0.0"
+          "get-value": "^2.0.6",
+          "has-values": "^1.0.0",
+          "isobject": "^3.0.0"
         }
       },
       {
         "paths": [
-          "node_modules/has-value/node_modules/isobject"
+          "node_modules/has-values"
         ],
         "dependencies": {
-          "isarray": "1.0.0"
+          "is-number": "^3.0.0",
+          "kind-of": "^4.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/has-values/node_modules/kind-of"
+        ],
+        "dependencies": {
+          "is-buffer": "^1.1.5"
         }
       },
       {
@@ -1405,14 +1254,6 @@
       },
       {
         "paths": [
-          "node_modules/kind-of"
-        ],
-        "dependencies": {
-          "is-buffer": "^1.1.5"
-        }
-      },
-      {
-        "paths": [
           "node_modules/lazy-cache"
         ],
         "dependencies": {
@@ -1424,8 +1265,7 @@
           "node_modules/map-visit"
         ],
         "dependencies": {
-          "lazy-cache": "^2.0.1",
-          "object-visit": "^0.3.4"
+          "object-visit": "^1.0.0"
         }
       },
       {
@@ -1439,11 +1279,11 @@
           "braces": "^2.2.2",
           "define-property": "^1.0.0",
           "extend-shallow": "^2.0.1",
-          "extglob": "^1.1.0",
+          "extglob": "^2.0.2",
           "fragment-cache": "^0.2.1",
-          "kind-of": "^4.0.0",
-          "nanomatch": "^1.2.0",
-          "object.pick": "^1.2.0",
+          "kind-of": "^5.0.2",
+          "nanomatch": "^1.2.1",
+          "object.pick": "^1.3.0",
           "regex-not": "^1.0.0",
           "snapdragon": "^0.8.1",
           "to-regex": "^3.0.1"
@@ -1469,10 +1309,9 @@
           "define-property": "^1.0.0",
           "extend-shallow": "^2.0.1",
           "fragment-cache": "^0.2.1",
-          "is-extglob": "^2.1.1",
           "is-odd": "^1.0.0",
-          "kind-of": "^4.0.0",
-          "object.pick": "^1.2.0",
+          "kind-of": "^5.0.2",
+          "object.pick": "^1.3.0",
           "regex-not": "^1.0.0",
           "snapdragon": "^0.8.1",
           "to-regex": "^3.0.1"
@@ -1519,15 +1358,7 @@
           "node_modules/object-visit"
         ],
         "dependencies": {
-          "isobject": "^2.0.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/object-visit/node_modules/isobject"
-        ],
-        "dependencies": {
-          "isarray": "1.0.0"
+          "isobject": "^3.0.0"
         }
       },
       {
@@ -1535,15 +1366,7 @@
           "node_modules/object.pick"
         ],
         "dependencies": {
-          "isobject": "^2.1.0"
-        }
-      },
-      {
-        "paths": [
-          "node_modules/object.pick/node_modules/isobject"
-        ],
-        "dependencies": {
-          "isarray": "1.0.0"
+          "isobject": "^3.0.1"
         }
       },
       {
@@ -1569,8 +1392,16 @@
         "dependencies": {
           "extend-shallow": "^2.0.1",
           "is-extendable": "^0.1.1",
-          "is-plain-object": "^2.0.1",
-          "to-object-path": "^0.3.0"
+          "is-plain-object": "^2.0.3",
+          "split-string": "^3.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/set-value/node_modules/split-string"
+        ],
+        "dependencies": {
+          "extend-shallow": "^2.0.1"
         }
       },
       {
@@ -1747,11 +1578,40 @@
       },
       {
         "paths": [
+          "node_modules/union-value/node_modules/set-value"
+        ],
+        "dependencies": {
+          "extend-shallow": "^2.0.1",
+          "is-extendable": "^0.1.1",
+          "is-plain-object": "^2.0.1",
+          "to-object-path": "^0.3.0"
+        }
+      },
+      {
+        "paths": [
           "node_modules/unset-value"
         ],
         "dependencies": {
           "has-value": "^0.3.1",
           "isobject": "^3.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/unset-value/node_modules/has-value"
+        ],
+        "dependencies": {
+          "get-value": "^2.0.3",
+          "has-values": "^0.1.4",
+          "isobject": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/unset-value/node_modules/has-value/node_modules/isobject"
+        ],
+        "dependencies": {
+          "isarray": "1.0.0"
         }
       },
       {

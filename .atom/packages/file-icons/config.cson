@@ -162,7 +162,7 @@ directoryIcons:
 
 	Xcode:
 		icon: "appstore"
-		match: ".xcodeproj"
+		match: /\.(xcodeproj|xcworkspace)$/i
 
 
 fileIcons:
@@ -739,6 +739,12 @@ fileIcons:
 			["Cargo.lock", "dark-orange"]
 		]
 
+	Carthage:
+		icon: "carthage"
+		match: /^Cartfile(\.|$)/
+		colour: "dark-pink"
+		priority: 2
+
 	Ceylon:
 		icon: "ceylon"
 		match: ".ceylon"
@@ -765,9 +771,10 @@ fileIcons:
 
 	Checklist:
 		icon: "checklist"
-		priority: 0
-		match: /TODO/
-		colour: "medium-yellow"
+		match: [
+			[/TODO/, "medium-yellow", priority: 0]
+			[/^todo.txt$/i, "medium-green", priority: 2, scope: /^text\.(gfm-)?todotxt$/i]
+		]
 
 	Chef:
 		icon: "chef"
@@ -817,6 +824,7 @@ fileIcons:
 			[/\.gm\d+$/i, "medium-green"]
 			[/\.g[0-9]+$/i, "dark-blue", priority: 0.5]
 			[/^PCB\.[0-9]+(\.backup~?)?$/, "dark-green", priority: 0.5]
+			[/\.(cir|ckt|struct|tech)$/i, "dark-green", scope: "spice", interpreter: "ngspice"]
 			[".fab", "dark-red"]
 			[".net", "dark-blue"]
 			[".pho", "dark-cyan"]
@@ -888,6 +896,11 @@ fileIcons:
 		match: /\.(cob|ccp|cbl|cobol|cpy)$/i
 		colour: "auto-blue"
 		scope: "cobol"
+
+	CocoaPods:
+		icon: "cocoapods"
+		match: ".podspec"
+		colour: "medium-red"
 
 	Codacy:
 		icon: "codacy"
@@ -987,6 +1000,7 @@ fileIcons:
 			[".epub", "medium-green"]
 			[".jar", "dark-pink"]
 			[".war", "medium-purple"]
+			[".wgt", "medium-blue"]
 			[".xar", "dark-orange", signature: /^xar!/]
 			[".egg", "light-orange"]
 		]
@@ -1005,6 +1019,7 @@ fileIcons:
 			[/^ld\.script$/i, "medium-orange"]
 			[".reek", "medium-red"]
 			[/^\.?XCompose$/, "medium-cyan", "xcompose"]
+			[/^buildozer\.spec$/i, "dark-blue", priority: 2]
 			[/config|settings|option|pref/i, null, priority: 0]
 			[/\/dev[-\w]+\/([^\/]+\/)*(DESC|Foundry|download|symbolmap)(\.in|\.proto)?$/, "dark-green", matchPath: true, priority: 1.5]
 			[/\.git[\/\\](config|info[\/\\]\w+)$/, "dark-red", matchPath: true]
@@ -1156,6 +1171,7 @@ fileIcons:
 			[".pytb", "medium-orange", scope: "python.traceback"]
 			[".pydeps", "dark-blue"]
 			[/\.pot?$/i, "medium-red"]
+			[".ejson", "dark-red"]
 			[".edn", "medium-purple"]
 			[".eam.fs", "dark-purple"]
 			[".qml", "medium-pink"]
@@ -1174,6 +1190,12 @@ fileIcons:
 				priority: 2,
 				matchPath: true]
 		]
+
+	DataWeave:
+		icon: "dataweave"
+		match: ".dwl"
+		colour: "auto-blue"
+		scope: /\.data-?weave/
 
 	dBASE:
 		icon: "dbase"
@@ -1367,7 +1389,7 @@ fileIcons:
 
 	Email:
 		icon: "at"
-		match: /^(authors|owners)$/i
+		match: /^(authors|(code)?owners)$/i
 		colour: "auto-red"
 
 	Ember:
@@ -1646,6 +1668,7 @@ fileIcons:
 			[".ash", "medium-cyan"]
 			[/\.asn1?$/i, "medium-cyan"]
 			[".axml", "dark-blue"]
+			[".bal", "dark-green", scope: "ballerina"]
 			[".bc", "dark-red", "baan"]
 			[".befunge", "medium-orange"]
 			[".bmx", "dark-blue"]
@@ -1799,7 +1822,7 @@ fileIcons:
 
 	"Git - Commit":
 		icon: "git-commit"
-		match: /^COMMIT_EDITMSG$/
+		match: /^(ATOM_)?COMMIT_EDITMSG$/
 		colour: "medium-red"
 
 	"Git - Merge":
@@ -2289,7 +2312,7 @@ fileIcons:
 	KiCad:
 		icon: "kicad"
 		match: [
-			[".kicad_pcb", "dark-blue"]
+			[".kicad_pcb", "dark-blue", scope: /^source\.pcb\.board$|\.kicad(?=$|\.)/]
 			[".kicad_pcb-bak", "dark-red"]
 			[".kicad_mod", "medium-green"]
 			[".kicad_wks", "medium-cyan"]
@@ -2420,7 +2443,7 @@ fileIcons:
 		icon: "llvm"
 		match: [
 			[".ll", "dark-green", "llvm"]
-			[".clang-format", "auto-yellow"]
+			[/\.clang-(format|tidy)$/i, "auto-yellow"]
 			[/^ubsan\.blacklist$/i, "auto-red"]
 		]
 
@@ -2970,6 +2993,11 @@ fileIcons:
 		match: /^nodemon\.json$|^\.nodemonignore$/i
 		colour: "medium-green"
 
+	Nomad:
+		icon: "nomad"
+		match: ".nomad"
+		colour: "medium-green"
+
 	Normalize:
 		icon: "normalize"
 		priority: 2
@@ -3340,7 +3368,7 @@ fileIcons:
 			[".ps", "medium-red", scope: "postscript", alias: "postscr", signature: /^%!PS/]
 			[".eps", "medium-orange"]
 			[".pfa", "dark-blue"]
-			[".afm", "medium-green"]
+			[".afm", "medium-green", signature: /^\s*StartFontMetrics\s+(\d+\.\d+)/]
 		]
 
 	"POV-Ray SDL":
@@ -3433,6 +3461,12 @@ fileIcons:
 		scope: "purescript"
 		match: ".purs"
 		colour: "dark-purple"
+
+	PyPi:
+		icon: "pypi"
+		match: /^requirements\.in$/i
+		colour: "dark-blue"
+		priority: 2
 
 	Python:
 		icon: "python"
@@ -3970,6 +4004,12 @@ fileIcons:
 			[".sthlp", "medium-purple"]
 		]
 
+	Stencil:
+		icon: "stencil"
+		match: ".stencil"
+		colour: "medium-orange"
+		scope: "stencil"
+
 	Storyist:
 		icon: "storyist"
 		match: ".story"
@@ -4090,9 +4130,10 @@ fileIcons:
 
 	Terraform:
 		icon: "terraform"
-		scope: /\.terra(form)?$/i
-		match: /\.tf(vars)?$/i
-		colour: "dark-purple"
+		match: [
+			[/\.tf(vars)?$/i, "dark-purple", scope: /\.terra(form)?$/i]
+			[".tf.json", "medium-yellow", priority: 2]
+		]
 
 	"Test, CoffeeScript":
 		icon: "test-coffee"
@@ -4127,7 +4168,7 @@ fileIcons:
 		icon: "test-python"
 		priority: 1.5
 		matchPath: true
-		match: /([\\\x2F])(test|spec)s?(\1((?!\1).)+)*\1((?!\1).)+[._-](spec|test)s?\.py(3|thon)?$/i
+		match: /([\\\x2F])(test|spec)s?(\1((?!\1).)+)*\1(((?!\1).)+[._-](?:spec|test)s?|(?:spec|test)s?[._-].+)\.py(3|thon)?$/i
 		colour: "dark-blue"
 
 	"Test, React":
