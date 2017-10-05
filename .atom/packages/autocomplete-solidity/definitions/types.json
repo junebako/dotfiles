@@ -1,0 +1,80 @@
+{
+    "address": {
+        "description": "Address",
+        "leftLabel": "address",
+        "text": "address",
+        "type": "type"
+    },
+    
+    "bool": {
+        "description": "Boolean",
+        "leftLabel": "bool",
+        "text": "bool",
+        "type": "type"
+    },
+    
+    "byte": {
+        "description": "1 byte",
+        "leftLabel": "byte",
+        "text": "byte",
+        "type": "type"
+    },
+    
+    "bytes": {
+        "description": "Dynamically-sized byte array",
+        "leftLabel": "bytes",
+        "text": "bytes",
+        "type": "type"
+    },
+    
+    "enum": {
+        "leftLabel": "enum",
+        "snippet": "enum ${1:SomeEnum} {\n\t${2}\n}",
+        "type": "type"
+    },
+    
+    "event": {
+        "leftLabel": "event",
+        "snippet": "event ${1:SomeEvent}(${2})${3}",
+        "type": "type"
+    },
+    
+    "int": {
+        "description": "Integer (256 bits)",
+        "leftLabel": "int256",
+        "text": "int",
+        "type": "type"
+    },
+    
+    "mapping": {
+        "leftLabel": "mapping",
+        "snippet": "mapping (${1:type1} => ${2:type2}) ${3:someMapping}",
+        "type": "type"
+    },
+    
+    "modifier": {
+        "leftLabel": "modifier",
+        "snippet": "modifier ${1:someModifier}(${2}) {\n\t${3}\n}",
+        "type": "type"
+    },
+    
+    "string": {
+        "description": "Dynamically-sized UTF8-encoded string",
+        "leftLabel": "string",
+        "text": "string",
+        "type": "type"
+    },
+    
+    "struct": {
+        "leftLabel": "struct",
+        "snippet": "struct ${1:SomeStruct} {\n\t${2}\n}",
+        "type": "type"
+    },
+    
+    "uint": {
+        "description": "Unsigned integer (256 bits)",
+        "leftLabel": "uint256",
+        "text": "uint",
+        "type": "type"
+    }
+}
