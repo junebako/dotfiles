@@ -9,6 +9,7 @@
  */
 
 @tab-bar-width: 280px;
+@tab-height: 2.4rem;
 
 .tree-view {
   font-family: "Menlo";
@@ -51,17 +52,25 @@ atom-pane {
 
     li.tab {
       width: @tab-bar-width;
-      height: 2.6rem;
-      line-height: 2.6rem;
+      height: @tab-height;
+      line-height: @tab-height;
 
       .title {
         width: @tab-bar-width;
-        line-height: 2.6rem;
+        line-height: @tab-height;
+        margin-top: 0;
         padding-top: 0;
       }
 
+      .close-icon {
+        top: 16px !important;
+        line-height: @tab-height;
+      }
+
       &::after {
-        width: @tab-bar-width;
+        left: 274px;
+        width: 6px;
+        height: @tab-height;
       }
     }
   }
