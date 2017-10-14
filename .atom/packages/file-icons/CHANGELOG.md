@@ -3,7 +3,23 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.12...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.13...HEAD
+
+
+[v2.1.13] - 2017-10-11
+----------------------
+### Added
+- **New icons:** Backup (`.bak`, `.old`, `.orig`), IcoMoon (`icomoon{.*}.json`), Q/Kdb+ (`.k`, `.q`)
+- **Support:** Heroku (`Aptfile`), Ionic (`ionic.config.json`)
+
+### Fixed
+- `tree-view` icons not updating if project is opened by adding a folder to a blank workspace window.
+
+### Changed
+- `file-icons-coloured` class added to `body` element when coloured icons are enabled
+
+[v2.1.13]: https://github.com/file-icons/atom/releases/tag/v2.1.13
+
 
 
 [v2.1.12] - 2017-09-19

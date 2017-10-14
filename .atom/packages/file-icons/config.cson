@@ -278,6 +278,7 @@ fileIcons:
 		icon: "angelscript"
 		alias: "AngelCode"
 		match: /\.(acs|angelscript)$/i
+		scope: /^source\.angelscript$/
 		colour: "auto-blue"
 
 	Angular:
@@ -509,6 +510,10 @@ fileIcons:
 		priority: 2
 		match: /^backbone([-.]min|dev)?\.js$/i
 		colour: "dark-blue"
+
+	Backup:
+		icon: "backup"
+		match: /\.(bak|old|orig)$/
 
 	Bazel:
 		icon: "bazel"
@@ -1992,7 +1997,7 @@ fileIcons:
 	Heroku:
 		icon: "heroku"
 		match: [
-			[/^Procfile$/, "medium-purple"]
+			[/^(Proc|Apt)file$/, "medium-purple"]
 			[".buildpacks", "light-purple"]
 			[/^\.vendor_urls$/, "dark-purple"]
 		]
@@ -2040,6 +2045,12 @@ fileIcons:
 		scope: "idl"
 		match: ".dlm"
 		colour: "medium-blue"
+
+	IcoMoon:
+		icon: "icomoon"
+		match: /^icomoon(\.[-\w]+)*\.json$/i
+		colour: "medium-purple"
+		priority: 2
 
 	Idris:
 		icon: "idris"
@@ -2141,7 +2152,7 @@ fileIcons:
 	Ionic:
 		icon: "ionic"
 		priority: 2
-		match: /^ionic\.project$/
+		match: /^ionic\.(project|config\.json)$/
 		colour: "medium-blue"
 
 	Isabelle:
@@ -3491,6 +3502,14 @@ fileIcons:
 			[/^(SConstruct|SConscript)$/, "dark-green"]
 			[/^(Snakefile|WATCHLISTS)$/, "medium-green"]
 			[/^wscript$/, "dark-maroon"]
+		]
+
+	"Q/Kdb+":
+		icon: "kx"
+		alias: /^Kdb\s*\+$/
+		match: [
+			[".q", "medium-blue", scope: /^source\.q$/]
+			[".k", "dark-purple", scope: /^source\.k4$/]
 		]
 
 	R:
