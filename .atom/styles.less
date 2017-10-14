@@ -8,6 +8,8 @@
  * http://www.lesscss.org
  */
 
+@tab-bar-width: 280px;
+
 .tree-view {
   font-family: "Menlo";
   font-size: 11px;
@@ -27,6 +29,7 @@
 // style the background and foreground colors on the atom-text-editor-element
 // itself
 atom-text-editor {
+  margin-right: @tab-bar-width;
   font-family: "Migu 1M";
   font-size: 13px;
 }
@@ -34,4 +37,32 @@ atom-text-editor {
 // To style other content in the text editor's shadow DOM, use the ::shadow
 // expression
 atom-text-editor::shadow .cursor {
+}
+
+atom-pane {
+  ul.tab-bar {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: @tab-bar-width;
+    height: 100%;
+    max-height: 100%;
+
+    li.tab {
+      width: @tab-bar-width;
+      height: 2.6rem;
+      line-height: 2.6rem;
+
+      .title {
+        width: @tab-bar-width;
+        line-height: 2.6rem;
+        padding-top: 0;
+      }
+
+      &::after {
+        width: @tab-bar-width;
+      }
+    }
+  }
 }
