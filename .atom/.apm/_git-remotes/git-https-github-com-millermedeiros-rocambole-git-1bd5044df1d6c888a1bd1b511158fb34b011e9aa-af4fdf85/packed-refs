@@ -1,7 +1,7 @@
 # pack-refs with: peeled fully-peeled 
 baf45d675f1bd34221f92f7a066e13d39d18c752 refs/heads/master
 cc36a25312ad4394fad32a12ff08e23b300589f7 refs/pull/17/head
-ae0c878e5a38aeb3d9c0e74d840e9bc2da4ca63c refs/pull/17/merge
+26c74e7512aae3d3a781d7e3341fcb1f26ad187f refs/pull/17/merge
 c59c627278f3c318e0ab55a9355691f890dfde5b refs/pull/19/head
 3a13f4bcf6ab5f2a466a3b8885926c539955abe0 refs/pull/22/head
 e4a73a5938b2696147be8c3d8ca457eba43e057b refs/pull/22/merge
