@@ -1,0 +1,69 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171014-24761-7zbyy8.xlb0h5xw29/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171014-24761-7zbyy8.xlb0h5xw29/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171014-24761-7zbyy8.xlb0h5xw29/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171014-24761-vn5le8.xsnw154s4i"
+    ]
+  ],
+  "_from": "../d-1171014-24761-7zbyy8.xlb0h5xw29/package.tgz",
+  "_id": "language-docker@1.1.8",
+  "_inCache": true,
+  "_location": "/language-docker",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171014-24761-7zbyy8.xlb0h5xw29/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171014-24761-7zbyy8.xlb0h5xw29/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171014-24761-7zbyy8.xlb0h5xw29/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-1171014-24761-7zbyy8.xlb0h5xw29/package.tgz",
+  "_shasum": "13730989184f2d85178f464d011af62eb519c582",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171014-24761-7zbyy8.xlb0h5xw29/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171014-24761-vn5le8.xsnw154s4i",
+  "bugs": {
+    "url": "https://github.com/jagregory/language-docker/issues"
+  },
+  "dependencies": {},
+  "description": "Dockerfile syntax highlighting",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "homepage": "https://github.com/jagregory/language-docker#readme",
+  "license": "MIT",
+  "name": "language-docker",
+  "optionalDependencies": {},
+  "private": false,
+  "readme": "# Atom Docker Syntax Highlighting\n\nAtom syntax highlighting for Dockerfiles.\n\n## Install\n\nInstall the package `language-docker` in Atom (Preferences->Packages) or Atom's package manager from a shell:\n\n```bash\n$ apm install language-docker\n```\n\n## Syntax support\n\nlanguage-docker supports most Dockerfile syntax features, as well as .dockerignore files.\n\n## Highlighting of `Dockerfile.<suffix>`\n\nHighlighting based on wildcards is [not supported](https://github.com/atom/first-mate/issues/64) in Atom. You can use package [file-types](https://atom.io/packages/file-types) with this in you `config.cson` to enable it.\n\n```cson\n  \"file-types\": {\n    \"^Dockerfile\\\\..*$\": \"source.dockerfile\"\n  }\n```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jagregory/language-docker.git"
+  },
+  "version": "1.1.8",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
