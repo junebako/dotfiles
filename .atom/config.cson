@@ -7,7 +7,6 @@
     alwaysAutoDetect: false
     ignorePattern: "(md|rb)$"
   core:
-    automaticallyUpdate: false
     telemetryConsent: "limited"
     themes: [
       "atom-material-ui"
