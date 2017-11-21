@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "8"
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+services:
+  - postgresql
+
+env:
+  global:
+    - DISPLAY=:99.0
+
+before_install:
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
+
+before_script:
+  - 'createdb teletype-server-test'
+  - 'cp .env.example .env'
+
+git:
+  depth: 10

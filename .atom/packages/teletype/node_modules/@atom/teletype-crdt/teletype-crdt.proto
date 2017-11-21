@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+message Operation {
+  oneof variant {
+    Splice splice = 1;
+    Undo undo = 2;
+    MarkersUpdate markers_update = 3;
+  }
+
+  message Splice {
+    SpliceId splice_id = 1;
+    Insertion insertion = 2;
+    Deletion deletion = 3;
+
+    message Insertion {
+      string text = 2;
+      SpliceId left_dependency_id = 3;
+      Point offset_in_left_dependency = 4;
+      SpliceId right_dependency_id = 5;
+      Point offset_in_right_dependency = 6;
+    }
+
+    message Deletion {
+      SpliceId left_dependency_id = 2;
+      Point offset_in_left_dependency = 3;
+      SpliceId right_dependency_id = 4;
+      Point offset_in_right_dependency = 5;
+      map<uint32, uint32> max_seqs_by_site = 6;
+    }
+  }
+
+  message Undo {
+    SpliceId splice_id = 1;
+    uint32 undo_count = 2;
+  }
+
+  message MarkersUpdate {
+    uint32 site_id = 1;
+    map<uint32, LayerOperation> layer_operations = 2;
+
+    message LayerOperation {
+      bool is_deletion = 1;
+      map<uint32, MarkerOperation> marker_operations = 2;
+    }
+
+    message MarkerOperation {
+      bool is_deletion = 1;
+      MarkerUpdate marker_update = 2;
+    }
+
+    message MarkerUpdate {
+      LogicalRange range = 1;
+      bool exclusive = 2;
+      bool reversed = 3;
+      bool tailed = 4;
+    }
+
+    message LogicalRange {
+      SpliceId start_dependency_id = 1;
+      Point offset_in_start_dependency = 2;
+      SpliceId end_dependency_id = 3;
+      Point offset_in_end_dependency = 4;
+    }
+  }
+
+  message SpliceId {
+    uint32 site = 1;
+    uint32 seq = 2;
+  }
+
+  message Point {
+    uint32 row = 1;
+    uint32 column = 2;
+  }
+}
