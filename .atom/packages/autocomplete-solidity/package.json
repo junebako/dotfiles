@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-34803-1s5cuon.zj7zh3erk9/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171030-1766-1k146hh.s4yv31sjor/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-34803-1s5cuon.zj7zh3erk9/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-34803-1s5cuon.zj7zh3erk9/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171030-1766-1k146hh.s4yv31sjor/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171030-1766-1k146hh.s4yv31sjor/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11795-34803-uo82ze.uksduqh0k9"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171030-1766-13tagsb.j010nvzpvi"
     ]
   ],
-  "_from": "../d-11795-34803-1s5cuon.zj7zh3erk9/package.tgz",
-  "_id": "autocomplete-solidity@0.3.3",
+  "_from": "../d-1171030-1766-1k146hh.s4yv31sjor/package.tgz",
+  "_id": "autocomplete-solidity@0.3.4",
   "_inCache": true,
   "_location": "/autocomplete-solidity",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-34803-1s5cuon.zj7zh3erk9/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171030-1766-1k146hh.s4yv31sjor/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-34803-1s5cuon.zj7zh3erk9/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-34803-1s5cuon.zj7zh3erk9/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171030-1766-1k146hh.s4yv31sjor/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171030-1766-1k146hh.s4yv31sjor/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11795-34803-1s5cuon.zj7zh3erk9/package.tgz",
-  "_shasum": "f2b505f9baff5fc4e4dd2c69b443b5f23686e8d9",
+  "_resolved": "file:../d-1171030-1766-1k146hh.s4yv31sjor/package.tgz",
+  "_shasum": "2f54b516c3e63c8b78091a1e2d75ed9d919cef4c",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-34803-1s5cuon.zj7zh3erk9/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11795-34803-uo82ze.uksduqh0k9",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171030-1766-1k146hh.s4yv31sjor/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171030-1766-13tagsb.j010nvzpvi",
   "bugs": {
     "url": "https://github.com/austp/autocomplete-solidity/issues"
   },
@@ -69,23 +69,5 @@
     "type": "git",
     "url": "git+https://github.com/austp/autocomplete-solidity.git"
   },
-  "version": "0.3.3",
-  "_atomModuleCache": {
-    "version": 1,
-    "dependencies": [],
-    "extensions": {
-      ".json": [
-        "package.json"
-      ],
-      ".js": [
-        "src/autocomplete-solidity.js",
-        "src/providers/Provider.js",
-        "src/providers/base-provider.js",
-        "src/providers/context-provider.js",
-        "src/util/contracts.js",
-        "src/util/parser.js"
-      ]
-    },
-    "folders": []
-  }
+  "version": "0.3.4"
 }
