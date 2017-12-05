@@ -47,6 +47,12 @@ alias gtmp='git add .; git commit -m "tmp"'
 alias gfpr='git checkout master; git fetch --prune origin; git pull --rebase origin master'
 alias gmbd='git branch --merged master | grep -vE "^\*|master$" | xargs -I % git branch -d %'
 
+# Docker
+
+alias dcb='docker-compose build'
+alias dce='docker-compose exec'
+alias dcu='docker-compose up'
+
 # http://www.clear-code.com/blog/2011/9/5.html
 
 alias grep="grep --color=auto"
