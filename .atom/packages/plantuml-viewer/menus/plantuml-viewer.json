@@ -1,0 +1,30 @@
+{
+  "context-menu": {
+    ".plantuml-viewer": [
+      { "label": "Save As\u2026", "command": "core:save-as" },
+      { "label": "Copy", "command": "core:copy" }
+    ],
+    "atom-text-editor": [
+      {
+        "label": "Toggle plantuml-viewer",
+        "command": "plantuml-viewer:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "PlantUML Viewer",
+          "submenu": [
+            {
+              "label": "Toggle View",
+              "command": "plantuml-viewer:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
