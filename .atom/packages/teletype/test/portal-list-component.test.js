@@ -1,5 +1,4 @@
 const assert = require('assert')
-const etch = require('etch')
 const condition = require('./helpers/condition')
 const {Disposable} = require('atom')
 const FakeClipboard = require('./helpers/fake-clipboard')
@@ -88,7 +87,7 @@ suite('PortalListComponent', function () {
   })
 
   test('joining portals', async () => {
-    const {component, element, portalBindingManager} = await buildComponent()
+    const {component} = await buildComponent()
     const {joinPortalComponent, guestPortalBindingsContainer} = component.refs
 
     assert(joinPortalComponent.refs.joinPortalLabel)
@@ -248,6 +247,16 @@ suite('PortalListComponent', function () {
 class FakeWorkspace {
   async open () {}
 
+  getCenter () {
+    return {
+      paneContainer: {
+        getElement () {
+          return document.createElement('div')
+        }
+      }
+    }
+  }
+
   getElement () {
     return document.createElement('div')
   }
@@ -255,6 +264,16 @@ class FakeWorkspace {
   observeActiveTextEditor () {
     return new Disposable(() => {})
   }
+
+  onDidDestroyPaneItem () {
+    return new Disposable(() => {})
+  }
+
+  onDidChangeActivePaneItem () {
+    return new Disposable(() => {})
+  }
+
+  paneForItem () {}
 }
 
 class FakeNotificationManager {

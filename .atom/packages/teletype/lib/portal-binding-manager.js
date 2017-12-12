@@ -108,9 +108,9 @@ class PortalBindingManager {
 
   async getActiveGuestPortalBinding () {
     const activePaneItem = this.workspace.getActivePaneItem()
-    for (const [_, portalBindingPromise] of this.promisesByGuestPortalId) {
+    for (const [_, portalBindingPromise] of this.promisesByGuestPortalId) { // eslint-disable-line no-unused-vars
       const portalBinding = await portalBindingPromise
-      if (portalBinding.getActivePaneItem() === activePaneItem) {
+      if (portalBinding.hasPaneItem(activePaneItem)) {
         return portalBinding
       }
     }

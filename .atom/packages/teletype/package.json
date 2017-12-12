@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-2497-1wnseiy.1j4wle4s4i/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171112-31962-swtzdb.ecud31sjor/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-2497-1wnseiy.1j4wle4s4i/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-2497-1wnseiy.1j4wle4s4i/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171112-31962-swtzdb.ecud31sjor/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171112-31962-swtzdb.ecud31sjor/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171022-2497-jyp6n9.40k9pmn29"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171112-31962-cgh9y6.fjphc9pb9"
     ]
   ],
-  "_from": "../d-1171022-2497-1wnseiy.1j4wle4s4i/package.tgz",
-  "_id": "teletype@0.2.3",
+  "_from": "../d-1171112-31962-swtzdb.ecud31sjor/package.tgz",
+  "_id": "teletype@0.3.0",
   "_inCache": true,
   "_location": "/teletype",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-2497-1wnseiy.1j4wle4s4i/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171112-31962-swtzdb.ecud31sjor/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-2497-1wnseiy.1j4wle4s4i/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-2497-1wnseiy.1j4wle4s4i/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171112-31962-swtzdb.ecud31sjor/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171112-31962-swtzdb.ecud31sjor/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-1171022-2497-1wnseiy.1j4wle4s4i/package.tgz",
-  "_shasum": "9b3178cd60c1a0ea98e88403307426a94e140162",
+  "_resolved": "file:../d-1171112-31962-swtzdb.ecud31sjor/package.tgz",
+  "_shasum": "136a3d63afbd5ea7bada326804031bb924b51ce0",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-2497-1wnseiy.1j4wle4s4i/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171022-2497-jyp6n9.40k9pmn29",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171112-31962-swtzdb.ecud31sjor/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171112-31962-cgh9y6.fjphc9pb9",
   "atomTestRunner": "./test/setup",
   "author": "",
   "bugs": {
@@ -71,7 +71,7 @@
     }
   },
   "dependencies": {
-    "@atom/teletype-client": "^0.28.2",
+    "@atom/teletype-client": "^0.29.0",
     "etch": "^0.12.6"
   },
   "description": "Share your workspace with team members and collaborate on code in real time",
@@ -79,6 +79,7 @@
     "@atom/teletype-server": "^0.17.0",
     "atom-mocha-test-runner": "^1.0.1",
     "deep-equal": "^1.0.1",
+    "standard": "^10.0.3",
     "temp": "^0.8.3"
   },
   "engines": {
@@ -102,7 +103,20 @@
     "url": "git+https://github.com/atom/teletype.git"
   },
   "scripts": {
+    "lint": "standard --verbose",
     "test": "atom --test test"
   },
-  "version": "0.2.3"
+  "standard": {
+    "env": {
+      "mocha": true
+    },
+    "globals": [
+      "atom",
+      "ErrorEvent"
+    ],
+    "ignore": [
+      "test/fixtures"
+    ]
+  },
+  "version": "0.3.0"
 }

@@ -1,9 +1,9 @@
 const {CompositeDisposable, Emitter, TextEditor, TextBuffer} = require('atom')
-const {Errors} = require('@atom/teletype-client')
+const {Errors, FollowState} = require('@atom/teletype-client')
 const BufferBinding = require('./buffer-binding')
 const EditorBinding = require('./editor-binding')
-const GuestPortalBinding = require('./guest-portal-binding')
 const EmptyPortalPaneItem = require('./empty-portal-pane-item')
+const SitePositionsController = require('./site-positions-controller')
 
 module.exports =
 class GuestPortalBinding {
@@ -13,13 +13,14 @@ class GuestPortalBinding {
     this.workspace = workspace
     this.notificationManager = notificationManager
     this.emitDidDispose = didDispose
-    this.activePaneItem = null
-    this.activeEditorBinding = null
+    this.lastActivePaneItem = null
     this.editorBindingsByEditorProxy = new Map()
     this.bufferBindingsByBufferProxy = new Map()
-    this.addedPaneItems = new WeakSet()
+    this.editorProxiesByEditor = new WeakMap()
     this.emitter = new Emitter()
-    this.lastSetActiveEditorProxyPromise = Promise.resolve()
+    this.subscriptions = new CompositeDisposable()
+    this.lastEditorProxyChangePromise = Promise.resolve()
+    this.shouldRelayActiveEditorChanges = true
   }
 
   async initialize () {
@@ -27,7 +28,14 @@ class GuestPortalBinding {
       this.portal = await this.client.joinPortal(this.portalId)
       if (!this.portal) return false
 
-      this.portal.setDelegate(this)
+      this.sitePositionsController = new SitePositionsController({portal: this.portal, workspace: this.workspace})
+      this.sitePositionsController.show()
+
+      await this.portal.setDelegate(this)
+      await this.toggleEmptyPortalPaneItem()
+
+      this.subscriptions.add(this.workspace.onDidChangeActivePaneItem(this.didChangeActivePaneItem.bind(this)))
+      this.subscriptions.add(this.workspace.onDidDestroyPaneItem(this.didDestroyPaneItem.bind(this)))
       return true
     } catch (error) {
       this.didFailToJoin(error)
@@ -36,9 +44,10 @@ class GuestPortalBinding {
   }
 
   dispose () {
-    if (this.activePaneItemDestroySubscription) this.activePaneItemDestroySubscription.dispose()
-    if (this.activePaneItem) this.activePaneItem.destroy()
+    this.subscriptions.dispose()
+    this.sitePositionsController.destroy()
     if (this.emptyPortalItem) this.emptyPortalItem.destroy()
+
     this.emitDidDispose()
   }
 
@@ -56,57 +65,131 @@ class GuestPortalBinding {
     this.emitter.emit('did-change')
   }
 
-  async setActiveEditorProxy (editorProxy) {
-    this.lastSetActiveEditorProxyPromise = this.lastSetActiveEditorProxyPromise.then(async () => {
-      if (editorProxy == null) {
-        await this.replaceActivePaneItem(this.getEmptyPortalPaneItem())
-      } else {
-        const {bufferProxy} = editorProxy
-        let editor
-        let editorBinding = this.editorBindingsByEditorProxy.get(editorProxy)
-        let bufferBinding = this.bufferBindingsByBufferProxy.get(bufferProxy)
-        if (editorBinding) {
-          editor = editorBinding.editor
-        } else {
-          let buffer
-          if (bufferBinding) {
-            buffer = bufferBinding.buffer
-          } else {
-            buffer = new TextBuffer()
-            bufferBinding = new BufferBinding({
-              buffer,
-              didDispose: () => this.bufferBindingsByBufferProxy.delete(bufferProxy)
-            })
-            bufferBinding.setBufferProxy(bufferProxy)
-            bufferProxy.setDelegate(bufferBinding)
-            this.bufferBindingsByBufferProxy.set(bufferProxy, bufferBinding)
-          }
+  addEditorProxy (editorProxy) {
+    // TODO Implement in order to allow guests to open any editor that's in the host's workspace
+  }
 
-          editor = new TextEditor({buffer, autoHeight: false})
-          editorBinding = new EditorBinding({
-            editor,
-            portal: this.portal,
-            isHost: false,
-            didDispose: () => this.editorBindingsByEditorProxy.delete(editorProxy)
-          })
-          editorBinding.setEditorProxy(editorProxy)
-          editorProxy.setDelegate(editorBinding)
-          this.editorBindingsByEditorProxy.set(editorProxy, editorBinding)
+  removeEditorProxy (editorProxy) {
+    this.lastEditorProxyChangePromise = this.lastEditorProxyChangePromise.then(async () => {
+      const editorBinding = this.editorBindingsByEditorProxy.get(editorProxy)
+      if (editorBinding) {
+        editorBinding.dispose()
+        if (this.editorBindingsByEditorProxy.size === 0) {
+          this.portal.follow(1)
         }
 
-        this.activeEditorBinding = editorBinding
-        await this.replaceActivePaneItem(editor)
+        await this.toggleEmptyPortalPaneItem()
+
+        const isRetracted = this.portal.resolveFollowState() === FollowState.RETRACTED
+        this.shouldRelayActiveEditorChanges = !isRetracted
+        this.lastDestroyedEditorWasRemovedByHost = true
+        editorBinding.editor.destroy()
+        this.lastDestroyedEditorWasRemovedByHost = false
+        this.shouldRelayActiveEditorChanges = true
       }
     })
 
-    return this.lastSetActiveEditorProxyPromise
+    return this.lastEditorProxyChangePromise
+  }
+
+  updateActivePositions (positionsBySiteId) {
+    this.sitePositionsController.updateActivePositions(positionsBySiteId)
+  }
+
+  updateTether (followState, editorProxy, position) {
+    if (editorProxy) {
+      this.lastEditorProxyChangePromise = this.lastEditorProxyChangePromise.then(() =>
+        this._updateTether(followState, editorProxy, position)
+      )
+    }
+
+    return this.lastEditorProxyChangePromise
+  }
+
+  // Private
+  async _updateTether (followState, editorProxy, position) {
+    if (followState === FollowState.RETRACTED) {
+      const editor = this.findOrCreateEditorForEditorProxy(editorProxy)
+      this.shouldRelayActiveEditorChanges = false
+      await this.openPaneItem(editor)
+      this.shouldRelayActiveEditorChanges = true
+      await this.toggleEmptyPortalPaneItem()
+    } else {
+      this.editorBindingsByEditorProxy.forEach((b) => b.updateTether(followState))
+    }
+
+    const editorBinding = this.editorBindingsByEditorProxy.get(editorProxy)
+    if (editorBinding && position) {
+      editorBinding.updateTether(followState, position)
+    }
+  }
+
+  // Private
+  findOrCreateEditorForEditorProxy (editorProxy) {
+    let editor
+    let editorBinding = this.editorBindingsByEditorProxy.get(editorProxy)
+    if (editorBinding) {
+      editor = editorBinding.editor
+    } else {
+      const {bufferProxy} = editorProxy
+      const buffer = this.findOrCreateBufferForBufferProxy(bufferProxy)
+      editor = new TextEditor({buffer, autoHeight: false})
+      editorBinding = new EditorBinding({
+        editor,
+        portal: this.portal,
+        isHost: false
+      })
+      editorBinding.setEditorProxy(editorProxy)
+      editorProxy.setDelegate(editorBinding)
+
+      this.editorBindingsByEditorProxy.set(editorProxy, editorBinding)
+      this.editorProxiesByEditor.set(editor, editorProxy)
+      editorBinding.onDidDispose(() => {
+        this.editorProxiesByEditor.delete(editor)
+        this.editorBindingsByEditorProxy.delete(editorProxy)
+      })
+
+      this.sitePositionsController.addEditorBinding(editorBinding)
+    }
+    return editor
+  }
+
+  // Private
+  findOrCreateBufferForBufferProxy (bufferProxy) {
+    let buffer
+    let bufferBinding = this.bufferBindingsByBufferProxy.get(bufferProxy)
+    if (bufferBinding) {
+      buffer = bufferBinding.buffer
+    } else {
+      buffer = new TextBuffer()
+      bufferBinding = new BufferBinding({
+        buffer,
+        isHost: false,
+        didDispose: () => this.bufferBindingsByBufferProxy.delete(bufferProxy)
+      })
+      bufferBinding.setBufferProxy(bufferProxy)
+      bufferProxy.setDelegate(bufferBinding)
+      this.bufferBindingsByBufferProxy.set(bufferProxy, bufferBinding)
+    }
+    return buffer
+  }
+
+  // Private
+  async toggleEmptyPortalPaneItem () {
+    const emptyPortalItem = this.getEmptyPortalPaneItem()
+    const pane = this.workspace.paneForItem(emptyPortalItem)
+    if (this.editorBindingsByEditorProxy.size === 0) {
+      if (!pane) await this.openPaneItem(emptyPortalItem)
+    } else {
+      if (pane) emptyPortalItem.destroy()
+    }
   }
 
   activate () {
-    const activePaneItem = this.getActivePaneItem()
-    const pane = this.workspace.paneForItem(activePaneItem)
-    if (pane && activePaneItem) {
-      pane.activateItem(activePaneItem)
+    const paneItem = this.lastActivePaneItem
+    const pane = this.workspace.paneForItem(paneItem)
+    if (pane && paneItem) {
+      pane.activateItem(paneItem)
       pane.activate()
     }
   }
@@ -133,7 +216,6 @@ class GuestPortalBinding {
       description: 'Your host stopped sharing their editor.',
       dismissable: true
     })
-    this.activePaneItem = null
   }
 
   hostDidLoseConnection () {
@@ -144,34 +226,57 @@ class GuestPortalBinding {
       ),
       dismissable: true
     })
-    this.activePaneItem = null
   }
 
   leave () {
+    this.editorBindingsByEditorProxy.forEach((binding) => {
+      binding.editor.destroy()
+    })
+
     if (this.portal) this.portal.dispose()
   }
 
-  async replaceActivePaneItem (newActivePaneItem) {
+  async openPaneItem (newActivePaneItem) {
     this.newActivePaneItem = newActivePaneItem
-
-    if (this.activePaneItem) {
-      const pane = this.workspace.paneForItem(this.activePaneItem)
-      const index = pane.getItems().indexOf(this.activePaneItem)
-      pane.addItem(newActivePaneItem, {index, moved: this.addedPaneItems.has(newActivePaneItem)})
-      pane.removeItem(this.activePaneItem)
-    } else {
-      await this.workspace.open(newActivePaneItem)
-    }
-    this.addedPaneItems.add(newActivePaneItem)
-
-    this.activePaneItem = this.newActivePaneItem
-    if (this.activePaneItemDestroySubscription) this.activePaneItemDestroySubscription.dispose()
-    this.activePaneItemDestroySubscription = this.activePaneItem.onDidDestroy(this.leave.bind(this))
+    await this.workspace.open(newActivePaneItem, {searchAllPanes: true})
+    this.lastActivePaneItem = this.newActivePaneItem
     this.newActivePaneItem = null
   }
 
+  didChangeActivePaneItem (paneItem) {
+    const editorProxy = this.editorProxiesByEditor.get(paneItem)
+
+    if (editorProxy || paneItem === this.getEmptyPortalPaneItem()) {
+      this.sitePositionsController.show()
+    } else {
+      this.sitePositionsController.hide()
+    }
+
+    if (this.shouldRelayActiveEditorChanges && paneItem !== this.getEmptyPortalPaneItem()) {
+      this.portal.activateEditorProxy(editorProxy)
+    }
+  }
+
+  didDestroyPaneItem () {
+    const emptyPortalItem = this.getEmptyPortalPaneItem()
+    const hasNoPortalPaneItem = this.workspace.getPaneItems().every((item) => (
+      item !== emptyPortalItem && !this.editorProxiesByEditor.has(item)
+    ))
+    const lastDestroyedEditorWasClosedManually = !this.lastDestroyedEditorWasRemovedByHost
+    if (hasNoPortalPaneItem && lastDestroyedEditorWasClosedManually) {
+      this.leave()
+    }
+  }
+
+  hasPaneItem (paneItem) {
+    return (
+      paneItem === this.getEmptyPortalPaneItem() ||
+      this.editorProxiesByEditor.has(paneItem)
+    )
+  }
+
   getActivePaneItem () {
-    return this.newActivePaneItem ? this.newActivePaneItem : this.activePaneItem
+    return this.newActivePaneItem || this.workspace.getActivePaneItem()
   }
 
   getEmptyPortalPaneItem () {

@@ -1,18 +1,17 @@
+/* global ResizeObserver */
+
 const path = require('path')
-const {Range, Disposable, CompositeDisposable} = require('atom')
+const {Range, Emitter, Disposable, CompositeDisposable} = require('atom')
 const normalizeURI = require('./normalize-uri')
 const {FollowState} = require('@atom/teletype-client')
-const SitePositionsComponent = require('./site-positions-component')
-
-function doNothing () {}
 
 module.exports =
 class EditorBinding {
-  constructor ({editor, portal, isHost, didDispose}) {
+  constructor ({editor, portal, isHost}) {
     this.editor = editor
     this.portal = portal
     this.isHost = isHost
-    this.emitDidDispose = didDispose || doNothing
+    this.emitter = new Emitter()
     this.selectionsMarkerLayer = this.editor.selectionsMarkerLayer.bufferMarkerLayer
     this.markerLayersBySiteId = new Map()
     this.markersByLayerAndId = new WeakMap()
@@ -22,6 +21,9 @@ class EditorBinding {
   }
 
   dispose () {
+    if (this.disposed) return
+
+    this.disposed = true
     this.subscriptions.dispose()
 
     this.markerLayersBySiteId.forEach((l) => l.destroy())
@@ -29,11 +31,8 @@ class EditorBinding {
     if (!this.isHost) this.restoreOriginalEditorMethods(this.editor)
     if (this.localCursorLayerDecoration) this.localCursorLayerDecoration.destroy()
 
-    this.aboveViewportSitePositionsComponent.destroy()
-    this.insideViewportSitePositionsComponent.destroy()
-    this.outsideViewportSitePositionsComponent.destroy()
-
-    this.emitDidDispose()
+    this.emitter.emit('did-dispose')
+    this.emitter.dispose()
   }
 
   setEditorProxy (editorProxy) {
@@ -42,6 +41,7 @@ class EditorBinding {
       this.editor.onDidDestroy(() => this.editorProxy.dispose())
     } else {
       this.monkeyPatchEditorMethods(this.editor, this.editorProxy)
+      this.editor.onDidDestroy(() => this.dispose())
     }
 
     this.localCursorLayerDecoration = this.editor.decorateMarkerLayer(
@@ -57,15 +57,7 @@ class EditorBinding {
     this.subscriptions.add(this.editor.element.onDidChangeScrollTop(this.editorDidChangeScrollTop.bind(this)))
     this.subscriptions.add(this.editor.element.onDidChangeScrollLeft(this.editorDidChangeScrollLeft.bind(this)))
     this.subscriptions.add(subscribeToResizeEvents(this.editor.element, this.editorDidResize.bind(this)))
-    this.relayLocalSelections(true)
-
-    this.aboveViewportSitePositionsComponent = this.buildSitePositionsComponent('upper-right')
-    this.insideViewportSitePositionsComponent = this.buildSitePositionsComponent('middle-right')
-    this.outsideViewportSitePositionsComponent = this.buildSitePositionsComponent('lower-right')
-
-    this.editor.element.appendChild(this.aboveViewportSitePositionsComponent.element)
-    this.editor.element.appendChild(this.insideViewportSitePositionsComponent.element)
-    this.editor.element.appendChild(this.outsideViewportSitePositionsComponent.element)
+    this.relayLocalSelections()
   }
 
   monkeyPatchEditorMethods (editor, editorProxy) {
@@ -80,9 +72,13 @@ class EditorBinding {
     editor.copy = () => null
     editor.serialize = () => null
     editor.isRemote = true
+
+    let remoteEditorCountForBuffer = buffer.remoteEditorCount || 0
+    buffer.remoteEditorCount = ++remoteEditorCountForBuffer
     buffer.getPath = () => `${uriPrefix}:${bufferURI}`
     buffer.save = () => {}
     buffer.isModified = () => false
+
     editor.element.classList.add('teletype-RemotePaneItem')
   }
 
@@ -96,22 +92,27 @@ class EditorBinding {
     delete editor.copy
     delete editor.serialize
     delete editor.isRemote
-    delete buffer.getPath
-    delete buffer.save
-    delete buffer.isModified
+
+    buffer.remoteEditorCount--
+    if (buffer.remoteEditorCount === 0) {
+      delete buffer.remoteEditorCount
+      delete buffer.getPath
+      delete buffer.save
+      delete buffer.isModified
+    }
 
     editor.element.classList.remove('teletype-RemotePaneItem')
     editor.emitter.emit('did-change-title', editor.getTitle())
   }
 
-  observeMarker (marker, relayLocalSelections = true) {
+  observeMarker (marker, relay = true) {
     const didChangeDisposable = marker.onDidChange(({textChanged}) => {
       if (textChanged) {
         if (marker.getRange().isEmpty()) marker.clearTail()
       } else {
-        this.editorProxy.updateSelections({
+        this.updateSelections({
           [marker.id]: getSelectionState(marker)
-        }, this.preserveFollowState)
+        })
       }
     })
     const didDestroyDisposable = marker.onDidDestroy(() => {
@@ -120,33 +121,50 @@ class EditorBinding {
       this.subscriptions.remove(didChangeDisposable)
       this.subscriptions.remove(didDestroyDisposable)
 
-      this.editorProxy.updateSelections({
+      this.updateSelections({
         [marker.id]: null
-      }, this.preserveFollowState)
+      })
     })
     this.subscriptions.add(didChangeDisposable)
     this.subscriptions.add(didDestroyDisposable)
-    if (relayLocalSelections) this.relayLocalSelections()
+
+    if (relay) {
+      this.updateSelections({
+        [marker.id]: getSelectionState(marker)
+      })
+    }
   }
 
   async editorDidChangeScrollTop () {
     const {element} = this.editor
     await element.component.getNextUpdatePromise()
-    this.updateActivePositions(this.positionsBySiteId)
     this.editorProxy.didScroll()
+    this.emitter.emit('did-scroll')
   }
 
   async editorDidChangeScrollLeft () {
     const {element} = this.editor
     await element.component.getNextUpdatePromise()
-    this.updateActivePositions(this.positionsBySiteId)
     this.editorProxy.didScroll()
+    this.emitter.emit('did-scroll')
   }
 
   async editorDidResize () {
     const {element} = this.editor
     await element.component.getNextUpdatePromise()
-    this.updateActivePositions(this.positionsBySiteId)
+    this.emitter.emit('did-resize')
+  }
+
+  onDidDispose (callback) {
+    return this.emitter.on('did-dispose', callback)
+  }
+
+  onDidScroll (callback) {
+    return this.emitter.on('did-scroll', callback)
+  }
+
+  onDidResize (callback) {
+    return this.emitter.on('did-resize', callback)
   }
 
   updateSelectionsForSiteId (siteId, selections) {
@@ -196,8 +214,10 @@ class EditorBinding {
     }
   }
 
-  isPositionVisible (bufferPosition) {
-    return this.getDirectionFromViewportToPosition(bufferPosition) === 'inside'
+  isScrollNeededToViewPosition (position) {
+    const isPositionVisible = this.getDirectionFromViewportToPosition(position) === 'inside'
+    const isEditorAttachedToDOM = document.body.contains(this.editor.element)
+    return isEditorAttachedToDOM && !isPositionVisible
   }
 
   updateTether (state, position) {
@@ -205,10 +225,7 @@ class EditorBinding {
 
     if (state === FollowState.RETRACTED) {
       this.editor.destroyFoldsIntersectingBufferRange(Range(position, position))
-
-      this.preserveFollowState = true
-      this.editor.setCursorBufferPosition(position)
-      this.preserveFollowState = false
+      this.batchMarkerUpdates(() => this.editor.setCursorBufferPosition(position))
 
       localCursorDecorationProperties.style = {opacity: 0}
     } else {
@@ -216,36 +233,6 @@ class EditorBinding {
     }
 
     this.localCursorLayerDecoration.setProperties(localCursorDecorationProperties)
-  }
-
-  updateActivePositions (positionsBySiteId) {
-    const aboveViewportSiteIds = []
-    const insideViewportSiteIds = []
-    const outsideViewportSiteIds = []
-    const followedSiteId = this.editorProxy.getFollowedSiteId()
-
-    for (let siteId in positionsBySiteId) {
-      siteId = parseInt(siteId)
-      const position = positionsBySiteId[siteId]
-      switch (this.getDirectionFromViewportToPosition(position)) {
-        case 'upward':
-          aboveViewportSiteIds.push(siteId)
-          break
-        case 'inside':
-          insideViewportSiteIds.push(siteId)
-          break
-        case 'downward':
-        case 'leftward':
-        case 'rightward':
-          outsideViewportSiteIds.push(siteId)
-          break
-      }
-    }
-
-    this.aboveViewportSitePositionsComponent.update({siteIds: aboveViewportSiteIds, followedSiteId})
-    this.insideViewportSitePositionsComponent.update({siteIds: insideViewportSiteIds, followedSiteId})
-    this.outsideViewportSitePositionsComponent.update({siteIds: outsideViewportSiteIds, followedSiteId})
-    this.positionsBySiteId = positionsBySiteId
   }
 
   getDirectionFromViewportToPosition (bufferPosition) {
@@ -276,23 +263,31 @@ class EditorBinding {
     this.markersByLayerAndId.delete(markerLayer)
   }
 
-  relayLocalSelections (initialUpdate = false) {
+  relayLocalSelections () {
     const selectionUpdates = {}
     const selectionMarkers = this.selectionsMarkerLayer.getMarkers()
     for (let i = 0; i < selectionMarkers.length; i++) {
       const marker = selectionMarkers[i]
       selectionUpdates[marker.id] = getSelectionState(marker)
     }
-    this.editorProxy.updateSelections(selectionUpdates, initialUpdate)
+    this.editorProxy.updateSelections(selectionUpdates, {initialUpdate: true})
   }
 
-  buildSitePositionsComponent (position) {
-    return new SitePositionsComponent({
-      position,
-      displayedParticipantsCount: 3,
-      portal: this.portal,
-      onSelectSiteId: this.toggleFollowingForSiteId.bind(this)
-    })
+  batchMarkerUpdates (fn) {
+    this.batchedMarkerUpdates = {}
+    this.isBatchingMarkerUpdates = true
+    fn()
+    this.isBatchingMarkerUpdates = false
+    this.editorProxy.updateSelections(this.batchedMarkerUpdates)
+    this.batchedMarkerUpdates = null
+  }
+
+  updateSelections (update) {
+    if (this.isBatchingMarkerUpdates) {
+      Object.assign(this.batchedMarkerUpdates, update)
+    } else {
+      this.editorProxy.updateSelections(update)
+    }
   }
 
   toggleFollowingForSiteId (siteId) {
@@ -304,10 +299,6 @@ class EditorBinding {
   }
 }
 
-function isHost (siteId) {
-  return siteId === 1
-}
-
 function getSelectionState (marker) {
   return {
     range: marker.getRange(),
@@ -316,7 +307,7 @@ function getSelectionState (marker) {
   }
 }
 
-function cursorClassForSiteId (siteId, {blink}={}) {
+function cursorClassForSiteId (siteId, {blink} = {}) {
   let className = 'ParticipantCursor--site-' + siteId
   if (blink === false) className += ' non-blinking'
   return className
