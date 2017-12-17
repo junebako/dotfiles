@@ -359,7 +359,7 @@ fileIcons:
 	Appveyor:
 		icon: "appveyor"
 		priority: 2
-		match: /^appveyor\.yml$/i
+		match: /^\.?appveyor\.yml$/i
 		colour: "medium-blue"
 
 	Arc:
@@ -668,9 +668,10 @@ fileIcons:
 
 	Bundler:
 		icon: "bundler"
-		priority: 2
-		match: /^Gemfile(\.lock)?$/i
-		colour: "auto-blue"
+		match: [
+			[/^Gemfile(\.lock)?$/i, "auto-blue", priority: 2]
+			[".gemfile", "auto-cyan"]
+		]
 
 	BYOND: # Dream Maker Script
 		icon: "byond"
@@ -1188,6 +1189,7 @@ fileIcons:
 		match: [
 			[/\.(h|geo|topo)?json$/i, "medium-yellow"]
 			[".cson", "medium-maroon"]
+			[".hson", "medium-orange", "hson"]
 			[".json5", "dark-yellow", "json5"]
 			[".http", "medium-red"]
 			[".ndjson", "medium-orange"]
@@ -3709,6 +3711,12 @@ fileIcons:
 		icon: "robot"
 		match: ".robot"
 		colour: "medium-purple"
+
+	Robots:
+		icon: "robots"
+		match: /^robots\.txt$/i
+		colour: "dark-cyan"
+		priority: 2
 
 	Rollup:
 		icon: "rollup"
