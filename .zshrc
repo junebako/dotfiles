@@ -120,9 +120,9 @@ source ~/.keychain/$HOST-sh
 ## Show current ruby version
 ## Show git branch name
 
-local PURPLE=$'%{[35m%}'
 local RED=$'%{[31m%}'
-local CYAN=$'%{[36m%}'
+local PURPLE=$'%{[35m%}'
+local GRAY=$'%{[37m%}'
 local DEFAULT=$'%{[m%}'
 
 precmd() {
@@ -168,7 +168,7 @@ function rprompt-git-current-branch {
     echo "$color<$name$action>%f%b`git_prompt_stash_count`"
 }
 
-RPROMPT='`rprompt-git-current-branch`'$PURPLE' %~'$CYAN' %D{%H:%M:%S}'$DEFAULT
+RPROMPT='`rprompt-git-current-branch`'$PURPLE' %~'$GRAY' %D{%H:%M:%S}'$DEFAULT
 setopt PROMPT_SUBST
 
 # Some settings
