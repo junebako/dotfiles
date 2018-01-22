@@ -165,7 +165,7 @@ function rprompt-git-current-branch {
         color=%F{red}
     fi
 
-    echo "$color<$name$action>%f%b`git_prompt_stash_count`"
+    echo "$color$name$action%f%b`git_prompt_stash_count`"
 }
 
 RPROMPT='`rprompt-git-current-branch`'$PURPLE' %~'$GRAY' %D{%H:%M:%S}'$DEFAULT
