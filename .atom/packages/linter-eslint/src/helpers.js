@@ -1,41 +1,61 @@
 'use babel'
 
 import { join } from 'path'
-import ruleURI from 'eslint-rule-documentation'
 import { generateRange } from 'atom-linter'
 import cryptoRandomString from 'crypto-random-string'
-
 // eslint-disable-next-line import/no-extraneous-dependencies, import/extensions
-import { Range } from 'atom'
+import { Range, Task } from 'atom'
+import Rules from './rules'
+import { throwIfInvalidPoint } from './validate/editor'
 
-const fixableRules = new Set()
+export const rules = new Rules()
+let worker = null
 
 /**
  * Start the worker process if it hasn't already been started
- * @param  {Task} worker The worker process reference to act on
- * @return {undefined}
  */
-const startWorker = (worker) => {
+export function startWorker() {
+  if (worker === null) {
+    worker = new Task(require.resolve('./worker.js'))
+  }
+
   if (worker.started) {
     // Worker start request has already been sent
     return
   }
   // Send empty arguments as we don't use them in the worker
   worker.start([])
+
   // NOTE: Modifies the Task of the worker, but it's the only clean way to track this
-  // eslint-disable-next-line no-param-reassign
   worker.started = true
 }
 
 /**
+ * Forces the worker Task to kill itself
+ */
+export function killWorker() {
+  if (worker !== null) {
+    worker.terminate()
+    worker = null
+  }
+}
+
+/**
  * Send a job to the worker and return the results
- * @param  {Task} worker The worker Task to use
  * @param  {Object} config Configuration for the job to send to the worker
  * @return {Object|String|Error}        The data returned from the worker
  */
-export async function sendJob(worker, config) {
+export async function sendJob(config) {
+  if (worker && !worker.childProcess.connected) {
+    // Sometimes the worker dies and becomes disconnected
+    // When that happens, it seems that there is no way to recover other
+    // than to kill the worker and create a new one.
+    killWorker()
+  }
+
   // Ensure the worker is started
-  startWorker(worker)
+  startWorker()
+
   // Expand the config with a unique ID to emit on
   // NOTE: Jobs _must_ have a unique ID as they are completely async and results
   // can arrive back in any order.
@@ -43,12 +63,17 @@ export async function sendJob(worker, config) {
   config.emitKey = cryptoRandomString(10)
 
   return new Promise((resolve, reject) => {
-    const errSub = worker.on('task:error', (...err) => {
-      const [msg, stack] = err
+    // All worker errors are caught and re-emitted along with their associated
+    // emitKey, so that we do not create multiple listeners for the same
+    // 'task:error' event
+    const errSub = worker.on(`workerError:${config.emitKey}`, ({ msg, stack }) => {
       // Re-throw errors from the task
       const error = new Error(msg)
       // Set the stack to the one given to us by the worker
       error.stack = stack
+      errSub.dispose()
+      // eslint-disable-next-line no-use-before-define
+      responseSub.dispose()
       reject(error)
     })
     const responseSub = worker.on(config.emitKey, (data) => {
@@ -60,23 +85,14 @@ export async function sendJob(worker, config) {
     try {
       worker.send(config)
     } catch (e) {
+      errSub.dispose()
+      responseSub.dispose()
       console.error(e)
     }
   })
 }
 
-export function getFixableRules() {
-  return Array.from(fixableRules.values())
-}
-
-function validatePoint(textBuffer, line, col) {
-  // Clip the given point to a valid one, and check if it equals the original
-  if (!textBuffer.clipPosition([line, col]).isEqual([line, col])) {
-    throw new Error(`${line}:${col} isn't a valid point!`)
-  }
-}
-
-export async function getDebugInfo(worker) {
+export async function getDebugInfo() {
   const textEditor = atom.workspace.getActiveTextEditor()
   let filePath
   let editorScopes
@@ -101,7 +117,7 @@ export async function getDebugInfo(worker) {
   const hoursSinceRestart = Math.round((process.uptime() / 3600) * 10) / 10
   let returnVal
   try {
-    const response = await sendJob(worker, {
+    const response = await sendJob({
       type: 'debug',
       config,
       filePath
@@ -124,8 +140,8 @@ export async function getDebugInfo(worker) {
   return returnVal
 }
 
-export async function generateDebugString(worker) {
-  const debug = await getDebugInfo(worker)
+export async function generateDebugString() {
+  const debug = await getDebugInfo()
   const details = [
     `Atom version: ${debug.atomVersion}`,
     `linter-eslint version: ${debug.linterEslintVersion}`,
@@ -182,7 +198,7 @@ export function handleError(textEditor, error) {
 
 const generateInvalidTrace = async ({
   msgLine, msgCol, msgEndLine, msgEndCol,
-  eslintFullRange, filePath, textEditor, ruleId, message, worker
+  eslintFullRange, filePath, textEditor, ruleId, message
 }) => {
   let errMsgRange = `${msgLine + 1}:${msgCol}`
   if (eslintFullRange) {
@@ -201,7 +217,7 @@ const generateInvalidTrace = async ({
     '', '',
     'Debug information:',
     '```json',
-    JSON.stringify(await getDebugInfo(worker), null, 2),
+    JSON.stringify(await getDebugInfo(), null, 2),
     '```'
   ].join('\n'))
 
@@ -227,10 +243,9 @@ const generateInvalidTrace = async ({
  * @param  {Object}     messages   The messages from ESLint's response
  * @param  {TextEditor} textEditor The Atom::TextEditor of the file the messages belong to
  * @param  {bool}       showRule   Whether to show the rule in the messages
- * @param  {Object}     worker     The current Worker Task to send Debug jobs to
  * @return {Promise}               The messages transformed into Linter messages
  */
-export async function processESLintMessages(messages, textEditor, showRule, worker) {
+export async function processESLintMessages(messages, textEditor, showRule) {
   return Promise.all(messages.map(async ({
     fatal, message: originalMessage, line, severity, ruleId, column, fix, endLine, endColumn
   }) => {
@@ -279,15 +294,15 @@ export async function processESLintMessages(messages, textEditor, showRule, work
     }
 
     if (ruleId) {
-      ret.url = ruleURI(ruleId).url
+      ret.url = rules.getRuleUrl(ruleId)
     }
 
     let range
     try {
       if (eslintFullRange) {
         const buffer = textEditor.getBuffer()
-        validatePoint(buffer, msgLine, msgCol)
-        validatePoint(buffer, msgEndLine, msgEndCol)
+        throwIfInvalidPoint(buffer, msgLine, msgCol)
+        throwIfInvalidPoint(buffer, msgEndLine, msgEndCol)
         range = [[msgLine, msgCol], [msgEndLine, msgEndCol]]
       } else {
         range = generateRange(textEditor, msgLine, msgCol)
@@ -311,7 +326,6 @@ export async function processESLintMessages(messages, textEditor, showRule, work
         textEditor,
         ruleId,
         message,
-        worker
       })
     }
 
@@ -324,13 +338,11 @@ export async function processESLintMessages(messages, textEditor, showRule, work
  * @param  {Object}     response   The raw response from the job
  * @param  {TextEditor} textEditor The Atom::TextEditor of the file the messages belong to
  * @param  {bool}       showRule   Whether to show the rule in the messages
- * @param  {Object}     worker     The current Worker Task to send Debug jobs to
  * @return {Promise}               The messages transformed into Linter messages
  */
-export async function processJobResponse(response, textEditor, showRule, worker) {
-  if (Object.prototype.hasOwnProperty.call(response, 'fixableRules')) {
-    fixableRules.clear()
-    response.fixableRules.forEach(rule => fixableRules.add(rule))
+export async function processJobResponse(response, textEditor, showRule) {
+  if (Object.prototype.hasOwnProperty.call(response, 'updatedRules')) {
+    rules.replaceRules(response.updatedRules)
   }
-  return processESLintMessages(response.messages, textEditor, showRule, worker)
+  return processESLintMessages(response.messages, textEditor, showRule)
 }
