@@ -9,9 +9,9 @@ module.exports =
 class TeletypePackage {
   constructor (options) {
     const {
-      baseURL, clipboard, commandRegistry, credentialCache, notificationManager,
-      packageManager, pubSubGateway, pusherKey, pusherOptions,
-      tetherDisconnectWindow, tooltipManager, workspace
+      baseURL, clipboard, commandRegistry, credentialCache, getAtomVersion,
+      notificationManager, packageManager, pubSubGateway, pusherKey,
+      pusherOptions, tetherDisconnectWindow, tooltipManager, workspace
     } = options
 
     this.workspace = workspace
@@ -24,6 +24,7 @@ class TeletypePackage {
     this.pusherKey = pusherKey
     this.pusherOptions = pusherOptions
     this.baseURL = baseURL
+    this.getAtomVersion = getAtomVersion
     this.tetherDisconnectWindow = tetherDisconnectWindow
     this.credentialCache = credentialCache || new CredentialCache()
     this.client = new TeletypeClient({
@@ -132,7 +133,8 @@ class TeletypePackage {
       clipboard: this.clipboard,
       workspace: this.workspace,
       notificationManager: this.notificationManager,
-      packageManager: this.packageManager
+      packageManager: this.packageManager,
+      getAtomVersion: this.getAtomVersion
     })
 
     this.portalStatusBarIndicator.attach()
@@ -240,10 +242,6 @@ class TeletypePackage {
         this.isClientOutdated = true
       } else {
         this.initializationError = error
-        this.notificationManager.addError('Failed to initialize the teletype package', {
-          description: `Establishing a teletype connection failed with error: <code>${error.message}</code>`,
-          dismissable: true
-        })
       }
     }
   }

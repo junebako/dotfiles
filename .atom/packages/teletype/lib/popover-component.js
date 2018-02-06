@@ -23,7 +23,7 @@ class PopoverComponent {
     const {
       isClientOutdated, initializationError,
       authenticationProvider, portalBindingManager,
-      commandRegistry, clipboard, workspace, notificationManager, packageManager
+      commandRegistry, clipboard, workspace, notificationManager, packageManager, getAtomVersion
     } = this.props
 
     let activeComponent
@@ -35,7 +35,9 @@ class PopoverComponent {
     } else if (initializationError) {
       activeComponent = $(PackageInitializationErrorComponent, {
         ref: 'packageInitializationErrorComponent',
-        packageManager
+        packageManager,
+        getAtomVersion,
+        initializationError
       })
     } else if (this.props.authenticationProvider.isSignedIn()) {
       activeComponent = $(PortalListComponent, {

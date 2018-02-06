@@ -1,4 +1,5 @@
 const etch = require('etch')
+const {URL} = require('url')
 const $ = etch.dom
 
 module.exports =
@@ -30,10 +31,29 @@ class PackageInitializationErrorComponent {
       ),
       $.p(null,
         'If the problem persists, visit ',
-        $.a({href: 'https://github.com/atom/teletype/issues/new', className: 'text-info'}, 'atom/teletype'),
+        $.a({href: this.getIssueURL(), className: 'text-info'}, 'atom/teletype'),
         ' and open an issue.'
       )
     )
+  }
+
+  getIssueURL () {
+    const {initializationError} = this.props
+
+    const url = new URL('https://github.com/atom/teletype/issues/new')
+    url.searchParams.append('title', 'Package Initialization Error')
+    url.searchParams.append('body',
+      '### Diagnostics\n\n' +
+      '```\n' +
+      initializationError.diagnosticMessage + '\n\n' +
+      '```\n' +
+      '### Versions\n\n' +
+      `**Teletype version**: v${getTeletypeVersion()}\n` +
+      `**Atom version**: ${this.props.getAtomVersion()}\n` +
+      `**Platform**: ${process.platform}\n`
+    )
+
+    return url.href
   }
 
   async restartTeletype () {
@@ -41,4 +61,8 @@ class PackageInitializationErrorComponent {
     await packageManager.deactivatePackage('teletype')
     await packageManager.activatePackage('teletype')
   }
+}
+
+function getTeletypeVersion () {
+  return require('../package.json').version
 }
