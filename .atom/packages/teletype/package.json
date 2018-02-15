@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11816-23501-1wc8wp1.smm0vhd7vi/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118115-2105-11skq3f.v4c78bmx6r/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11816-23501-1wc8wp1.smm0vhd7vi/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11816-23501-1wc8wp1.smm0vhd7vi/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118115-2105-11skq3f.v4c78bmx6r/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118115-2105-11skq3f.v4c78bmx6r/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11816-23501-1prshai.90qlvoyldi"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-118115-2105-117sfgf.jsu0daemi"
     ]
   ],
-  "_from": "../d-11816-23501-1wc8wp1.smm0vhd7vi/package.tgz",
-  "_id": "teletype@0.7.0",
+  "_from": "../d-118115-2105-11skq3f.v4c78bmx6r/package.tgz",
+  "_id": "teletype@0.8.0",
   "_inCache": true,
   "_location": "/teletype",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11816-23501-1wc8wp1.smm0vhd7vi/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118115-2105-11skq3f.v4c78bmx6r/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11816-23501-1wc8wp1.smm0vhd7vi/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11816-23501-1wc8wp1.smm0vhd7vi/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118115-2105-11skq3f.v4c78bmx6r/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118115-2105-11skq3f.v4c78bmx6r/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11816-23501-1wc8wp1.smm0vhd7vi/package.tgz",
-  "_shasum": "0cc75ddf62052089a95b31648aef45c5562403c5",
+  "_resolved": "file:../d-118115-2105-11skq3f.v4c78bmx6r/package.tgz",
+  "_shasum": "4f598cc1cc4f4a65476cdb48c481cc47b287bcc3",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11816-23501-1wc8wp1.smm0vhd7vi/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11816-23501-1prshai.90qlvoyldi",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118115-2105-11skq3f.v4c78bmx6r/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-118115-2105-117sfgf.jsu0daemi",
   "atomTestRunner": "./test/setup",
   "author": "",
   "bugs": {
@@ -118,5 +118,5 @@
       "test/fixtures"
     ]
   },
-  "version": "0.7.0"
+  "version": "0.8.0"
 }

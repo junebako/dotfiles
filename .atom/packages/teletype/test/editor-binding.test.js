@@ -301,6 +301,25 @@ suite('EditorBinding', function () {
     })
   })
 
+  // Refs: https://github.com/atom/text-buffer/pull/210
+  // TODO: Remove this workaround when the bug is fixed on Atom stable.
+  test('does not relay selections that are already destroyed when their creation event is emitted', () => {
+    const editor = new TextEditor({buffer: new TextBuffer(SAMPLE_TEXT)})
+    const binding = new EditorBinding({editor, portal: new FakePortal()})
+    const editorProxy = new FakeEditorProxy(binding)
+    binding.setEditorProxy(editorProxy)
+
+    editor.setSelectedBufferRange([[0, 2], [0, 6]])
+    editor.addSelectionForBufferRange([[0, 3], [0, 9]])
+    assert.deepEqual(editorProxy.selections, {
+      1: {
+        range: {start: {row: 0, column: 2}, end: {row: 0, column: 9}},
+        exclusive: false,
+        reversed: false
+      }
+    })
+  })
+
   suite('destroying the editor', () => {
     test('on the host, disposes the underlying editor proxy', () => {
       const editor = new TextEditor()
@@ -324,8 +343,18 @@ suite('EditorBinding', function () {
     })
   })
 
+  test('destroys the editor when disposing the binding on guests', () => {
+    const editor = new TextEditor()
+    const binding = new EditorBinding({editor, isHost: false, portal: new FakePortal()})
+    const editorProxy = new FakeEditorProxy(binding)
+    binding.setEditorProxy(editorProxy)
+
+    binding.dispose()
+    assert(editor.isDestroyed())
+  })
+
   suite('guest editor binding', () => {
-    test('overrides the editor methods when setting the proxy, and restores them on dispose', () => {
+    test('overrides the editor methods when setting the proxy', () => {
       const buffer = new TextBuffer({text: SAMPLE_TEXT})
       const editor = new TextEditor({buffer})
 
@@ -343,15 +372,6 @@ suite('EditorBinding', function () {
       editor.save()
       editor.save()
       assert.equal(editorProxy.bufferProxy.saveRequestCount, 2)
-
-      binding.dispose()
-      assert.equal(editor.getTitle(), 'untitled')
-      assert.equal(editor.getURI(), null)
-      assert.notEqual(editor.copy(), null)
-      assert.notEqual(editor.serialize(), null)
-      assert.equal(buffer.getPath(), null)
-      assert(!editor.element.classList.contains('teletype-RemotePaneItem'))
-      assert(editor.getBuffer().isModified())
     })
   })
 

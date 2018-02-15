@@ -28,11 +28,12 @@ class EditorBinding {
 
     this.markerLayersBySiteId.forEach((l) => l.destroy())
     this.markerLayersBySiteId.clear()
-    if (!this.isHost) this.restoreOriginalEditorMethods(this.editor)
     if (this.localCursorLayerDecoration) this.localCursorLayerDecoration.destroy()
 
     this.emitter.emit('did-dispose')
     this.emitter.dispose()
+
+    if (!this.isHost) this.editor.destroy()
   }
 
   setEditorProxy (editorProxy) {
@@ -82,30 +83,9 @@ class EditorBinding {
     editor.element.classList.add('teletype-RemotePaneItem')
   }
 
-  restoreOriginalEditorMethods (editor) {
-    const buffer = editor.getBuffer()
-
-    // Deleting the object-level overrides causes future calls to fall back
-    // to original methods stored on the prototypes of the editor and buffer
-    delete editor.getTitle
-    delete editor.getURI
-    delete editor.copy
-    delete editor.serialize
-    delete editor.isRemote
-
-    buffer.remoteEditorCount--
-    if (buffer.remoteEditorCount === 0) {
-      delete buffer.remoteEditorCount
-      delete buffer.getPath
-      delete buffer.save
-      delete buffer.isModified
-    }
-
-    editor.element.classList.remove('teletype-RemotePaneItem')
-    editor.emitter.emit('did-change-title', editor.getTitle())
-  }
-
   observeMarker (marker, relay = true) {
+    if (marker.isDestroyed()) return
+
     const didChangeDisposable = marker.onDidChange(({textChanged}) => {
       if (textChanged) {
         if (marker.getRange().isEmpty()) marker.clearTail()
