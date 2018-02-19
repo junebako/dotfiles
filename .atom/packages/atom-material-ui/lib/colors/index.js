@@ -7,17 +7,19 @@ import toCamelCase from '../helper/to-camel-case';
 import colorTemplates from '../color-templates.json';
 import buildColorSettings from './build-color-settings';
 
-atom.config.observe('atom-material-ui.colors.abaseColor', (color) => {
-    const baseColor = (typeof color === 'object') ? tinycolor(color.toHexString()) : tinycolor(color);
-
+atom.config.onDidChange('atom-material-ui.colors.abaseColor', ({ newValue }) => {
     if (atom.config.get('atom-material-ui.colors.genAccent')) {
-        const accentColor = baseColor.complement().saturate(20).lighten(5);
+        const accentColor = tinycolor(newValue.toHexString())
+            .complement()
+            .saturate(20)
+            .lighten(5);
+
         return atom.config.set('atom-material-ui.colors.accentColor', accentColor.toRgbString());
     }
 
     return writeConfigFile(
         buildColorSettings(
-            color, atom.config.get('atom-material-ui.colors.accentColor'),
+            newValue, atom.config.get('atom-material-ui.colors.accentColor'),
         ),
         true,
     );
@@ -30,10 +32,10 @@ atom.config.onDidChange('atom-material-ui.colors.predefinedColor', (value) => {
     atom.config.set('atom-material-ui.colors.accentColor', colorTemplates[newValue].accent);
 });
 
-atom.config.observe('atom-material-ui.colors.accentColor', color => (
+atom.config.onDidChange('atom-material-ui.colors.accentColor', ({ newValue }) => (
     writeConfigFile(
         buildColorSettings(
-            atom.config.get('atom-material-ui.colors.abaseColor'), color,
+            atom.config.get('atom-material-ui.colors.abaseColor'), newValue,
         ),
         true,
     )
