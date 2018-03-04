@@ -6,16 +6,16 @@ import PanelDock from './dock'
 import type { LinterMessage } from '../types'
 
 class Panel {
-  panel: ?PanelDock;
-  element: HTMLElement;
-  delegate: Delegate;
-  messages: Array<LinterMessage>;
-  deactivating: boolean;
-  subscriptions: CompositeDisposable;
-  showPanelConfig: boolean;
-  hidePanelWhenEmpty: boolean;
-  showPanelStateMessages: boolean;
-  activationTimer: number;
+  panel: PanelDock | null
+  element: HTMLElement
+  delegate: Delegate
+  messages: Array<LinterMessage>
+  deactivating: boolean
+  subscriptions: CompositeDisposable
+  showPanelConfig: boolean
+  hidePanelWhenEmpty: boolean
+  showPanelStateMessages: boolean
+  activationTimer: number
   constructor() {
     this.panel = null
     this.element = document.createElement('div')
@@ -26,24 +26,32 @@ class Panel {
     this.showPanelStateMessages = false
 
     this.subscriptions.add(this.delegate)
-    this.subscriptions.add(atom.config.observe('linter-ui-default.hidePanelWhenEmpty', (hidePanelWhenEmpty) => {
-      this.hidePanelWhenEmpty = hidePanelWhenEmpty
-      this.refresh()
-    }))
-    this.subscriptions.add(atom.workspace.onDidDestroyPaneItem(({ item: paneItem }) => {
-      if (paneItem instanceof PanelDock && !this.deactivating) {
-        this.panel = null
-        atom.config.set('linter-ui-default.showPanel', false)
-      }
-    }))
-    this.subscriptions.add(atom.config.observe('linter-ui-default.showPanel', (showPanel) => {
-      this.showPanelConfig = showPanel
-      this.refresh()
-    }))
-    this.subscriptions.add(atom.workspace.getCenter().observeActivePaneItem(() => {
-      this.showPanelStateMessages = !!this.delegate.filteredMessages.length
-      this.refresh()
-    }))
+    this.subscriptions.add(
+      atom.config.observe('linter-ui-default.hidePanelWhenEmpty', hidePanelWhenEmpty => {
+        this.hidePanelWhenEmpty = hidePanelWhenEmpty
+        this.refresh()
+      }),
+    )
+    this.subscriptions.add(
+      atom.workspace.onDidDestroyPaneItem(({ item: paneItem }) => {
+        if (paneItem instanceof PanelDock && !this.deactivating) {
+          this.panel = null
+          atom.config.set('linter-ui-default.showPanel', false)
+        }
+      }),
+    )
+    this.subscriptions.add(
+      atom.config.observe('linter-ui-default.showPanel', showPanel => {
+        this.showPanelConfig = showPanel
+        this.refresh()
+      }),
+    )
+    this.subscriptions.add(
+      atom.workspace.getCenter().observeActivePaneItem(() => {
+        this.showPanelStateMessages = !!this.delegate.filteredMessages.length
+        this.refresh()
+      }),
+    )
     this.activationTimer = window.requestIdleCallback(() => {
       this.activate()
     })
@@ -70,21 +78,22 @@ class Panel {
     this.refresh()
   }
   async refresh() {
-    if (this.panel === null) {
+    const panel = this.panel
+    if (panel === null) {
       if (this.showPanelConfig) {
         await this.activate()
       }
       return
     }
-    const paneContainer = atom.workspace.paneContainerForItem(this.panel)
-    if (!paneContainer || paneContainer.location !== 'bottom' || paneContainer.getActivePaneItem() !== this.panel) {
+    const paneContainer = atom.workspace.paneContainerForItem(panel)
+    if (!paneContainer || paneContainer.location !== 'bottom' || paneContainer.getActivePaneItem() !== panel) {
       return
     }
-    if (
-      (this.showPanelConfig) &&
-      (!this.hidePanelWhenEmpty || this.showPanelStateMessages)
-    ) {
+    const visibilityAllowed1 = this.showPanelConfig
+    const visibilityAllowed2 = this.hidePanelWhenEmpty ? this.showPanelStateMessages : true
+    if (visibilityAllowed1 && visibilityAllowed2) {
       paneContainer.show()
+      panel.doPanelResize()
     } else {
       paneContainer.hide()
     }

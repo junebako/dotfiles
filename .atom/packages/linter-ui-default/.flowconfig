@@ -1,5 +1,6 @@
 [ignore]
 <PROJECT_ROOT>/node_modules/fbjs
+<PROJECT_ROOT>/node_modules/eslint-plugin-jsx-a11y
 
 [include]
 
@@ -9,5 +10,4 @@ decls
 [options]
 module.system=node
 esproposal.class_instance_fields=enable
-unsafe.enable_getters_and_setters=true
 suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore

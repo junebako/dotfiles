@@ -7,11 +7,11 @@ import { calculateDecorations } from './helpers'
 import type { LinterMessage, TreeViewHighlight } from '../types'
 
 class TreeView {
-  emitter: Emitter;
-  messages: Array<LinterMessage>;
-  decorations: Object;
-  subscriptions: CompositeDisposable;
-  decorateOnTreeView: 'Files and Directories' | 'Files' | 'None';
+  emitter: Emitter
+  messages: Array<LinterMessage>
+  decorations: Object
+  subscriptions: CompositeDisposable
+  decorateOnTreeView: 'Files and Directories' | 'Files' | 'None'
 
   constructor() {
     this.emitter = new Emitter()
@@ -20,18 +20,20 @@ class TreeView {
     this.subscriptions = new CompositeDisposable()
 
     this.subscriptions.add(this.emitter)
-    this.subscriptions.add(atom.config.observe('linter-ui-default.decorateOnTreeView', (decorateOnTreeView) => {
-      if (typeof this.decorateOnTreeView === 'undefined') {
-        this.decorateOnTreeView = decorateOnTreeView
-      } else if (decorateOnTreeView === 'None') {
-        this.update([])
-        this.decorateOnTreeView = decorateOnTreeView
-      } else {
-        const messages = this.messages
-        this.decorateOnTreeView = decorateOnTreeView
-        this.update(messages)
-      }
-    }))
+    this.subscriptions.add(
+      atom.config.observe('linter-ui-default.decorateOnTreeView', decorateOnTreeView => {
+        if (typeof this.decorateOnTreeView === 'undefined') {
+          this.decorateOnTreeView = decorateOnTreeView
+        } else if (decorateOnTreeView === 'None') {
+          this.update([])
+          this.decorateOnTreeView = decorateOnTreeView
+        } else {
+          const messages = this.messages
+          this.decorateOnTreeView = decorateOnTreeView
+          this.update(messages)
+        }
+      }),
+    )
 
     setTimeout(() => {
       const element = TreeView.getElement()
@@ -39,9 +41,15 @@ class TreeView {
         return
       }
       // Subscription is only added if the CompositeDisposable hasn't been disposed
-      this.subscriptions.add(disposableEvent(element, 'click', debounce(() => {
-        this.update()
-      })))
+      this.subscriptions.add(
+        disposableEvent(
+          element,
+          'click',
+          debounce(() => {
+            this.update()
+          }),
+        ),
+      )
     }, 100)
   }
   update(givenMessages: ?Array<LinterMessage> = null) {
@@ -67,31 +75,35 @@ class TreeView {
     const elementCache = {}
     const appliedDecorations = {}
 
-    for (const filePath in this.decorations) {
+    Object.keys(this.decorations).forEach(filePath => {
       if (!{}.hasOwnProperty.call(this.decorations, filePath)) {
-        continue
+        return
       }
       if (!decorations[filePath]) {
         // Removed
-        const element = elementCache[filePath] || (elementCache[filePath] = TreeView.getElementByPath(treeViewElement, filePath))
+        const element =
+          elementCache[filePath] || (elementCache[filePath] = TreeView.getElementByPath(treeViewElement, filePath))
         if (element) {
           this.removeDecoration(element)
         }
       }
-    }
+    })
 
-    for (const filePath in decorations) {
+    Object.keys(decorations).forEach(filePath => {
       if (!{}.hasOwnProperty.call(decorations, filePath)) {
-        continue
+        return
       }
-      const element = elementCache[filePath] || (elementCache[filePath] = TreeView.getElementByPath(treeViewElement, filePath))
+      const element =
+        elementCache[filePath] || (elementCache[filePath] = TreeView.getElementByPath(treeViewElement, filePath))
       if (element) {
         this.handleDecoration(element, !!this.decorations[filePath], decorations[filePath])
         appliedDecorations[filePath] = decorations[filePath]
       }
-    }
+    })
+
     this.decorations = appliedDecorations
   }
+
   handleDecoration(element: HTMLElement, update: boolean = false, highlights: TreeViewHighlight) {
     let decoration
     if (update) {
@@ -123,7 +135,7 @@ class TreeView {
   static getElement() {
     return document.querySelector('.tree-view')
   }
-  static getElementByPath(parent: HTMLElement, filePath): ?HTMLElement {
+  static getElementByPath(parent: HTMLElement, filePath: string): ?HTMLElement {
     return parent.querySelector(`[data-path=${CSS.escape(filePath)}]`)
   }
 }

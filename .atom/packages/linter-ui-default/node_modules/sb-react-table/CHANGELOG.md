@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Upgrade to support v16 (no actual changes needed)
+
 ## 1.0.1
 
 - Fix typo in css file
