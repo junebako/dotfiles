@@ -3,7 +3,21 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.17...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.18...HEAD
+
+
+[v2.1.18] - 2018-03-22
+----------------------
+### Added
+- **New icons:** Tipe (`.tipe`), Workbox (`workbox-config.js`)
+- **Support:** App Store (`.app` folders), Archive (`.sit`), Atom (`.atomproject.{json, cson}`), Binary (`.rnd`), Config (`mimeapps.list`, `terminalrc`), Data (`fstab`, `magic.mgc`, `.irb-history`, `.lesshst`, `.wget-hsts`), Download (`.crdownload`), Dylibs (`.appex` and `.ideplugin` folders), Finder (`.DS_Store`, `._*`), GNOME (`.gtkrc`), Lisp (`.sbclrc`), Octave (`.octave_hist`, `.octaverc`), R (`.Rhistory`), Swagger (`swagger.yaml`, `swagger.yml`), Tcl (`.tkcvs`, `.tkdiffrc`), V8 (`.v8flags*`), Vim (`.viminfo`), X11 (`.xinput`)
+
+### Fixed
+- [[`#716`][]]: Exception thrown from null filesystem reference
+
+[v2.1.18]: https://github.com/file-icons/atom/releases/tag/v2.1.18
+[`#716`]: https://github.com/file-icons/atom/issues/716
+
 
 
 [v2.1.17] - 2018-02-23
