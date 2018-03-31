@@ -2,65 +2,80 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118211-69233-1jpk86.8kiqz1tt9/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118211-69233-1jpk86.8kiqz1tt9/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118211-69233-1jpk86.8kiqz1tt9/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-118211-69233-1ygod4p.yqpo7axlxr"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11831-7088-1ccynsg.fdyujtt9"
     ]
   ],
-  "_from": "../d-118211-69233-1jpk86.8kiqz1tt9/package.tgz",
-  "_id": "teletype@0.10.0",
+  "_from": "../d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
+  "_id": "teletype@0.11.0",
   "_inCache": true,
   "_location": "/teletype",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118211-69233-1jpk86.8kiqz1tt9/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118211-69233-1jpk86.8kiqz1tt9/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118211-69233-1jpk86.8kiqz1tt9/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-118211-69233-1jpk86.8kiqz1tt9/package.tgz",
-  "_shasum": "fd3ff9798e9b0bcd3c594fdb45138e9242557a8e",
+  "_resolved": "file:../d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
+  "_shasum": "970d8ae65296a1cb0367b2183fe0f6f0bc6621f9",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118211-69233-1jpk86.8kiqz1tt9/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-118211-69233-1ygod4p.yqpo7axlxr",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11831-7088-1ccynsg.fdyujtt9",
   "atomTestRunner": "./test/setup",
   "author": "",
   "bugs": {
     "url": "https://github.com/atom/teletype/issues"
   },
   "configSchema": {
-    "baseURL": {
-      "title": "API server base URL",
-      "description": "This should only be changed for development purposes. Changes take effect on the next package activation.",
-      "type": "string",
-      "default": "https://api.teletype.atom.io",
+    "askBeforeJoiningPortalViaExternalApp": {
+      "title": "Ask before joining a portal via an external application",
+      "description": "When set, you will be asked for confirmation every time you follow a portal URL in a third-party application.",
+      "type": "boolean",
+      "default": true,
       "order": 1
     },
-    "pusherKey": {
-      "title": "Pusher service key",
-      "description": "This should only be changed for development purposes. Changes take effect on the next package activation.",
-      "type": "string",
-      "default": "f119821248b7429bece3",
-      "order": 2
-    },
-    "pusherCluster": {
-      "title": "Pusher cluster name",
-      "description": "This should only be changed for development purposes. Changes take effect on the next package activation.",
-      "type": "string",
-      "default": "mt1",
-      "order": 3
+    "dev": {
+      "title": "Development Settings",
+      "collapsed": true,
+      "type": "object",
+      "order": 2,
+      "properties": {
+        "baseURL": {
+          "title": "API server base URL",
+          "description": "This should only be changed for development purposes. Changes take effect on the next package activation.",
+          "type": "string",
+          "default": "https://api.teletype.atom.io",
+          "order": 1
+        },
+        "pusherKey": {
+          "title": "Pusher service key",
+          "description": "This should only be changed for development purposes. Changes take effect on the next package activation.",
+          "type": "string",
+          "default": "f119821248b7429bece3",
+          "order": 2
+        },
+        "pusherCluster": {
+          "title": "Pusher cluster name",
+          "description": "This should only be changed for development purposes. Changes take effect on the next package activation.",
+          "type": "string",
+          "default": "mt1",
+          "order": 3
+        }
+      }
     }
   },
   "consumedServices": {
@@ -71,7 +86,7 @@
     }
   },
   "dependencies": {
-    "@atom/teletype-client": "^0.35.0",
+    "@atom/teletype-client": "^0.36.0",
     "etch": "^0.12.6"
   },
   "description": "Share your workspace with team members and collaborate on code in real time",
@@ -126,5 +141,9 @@
       "test/fixtures"
     ]
   },
-  "version": "0.10.0"
+  "uriHandler": {
+    "method": "handleURI",
+    "deferActivation": false
+  },
+  "version": "0.11.0"
 }
