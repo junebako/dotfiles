@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-35222-ybc5sk.3lnhilik9/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-8934-j262ha.thc0zcwhfr/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-35222-ybc5sk.3lnhilik9/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-35222-ybc5sk.3lnhilik9/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-8934-j262ha.thc0zcwhfr/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-8934-j262ha.thc0zcwhfr/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11795-35222-102vvs1.o1gqoajor"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11831-8934-17mpgls.vcccj46lxr"
     ]
   ],
-  "_from": "../d-11795-35222-ybc5sk.3lnhilik9/package.tgz",
-  "_id": "language-haml@0.25.2",
+  "_from": "../d-11831-8934-j262ha.thc0zcwhfr/package.tgz",
+  "_id": "language-haml@0.31.0",
   "_inCache": true,
   "_location": "/language-haml",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-35222-ybc5sk.3lnhilik9/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-8934-j262ha.thc0zcwhfr/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-35222-ybc5sk.3lnhilik9/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-35222-ybc5sk.3lnhilik9/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-8934-j262ha.thc0zcwhfr/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-8934-j262ha.thc0zcwhfr/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11795-35222-ybc5sk.3lnhilik9/package.tgz",
-  "_shasum": "10c3a8152a4d6a5a57242cfcaa61577510ffa98c",
+  "_resolved": "file:../d-11831-8934-j262ha.thc0zcwhfr/package.tgz",
+  "_shasum": "411003a2c50a8a4b8d7e0b796391a526e7c33084",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11795-35222-ybc5sk.3lnhilik9/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11795-35222-102vvs1.o1gqoajor",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-8934-j262ha.thc0zcwhfr/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11831-8934-17mpgls.vcccj46lxr",
   "bugs": {
     "url": "https://github.com/HarlemSquirrel/language-haml/issues"
   },
@@ -53,21 +53,11 @@
   "name": "language-haml",
   "optionalDependencies": {},
   "private": true,
-  "readme": "\nlanguage-haml\n=============\nHAML language grammar for GitHub's Atom IDE.\n\n## ⚠️ Looking for maintainer(s) ⚠️\nI no longer use Atom and so as a result will no longer be actively maintaining this package. I will merge PRs but will not be implementing new features or fixing bugs myself. Please see [#17](https://github.com/ezekg/language-haml/issues/71) for more info.\n\n![screenshot](http://ridingtheclutch.com.s3.amazonaws.com/images/language-haml.png)\n\n## Supported Filetypes\n\n* `.haml`\n* `.hamlc` (CoffeeScript HAML)\n\n## Supported filters\n\nYou can switch to another language right in the middle of your HAML file by\nusing a \"filter\":\n\n![screenshot](http://ridingtheclutch.com.s3.amazonaws.com/images/haml_filters.png)\n\nThis HAML bundle currently supports the following filters:\n\n* `:javascript`\n* `:coffee`\n* `:css`\n* `:sass`\n* `:scss`\n* `:php`\n* `:ruby`\n* `:markdown`\n\nThe HAML documentation lists the following additional filters:\n\n* `:cdata`\n* `:erb`\n* `:escaped`\n* `:less`\n* `:plain`\n* `:preserve`\n* `:textile`\n\nTo add more you can simply copy and paste one of the captures in the `ruby haml.cson` file\nand make the changes necessary to support your filter of choice:\n\n```cson\n{\n  'begin': '^(\\\\s*)(:css)'\n  'beginCaptures':\n    '2':\n      'name': 'entity.name.tag.haml'\n  'end': '^(?! *$|\\\\1 )'\n  'name': 'source.css.embedded.html'\n  'patterns': [\n    {\n      'include': 'source.css'\n    }\n  ]\n}\n```\n",
+  "readme": "\nlanguage-haml\n=============\n[Haml](http://haml.info/) language grammar for GitHub's [Atom](https://atom.io/) IDE.\n\n![screenshot](http://ridingtheclutch.com.s3.amazonaws.com/images/language-haml.png)\n\n## Supported Filetypes\n\n* `.haml`\n* `.hamlc` (CoffeeScript Haml)\n\n## Supported filters\n\nYou can switch to another language right in the middle of your Haml file by\nusing a \"filter\":\n\n![screenshot](http://ridingtheclutch.com.s3.amazonaws.com/images/haml_filters.png)\n\nThis Haml bundle currently supports the following filters:\n\n* `:css`\n* `:coffee`\n* `:javascript`\n* `:markdown`\n* `:php`\n* `:ruby`\n* `:ruby2js`\n* `:sass`\n* `:scss`\n\nThe Haml documentation lists the following additional filters:\n\n* `:cdata`\n* `:erb`\n* `:escaped`\n* `:less`\n* `:plain`\n* `:preserve`\n* `:textile`\n\nTo add more you can simply copy and paste one of the captures in the `ruby haml.cson` file\nand make the changes necessary to support your filter of choice:\n\n```cson\n{\n  'begin': '^(\\\\s*)(:css)'\n  'beginCaptures':\n    '2':\n      'name': 'entity.name.tag.haml'\n  'end': '^(?! *$|\\\\1 )'\n  'name': 'source.css.embedded.html'\n  'patterns': [\n    {\n      'include': 'source.css'\n    }\n  ]\n}\n```\n",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HarlemSquirrel/language-haml.git"
   },
-  "version": "0.25.2",
-  "_atomModuleCache": {
-    "version": 1,
-    "dependencies": [],
-    "extensions": {
-      ".json": [
-        "package.json"
-      ]
-    },
-    "folders": []
-  }
+  "version": "0.31.0"
 }
