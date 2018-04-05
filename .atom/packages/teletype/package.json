@@ -2,39 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11835-2125-1x2f9iy.i92wh1if6r/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11835-2125-1x2f9iy.i92wh1if6r/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11835-2125-1x2f9iy.i92wh1if6r/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11831-7088-1ccynsg.fdyujtt9"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11835-2125-17ckob6.igh2hb0529"
     ]
   ],
-  "_from": "../d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
-  "_id": "teletype@0.11.0",
+  "_from": "../d-11835-2125-1x2f9iy.i92wh1if6r/package.tgz",
+  "_id": "teletype@0.12.0",
   "_inCache": true,
   "_location": "/teletype",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11835-2125-1x2f9iy.i92wh1if6r/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11835-2125-1x2f9iy.i92wh1if6r/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11835-2125-1x2f9iy.i92wh1if6r/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
-  "_shasum": "970d8ae65296a1cb0367b2183fe0f6f0bc6621f9",
+  "_resolved": "file:../d-11835-2125-1x2f9iy.i92wh1if6r/package.tgz",
+  "_shasum": "c803ead7b6aba4fa9c5b5389d8e92b9dbc3d07d6",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11831-7088-o5zprw.7xlq9w9udi/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11831-7088-1ccynsg.fdyujtt9",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11835-2125-1x2f9iy.i92wh1if6r/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11835-2125-17ckob6.igh2hb0529",
   "atomTestRunner": "./test/setup",
   "author": "",
   "bugs": {
@@ -86,7 +86,7 @@
     }
   },
   "dependencies": {
-    "@atom/teletype-client": "^0.36.0",
+    "@atom/teletype-client": "^0.37.0",
     "etch": "^0.12.6"
   },
   "description": "Share your workspace with team members and collaborate on code in real time",
@@ -145,5 +145,5 @@
     "method": "handleURI",
     "deferActivation": false
   },
-  "version": "0.11.0"
+  "version": "0.12.0"
 }

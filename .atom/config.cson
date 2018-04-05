@@ -15,7 +15,7 @@
   editor:
     autoIndentOnPaste: false
     fontFamily: "menlo"
-    fontSize: 10
+    fontSize: 12
     invisibles: {}
     lineHeight: 1.4
     preferredLineLength: 300
