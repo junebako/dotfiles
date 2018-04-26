@@ -424,6 +424,7 @@ fileIcons:
 				scope: /(^|\.)(a[rs]m|x86|z80|lc-?3|cpu12|x86asm|m68k|assembly|avr(dis)?asm|dasm)(\.|$)/i,
 				alias: /^(asm(68k|h8300)?|[ft]asm|v?masm)$/i]
 			[".agc", "dark-blue", scope: "source.agc", alias: /^(Virtual\s*)?AGC$|^Apollo([-_\s]*11)?\s*Guidance\s*Computer$/i]
+			[".ditroff", "dark-green", scope: "source.ditroff", signature: /^x\s*T\s+(dvi|html|lbp|lj4|ps|post|pdf|ascii|cp1047|latin1|utf8|X75|X75-12|X100|X100-12)(?=\s|$)/]
 			[".ko", "dark-green"]
 			[".lst", "medium-blue", "lst-cpu12"]
 			[/\.((c([+px]{2}?)?-?)?objdump|bsdiff|bin|dat|pak|pdb)$/i, "dark-orange"]
@@ -1442,7 +1443,7 @@ fileIcons:
 		icon: "emacs"
 		priority: 1.5
 		match: [
-			[/(^|\.)(el|_?emacs|emacs\.desktop|abbrev[-_]defs)$/i, "medium-purple", alias: "elisp", scope: "emacs.lisp", interpreter: "emacs"]
+			[/(^|\.)(el|_?emacs|emacs\.desktop|abbrev[-_]defs)$/i, "medium-purple", alias: "elisp", scope: "emacs.lisp", interpreter: /^(x?emacs)$/]
 			[/(^|\.)(elc|eld)$/i, "dark-purple", signature: /^;ELC\x17\0{3}/]
 			[".gnus", "medium-red"]
 			[".viper", "dark-green"]
@@ -1602,6 +1603,18 @@ fileIcons:
 			[".otf", "dark-yellow", signature: /^OTTO.*\0/]
 			[".pfb", "dark-red"]
 			[".pfm", "medium-red"]
+		]
+
+	"Font, Bitmap":
+		icon: "font-bitmap"
+		match: [
+			[/\.psfu?$/i, "medium-cyan", signature: /^\x72\xB5\x4A\x86/]
+			[".pcf", "medium-orange", signature: /^\x01FCP/]
+			[".psftx", "dark-blue"]
+			[".bdf", "medium-red"]
+			[".fnt", "medium-blue"]
+			[".fon", "dark-red"]
+			[".snf", "dark-orange"]
 		]
 
 	FontForge:
@@ -1815,7 +1828,7 @@ fileIcons:
 			[".resx", "medium-cyan"]
 			[".rl", "medium-red"]
 			[".scxml", "light-cyan"]
-			[".sed", "dark-green"]
+			[".sed", "dark-green", scope: "sed", interpreter: /^([gs]?sed|minised)$/]
 			[/\.sgml?$/i, "dark-yellow"]
 			[".sig", "light-maroon"]
 			[".sk", "light-blue", signature: /^##Sketch 1 2/]
@@ -2288,8 +2301,7 @@ fileIcons:
 			[".jsb", "auto-maroon"]
 			[".jsm", "auto-blue"]
 			[".jss", "auto-green"]
-			[".es6", "auto-yellow"]
-			[".es", "auto-yellow"]
+			[/\.es\d?$/i, "auto-yellow"]
 			[".mjs", "auto-blue"]
 			[".sjs", "auto-pink"]
 			[".ssjs", "auto-red"]
@@ -2875,8 +2887,8 @@ fileIcons:
 		icon: "mocha"
 		priority: 2
 		match: [
-			[/^mocha\.([jt]sx?|es6?|coffee)$/i, "medium-maroon"]
-			[/^mocha\.(s?css|less|styl)$/i, "medium-red"]
+			[/^mocha(\.min)?\.([jt]sx?|es6?|coffee)$/i, "medium-maroon"]
+			[/^mocha(\.min)?\.(s?css|less|styl)$/i, "medium-red"]
 			["mocha.opts", "light-maroon", priority: 2]
 		]
 
@@ -3116,7 +3128,7 @@ fileIcons:
 	Normalize:
 		icon: "normalize"
 		priority: 2
-		match: /^normalize\.(css|less|scss|styl)$/i
+		match: /^normalize(\.min)?\.(css|less|scss|styl)$/i
 		colour: "medium-red"
 
 	NPM:
@@ -3508,7 +3520,7 @@ fileIcons:
 	PowerShell:
 		icon: "powershell"
 		match: [
-			[".ps1", "medium-blue", scope: "powershell", alias: "posh"]
+			[".ps1", "medium-blue", scope: "powershell", alias: "posh", interpreter: "pwsh"]
 			[".psd1", "dark-blue"]
 			[".psm1", "medium-purple"]
 			[".ps1xml", "dark-purple"]
@@ -3517,8 +3529,10 @@ fileIcons:
 	Prettier:
 		icon: "prettier"
 		priority: 2
-		match: /\.prettierrc(\.(js|json|ya?ml))?$|^prettier\.config\.js$/i
-		colour: "auto-cyan"
+		match: [
+			[/\.prettierrc(\.(js|json|ya?ml))?$|^prettier\.config\.js$/i, "auto-cyan"]
+			[".prettierignore", "dark-yellow"]
+		]
 
 	Printer:
 		icon: "print"
@@ -3609,6 +3623,7 @@ fileIcons:
 			[".tac", "dark-pink"]
 			[".wsgi", "dark-red"]
 			[".xpy", "auto-yellow"]
+			[".smk", "medium-green"]
 			[".rpy", "medium-pink", scope: "renpy", alias: /^Ren'?Py$/i]
 			[/\.?(pypirc|pythonrc|python-venv)$/i, "dark-blue"]
 			[/^(SConstruct|SConscript)$/, "dark-green"]
@@ -4211,7 +4226,7 @@ fileIcons:
 		icon: "swagger"
 		colour: "medium-green"
 		match: [
-			[/^swagger\.(json|yaml|yml)$/i, "medium-green", priority: 2]
+			[/^(openapi|swagger)\.(json|yaml|yml)$/i, "medium-green", priority: 2]
 			[/^.swagger-codegen-ignore$/i, "dark-green"]
 		]
 
