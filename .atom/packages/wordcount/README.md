@@ -6,10 +6,12 @@ Counts the words and characters in your current document and displays them in th
   - Counts the words and characters in your selection when you have made one (or multiple!)
   - Writing goal tracker (with custom colors support)
   - Works with unsaved files
-  - Option to exclude `codeblocks` from count
+  - Option to exclude markdown `codeblocks` from count
+  - Option to exclude markdown `<!-- html comments -->` and `{>> critic markup comments <<}` from count
+  - Option to exclude markdown `> blockquotes` from count
   - Option to show the total price per word for the document. Currency symbol can be changed in Settings.
 
 
-![A screenshot of your spankin' package](https://cloud.githubusercontent.com/assets/584259/19187373/62f97ad8-8c8b-11e6-85aa-1282f94f509b.gif))
+![A screenshot of your spankin' package](https://cloud.githubusercontent.com/assets/584259/19187373/62f97ad8-8c8b-11e6-85aa-1282f94f509b.gif)
 
 *A special thanks goes to our [awesome contributors](https://github.com/nesQuick/atom-wordcount/graphs/contributors) 👏*

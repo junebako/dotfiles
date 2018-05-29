@@ -2,40 +2,39 @@
   "_args": [
     [
       {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11718-4443-8lroft/package.tgz",
+        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118429-35761-g1rjte.tvh4uqh0k9/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11718-4443-8lroft/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11718-4443-8lroft/package.tgz",
+        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118429-35761-g1rjte.tvh4uqh0k9/package.tgz",
+        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118429-35761-g1rjte.tvh4uqh0k9/package.tgz",
         "type": "local"
       },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11718-4443-ij3fyl"
+      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-118429-35761-1pye1y7.t0gobkpgb9"
     ]
   ],
-  "_from": "../d-11718-4443-8lroft/package.tgz",
-  "_id": "wordcount@2.10.4",
+  "_from": "../d-118429-35761-g1rjte.tvh4uqh0k9/package.tgz",
+  "_id": "wordcount@2.11.0",
   "_inCache": true,
-  "_installable": true,
   "_location": "/wordcount",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11718-4443-8lroft/package.tgz",
+    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118429-35761-g1rjte.tvh4uqh0k9/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11718-4443-8lroft/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11718-4443-8lroft/package.tgz",
+    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118429-35761-g1rjte.tvh4uqh0k9/package.tgz",
+    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118429-35761-g1rjte.tvh4uqh0k9/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11718-4443-8lroft/package.tgz",
-  "_shasum": "ffb2505806c0b1429a012913097c5d77d2a1ea1a",
+  "_resolved": "file:../d-118429-35761-g1rjte.tvh4uqh0k9/package.tgz",
+  "_shasum": "ae4b4024433a83961a6dfd6d2dd41eb0d4b325f0",
   "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11718-4443-8lroft/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11718-4443-ij3fyl",
+  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118429-35761-g1rjte.tvh4uqh0k9/package.tgz",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-118429-35761-1pye1y7.t0gobkpgb9",
   "bugs": {
     "url": "https://github.com/nesQuick/atom-wordcount/issues"
   },
@@ -47,7 +46,8 @@
     }
   },
   "dependencies": {
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "word-regex": "^0.1.2"
   },
   "description": "Counts the words (and characters) in your current document, as well as in your selections and displays it in the status bar.",
   "devDependencies": {},
@@ -70,11 +70,11 @@
   "main": "./lib/main",
   "name": "wordcount",
   "optionalDependencies": {},
-  "readme": "# Atom wordcount package\n\nCounts the words and characters in your current document and displays them in the status bar. Plus a handful of great features, like:\n\n  - Activates automatically on text files (define on which file extensions you want to activate it, or turn it \"Always on\")\n  - Counts the words and characters in your selection when you have made one (or multiple!)\n  - Writing goal tracker (with custom colors support)\n  - Works with unsaved files\n  - Option to exclude `codeblocks` from count\n  - Option to show the total price per word for the document. Currency symbol can be changed in Settings.\n\n\n![A screenshot of your spankin' package](https://cloud.githubusercontent.com/assets/584259/19187373/62f97ad8-8c8b-11e6-85aa-1282f94f509b.gif))\n\n*A special thanks goes to our [awesome contributors](https://github.com/nesQuick/atom-wordcount/graphs/contributors) 👏*\n",
+  "readme": "# Atom wordcount package\n\nCounts the words and characters in your current document and displays them in the status bar. Plus a handful of great features, like:\n\n  - Activates automatically on text files (define on which file extensions you want to activate it, or turn it \"Always on\")\n  - Counts the words and characters in your selection when you have made one (or multiple!)\n  - Writing goal tracker (with custom colors support)\n  - Works with unsaved files\n  - Option to exclude markdown `codeblocks` from count\n  - Option to exclude markdown `<!-- html comments -->` and `{>> critic markup comments <<}` from count\n  - Option to exclude markdown `> blockquotes` from count\n  - Option to show the total price per word for the document. Currency symbol can be changed in Settings.\n\n\n![A screenshot of your spankin' package](https://cloud.githubusercontent.com/assets/584259/19187373/62f97ad8-8c8b-11e6-85aa-1282f94f509b.gif)\n\n*A special thanks goes to our [awesome contributors](https://github.com/nesQuick/atom-wordcount/graphs/contributors) 👏*\n",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nesQuick/atom-wordcount.git"
   },
-  "version": "2.10.4"
+  "version": "2.11.0"
 }
