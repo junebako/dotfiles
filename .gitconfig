@@ -41,6 +41,8 @@
   user = june29
 [push]
   default = simple
+[fetch]
+  prune = true
 [ghq]
   root = ~/ghq
   root = ~/.go/src
