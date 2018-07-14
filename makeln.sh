@@ -4,11 +4,11 @@ DOTFILES=~/.dotfiles
 
 cd ~/
 
+ln -s $DOTFILES/.atom
 ln -s $DOTFILES/.docker
 ln -s $DOTFILES/.emacs.d
 ln -s $DOTFILES/.gemrc
 ln -s $DOTFILES/.gitconfig
-ln -s $DOTFILES/.gitconfig.local
 ln -s $DOTFILES/.gitignore_global
 ln -s $DOTFILES/.peco
 ln -s $DOTFILES/.rspec
