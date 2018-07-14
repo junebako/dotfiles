@@ -4,6 +4,7 @@ DOTFILES=~/.dotfiles
 
 cd ~/
 
+ln -s $DOTFILES/.docker
 ln -s $DOTFILES/.emacs.d
 ln -s $DOTFILES/.gemrc
 ln -s $DOTFILES/.gitconfig
