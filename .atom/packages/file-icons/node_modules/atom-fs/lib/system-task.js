@@ -1,3 +1,4 @@
+/* global emit */
 "use strict";
 
 const fs = require("fs");
@@ -94,7 +95,7 @@ function read(fd, limit = 80){
 		isComplete = true;
 		
 		// Strip null-bytes padding short file-chunks
-		data = data.replace(/\x00+$/, "");
+		data = data.replace(/\0+$/, "");
 	}
 	
 	return [data, isComplete];

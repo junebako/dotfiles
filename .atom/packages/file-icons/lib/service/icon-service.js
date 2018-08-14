@@ -1,6 +1,6 @@
 "use strict";
 
-const {CompositeDisposable, Disposable} = require("atom");
+const {CompositeDisposable} = require("atom");
 const {EntityType, FileSystem} = require("atom-fs");
 const StrategyManager = require("./strategy-manager.js");
 const IconDelegate    = require("./icon-delegate.js");
@@ -12,17 +12,21 @@ class IconService{
 	
 	init(){
 		this.disposables = new CompositeDisposable();
-		this.disposables.add(FileSystem.observe(this.handleResource.bind(this)));
-
-		// Get notified when a file is deleted and let `FileSystem` know - see #693
-		this.disposables.add(atom.project.onDidChangeFiles(events => {
-			for(const event of events) {
-				if("deleted" === event.action && FileSystem.paths.has(event.path)) {
-					const resource = FileSystem.get(event.path);
-					if(resource) resource.destroy();
+		this.disposables.add(
+			FileSystem.observe(this.handleResource.bind(this)),
+			
+			// #693: Notify `FileSystem` when files are deleted
+			atom.project.onDidChangeFiles(events => {
+				for(const {action, path} of events){
+					if("deleted" === action && FileSystem.paths.has(path)){
+						const resource = FileSystem.get(path);
+						if(resource)
+							resource.destroy();
+						Storage.deletePath(path);
+					}
 				}
-			}
-		}));
+			})
+		);
 		StrategyManager.init();
 		this.isReady = true;
 	}
@@ -94,26 +98,13 @@ class IconService{
 	
 	suppressFOUC(){
 		return {
-			iconClassForPath(path, context = ""){
+			iconClassForPath(path){
 				const file = FileSystem.get(path);
-				
-				// HACK: Fix #550 by ignoring old icon-service if consumed by Tabs
-				// package, and the user disabled tab-icons. This can be deleted if
-				// atom/tabs#412 is accepted by the Atom team. Since (we hope) this
-				// code-block to be shortlived, we're being sloppy by not bothering
-				// to `require` the Options class beforehand.
-				if("tabs" === context && !atom.config.get("file-icons.tabPaneIcon"))
-					return null;
-				
 				return file && file.icon
 					? file.icon.getClasses() || null
 					: null;
-			},
-			
-			onWillDeactivate(){
-				return new Disposable();
 			}
-		}
+		};
 	}
 }
 

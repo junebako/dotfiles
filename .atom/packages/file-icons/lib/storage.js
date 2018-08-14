@@ -1,14 +1,14 @@
 "use strict";
 
-const {normalisePath} = require("alhadis.utils");
+const {sep}    = require("path");
+const AtomFS   = require("atom-fs");
 const LRUCache = require("lru-cache");
-const {sep} = require("path");
-const isWin = "\\" === sep;
 
+const isWin    = "\\" === sep;
 const MAX_SIZE = 10000;
-const version = 0x004;
-let locked = false;
-let data = null;
+const version  = 0x005;
+let locked     = false;
+let data       = null;
 
 
 /**
@@ -96,7 +96,7 @@ class Storage{
 				return true;
 
 			if(isWin){
-				const fixedPath = normalisePath(projectPath);
+				const fixedPath = AtomFS.normalisePath(projectPath);
 				if(path === fixedPath || 0 === path.indexOf(fixedPath + "/"))
 					return true;
 			}
@@ -301,7 +301,7 @@ class Storage{
 			const {size} = this;
 			data = this.createBlankCache();
 			atom.project.serialize();
-			const plural = size === 1 ? "" : "s";
+			const plural = 1 === size ? "" : "s";
 			const message = `Cleared ${size} path${plural} from icon cache.`;
 			atom.notifications.addInfo(message, {dismissable: true});
 		}

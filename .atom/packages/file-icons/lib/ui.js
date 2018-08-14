@@ -2,6 +2,7 @@
 
 const {join} = require("path");
 const {FileSystem} = require("atom-fs");
+const {rgbToHSL} = require("./utils.js");
 const {CompositeDisposable, Disposable, Emitter} = require("atom");
 let delayNext = false;
 
@@ -53,13 +54,7 @@ class UI {
 
 
 	observe(){
-		this.disposables.add(
-			// TODO: Axe this (and onOpenArchive/emitOpenedArchive methods) once Atom 1.23 hits stable
-			atom.workspace.observePaneItems(paneItem => {
-				if("ArchiveEditor" === paneItem.constructor.name)
-					this.emitOpenedArchive(paneItem);
-			}),
-			
+		this.disposables.add(			
 			atom.workspace.observeTextEditors(editor => {
 				this.emitOpenedEditor(editor);
 				
@@ -71,9 +66,7 @@ class UI {
 				else{
 					this.emitter.emit("open-blank", editor);
 					this.waitToSave(editor).then(file => {
-						// NOTE: These two events can probably be merged once atom/tabs#397 is addressed
 						this.emitter.emit("save-new-file", {file, editor});
-						this.emitter.emit("open-file", editor);
 					});
 				}
 			})
@@ -130,27 +123,25 @@ class UI {
 	
 	
 	/* Event subscription */
-	onMotifChanged         (fn){ return this.subscribe("motif-changed",      fn)}
-	onOpenArchive          (fn){ return this.subscribe("open-archive",       fn)}
-	onOpenEditor           (fn){ return this.subscribe("open-editor",        fn)}
-	onOpenFile             (fn){ return this.subscribe("open-file",          fn)}
-	onOpenBlank            (fn){ return this.subscribe("open-blank",         fn)}
-	onOpenProject          (fn){ return this.subscribe("open-project",       fn)}
-	onProjectsAvailable    (fn){ return this.subscribe("projects-available", fn)}
-	onProjectsChanged      (fn){ return this.subscribe("projects-changed",   fn)}
-	onProjectsEmptied      (fn){ return this.subscribe("projects-emptied",   fn)}
-	onSaveNewFile          (fn){ return this.subscribe("save-new-file",      fn)}
+	onMotifChanged         (fn){ return this.subscribe("motif-changed",      fn); }
+	onOpenEditor           (fn){ return this.subscribe("open-editor",        fn); }
+	onOpenFile             (fn){ return this.subscribe("open-file",          fn); }
+	onOpenBlank            (fn){ return this.subscribe("open-blank",         fn); }
+	onOpenProject          (fn){ return this.subscribe("open-project",       fn); }
+	onProjectsAvailable    (fn){ return this.subscribe("projects-available", fn); }
+	onProjectsChanged      (fn){ return this.subscribe("projects-changed",   fn); }
+	onProjectsEmptied      (fn){ return this.subscribe("projects-emptied",   fn); }
+	onSaveNewFile          (fn){ return this.subscribe("save-new-file",      fn); }
 	
 	/* Event emission */
-	emitMotifChanged       (...$){ this.emit("motif-changed",      $)}
-	emitOpenedArchive      (...$){ this.emit("open-archive",       $)}
-	emitOpenedEditor       (...$){ this.emit("open-editor",        $)}
-	emitOpenedFile         (...$){ this.emit("open-file",          $)}
-	emitOpenedBlank        (...$){ this.emit("open-blank",         $)}
-	emitOpenedProject      (...$){ this.emit("open-project",       $)}
-	emitProjectsAvailable  (...$){ this.emit("projects-available", $)}
-	emitProjectsChanged    (...$){ this.emit("projects-changed",   $)}
-	emitProjectsEmptied    (...$){ this.emit("projects-emptied",   $)}
+	emitMotifChanged       (...$){ this.emit("motif-changed",      $); }
+	emitOpenedEditor       (...$){ this.emit("open-editor",        $); }
+	emitOpenedFile         (...$){ this.emit("open-file",          $); }
+	emitOpenedBlank        (...$){ this.emit("open-blank",         $); }
+	emitOpenedProject      (...$){ this.emit("open-project",       $); }
+	emitProjectsAvailable  (...$){ this.emit("projects-available", $); }
+	emitProjectsChanged    (...$){ this.emit("projects-changed",   $); }
+	emitProjectsEmptied    (...$){ this.emit("projects-emptied",   $); }
 	
 	
 	observeFiles(fn){
@@ -192,7 +183,7 @@ class UI {
 		if(!styleSheet)
 			return null;
 		for(const rule of styleSheet.cssRules)
-			if(rule.selectorText === ".theme-colour-check"){
+			if(".theme-colour-check" === rule.selectorText){
 				const match = rule.cssText.match(/rgb\(.+\)/);
 				return match
 					? match[0].match(/[\d.]+(?=[,)])/g).map(Number)
@@ -205,7 +196,7 @@ class UI {
 	checkMotif(){
 		const colour = this.getThemeColour();
 		if(!colour) return;
-		const isLight = this.rgbToHSL(colour)[2] >= .5;
+		const isLight = rgbToHSL(colour)[2] >= .5;
 		if(isLight !== this.lightTheme){
 			this.lightTheme = isLight;
 			this.emitMotifChanged(isLight);
@@ -289,42 +280,6 @@ class UI {
 				: this.emitProjectsEmptied();
 			this.emitProjectsChanged({from, to});
 		}
-	}
-	
-	
-	/**
-	 * Convert an RGB colour to HSL.
-	 *
-	 * @param {Number[]} channels - An array holding each RGB component
-	 * @return {Number[]}
-	 */
-	rgbToHSL(channels){
-		if(!channels) return;
-		
-		const r     = channels[0] / 255;
-		const g     = channels[1] / 255;
-		const b     = channels[2] / 255;
-		const min   = Math.min(r, g, b);
-		const max   = Math.max(r, g, b);
-		const lum   = (max + min) / 2;
-		const delta = max - min;
-		const sat   = lum < .5
-			? (delta / (max + min))
-			: (delta / (2 - max - min));
-		
-		let hue;
-		switch(max){
-			case r:  hue =     (g - b) / delta; break;
-			case g:  hue = 2 + (b - r) / delta; break;
-			default: hue = 4 + (r - g) / delta; break;
-		}
-		
-		hue /= 6;
-		
-		if(hue < 0)
-			hue += 1;
-		
-		return [ hue || 0, sat || 0, lum || 0 ];
 	}
 }
 

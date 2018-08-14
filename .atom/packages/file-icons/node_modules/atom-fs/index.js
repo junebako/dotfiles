@@ -6,7 +6,7 @@ const namedExports = new Map([
 	["System",     "./lib/system.js"], // TODO: Rename
 	["Resource",   "./lib/resource.js"],
 	["File",       "./lib/file.js"],
-	["Directory",  "./lib/directory.js"]
+	["Directory",  "./lib/directory.js"],
 ]);
 
 for(const [key, value] of namedExports)
@@ -17,4 +17,5 @@ for(const [key, value] of namedExports)
 		value: require(value),
 	});
 
+Object.assign(module.exports, require("./lib/utils.js"));
 global.AtomFS = module.exports.FileSystem;
