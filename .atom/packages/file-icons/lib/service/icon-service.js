@@ -25,7 +25,7 @@ class IconService{
 						Storage.deletePath(path);
 					}
 				}
-			})
+			}),
 		);
 		StrategyManager.init();
 		this.isReady = true;
@@ -91,7 +91,8 @@ class IconService{
 			type |= EntityType.SYMLINK;
 		
 		const disposable = IconNode.forElement(element, path, type, isTabIcon);
-		module.exports.disposables.add(disposable);
+		if(null !== module.exports.disposables)
+			module.exports.disposables.add(disposable);
 		return disposable;
 	}
 	
@@ -103,7 +104,7 @@ class IconService{
 				return file && file.icon
 					? file.icon.getClasses() || null
 					: null;
-			}
+			},
 		};
 	}
 }

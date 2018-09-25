@@ -3,10 +3,31 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.24...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.25...HEAD
 
 
-[v2.1.24]
+[v2.1.25] - 2018-09-21
+----------------------
+### Added
+- **Support:** Ansible (`*/roles/*/{defaults,vars,tests,meta}/*.yml`), Data (`.yasnippet`, `.yas`, `figmagic`), ESDoc (`esdoc.js`), INI (`.flc`), PostScript (`.gsf`), Readmes (`FAQ`, `*.faq`)
+
+### Changed
+- Increased minimum required Atom version to v1.25.0
+- Upgraded dependencies to [`atom-fs@0.1.6`][] and [`mapped-disposable@1.0.2`][]
+
+### Fixed
+- [[`#721`][]]: Exception thrown when registering symbolic links
+- [[`#754`][]]: Exception thrown from nulled service disposable
+
+[v2.1.25]: https://github.com/file-icons/atom/releases/tag/v2.1.25
+[`#721`]: https://github.com/file-icons/atom/issues/721
+[`#754`]: https://github.com/file-icons/atom/issues/754
+[`atom-fs@0.1.6`]: https://github.com/file-icons/Atom-FS/releases/tag/v0.1.6
+[`mapped-disposable@1.0.2`]: https://github.com/file-icons/MappedDisposable/releases/tag/v1.0.2
+
+
+
+[v2.1.24] - 2018-08-14
 ----------------------
 ### Fixed
 - [[`#753`][]]: Startup breakage for users running Atom 1.23.3
@@ -16,7 +37,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
-[v2.1.23]
+[v2.1.23] - 2018-08-13
 ----------------------
 ### Added
 - **New icons:** Affinity Designer (`.afdesign`), Lektor (`.lr`, `.lektorproject`), Modula-3/Quake (`.i3`, `.ig`, `.m3`, `.mg`, `m3makefile`, `m3overrides`), PICO-8 (`.p8`), Serverless (`serverless.yml`)
