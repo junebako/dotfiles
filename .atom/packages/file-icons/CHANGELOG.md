@@ -3,7 +3,20 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.25...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.26...HEAD
+
+
+[v2.1.26] - 2018-10-25
+----------------------
+### Added
+- **New icons:** AnyScript, AsciiDoctor, Ballerina, Bazaar, CloudFoundry, Conan, Coveralls, Crowdin, CVS, DocPad, Ensime, Floobits, FOSSA, Fossil, FuseBox, Galen, Glide, Helix, HJSON, Husky, Ink, Istanbul, JSON, JSON5, kOS, LOLCODE, Microsoft Lync, Microsoft Outlook, Microsoft Publisher, Monotone, Netlify, NestJS, Nuxt, OpenVMS, Point cloud data, PhraseApp, Pre-commit, Prisma, Progress, Pyret, QlikView, RStudio, Quasar, Rubocop, SGI, Snort, Solidarity, Storybook, Stylable, TFS, TOML, TTCN-3, Unibeautify, Velocity, VSTS, Wallaby, Walt, WurstScript
+- **Support:** Affinity (`*.afphoto`, `*.afpub`), Bazel (`.bazelrc`, `bazel.rc`), Darcs (`.boringignore`), Generic code (`*.tera`), Microsoft Word (`*.wll`), HCP (`*.workflow`), MarkdownLint (`.markdownlint`, `.markdownlintrc.*`), PostgreSQL (`*.pgsql`)
+
+### Changed
+- AsciiDoc icon to use AsciiDoctor logo
+- OpenEdge ABL icon replaced with Progress logo
+
+[v2.1.26]: https://github.com/file-icons/atom/releases/tag/v2.1.26
 
 
 [v2.1.25] - 2018-09-21
