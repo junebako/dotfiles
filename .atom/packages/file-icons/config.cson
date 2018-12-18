@@ -332,7 +332,7 @@ fileIcons:
 		priority: 4
 		match: /(^|.*(\.|-|\/))vault\.ya?ml$$/i
 		matchPath: true
-		signature: /^\$ANSIBLE_VAULT;/;
+		signature: /^\$ANSIBLE_VAULT;/
 		colour: "dark-blue"
 
 	"ANSI Weather":
@@ -575,7 +575,7 @@ fileIcons:
 
 	Bazaar:
 		icon: "bazaar"
-		match: /^\.bzrignore$/i
+		match: ".bzrignore"
 		colour: "auto-yellow"
 
 	Bazel:
@@ -1242,7 +1242,7 @@ fileIcons:
 
 	CVS:
 		icon: "cvs"
-		match: /^\.cvsignore$/i
+		match: ".cvsignore"
 		colour: "medium-orange"
 
 	CWL:
@@ -1646,6 +1646,13 @@ fileIcons:
 			[".factor-boot-rc", "medium-red"]
 		]
 
+	Falcon:
+		icon: "falcon"
+		match: /\.fal(con)?$/i
+		colour: "medium-red"
+		scope: "falcon"
+		interpreter: /^falcon$/
+
 	Fancy:
 		icon: "fancy"
 		match: [
@@ -1784,6 +1791,12 @@ fileIcons:
 			[/\.fossa\.ya?ml$/i, "medium-blue", priority: 2]
 			[/\.fossaignore$/i, "dark-blue"]
 		]
+
+	Fountain:
+		icon: "fountain"
+		match: ".fountain"
+		colour: "medium-blue"
+		scope: "fountain"
 
 	Franca:
 		icon: "franca"
@@ -2264,6 +2277,7 @@ fileIcons:
 		match: [
 			[/^(Proc|Apt)file$/, "medium-purple"]
 			[".buildpacks", "light-purple"]
+			[".slugignore", "dark-purple"]
 			[/^\.vendor_urls$/, "dark-purple"]
 		]
 
@@ -2292,7 +2306,7 @@ fileIcons:
 	HTML:
 		icon: "html5"
 		match: [
-			[/\.x?html?$/i, "medium-orange", scope: "html.basic", alias: /^(xhtml|htm)$/i, signature: /^<!DOCTYPE html>/i]
+			[/\.x?html?$/i, "medium-orange", scope: "html.basic", alias: /^(xhtml|htm)$/i, signature: /^<!DOCTYPE\s+html/i]
 			[".cshtml", "medium-red"]
 			[".gohtml", "dark-blue", "gohtml"]
 			[".html.eex", "medium-purple"]
@@ -2887,13 +2901,13 @@ fileIcons:
 		match: /\.mak?o$/i
 		colour: "dark-blue"
 
-	"Manual Page":
+	Roff:
 		icon: "manpage"
 		match: [
 			[/\.(1([bcmstx]|has|in)?|[24568]|3(avl|bsm|cfgadm|in|[cmx]|qt)?|7(d|fs|i|ipp|m|p)?|9[efps]?|chem|eqn|groff|man|mandoc|mdoc|me|mom|nr?|nroff|pic|roff?|tmac|tmac-u|tr|troff)$/i
 				"dark-green"
 				scope: /\.[gtn]?roff$/i
-				alias: /^([gtn]?roff|man(page|doc)?|mdoc)$/i
+				alias: /^([gtn]?roff|man([-_\s]?page|doc)?|mdoc)$/i
 				interpreter: /man|mandoc|([gnt]|dit)?roff/i
 				signature: /// ^
 					( '\\"\ [tre]+(?=\s|$)
@@ -3033,10 +3047,10 @@ fileIcons:
 	Mercurial:
 		icon: "hg"
 		match: [
-			[/^\.hgignore$/i, "medium-cyan"]
-			[/^\.?hgrc$/i, "dark-cyan"]
-			[/^\.hgsub$/i, "dark-blue"]
-			[/\.hgsubstate$/i, "medium-red"]
+			[".hgignore", "medium-cyan"]
+			[/\.?hgrc$/i, "dark-cyan"]
+			[".hgsub", "dark-blue"]
+			[".hgsubstate", "medium-red"]
 		]
 
 	Mercury:
@@ -3273,7 +3287,7 @@ fileIcons:
 
 	Monotone:
 		icon: "monotone"
-		match: /^\.mtn-ignore$/i
+		match: ".mtn-ignore"
 		colour: "dark-purple"
 
 	MoonScript:
@@ -3469,7 +3483,7 @@ fileIcons:
 	Nodemon:
 		icon: "nodemon"
 		priority: 2
-		match: /^nodemon\.json$|^\.nodemonignore$/i
+		match: /^nodemon\.json$|\.nodemonignore$/i
 		colour: "medium-green"
 
 	Nomad:
@@ -3886,7 +3900,7 @@ fileIcons:
 			[".ps", "medium-red", scope: "postscript", alias: "postscr", signature: /^%!PS/]
 			[".eps", "medium-orange"]
 			[".pfa", "dark-blue"]
-			[".afm", "medium-green", signature: /^\s*StartFontMetrics\s+(\d+\.\d+)/]
+			[/\.a[fm]m$/i, "medium-green", scope: "afm", signature: /^\s*Start(Comp|Master)?FontMetrics\s+(\d+\.\d+)/]
 			[".gsf", "dark-orange"]
 		]
 
@@ -3944,7 +3958,7 @@ fileIcons:
 		icon: "pros"
 		match: /^project\.pros$/i
 		colour: "medium-orange"
-		priority: 1.5;
+		priority: 1.5
 
 	Processing:
 		icon: "processing"
@@ -4347,6 +4361,12 @@ fileIcons:
 			[".sps", "medium-purple"]
 		]
 
+	Scilla:
+		icon: "scilla"
+		match: ".scilla"
+		colour: "medium-orange"
+		scope: "scilla"
+
 	Scilab:
 		icon: "scilab"
 		match: [
@@ -4724,7 +4744,7 @@ fileIcons:
 		colour: "medium-green"
 		match: [
 			[/^(openapi|swagger)\.(json|yaml|yml)$/i, "medium-green", priority: 2]
-			[/^.swagger-codegen-ignore$/i, "dark-green"]
+			[".swagger-codegen-ignore", "dark-green"]
 		]
 
 	Swift:
