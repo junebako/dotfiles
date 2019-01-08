@@ -21,6 +21,11 @@
   'ctrl-x': 'atomic-emacs:cut'
   'ctrl-c': 'atomic-emacs:copy'
 
+# For command palette, buffer switcher, etc. on Linux.
+'body.platform-linux .select-list atom-text-editor.mini':
+  'ctrl-p': 'core:move-up'
+  'ctrl-n': 'core:move-down'
+
 'body.platform-win32':
   'shift-delete': 'atomic-emacs:cut'
   'ctrl-insert': 'atomic-emacs:copy'
@@ -82,9 +87,11 @@
   'ctrl-/': 'core:undo'
   'ctrl-_': 'core:undo'
   'ctrl-x u': 'core:undo'
-  'alt-/': 'autocomplete-plus:activate'
+  'alt-/': 'atomic-emacs:dabbrev-expand'
+  'alt-?': 'atomic-emacs:dabbrev-previous'
   'alt-q': 'autoflow:reflow-selection'
   'alt-;': 'editor:toggle-line-comments'
+  'ctrl-alt-\\' : 'editor:auto-indent'
 
   # Marking & Selecting
   'ctrl-space': 'atomic-emacs:set-mark'
@@ -96,7 +103,7 @@
   'ctrl-g': 'core:cancel'
   'ctrl-x ctrl-s': 'core:save'
   'ctrl-x ctrl-w': 'core:save-as'
-  'alt-.': 'symbols-view:toggle-file-symbols'
+  'alt-.': 'symbols-view:go-to-declaration'
 
 'atom-text-editor:not(.autocomplete-active):not(.mini)':
   # Navigation

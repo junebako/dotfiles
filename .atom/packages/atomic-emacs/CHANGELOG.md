@@ -1,3 +1,11 @@
+## 0.13.0 (2019-01-07)
+
+* Add dabbrev-{expand,previous} (alt-/, alt-?).
+* alt-. now binds to symbols-view:go-to-declaration.
+* Expose AtomicEmacs object as a service, for writing extensions.
+* Fix kill ring entry when all cursors are merged.
+* Bind editor:auto-indent to ctrl-alt-\.
+
 ## 0.12.1 (2017-09-06)
 
 * Fix finding a file when no tabs are open.
