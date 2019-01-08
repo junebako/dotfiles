@@ -25,13 +25,12 @@ export function getNodePrefixPath() {
   if (Cache.NODE_PREFIX_PATH === null) {
     const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm'
     try {
-      Cache.NODE_PREFIX_PATH =
-        ChildProcess.spawnSync(npmCommand, ['get', 'prefix'], {
-          env: Object.assign(Object.assign({}, process.env), { PATH: getPath() })
-        }).output[1].toString().trim()
+      Cache.NODE_PREFIX_PATH = ChildProcess.spawnSync(npmCommand, ['get', 'prefix'], {
+        env: Object.assign(Object.assign({}, process.env), { PATH: getPath() })
+      }).output[1].toString().trim()
     } catch (e) {
-      const errMsg = 'Unable to execute `npm get prefix`. Please make sure ' +
-        'Atom is getting $PATH correctly.'
+      const errMsg = 'Unable to execute `npm get prefix`. Please make sure '
+        + 'Atom is getting $PATH correctly.'
       throw new Error(errMsg)
     }
   }
@@ -51,9 +50,9 @@ function isDirectory(dirPath) {
 export function findESLintDirectory(modulesDir, config, projectPath) {
   let eslintDir = null
   let locationType = null
-  if (config.useGlobalEslint) {
+  if (config.global.useGlobalEslint) {
     locationType = 'global'
-    const configGlobal = cleanPath(config.globalNodePath)
+    const configGlobal = cleanPath(config.global.globalNodePath)
     const prefixPath = configGlobal || getNodePrefixPath()
     // NPM on Windows and Yarn on all platforms
     eslintDir = Path.join(prefixPath, 'node_modules', 'eslint')
@@ -61,24 +60,28 @@ export function findESLintDirectory(modulesDir, config, projectPath) {
       // NPM on platforms other than Windows
       eslintDir = Path.join(prefixPath, 'lib', 'node_modules', 'eslint')
     }
-  } else if (!config.advancedLocalNodeModules) {
+  } else if (!config.advanced.localNodeModules) {
     locationType = 'local project'
     eslintDir = Path.join(modulesDir || '', 'eslint')
-  } else if (Path.isAbsolute(cleanPath(config.advancedLocalNodeModules))) {
+  } else if (Path.isAbsolute(cleanPath(config.advanced.localNodeModules))) {
     locationType = 'advanced specified'
-    eslintDir = Path.join(cleanPath(config.advancedLocalNodeModules), 'eslint')
+    eslintDir = Path.join(cleanPath(config.advanced.localNodeModules), 'eslint')
   } else {
     locationType = 'advanced specified'
-    eslintDir = Path.join(projectPath || '', cleanPath(config.advancedLocalNodeModules), 'eslint')
+    eslintDir = Path.join(projectPath || '', cleanPath(config.advanced.localNodeModules), 'eslint')
   }
+
   if (isDirectory(eslintDir)) {
     return {
       path: eslintDir,
       type: locationType,
     }
-  } else if (config.useGlobalEslint) {
+  }
+
+  if (config.global.useGlobalEslint) {
     throw new Error('ESLint not found, please ensure the global Node path is set correctly.')
   }
+
   return {
     path: Cache.ESLINT_LOCAL_PATH,
     type: 'bundled fallback',
@@ -91,7 +94,7 @@ export function getESLintFromDirectory(modulesDir, config, projectPath) {
     // eslint-disable-next-line import/no-dynamic-require
     return require(ESLintDirectory)
   } catch (e) {
-    if (config.useGlobalEslint && e.code === 'MODULE_NOT_FOUND') {
+    if (config.global.useGlobalEslint && e.code === 'MODULE_NOT_FOUND') {
       throw new Error('ESLint not found, try restarting Atom to clear caches.')
     }
     // eslint-disable-next-line import/no-dynamic-require
@@ -115,10 +118,9 @@ export function getESLintInstance(fileDir, config, projectPath) {
 }
 
 export function getConfigPath(fileDir) {
-  const configFile =
-    findCached(fileDir, [
-      '.eslintrc.js', '.eslintrc.yaml', '.eslintrc.yml', '.eslintrc.json', '.eslintrc', 'package.json'
-    ])
+  const configFile = findCached(fileDir, [
+    '.eslintrc.js', '.eslintrc.yaml', '.eslintrc.yml', '.eslintrc.json', '.eslintrc', 'package.json'
+  ])
   if (configFile) {
     if (Path.basename(configFile) === 'package.json') {
       // eslint-disable-next-line import/no-dynamic-require
@@ -137,7 +139,7 @@ export function getConfigPath(fileDir) {
 }
 
 export function getRelativePath(fileDir, filePath, config, projectPath) {
-  const ignoreFile = config.disableEslintIgnore ? null : findCached(fileDir, '.eslintignore')
+  const ignoreFile = config.advanced.disableEslintIgnore ? null : findCached(fileDir, '.eslintignore')
 
   // If we can find an .eslintignore file, we can set cwd there
   // (because they are expected to be at the project root)
@@ -159,16 +161,16 @@ export function getRelativePath(fileDir, filePath, config, projectPath) {
 export function getCLIEngineOptions(type, config, rules, filePath, fileDir, givenConfigPath) {
   const cliEngineConfig = {
     rules,
-    ignore: !config.disableEslintIgnore,
+    ignore: !config.advanced.disableEslintIgnore,
     fix: type === 'fix'
   }
 
-  const ignoreFile = config.disableEslintIgnore ? null : findCached(fileDir, '.eslintignore')
+  const ignoreFile = config.advanced.disableEslintIgnore ? null : findCached(fileDir, '.eslintignore')
   if (ignoreFile) {
     cliEngineConfig.ignorePath = ignoreFile
   }
 
-  cliEngineConfig.rulePaths = config.eslintRulesDirs.map((path) => {
+  cliEngineConfig.rulePaths = config.advanced.eslintRulesDirs.map((path) => {
     const rulesDir = cleanPath(path)
     if (!Path.isAbsolute(rulesDir)) {
       return findCached(fileDir, rulesDir)
@@ -176,9 +178,9 @@ export function getCLIEngineOptions(type, config, rules, filePath, fileDir, give
     return rulesDir
   }).filter(path => path)
 
-  if (givenConfigPath === null && config.eslintrcPath) {
+  if (givenConfigPath === null && config.global.eslintrcPath) {
     // If we didn't find a configuration use the fallback from the settings
-    cliEngineConfig.configFile = cleanPath(config.eslintrcPath)
+    cliEngineConfig.configFile = cleanPath(config.global.eslintrcPath)
   }
 
   return cliEngineConfig
@@ -218,6 +220,6 @@ export function getRules(cliEngine) {
  * @return {boolean}             Whether or not there were changes
  */
 export function didRulesChange(currentRules, newRules) {
-  return !(currentRules.size === newRules.size &&
-    Array.from(currentRules.keys()).every(ruleId => newRules.has(ruleId)))
+  return !(currentRules.size === newRules.size
+    && Array.from(currentRules.keys()).every(ruleId => newRules.has(ruleId)))
 }

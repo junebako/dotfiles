@@ -14,6 +14,7 @@ let path
 let helpers
 let workerHelpers
 let isConfigAtHomeRoot
+let migrateConfigOptions
 
 const loadDeps = () => {
   if (!path) {
@@ -73,31 +74,22 @@ let ignoreFixableRulesWhileTyping
  * @param  {[iterable]} ruleIds Iterable containing ruleIds to ignore
  * @return {Object}             Object containing properties for each rule to ignore
  */
-const idsToIgnoredRules = ruleIds =>
+const idsToIgnoredRules = ruleIds => (
   Array.from(ruleIds).reduce(
     // 0 is the severity to turn off a rule
-    (ids, id) => Object.assign(ids, { [id]: 0 })
-    , {}
-  )
+    (ids, id) => Object.assign(ids, { [id]: 0 }),
+    {}
+  ))
 
 
 module.exports = {
   activate() {
     this.subscriptions = new CompositeDisposable()
 
-    /**
-     * FIXME: Deprecated eslintRulesDir{String} option in favor of
-     * eslintRulesDirs{Array<String>}. Remove in the next major release,
-     * in v8.5.0, or after 2018-04.
-     */
-    const oldRulesdir = atom.config.get('linter-eslint.eslintRulesDir')
-    if (oldRulesdir) {
-      const rulesDirs = atom.config.get('linter-eslint.eslintRulesDirs')
-      if (rulesDirs.length === 0) {
-        atom.config.set('linter-eslint.eslintRulesDirs', [oldRulesdir])
-      }
-      atom.config.unset('linter-eslint.eslintRulesDir')
+    if (!migrateConfigOptions) {
+      migrateConfigOptions = require('./migrate-config-options')
     }
+    migrateConfigOptions()
 
     const embeddedScope = 'source.js.embedded.html'
     this.subscriptions.add(atom.config.observe(
@@ -129,7 +121,7 @@ module.exports = {
     this.subscriptions.add(atom.workspace.observeTextEditors((editor) => {
       editor.onDidSave(async () => {
         if (hasValidScope(editor, scopes)
-          && atom.config.get('linter-eslint.fixOnSave')
+          && atom.config.get('linter-eslint.autofix.fixOnSave')
         ) {
           await this.fixJob(true)
         }
@@ -152,27 +144,27 @@ module.exports = {
     }))
 
     this.subscriptions.add(atom.config.observe(
-      'linter-eslint.showRuleIdInMessage',
+      'linter-eslint.advanced.showRuleIdInMessage',
       (value) => { showRule = value }
     ))
 
     this.subscriptions.add(atom.config.observe(
-      'linter-eslint.disableWhenNoEslintConfig',
+      'linter-eslint.disabling.disableWhenNoEslintConfig',
       (value) => { disableWhenNoEslintConfig = value }
     ))
 
     this.subscriptions.add(atom.config.observe(
-      'linter-eslint.rulesToSilenceWhileTyping',
+      'linter-eslint.disabling.rulesToSilenceWhileTyping',
       (ids) => { ignoredRulesWhenModified = ids }
     ))
 
     this.subscriptions.add(atom.config.observe(
-      'linter-eslint.rulesToDisableWhileFixing',
+      'linter-eslint.autofix.rulesToDisableWhileFixing',
       (ids) => { ignoredRulesWhenFixing = idsToIgnoredRules(ids) }
     ))
 
     this.subscriptions.add(atom.config.observe(
-      'linter-eslint.ignoreFixableRulesWhileTyping',
+      'linter-eslint.autofix.ignoreFixableRulesWhileTyping',
       (value) => { ignoreFixableRulesWhileTyping = value }
     ))
 
@@ -188,10 +180,10 @@ module.exports = {
           // Black magic!
           // Compares the private component property of the active TextEditor
           //   against the components of the elements
-          const evtIsActiveEditor = evt.path.some(elem =>
+          const evtIsActiveEditor = evt.path.some(elem => (
             // Atom v1.19.0+
-            (elem.component && activeEditor.component &&
-              elem.component === activeEditor.component))
+            elem.component && activeEditor.component
+              && elem.component === activeEditor.component))
           // Only show if it was the active editor and it is a valid scope
           return evtIsActiveEditor && hasValidScope(activeEditor, scopes)
         }
