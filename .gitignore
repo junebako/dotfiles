@@ -3,5 +3,6 @@ backups
 auto-save-list
 ac-comphist.dat
 .emacs.d/tramp
+.atom/.apm/_cacache/
 .atom/blob-store
 .atom/recovery
