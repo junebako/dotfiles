@@ -1,46 +1,32 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-3946-rd1eyb.dqcp0c0udi/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-3946-rd1eyb.dqcp0c0udi/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-3946-rd1eyb.dqcp0c0udi/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171022-3946-slqpcv.qeqqizr529"
-    ]
-  ],
-  "_from": "../d-1171022-3946-rd1eyb.dqcp0c0udi/package.tgz",
-  "_id": "linter@2.2.0",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
+  "_id": "linter@2.3.0",
+  "_inBundle": false,
+  "_integrity": "sha512-Vc9+azDU7YUxiv25D7qi4DW/3czQYO8c0LqcYEjy0zjmDyZsgO928V+tEYW4Bmaf84ao2W2vEQqTRjOvvnWlFQ==",
   "_location": "/linter",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-3946-rd1eyb.dqcp0c0udi/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-3946-rd1eyb.dqcp0c0udi/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-3946-rd1eyb.dqcp0c0udi/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-1171022-3946-rd1eyb.dqcp0c0udi/package.tgz",
-  "_shasum": "58c53b67851cb486e4d3d1d033438122fbf82104",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-1171022-3946-rd1eyb.dqcp0c0udi/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1171022-3946-slqpcv.qeqqizr529",
+  "_resolved": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
+  "_shasum": "3b397c466a5a5cde369ee21673760d004488e26f",
+  "_spec": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119018-36494-snq4fc.64dxc",
   "author": {
     "name": "steelbrain"
   },
   "bugs": {
     "url": "https://github.com/steelbrain/linter/issues"
   },
+  "bundleDependencies": false,
   "configSchema": {
     "lintPreviewTabs": {
       "type": "boolean",
@@ -89,7 +75,6 @@
   "consumedServices": {
     "linter": {
       "versions": {
-        "^1.0.0": "consumeLinterLegacy",
         "2.0.0": "consumeLinter"
       }
     },
@@ -100,31 +85,29 @@
     }
   },
   "dependencies": {
-    "atom-package-deps": "^4.4.1",
-    "atom-select-list": "0.2.0",
-    "cool-trim": "^1.1.1",
-    "lodash.uniq": "^4.5.0",
-    "minimatch": "^3.0.3",
-    "sb-debounce": "^1.0.1",
-    "sb-fs": "^3.0.0"
+    "atom-package-deps": "^5.0.0",
+    "atom-select-list": "^0.7.2",
+    "lodash": "^4.17.11",
+    "minimatch": "^3.0.3"
   },
+  "deprecated": false,
   "description": "A Base Linter with Cow Powers",
   "devDependencies": {
-    "eslint-config-steelbrain": "^3.0.0",
-    "flow-bin": "^0.46.0",
-    "jasmine-fix": "^1.0.0"
+    "eslint-config-steelbrain": "^6.0.0",
+    "flow-bin": "^0.90.0",
+    "jasmine-fix": "^1.3.1"
   },
   "engines": {
     "atom": ">=1.14.0 <2.0.0"
   },
   "homepage": "https://github.com/steelbrain/linter#readme",
   "keywords": [
-    "linter"
+    "linter",
+    "base linter"
   ],
   "license": "MIT",
   "main": "./lib/index.js",
   "name": "linter",
-  "optionalDependencies": {},
   "package-deps": [
     "linter-ui-default"
   ],
@@ -132,18 +115,17 @@
   "providedServices": {
     "linter-indie": {
       "versions": {
-        "1.0.0": "provideIndieLegacy",
         "2.0.0": "provideIndie"
       }
     }
   },
-  "readme": "./README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/steelbrain/linter.git"
   },
   "scripts": {
-    "test": "(apm test) && (flow check) && (eslint . )"
+    "lint": "(flow check) && (eslint . ) && (prettier --list-different lib/*.js)",
+    "test": "apm test"
   },
-  "version": "2.2.0"
+  "version": "2.3.0"
 }

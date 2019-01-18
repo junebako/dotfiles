@@ -21,43 +21,25 @@ export type Message = {
   icon?: string,
   excerpt: string,
   severity: 'error' | 'warning' | 'info',
-  solutions?: Array<{
-    title?: string,
-    position: Range,
-    priority?: number,
-    currentText?: string,
-    replaceWith: string,
-  } | {
-    title?: string,
-    priority?: number,
-    position: Range,
-    apply: (() => any),
-  }>,
-  description?: string | (() => Promise<string> | string)
+  solutions?: Array<
+    | {
+        title?: string,
+        position: Range,
+        priority?: number,
+        currentText?: string,
+        replaceWith: string,
+      }
+    | {
+        title?: string,
+        priority?: number,
+        position: Range,
+        apply: () => any,
+      },
+  >,
+  description?: string | (() => Promise<string> | string),
 }
 
-export type MessageLegacy = {
-  // Automatically added
-  key: string,
-  version: 1,
-  linterName: string,
-
-  // From providers
-  type: string,
-  text?: string,
-  html?: string,
-  filePath?: string,
-  range?: Range,
-  class?: string,
-  severity: 'error' | 'warning' | 'info',
-  trace?: Array<MessageLegacy>,
-  fix?: {
-    range: Range,
-    newText: string,
-    oldText?: string
-  }
-}
-
+export type LinterResult = Array<Message> | null
 export type Linter = {
   // Automatically added
   __$sb_linter_version: number,
@@ -71,7 +53,7 @@ export type Linter = {
   lintOnFly?: boolean, // <-- legacy
   lintsOnChange?: boolean,
   grammarScopes: Array<string>,
-  lint(textEditor: TextEditor): ?Array<Message | MessageLegacy> | Promise<?Array<Message | MessageLegacy>>,
+  lint(textEditor: TextEditor): LinterResult | Promise<LinterResult>,
 }
 
 export type Indie = {
@@ -79,9 +61,9 @@ export type Indie = {
 }
 
 export type MessagesPatch = {
-  added: Array<Message | MessageLegacy>,
-  removed: Array<Message | MessageLegacy>,
-  messages: Array<Message | MessageLegacy>,
+  added: Array<Message>,
+  removed: Array<Message>,
+  messages: Array<Message>,
 }
 
 export type UI = {
@@ -89,5 +71,5 @@ export type UI = {
   didBeginLinting(linter: Linter, filePath: ?string): void,
   didFinishLinting(linter: Linter, filePath: ?string): void,
   render(patch: MessagesPatch): void,
-  dispose(): void
+  dispose(): void,
 }
