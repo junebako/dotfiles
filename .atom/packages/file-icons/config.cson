@@ -475,6 +475,13 @@ fileIcons:
 			[/^\.rnd$/i, "dark-blue"]
 		]
 
+	Asymptote:
+		icon: "asymptote"
+		match: ".asy"
+		colour: "medium-red"
+		scope: "asymptote"
+		interpreter: "asy"
+
 	Atom:
 		icon: "atom"
 		match: /\.atomproject\.[jc]son$/i
@@ -2195,6 +2202,12 @@ fileIcons:
 			[/\.(plantuml|[ip]uml|pu)$/i, "medium-orange", alias: "PlantUML"]
 		]
 
+	Gridsome:
+		icon: "gridsome"
+		match: /\bgridsome\.config\.[jt]s$/i
+		colour: "medium-cyan"
+		priority: 2
+
 	Groovy:
 		icon: "groovy"
 		scope: "groovy"
@@ -2409,7 +2422,6 @@ fileIcons:
 			[".ora", "medium-yellow"]
 			[".pbm", "medium-pink"]
 			[".pcx", "dark-blue"]
-			[".pgf", "light-red"]
 			[".pict", "light-purple"]
 			[".pxr", "medium-purple"]
 			[".raw", "dark-orange"]
@@ -3215,6 +3227,7 @@ fileIcons:
 		icon: "mocha"
 		priority: 2
 		match: [
+			[/\.mocharc\.(json|js|ya?ml)$/i, "medium-maroon"]
 			[/^mocha(\.min)?\.([jt]sx?|es6?|coffee)$/i, "medium-maroon"]
 			[/^mocha(\.min)?\.(s?css|less|styl)$/i, "medium-red"]
 			["mocha.opts", "light-maroon", priority: 2]
@@ -4307,6 +4320,12 @@ fileIcons:
 			[/^rust-toolchain$/, "medium-red"]
 		]
 
+	San:
+		icon: "san"
+		match: ".san"
+		colour: "medium-cyan"
+		scope: "san"
+
 	Safari:
 		icon: "safari"
 		generic: true
@@ -4899,6 +4918,8 @@ fileIcons:
 			[".mkiv", "auto-orange"]
 			[".mkvi", "auto-orange"]
 			[".mkii", "auto-orange"]
+			[".pgf", "auto-purple", "pgf"]
+			[".tikz", "auto-purple", "tikz"]
 			[".texi", "auto-red"]
 			[/^hyphen(ex)?\.(cs|den|det|fr|sv|us)$/, "auto-red", priority: 2]
 		]
@@ -5225,8 +5246,10 @@ fileIcons:
 	Vue:
 		icon: "vue"
 		scope: "vue"
-		match: ".vue"
-		colour: "light-green"
+		match: [
+			[".vue", "light-green"]
+			[/^vue\.config\.js$/i, "light-green", priority: 2]
+		]
 
 	Wallaby:
 		icon: "wallaby"
@@ -5346,8 +5369,19 @@ fileIcons:
 
 	Xcode:
 		icon: "appstore"
-		match: /\.(pbxproj|pbxuser|mode\dv3|xcplugindata|xcrequiredplugins)$/i
-		colour: "medium-blue"
+		match: [
+			[".pbxproj", "medium-blue"]
+			[".pbxuser", "medium-cyan"]
+			[".xccheckout", "medium-orange"]
+			[".xcplugindata", "dark-purple"]
+			[".xcrequiredplugins", "dark-cyan"]
+			[".xcscheme", "medium-purple"]
+			[".xcscmblueprint", "dark-blue"]
+			[".xcsettings", "medium-green"]
+			[".xcuserstate", "dark-cyan"]
+			[".xcworkspacedata", "dark-red"]
+			[/\.mode\dv3$/i, "medium-red"]
+		]
 
 	Xojo:
 		icon: "xojo"
@@ -5391,6 +5425,12 @@ fileIcons:
 		match: /\.ya?ml$/i
 		colour: "medium-red"
 
+	Yandex:
+		icon: "yandex"
+		match: /^\.yaspellerrc($|\.)|^\.yaspeller\.json$/i
+		colour: "medium-red"
+		priority: 2
+
 	YANG:
 		icon: "yang"
 		scope: "yang"
@@ -5432,6 +5472,12 @@ fileIcons:
 		icon: "zephir"
 		match: ".zep"
 		colour: "medium-pink"
+
+	Zig:
+		icon: "zig"
+		match: ".zig"
+		colour: "medium-orange"
+		scope: "zig"
 
 	Zimpl:
 		icon: "zimpl"
