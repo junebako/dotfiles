@@ -26,14 +26,6 @@
   pr   = pull --rebase
   cp   = cherry-pick
   gsub = git-gsub
-  branches = branch -a
-  tags     = tag
-  stashes  = stash list
-  remotes  = remote -v
-  unstage  = reset -q HEAD --
-  discard  = checkout --
-  uncommit = reset --mixed HEAD~
-  amend    = commit --amend
 [github]
   user = june29
 [push]
