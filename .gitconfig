@@ -17,7 +17,6 @@
   st   = status
   df   = diff
   dfc  = diff --cached
-  aa   = add --all
   ap   = add -p
   ci   = commit
   co   = checkout
@@ -26,7 +25,6 @@
   pl   = pull
   pr   = pull --rebase
   cp   = cherry-pick
-  fp   = fetch --prune
   gsub = git-gsub
   branches = branch -a
   tags     = tag
