@@ -15,7 +15,7 @@
                 },
                 "rules": [
                     {
-                        "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな）",
+                        "description": "コマンドキーを単体で押したときに、英数・かなキーを送信する。（左コマンドキーは英数、右コマンドキーはかな） (rev 3)",
                         "manipulators": [
                             {
                                 "from": {
@@ -26,14 +26,23 @@
                                         ]
                                     }
                                 },
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 100
+                                },
                                 "to": [
                                     {
-                                        "key_code": "left_command"
+                                        "key_code": "left_command",
+                                        "lazy": true
                                     }
                                 ],
                                 "to_if_alone": [
                                     {
                                         "key_code": "japanese_eisuu"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "left_command"
                                     }
                                 ],
                                 "type": "basic"
@@ -47,14 +56,23 @@
                                         ]
                                     }
                                 },
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 100
+                                },
                                 "to": [
                                     {
-                                        "key_code": "right_command"
+                                        "key_code": "right_command",
+                                        "lazy": true
                                     }
                                 ],
                                 "to_if_alone": [
                                     {
                                         "key_code": "japanese_kana"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "right_command"
                                     }
                                 ],
                                 "type": "basic"
