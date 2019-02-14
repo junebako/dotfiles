@@ -2,9 +2,10 @@
 
 const notificationTemplate = props => {
 	return `
-${props.messages.reduce((prev, curr) => {
-	return `${prev}${curr.replace(/\r|\n/gm, '').replace('@', '  \n')}\n\n`;
-}, '')}
+${
+	props.messages.reduce((prev, curr) => {
+		return `${prev}${curr.replace(/\r|\n/gm, '').replace('@', '  \n')}\n\n`;
+	}, '')}
 
 ### Active Configuration
 |Editorconfig-Property|Applied Setting|
@@ -17,7 +18,7 @@ ${props.messages.reduce((prev, curr) => {
 |\`trim_trailing_whitespace\`|\`${props.trim_trailing_whitespace}\`|
 |\`max_line_length\`|\`${props.max_line_length}\`|
 
-_(auto: atom-editorconfig is not influencing its behavior. A full description of all properties can be found on editorconfig.org.)_
+_(unset: atom-editorconfig is not influencing its behavior. A full description of all properties can be found on editorconfig.org.)_
 
 ${(props.filename !== undefined && props.filename) || ''}
 `;
@@ -30,7 +31,7 @@ const init = () => {
 		textEditor.getBuffer().editorconfig) {
 		const buffer = textEditor.getBuffer();
 		const ecfg = buffer.editorconfig;
-		const settings = ecfg.settings;
+		const {settings} = ecfg;
 		const lineEndings = {'\n': '\\n', '\r': '\\r', '\r\n': '\\r\\n'};
 
 		const properties = {

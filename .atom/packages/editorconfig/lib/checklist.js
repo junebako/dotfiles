@@ -1,13 +1,15 @@
+/** @babel */
+
 // Severity states, used to color && hide the mouse
 const STATES = ['subtle', 'success', 'info', 'warning', 'error'];
 
 // Default package tester
 // Produces a generic warning if the package is active and a conflicting property is defined.
-const testPackage = function (ecfg, check) {
+const testPackage = (ecfg, check) => {
 	if (check.package !== undefined &&
 		atom.packages.isPackageActive(check.package) === true &&
 		Array.isArray(check.properties) === true) {
-		const props = check.properties.filter(p => ecfg.settings[p] !== 'auto');
+		const props = check.properties.filter(p => ecfg.settings[p] !== 'unset');
 		if (props.length > 0) {
 			return `**${check.package}:** It is possible that the
 			"${check.package}"-package prevents the following
@@ -16,6 +18,7 @@ const testPackage = function (ecfg, check) {
 			"${check.package}"-package to solve regarding issues.`;
 		}
 	}
+
 	return false;
 };
 
@@ -24,7 +27,7 @@ const CHECKLIST = [
 		statcon: 1,
 		test: ecfg => {
 			return Object.keys(ecfg.settings).reduce((prev, curr) => {
-				return ecfg.settings[curr] !== 'auto' || prev;
+				return ecfg.settings[curr] !== 'unset' || prev;
 			}, false);
 		}
 	},
@@ -37,7 +40,7 @@ const CHECKLIST = [
 	{
 		statcon: 4,
 		test: ecfg => {
-			if (ecfg.settings.indent_style !== 'auto' &&
+			if (ecfg.settings.indent_style !== 'unset' &&
 				atom.packages.isPackageActive('tabs-to-spaces') === true) {
 				const onSave = atom.config.get(
 					'tabs-to-spaces.onSave',
@@ -54,27 +57,29 @@ const CHECKLIST = [
 					}
 				}
 			}
+
 			return false;
 		}
 	},
 	{
 		statcon: 4,
 		test: ecfg => {
-			if (ecfg.settings.indent_style !== 'auto' &&
+			if (ecfg.settings.indent_style !== 'unset' &&
 				atom.config.get('editor.tabType') !== 'auto') {
 				const tabType = atom.config.get('editor.tabType');
 				return `**Tab Type:** Your editor's configuration setting "Tab Type"
 				(currently "${tabType}") prevents the editorconfig-property \`indent_style\`
 				from working.@"Tab Type" **must** be set to "auto" to fix this issue.`;
 			}
+
 			return false;
 		}
 	}
 ];
 
-module.exports = function (ecfg) {
+module.exports = ecfg => {
 	const messages = [];
-	let statcon = 0; // eslint-disable-line prefer-const
+	let statcon = 0;
 
 	// Iterates through the checklist, calls the given test and collects the result-messages
 	function approveChecklist() {
@@ -107,7 +112,7 @@ module.exports = function (ecfg) {
 			♥️`);
 			break;
 		case 0:
-			messages.push(`No editorconfig-settings were applied for this file.`);
+			messages.push('No editorconfig-settings were applied for this file.');
 			break;
 		default:
 			break;

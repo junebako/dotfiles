@@ -1,16 +1,10 @@
 /** @babel */
 
-const getIconClass = state => {
-	return `icon aec-icon-mouse text-${state || 'subtle'}`;
-};
+const getIconClass = state => `icon aec-icon-mouse text-${state || 'subtle'}`;
 
-const getIcon = () => {
-	return document.getElementById('aec-status-bar-tile');
-};
+const getIcon = () => document.querySelector('#aec-status-bar-tile');
 
-const getContainer = () => {
-	return document.getElementById('aec-status-bar-container');
-};
+const getContainer = () => document.querySelector('#aec-status-bar-container');
 
 const createIcon = state => {
 	const icon = document.createElement('span');
@@ -30,14 +24,13 @@ export const removeIcon = () => {
 	}
 };
 
-export const containerExists = () => {
-	return getContainer() !== null;
-};
+export const containerExists = () => getContainer() !== null;
 
 const displayIcon = state => {
 	const icon = getIcon() || createIcon(state);
+
 	if (icon.parentNode === null && containerExists()) {
-		getContainer().appendChild(icon);
+		getContainer().append(icon);
 	} else {
 		icon.className = getIconClass(state);
 	}

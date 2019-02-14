@@ -5,12 +5,13 @@ const init = () => {
 	if (!editor) {
 		return;
 	}
+
 	const buffer = editor.getBuffer();
 	if (typeof buffer.editorconfig === 'undefined') {
 		return;
 	}
 
-	const settings = buffer.editorconfig.settings;
+	const {settings} = buffer.editorconfig;
 	const softTabs = settings.indent_style === 'space';
 	const checkpoint = buffer.createCheckpoint();
 	const fixedProperties = {
@@ -18,8 +19,8 @@ const init = () => {
 		indentStyle: 0
 	};
 
-	// fix end_of_line, if necessary
-	if (settings.end_of_line !== 'auto') {
+	// Fix end_of_line, if necessary
+	if (settings.end_of_line !== 'unset') {
 		const lastRow = buffer.getLastRow();
 		for (let i = 0; i < lastRow; i++) {
 			if (buffer.lineEndingForRow(i) !== settings.end_of_line &&
@@ -37,8 +38,8 @@ const init = () => {
 		}
 	}
 
-	// fix indent_style, if necessary
-	if (settings.indent_style !== 'auto') {
+	// Fix indent_style, if necessary
+	if (settings.indent_style !== 'unset') {
 		const spaceChar = {true: ' ', false: '\\t'};
 		const tabLength = editor.getTabLength();
 		// Match only malformed (containing at least one wrong tab-char) lines
@@ -52,6 +53,7 @@ const init = () => {
 					if (curr === ' ') {
 						return prev + 1;
 					}
+
 					return prev + tabLength - (prev % tabLength);
 				}, 0);
 
@@ -74,6 +76,7 @@ const init = () => {
 			fixedProperties.indentStyle / editor.getTabLength()
 		);
 	}
+
 	let changesInTotal = 0;
 	Object.keys(fixedProperties).forEach(k => {
 		changesInTotal += fixedProperties[k];
@@ -98,6 +101,7 @@ The file ${editor.getTitle()} conformed to the \`end_of_line\` and \`indent_styl
 No changes were applied.
 `;
 	}
+
 	atom.notifications.addSuccess(editor.getTitle(), notificationOptions);
 };
 
