@@ -151,6 +151,7 @@ directoryIcons:
 	Mercurial:
 		icon: "hg"
 		match: /^\.hg$/
+		colour: "medium-grey"
 
 	NodeJS:
 		icon: "node"
@@ -317,6 +318,19 @@ fileIcons:
 		match: /^angular[^.]*\.js$/i
 		colour: "medium-red"
 
+	"Anime Studio":
+		icon: "animestudio"
+		priority: 0.5 # Rare
+		match: [
+			[".anme", "medium-maroon", mime: "application/x-vnd.lm_mohodoc", uses: "Text"]
+			[".anime", "medium-orange", uses: "Zip"]
+			[".animeaction", "medium-blue"]
+			[".animebrush", "medium-maroon"]
+			[".animeexport", "medium-yellow"]
+			[".animeproj", "medium-orange", priority: 1.5, uses: "JSON"]
+			[".animestyle", "medium-purple"]
+		]
+
 	Ansible:
 		icon: "ansible"
 		priority: 2
@@ -473,6 +487,10 @@ fileIcons:
 			[/\.py[co]$/i, "dark-purple"]
 			[".swp", "dark-green", priority: 4]
 			[/^\.rnd$/i, "dark-blue"]
+			[/\.PLX(COPY)?$/, "medium-blue",
+				alias: /^z\/?(OS|VM)\s*(Assembl(y|er)|PL\/?X(\s*EDL)?)$/i
+				scope: /\.zvm(asm|plx|plxedl)(\.|$)/
+				priority: 1.25]
 		]
 
 	Asymptote:
@@ -795,9 +813,12 @@ fileIcons:
 
 	Cabal:
 		icon: "cabal"
-		scope: "cabal"
-		match: ".cabal"
-		colour: "medium-cyan"
+		match: [
+			[".cabal", "medium-cyan", scope: "cabal"]
+			[/^cabal\.(config|project)$/i, "medium-purple", priority: 2]
+			[/^cabal-ghcjs\.project$/i, "auto-yellow", priority: 2]
+			[/^cabal\../i, "medium-blue", priority: 0.75]
+		]
 
 	Caddy:
 		icon: "caddy"
@@ -836,14 +857,6 @@ fileIcons:
 		icon: "cakephp"
 		match: ".ctp"
 		colour: "medium-red"
-
-	Cargo:
-		icon: "package"
-		priority: 2
-		match: [
-			["Cargo.toml", "light-orange"]
-			["Cargo.lock", "dark-orange"]
-		]
 
 	Carthage:
 		icon: "carthage"
@@ -887,6 +900,12 @@ fileIcons:
 		icon: "chef"
 		match: /^chefignore$|^(Berks|Policy)file(\.lock)?$/i
 		colour: "auto-orange"
+
+	Chocolatey:
+		icon: "chocolatey"
+		priority: 2
+		match: /^chocolatey.*\.ps1$/i
+		colour: "medium-blue"
 
 	ChucK:
 		icon: "chuck"
@@ -1751,6 +1770,11 @@ fileIcons:
 			[".flux", "dark-blue"]
 		]
 
+	Flutter:
+		icon: "flutter"
+		match: ".flutter-plugins"
+		colour: "light-blue"
+
 	Font:
 		icon: "font"
 		match: [
@@ -2168,9 +2192,11 @@ fileIcons:
 
 	Go:
 		icon: "go"
-		scope: /\.go(template)?$/i
-		match: ".go"
-		colour: "medium-blue"
+		match: [
+			[".go", "medium-blue", scope: /\.go(template)?$/i]
+			[/^go\.mod$/i, "dark-blue", priority: 2]
+			[/^go\.sum$/i, "medium-green", priority: 2]
+		]
 
 	Golo:
 		icon: "golo"
@@ -2248,9 +2274,11 @@ fileIcons:
 
 	Hack:
 		icon: "hack"
-		scope: "hack"
-		match: ".hh"
-		colour: "medium-orange"
+		match: [
+			[".hh", "medium-orange", scope: "hack"]
+			[".hhi", "medium-red"]
+			[".hack", "medium-yellow"]
+		]
 
 	Haml:
 		icon: "haml"
@@ -2433,7 +2461,6 @@ fileIcons:
 			[".mng", "medium-orange", signature: /^.MNG\r\n\x1A\n/]
 			[".nrrd", "dark-blue"]
 			[".ora", "medium-yellow"]
-			[".pbm", "medium-pink"]
 			[".pcx", "dark-blue"]
 			[".pict", "light-purple"]
 			[".pxr", "medium-purple"]
@@ -2560,6 +2587,7 @@ fileIcons:
 			[".jsm", "auto-blue"]
 			[".jss", "auto-green"]
 			[/\.es\d?$/i, "auto-yellow"]
+			[".cjs", "auto-green", alias: "CommonJS"]
 			[".mjs", "auto-blue"]
 			[".sjs", "auto-pink"]
 			[".ssjs", "auto-red"]
@@ -2695,6 +2723,12 @@ fileIcons:
 		match: ".ks"
 		colour: "dark-green"
 		scope: /^source\.kerboscript$/i
+
+	Keybase:
+		icon: "keybase"
+		match: /^keybase\.txt$/i
+		colour: "medium-blue"
+		priority: 2
 
 	Keynote:
 		icon: "keynote"
@@ -2929,7 +2963,7 @@ fileIcons:
 	Roff:
 		icon: "manpage"
 		match: [
-			[/\.(1([bcmstx]|has|in)?|[24568]|3(avl|bsm|cfgadm|in|[cmx]|qt)?|7(d|fs|i|ipp|m|p)?|9[efps]?|chem|eqn|groff|man|mandoc|mdoc|me|mom|nr?|nroff|pic|roff?|tmac|tmac-u|tr|troff)$/i
+			[/\.(1([bcmstx]|has|in)?|[24568]|3(avl|bsm|cfgadm|in|[cmx]|perl|pm?|qt)?|7(d|fs|i|ipp|m|p)?|9[efps]?|chem|eqn|groff|man|mandoc|mdoc|me|mom|nr?|nroff|pic|roff?|tmac|tmac-u|tr|troff)$/i
 				"dark-green"
 				scope: /\.[gtn]?roff$/i
 				alias: /^([gtn]?roff|man([-_\s]?page|doc)?|mdoc)$/i
@@ -3072,10 +3106,10 @@ fileIcons:
 	Mercurial:
 		icon: "hg"
 		match: [
-			[".hgignore", "medium-cyan"]
-			[/\.?hgrc$/i, "dark-cyan"]
-			[".hgsub", "dark-blue"]
-			[".hgsubstate", "medium-red"]
+			[".hgignore", "medium-grey"]
+			[/\.?hgrc$/i, "dark-grey"]
+			[".hgsub", "dark-cyan"]
+			[".hgsubstate", "medium-cyan"]
 		]
 
 	Mercury:
@@ -3118,6 +3152,10 @@ fileIcons:
 			[".xlsm", "medium-green"]
 			[".xlsb", "medium-red"]
 			[".xlt", "dark-cyan"]
+			[".xla", "medium-orange"]
+			[".xlam", "dark-red"]
+			[".xltm", "medium-maroon"]
+			[".xltx", "dark-maroon"]
 		]
 
 	"Microsoft InfoPath":
@@ -3271,10 +3309,10 @@ fileIcons:
 		]
 
 	Modelica:
-		icon: "circle"
+		icon: "modelica"
 		scope: /\.modelica(script)?$/i
 		match: ".mo"
-		colour: "light-red"
+		colour: "auto-red"
 
 	Modernizr:
 		icon: "modernizr"
@@ -3298,6 +3336,17 @@ fileIcons:
 			[".m3", "dark-blue"]
 			[".mg", "dark-green"]
 			[/^m3(makefile|overrides)$/i, "medium-red", "quake"]
+		]
+
+	Moho:
+		icon: "moho"
+		match: [
+			[".moho", "medium-orange", uses: "Zip"]
+			[".mohoaction", "medium-blue"]
+			[".mohobrush", "medium-maroon"]
+			[".mohoexport", "medium-yellow"]
+			[".mohoproj", "medium-orange", priority: 1.5, uses: "JSON"]
+			[".mohostyle", "medium-purple"]
 		]
 
 	Moment:
@@ -3457,6 +3506,17 @@ fileIcons:
 		priority: 2
 		match: /^nestconfig\.json$/i
 		colour: "medium-red"
+
+	Netpbm:
+		icon: "image"
+		uses: "Text"
+		priority: 0.75 # Rare
+		match: [
+			[".pbm", "medium-pink", alias: "Portable Bitmap",  mime: "image/x‑portable‑bitmap"]
+			[".pgm", "medium-grey", alias: "Portable Graymap", mime: "image/x‑portable‑graymap"]
+			[".ppm", "dark-maroon", alias: "Portable Pixmap",  mime: "image/x‑portable‑pixmap"]
+			[".pnm", "medium-blue", alias: "Portable Anymap",  mime: "image/x‑portable‑anymap"]
+		]
 
 	NGINX:
 		icon: "nginx"
@@ -3687,6 +3747,11 @@ fileIcons:
 		match: ".hlb"
 		colour: "medium-blue"
 
+	OpenVPN:
+		icon: "openvpn"
+		match: ".ovpn"
+		colour: "medium-orange"
+
 	"Org-mode":
 		icon: "org"
 		match: ".org"
@@ -3723,6 +3788,17 @@ fileIcons:
 		match: ".p4"
 		scope: "p4"
 		colour: "dark-purple"
+
+	Package:
+		icon: "package"
+		priority: 2
+		match: [
+			["Cargo.toml", "light-orange"]
+			["Cargo.lock", "dark-orange"]
+			[".packages", "medium-green"]
+			[/^pubspec\.lock$/i, "medium-blue"]
+			[/^pubspec\.ya?ml$/i, "medium-yellow"]
+		]
 
 	Paket:
 		icon: "package"
@@ -4444,6 +4520,7 @@ fileIcons:
 			[/\.(tab|tsv)$/i, "light-green"]
 			[".dif", "medium-green"]
 			[".slk", "medium-cyan"]
+			[".prn", "dark-blue"]
 		]
 
 	Serverless:
@@ -5195,7 +5272,6 @@ fileIcons:
 		icon: "vhdl"
 		match: [
 			[".vhdl", "dark-green", "vhdl"]
-			[".vhd", "medium-green"]
 			[".vhf", "dark-blue"]
 			[".vhi", "medium-blue"]
 			[".vho", "dark-purple"]
@@ -5224,12 +5300,19 @@ fileIcons:
 		match: [
 			[/\.(vim|[gn]?vimrc)$/i, "medium-green", scope: "viml", alias: /^(VimL?|NVim|Vim\s*Script)$/i, interpreter: /Vim?/i]
 			[/^[.gn_]?vim(rc|info)$/i, "dark-green"]
+			[".vmb", "dark-green", alias: "Vimball", signature: /^UseVimball/m]
 		]
 
 	VirtualBox:
 		icon: "virtualbox"
-		match: /\.vbox(-prev)?$/i
-		colour: "auto-blue"
+		match: [
+			[".ova", "medium-blue"]
+			[".ovf", "medium-purple"]
+			[".vhd", "medium-green"]
+			[".vhdx", "dark-green", signature: /^vhdxfile/]
+			[".vbox_version", "auto-blue"]
+			[/\.vbox(-prev)?$/i, "auto-blue"]
+		]
 
 	"Visual Studio":
 		icon: "vs"
