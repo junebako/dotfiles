@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/busy-signal/versions/2.0.0/tarball",
-  "_id": "busy-signal@2.0.0",
+  "_from": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+  "_id": "busy-signal@2.0.1",
   "_inBundle": false,
-  "_integrity": "sha512-btl9BJsLkZ5e5Dh1yiWs/byw29EK7WqHCx1cNHbFyZx6uqwvb7oyyff8DB4nzg0tuDmEPLufadrQcw5rYA6r4Q==",
+  "_integrity": "sha512-pXzYeHJi5f8jn3DMC2PT/gDdArX12VaDcEoWmq818f+i9WX6jyqzB9zMTebC/9FISpwrT63g/x9hUGCzzIl+Vw==",
   "_location": "/busy-signal",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/busy-signal/versions/2.0.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.0/tarball"
+    "raw": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/busy-signal/versions/2.0.0/tarball",
-  "_shasum": "6f4a513e2a3d152c8befe4aa79e29f779197a859",
-  "_spec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.0/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11908-22523-12zovw.aich1g",
+  "_resolved": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+  "_shasum": "74a948cc09ed6ecb262b9515d5c31a0a0e66a2e0",
+  "_spec": "https://www.atom.io/api/packages/busy-signal/versions/2.0.1/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119221-74676-1syn0ag.zyul",
   "bugs": {
     "url": "https://github.com/steelbrain/busy-signal/issues"
   },
@@ -74,5 +74,5 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "2.0.0"
+  "version": "2.0.1"
 }
