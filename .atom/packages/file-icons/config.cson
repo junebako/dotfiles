@@ -94,6 +94,11 @@ directoryIcons:
 		match: /^bower[-_]components$/
 		colour: ["medium-yellow", "medium-orange"]
 
+	Cabal:
+		icon: "cabal"
+		match: /^\.cabal$/i
+		colour: "medium-cyan"
+
 	Chef:
 		icon: "chef"
 		match: /\.chef$/
@@ -102,10 +107,20 @@ directoryIcons:
 		icon: "circleci"
 		match: /^\.circleci$/
 
+	CPAN:
+		icon: "cpan"
+		match: /^\.cpan$/i
+		colour: "medium-blue"
+
 	CVS:
 		icon: "cvs"
 		match: /^CVS$/
 		colour: "medium-orange"
+
+	Deno:
+		icon: "deno"
+		match: ".deno"
+		colour: "dark-purple"
 
 	Docker:
 		icon: "docker"
@@ -172,8 +187,10 @@ directoryIcons:
 
 	Vagrant:
 		icon: "vagrant"
-		match: ".vagrant"
-		colour: "medium-cyan"
+		match: [
+			[".vagrant", "medium-cyan"]
+			[".vagrant.d", "dark-cyan"]
+		]
 
 	"Visual Studio":
 		icon: "vs"
@@ -1351,8 +1368,6 @@ fileIcons:
 			[".ejson", "dark-red"]
 			[".edn", "medium-purple"]
 			[".eam.fs", "dark-purple"]
-			[".qml", "medium-pink"]
-			[".qbs", "dark-pink"]
 			[".ston", "medium-maroon"]
 			[".ttl", "medium-cyan", scope: "turtle"]
 			[".schema", "dark-blue", priority: 0.25]
@@ -2240,6 +2255,12 @@ fileIcons:
 			[".dot", "dark-cyan"]
 			[/\.(plantuml|[ip]uml|pu)$/i, "medium-orange", alias: "PlantUML"]
 		]
+
+	"Gravit Designer":
+		icon: "gvdesign"
+		match: ".gvdesign"
+		colour: "medium-yellow"
+		uses: "Zip" # Gzipped JSON
 
 	Gridsome:
 		icon: "gridsome"
@@ -4189,6 +4210,14 @@ fileIcons:
 			[".qvd", "dark-green"]
 		]
 
+	QT:
+		icon: "qt"
+		match: [
+			[".qml", "medium-green", "qml"]
+			[".qmlproject", "dark-green"]
+			[".qbs", "medum-cyan"]
+		]
+
 	Quasar:
 		icon: "quasar"
 		priority: 2
@@ -4454,6 +4483,7 @@ fileIcons:
 		match: [
 			[".scss", "light-pink", "scss"]
 			[".sass", "dark-pink", "sass"]
+			[/^\.sassrc(\.js)?$/i, "auto-yellow", priority: 2, uses: "JavaScript"]
 		]
 
 	SBT:
