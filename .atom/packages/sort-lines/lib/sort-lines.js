@@ -4,7 +4,7 @@ const naturalSort = require('javascript-natural-sort')
 
 module.exports = {
   activate () {
-    atom.commands.add('atom-text-editor:not([mini])', {
+    this.commandsDisposable = atom.commands.add('atom-text-editor:not([mini])', {
       'sort-lines:sort' () {
         sortLines(atom.workspace.getActiveTextEditor())
       },
@@ -25,8 +25,15 @@ module.exports = {
       },
       'sort-lines:shuffle' () {
         shuffleLines(atom.workspace.getActiveTextEditor())
-      }
+      },
+      'sort-lines:reverse' () {
+        reverseLines(atom.workspace.getActiveTextEditor())
+      },
     })
+  },
+
+  deactivate () {
+    this.commandsDisposable.dispose()
   }
 }
 
@@ -78,5 +85,11 @@ function sortLinesByLength (editor) {
 function shuffleLines (editor) {
   sortTextLines(editor,
     (textLines) => shuffle(textLines)
+  )
+}
+
+function reverseLines (editor) {
+  sortTextLines(editor,
+    (textLines) => textLines.reverse()
   )
 }
