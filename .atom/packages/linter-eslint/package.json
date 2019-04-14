@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.2/tarball",
-  "_id": "linter-eslint@8.5.2",
+  "_from": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.4/tarball",
+  "_id": "linter-eslint@8.5.4",
   "_inBundle": false,
-  "_integrity": "sha512-LlzSRnt7XUhl/TgtxP69OcnvR5GIX/cWhJcA2djeS6W+GcL6UKfFLKiJ5XeQDCtgtX3OTn6KXRe6CJwvN3HEHQ==",
+  "_integrity": "sha512-C2PlxNA9JVIHov9alGx9BDl//9PsaFhVfKINGIyfnkVNz1IEFCkNoj9yRPUw6IRPYZlg/qfVOpJ+QjjItJ7MHA==",
   "_location": "/linter-eslint",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.2/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.2/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.2/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.2/tarball"
+    "raw": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.4/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.4/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.4/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.4/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.2/tarball",
-  "_shasum": "68d7a2523d258fd4ab3b77e3e16aa14d3f8aebdf",
-  "_spec": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.2/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11914-11891-cywifm.zbjg9",
+  "_resolved": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.4/tarball",
+  "_shasum": "3b5f58c8ce4244c0ee0a35e7cbc83b9a51076507",
+  "_spec": "https://www.atom.io/api/packages/linter-eslint/versions/8.5.4/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119313-2090-tf5vzd.c0zxq",
   "atomTranspilers": [
     {
       "glob": "{src,spec}/*.js",
@@ -211,9 +211,9 @@
     "atom-package-deps": "5.0.0",
     "babel-preset-env": "1.7.0",
     "consistent-path": "2.0.3",
-    "crypto-random-string": "1.0.0",
+    "crypto-random-string": "2.0.0",
     "eslint": "4.19.1",
-    "eslint-rule-documentation": "1.0.22",
+    "eslint-rule-documentation": "1.0.23",
     "fs-plus": "3.1.1",
     "resolve-env": "1.0.0",
     "user-home": "2.0.0"
@@ -221,9 +221,9 @@
   "deprecated": false,
   "description": "Lint JavaScript on the fly, using ESLint",
   "devDependencies": {
-    "@commitlint/cli": "7.5.0",
+    "@commitlint/cli": "7.5.2",
     "@commitlint/config-conventional": "7.5.0",
-    "@commitlint/travis-cli": "7.5.0",
+    "@commitlint/travis-cli": "7.5.2",
     "@semantic-release/apm-config": "6.0.1",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.16.0",
@@ -312,5 +312,5 @@
     "lint": "eslint .",
     "test": "apm test"
   },
-  "version": "8.5.2"
+  "version": "8.5.4"
 }
