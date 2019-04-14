@@ -18,24 +18,24 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 0
-    lines: 0
+    columns: 220
+    lines: 60
 
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-  #position:
-  #  x: 0
-  #  y: 0
+  position:
+    x: 100
+    y: 700
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 2
-    y: 2
+    x: 4
+    y: 4
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -82,19 +82,19 @@ scrolling:
 # Some applications, like Emacs, rely on knowing about the width of a tab.
 # To prevent unexpected behavior in these applications, it's also required to
 # change the `it` value in terminfo when altering this setting.
-tabspaces: 8
+tabspaces: 2
 
 # Font configuration (changes require restart)
 font:
   # Normal (roman) font face
-  #normal:
+  normal:
     # Font family
     #
     # Default:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    #family: monospace
+    family: "Migu 1M"
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -122,7 +122,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 11.0
+  size: 16.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -184,11 +184,11 @@ colors:
   #cursor:
   #  text: '0x000000'
   #  cursor: '0xffffff'
-  
+
   # Selection colors
   #
-  # Colors which should be used to draw the selection area. If selection 
-  # background is unset, selection color will be the inverse of the cell colors. 
+  # Colors which should be used to draw the selection area. If selection
+  # background is unset, selection color will be the inverse of the cell colors.
   # If only text is unset the cell text color will remain the same.
   #selection:
   #  text: '0xeaeaea'
@@ -270,7 +270,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
+background_opacity: 0.8
 
 # Mouse bindings
 #
