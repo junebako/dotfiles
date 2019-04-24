@@ -1,3 +1,8 @@
+## 4.0.0
+
+- Upgrade all dependencies
+- Require at least node v8
+
 ## 3.0.0
 
 - Remove `mkdirp` and `rimraf` to make the package lightweight
