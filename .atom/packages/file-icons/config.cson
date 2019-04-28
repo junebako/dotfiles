@@ -84,6 +84,11 @@ directoryIcons:
 		match: /^\.atom$/
 		colour: "dark-green"
 
+	"Azure Pipelines":
+		icon: "azurepipelines"
+		match: /^\.azure-pipelines$/i
+		colour: "dark-blue"
+
 	Bazaar:
 		icon: "bazaar"
 		match: /^\.bzr$/
@@ -418,7 +423,7 @@ fileIcons:
 	APL:
 		icon: "apl"
 		match: [
-			[".apl", "dark-cyan", interpreter: /^(gnu[-._]?)?aplx?$/i, scope: "apl", signature: /[⌶-⍺]/]
+			[/\.apl[acfino]?$/i, "dark-cyan", interpreter: /^(gnu[-._]?)?aplx?$/i, scope: "apl", signature: /[⌶-⍺]/]
 			[".apl.history", "medium-maroon"]
 		]
 
@@ -591,6 +596,13 @@ fileIcons:
 		colour: "medium-blue"
 		scope: /(^|\.)avro(-idl)?(\.|$)/i
 
+	"Azure Pipelines":
+		icon: "azurepipelines"
+		match: /^azure-pipelines\.ya?ml$/i
+		colour: "dark-blue"
+		priority: 2
+		uses: "YAML"
+
 	Babel:
 		icon: "babel"
 		match: [
@@ -626,6 +638,7 @@ fileIcons:
 			[/^(\.bazelrc|bazel\.rc|bazel\.bazelrc)$/i, "dark-green", interpreter: "bazel"]
 			[/^(BUILD|WORKSPACE)(.[Bb][Aa][Zz][Ee][Ll])?$/, "medium-green", scope: /^source\.build$|(^|\.)bazel(\.|$)/i]
 			[".bzl", "dark-blue", alias: "Skylark", scope: /(^|\.)(bzl|skylark)(\.|$)/i]
+			[/^\.gazelcfg\.json$/i, "medium-cyan", alias: "Gazel", priority: 1.25]
 		]
 
 	Behat:
@@ -1188,6 +1201,79 @@ fileIcons:
 				matchPath: true]
 		]
 
+	"Config, CoffeeScript":
+		icon: "config-coffee"
+		generic: true
+		match: [
+			[/^coffeelint\.json$/i, "medium-maroon", priority: 1.5]
+			[".coffeelintignore", "medium-red", scope: /^source\.gitignore$/]
+		]
+
+	"Config, Go":
+		icon: "config-go"
+		generic: true
+		match: [
+			[/^go\.mod$/i, "dark-blue", priority: 2]
+			[/^go\.sum$/i, "medium-green", priority: 2]
+		]
+
+	"Config, Haskell":
+		icon: "config-hs"
+		generic: true
+		match: /^haskellconfig\.json$/i
+		colour: "auto-purple"
+		priority: 1.5
+
+	"Config, JavaScript":
+		icon: "config-js"
+		generic: true
+		priority: 1.5
+		match: /^jsconfig(\..+)?\.json$/i
+		colour: "auto-yellow"
+
+	"Config, Perl":
+		icon: "config-perl"
+		generic: true
+		match: /^perl[56]?-?config\.json$/i
+		colour: "medium-blue"
+		priority: 1.5
+
+	"Config, Python":
+		icon: "config-python"
+		generic: true
+		match: /^python-?config\.json$/i
+		colour: "dark-blue"
+		priority: 1.5
+
+	"Config, React":
+		icon: "config-react"
+		generic: true
+		match: /^jsxconfig\.json$/i
+		colour: "auto-blue"
+		priority: 1.5
+
+	"Config, Ruby":
+		icon: "config-ruby"
+		generic: true
+		match: /^rubyconfig\.json$/i
+		colour: "auto-red"
+		priority: 1.5
+
+	"Config, Rust":
+		icon: "config-rust"
+		generic: true
+		match: /^rustconfig\.json$/i
+		colour: "medium-maroon"
+		priority: 1.5
+
+	"Config, TypeScript":
+		icon: "config-ts"
+		generic: true
+		match: [
+			[/^tsconfig(\..+)?\.json$/i, "auto-blue", priority: 1.5]
+			[/^tslint\.json$/i, "auto-purple", priority: 1.5]
+		]
+
 	CoNLL:
 		icon: "conll"
 		alias: /^CoNLL([-_\s]*[XU])?$/i
@@ -1439,10 +1525,16 @@ fileIcons:
 
 	Diff:
 		icon: "diff"
-		scope: "diff"
-		alias: "udiff"
-		match: ".diff"
+		match: [
+			[".diff", "medium-orange", alias: "udiff", scope: "diff"]
+			[".diffs", "medium-red", priority: 0.1]
+		]
+
+	Digdag:
+		icon: "digdag"
+		match: ".dig"
 		colour: "medium-orange"
+		uses: "YAML"
 
 	"DNS Zone / CNAME":
 		icon: "earth"
@@ -1484,6 +1576,19 @@ fileIcons:
 		match: /^dojo\.js$/i
 		colour: "light-red"
 
+	DOSBox:
+		icon: "dosbox"
+		match: /^dosbox(\b|_).*(\.conf|pref\w*)$/i
+		colour: "medium-orange"
+
+	"doT.js":
+		icon: "dotjs"
+		priority: 0.9 # Hack to avoid conflict with GraphViz, but allow scope association
+		uses: "HTML"
+		match: [
+			[".dot", "medium-blue", "dotjs"]
+		]
+
 	Download:
 		icon: "download"
 		match: ".crdownload"
@@ -1510,9 +1615,12 @@ fileIcons:
 
 	"Dyalog APL":
 		icon: "dyalog"
-		match: ".dyalog"
-		colour: "medium-orange"
-		interpreter: "dyalog"
+		uses: "APL"
+		match: [
+			[".dyalog", "medium-orange", interpreter: "dyalog"]
+			[".dyapp", "medium-red"]
+			[".mipage", "dark-green"]
+		]
 
 	DyLib:
 		icon: "dylib"
@@ -2207,11 +2315,9 @@ fileIcons:
 
 	Go:
 		icon: "go"
-		match: [
-			[".go", "medium-blue", scope: /\.go(template)?$/i]
-			[/^go\.mod$/i, "dark-blue", priority: 2]
-			[/^go\.sum$/i, "medium-green", priority: 2]
-		]
+		match: ".go"
+		colour: "medium-blue"
+		scope: /\.go(template)?$/i
 
 	Golo:
 		icon: "golo"
@@ -2261,6 +2367,13 @@ fileIcons:
 		match: ".gvdesign"
 		colour: "medium-yellow"
 		uses: "Zip" # Gzipped JSON
+
+	Greenkeeper:
+		icon: "greenkeeper"
+		match: /^greenkeeper\.json$/i
+		colour: "medium-green"
+		priority: 2
+		uses: "JSON"
 
 	Gridsome:
 		icon: "gridsome"
@@ -2366,6 +2479,13 @@ fileIcons:
 		match: ".hjson"
 		colour: "medium-green"
 		scope: "hjson"
+
+	HolyC:
+		icon: "templeos"
+		match: [
+			[".hc", "medium-yellow", scope: /\.hc$/]
+			[".hc.z", "medium-orange", priority: 2]
+		]
 
 	Hoplon:
 		icon: "hoplon"
@@ -2602,7 +2722,7 @@ fileIcons:
 	JavaScript:
 		icon: "js"
 		match: [
-			[".js", "auto-yellow", scope: "js", alias: /^(js|node)$/i, interpreter: /^(node|iojs)$/]
+			[".js", "auto-yellow", scope: "js", alias: /^(js|node)$/i, interpreter: /^(node|chakra|d8|iojs|js|rhino|v8(-shell)?)$/]
 			["._js", "auto-orange"]
 			[".jsb", "auto-maroon"]
 			[".jsm", "auto-blue"]
@@ -2804,6 +2924,13 @@ fileIcons:
 		scope: "krl"
 		match: ".krl"
 		colour: "medium-blue"
+
+	Kubernetes:
+		icon: "kubernetes"
+		alias: "k8s"
+		match: [
+			[/(^|\.)kazelcfg\.json$/i, "medium-blue", interpreter: "kazel", priority: 2, uses: "JSON"]
+		]
 
 	LabVIEW:
 		icon: "labview"
@@ -3027,7 +3154,7 @@ fileIcons:
 
 	Markdown:
 		icon: "markdown"
-		scope: /(^|\.)[gp]fm|markdown(\.|$)/i
+		scope: /(^|\.)[gp]fm|md|markdown(\.|$)/i
 		match: /\.(md|mdown|markdown|mkd|mkdown|mdwn|mkdn|rmd|ron|pmd)$/i
 		alias: /^(CommonMark|GFM|Pandoc)$|\bMarkdown\b/i
 		colour: "medium-blue"
@@ -3370,6 +3497,12 @@ fileIcons:
 			[".mohostyle", "medium-purple"]
 		]
 
+	Moleculer:
+		icon: "moleculer"
+		priority: 2
+		match: /^moleculer\.config\.(js|json|ts)$/i
+		colour: "medium-blue"
+
 	Moment:
 		icon: "moment"
 		priority: 2
@@ -3552,6 +3685,12 @@ fileIcons:
 		match: ".nib"
 		colour: "dark-orange"
 
+	Nightwatch:
+		icon: "nightwatch"
+		match: /^nightwatch\.conf(ig)?\.js$/i
+		colour: "dark-maroon"
+		priority: 2
+
 	Nimrod:
 		icon: "nimrod"
 		scope: "nim"
@@ -3563,6 +3702,14 @@ fileIcons:
 		match: [
 			[".ninja", "medium-blue", "ninja"]
 			[".ninja.d", "dark-cyan", priority: 2]
+		]
+
+	"Nintendo 64":
+		icon: "n64"
+		uses: "Binary"
+		match: [
+			[".n64", "dark-cyan"]
+			[".z64", "dark-green"]
 		]
 
 	Nit:
@@ -4280,6 +4427,8 @@ fileIcons:
 			[/^(notice|bugs|changes|change[-_]?log([-._]?\d+)?|contribute|contributing|contributors|copying(\.regex)?|faq|hacking|history|install|maintainers|manifest|more\.stuff|notes|problems|projects|revision|terms|thanks|warnings)(_\w+)?$/i, "dark-blue", priority: 2]
 			[/\b(changelog|copying(v?\d)?|install|read[-_]?me)\b|^licen[sc]es?[-._]/i, "medium-blue", priority: 0]
 			[/^news([-_.]?[-\d]+)?$/i, "dark-blue", priority: 0]
+			[/^zork\d\.(?!pre$|pur$)[a-z]+$/, "dark-blue", priority: 0]
+			[/^zork\d\.doc$/, "medium-blue", priority: 2]
 			[".changes", "medium-blue"]
 			[".faq", "medium-blue"]
 		]
@@ -4542,6 +4691,11 @@ fileIcons:
 		match: /^sencha(\.min)?\.js$/i
 		colour: "light-green"
 
+	Sentry:
+		icon: "sentry"
+		match: ".sentryclirc"
+		colour: ["medium-red", "light-red"]
+
 	"Seperated-value files":
 		icon: "graph"
 		generic: true
@@ -4678,6 +4832,13 @@ fileIcons:
 		scope: "smarty"
 		match: ".tpl"
 		colour: "auto-yellow"
+
+	Snapcraft:
+		icon: "snapcraft"
+		match: /^snapcraft\.ya?ml$/i
+		colour: "dark-cyan"
+		priority: 2
+		uses: "YAML"
 
 	"Snap SVG":
 		icon: "snapsvg"
@@ -4899,6 +5060,13 @@ fileIcons:
 		match: ".swift"
 		colour: "medium-orange"
 
+	Svelte:
+		icon: "svelte"
+		scope: "svelte"
+		match: ".svelte"
+		colour: "medium-orange"
+		uses: "HTML"
+
 	SystemVerilog:
 		icon: "sysverilog"
 		match: [
@@ -4995,6 +5163,18 @@ fileIcons:
 			[".xspec", "dark-green"]
 		]
 
+	"Test, Go":
+		icon: "test-go"
+		match: /[._-](spec|test)s?\.go$/i
+		colour: "auto-cyan"
+		priority: 1.5
+
+	"Test, Haskell":
+		icon: "test-hs"
+		match: /[._-](spec|test)s?\.(hsc?|c2hs|lhs)$/i
+		colour: "auto-purple"
+		priority: 1.5
+
 	"Test, JavaScript":
 		icon: "test-js"
 		match: /[._-](spec|test)s?\.([_ms]?js|js[bms]|es\d*)$/i
@@ -5028,6 +5208,12 @@ fileIcons:
 			[/[._-](spec|test)s?\.(rb|ruby)$/i, "auto-red", priority: 2]
 			[/([\\\x2F])(t|tests?|specs?)\1+(?:(?!\1).)*\.(rb|ruby)$/, "auto-red", priority: 2, matchPath: true]
 		]
+
+	"Test, Rust":
+		icon: "test-rust"
+		match: /[._-](spec|test)s?\.rs$/i
+		colour: "auto-maroon"
+		priority: 1.5
 
 	"Test, TypeScript":
 		icon: "test-ts"
@@ -5208,7 +5394,7 @@ fileIcons:
 		alias: /^(ts|Type[-\s]*Script)$/i
 		match: ".ts"
 		colour: "medium-blue"
-		interpreter: /\b(tsc|ts-node)$/
+		interpreter: /\b(deno|tsc|ts-node)$/
 
 	Typings:
 		icon: "typings"
@@ -5622,3 +5808,21 @@ fileIcons:
 		icon: "zimpl"
 		match: /\.(zimpl|zmpl|zpl)$/i
 		colour: "medium-orange"
+
+	"Zork Assembly":
+		icon: "zork"
+		alias: "ZAP"
+		match: [
+			[".zap", "dark-cyan", scope: "zap"]
+			[".xzap", "dark-green"]
+			[/^s4\.errors$/i, "dark-green"]
+			[/\.zabstr?$/i, "medium-red"]
+		]
+
+	"Zork Interpreter Language":
+		icon: "zork"
+		alias: "ZIL"
+		match: [
+			[".zil", "dark-blue", scope: "zil"]
+			[".mud", "medium-maroon"]
+		]
