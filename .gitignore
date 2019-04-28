@@ -6,3 +6,6 @@ ac-comphist.dat
 .atom/.apm/_cacache/
 .atom/blob-store
 .atom/recovery
+.atom/.apm/anonymous-cli-metrics.json
+.atom/.apm/index*
+.atom/.atom-socket-secret-*
