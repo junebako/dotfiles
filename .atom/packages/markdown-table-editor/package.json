@@ -1,40 +1,25 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11878-69398-p3jpmr.bupdbr19k9/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11878-69398-p3jpmr.bupdbr19k9/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11878-69398-p3jpmr.bupdbr19k9/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11878-69398-1xyyr5v.vuuh6ez5mi"
-    ]
-  ],
-  "_from": "../d-11878-69398-p3jpmr.bupdbr19k9/package.tgz",
-  "_id": "markdown-table-editor@1.1.1",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/markdown-table-editor/versions/1.1.2/tarball",
+  "_id": "markdown-table-editor@1.1.2",
+  "_inBundle": false,
+  "_integrity": "sha512-DU/dTF4m97lVExYN7WWemZv0KYGhYbMGxkUpv48MTEfdjzNMCnNNpV3yFlucfbCoQx4nPPuZ6kjpHAzqHhoA4g==",
   "_location": "/markdown-table-editor",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11878-69398-p3jpmr.bupdbr19k9/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11878-69398-p3jpmr.bupdbr19k9/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11878-69398-p3jpmr.bupdbr19k9/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/markdown-table-editor/versions/1.1.2/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/markdown-table-editor/versions/1.1.2/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/markdown-table-editor/versions/1.1.2/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/markdown-table-editor/versions/1.1.2/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-11878-69398-p3jpmr.bupdbr19k9/package.tgz",
-  "_shasum": "14efcf12f466b0f9acd1c08cf1b6bbe6b7fc5893",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-11878-69398-p3jpmr.bupdbr19k9/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11878-69398-1xyyr5v.vuuh6ez5mi",
+  "_resolved": "https://www.atom.io/api/packages/markdown-table-editor/versions/1.1.2/tarball",
+  "_shasum": "4e4132c2906781c8c2345fefc35335dad5b6e7bd",
+  "_spec": "https://www.atom.io/api/packages/markdown-table-editor/versions/1.1.2/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119411-4133-kmrtxp.4c15",
   "activationCommands": {},
   "atomTranspilers": [
     {
@@ -54,6 +39,7 @@
   "bugs": {
     "url": "https://github.com/susisu/atom-markdown-table-editor/issues"
   },
+  "bundleDependencies": false,
   "configSchema": {
     "formatOnSave": {
       "order": 1,
@@ -180,13 +166,14 @@
     }
   },
   "dependencies": {
-    "@susisu/mte-kernel": "^2.0.0",
-    "atom-babel6-transpiler": "^1.1.3",
+    "@susisu/mte-kernel": "^2.1.0",
+    "atom-babel6-transpiler": "^1.2.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2"
   },
+  "deprecated": false,
   "description": "Markdown table editor/formatter",
   "devDependencies": {
-    "eslint": "^4.19.1"
+    "eslint": "^5.16.0"
   },
   "engines": {
     "atom": ">=1.22.0 <2.0.0"
@@ -199,9 +186,6 @@
   "license": "MIT",
   "main": "./lib/markdown-table-editor.js",
   "name": "markdown-table-editor",
-  "optionalDependencies": {},
-  "readme": "# markdown-table-editor\nMarkdown table editor/formatter\n\n![demo](https://github.com/susisu/markdown-table-editor/wiki/images/demo.gif)\n\n## Quick guide\n0. Set editor's grammar to `GitHub Markdown` or `Markdown`.\n1. Input a pipe `|` and some content (the cursor position is indicated by `_`).\n    ``` markdown\n    | foo_\n    ```\n    (If you are using [language-markdown](https://atom.io/packages/language-markdown), don't forget a space after a pipe.)\n2. Hit <kbd>tab</kbd> to move to the next cell.\n    ``` markdown\n    | foo | _\n    | --- |\n    ```\n3. Continue typing.\n    ``` markdown\n    | foo | bar | _\n    | --- | --- |\n    ```\n4. Hit <kbd>enter</kbd> to move to the next row.\n    ``` markdown\n    | foo | bar |\n    | --- | --- |\n    | _   |     |\n    ```\n5. Continue typing...\n    ``` markdown\n    | foo | bar |\n    | --- | --- |\n    | baz | _   |\n    ```\n6. Hit <kbd>esc</kbd> to finish editing the table.\n    ``` markdown\n    | foo | bar |\n    | --- | --- |\n    | baz |     |\n    _\n    ```\n\n## Features\n* Format tables\n* Move the cursor from cell to cell\n* Alter column's alignment\n* Insert and delete rows and columns\n\n### Commands\n| Name                   | Description                              | Keybinding                        |\n| ---------------------- | ---------------------------------------- | --------------------------------- |\n| Next Cell              | Move to the next cell                    | <kbd>tab</kbd>                    |\n| Previous Cell          | Move to the previous cell                | <kbd>shift</kbd> + <kbd>tab</kbd> |\n| Next Row               | Move to the next row                     | <kbd>enter</kbd>                  |\n| Escape                 | Escape from the table                    | <kbd>escape</kbd>                 |\n| Format                 | Just format the table                    |                                   |\n| Format All             | Format all the tables in the text editor |                                   |\n| Align Left             | Left-align the column                    |                                   |\n| Align Right            | Right-align the column                   |                                   |\n| Align Center           | Center-align the column                  |                                   |\n| Align None             | Unset alignment of the column            |                                   |\n| Select Cell            | Select the cell content                  |                                   |\n| Move Left              | Move to the left cell                    |                                   |\n| Move Right             | Move to the right cell                   |                                   |\n| Move Up                | Move to the upper cell                   |                                   |\n| Move Down              | Move to the lower cell                   |                                   |\n| Insert Row             | Insert an empty row                      |                                   |\n| Delete Row             | Delete the row                           |                                   |\n| Move Row Up            | Move the row up                          |                                   |\n| Move Row Down          | Move the row down                        |                                   |\n| Insert Column          | Insert an empty column                   |                                   |\n| Delete Column          | Delete the column                        |                                   |\n| Move Column Left       | Move the column left                     |                                   |\n| Move Column Right      | Move the column right                    |                                   |\n| Toggle Format On Save  | Toggle \"Format On Save\" config           |                                   |\n| Switch Format Type     | Switch  \"Format Type\" config             |                                   |\n| Set Format Type Normal | Set \"Format Type\" config to \"Normal\"     |                                   |\n| Set Format Type Weak   | Set \"Format Type\" config to \"Weak\"       |                                   |\n\n(To input a newline in a table, press <kbd>shift</kbd> + <kbd>enter</kbd> (or some equivalent) instead.)\n\nYou can execute commands from the command palette (Windows, Linux: <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> / macOS: <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>p</kbd>) or from the Packages menu.\n\nIt will be more convenient if you add some keybindings to your `keymap.cson`.\nHere are the ones which I use:\n\n``` coffee\n'atom-text-editor:not(.mini):not(.autocomplete-active).markdown-table-editor-active':\n  'cmd-left'           : 'markdown-table-editor:move-left'\n  'cmd-right'          : 'markdown-table-editor:move-right'\n  'cmd-up'             : 'markdown-table-editor:move-up'\n  'cmd-down'           : 'markdown-table-editor:move-down'\n  'shift-cmd-left'     : 'markdown-table-editor:align-left'\n  'shift-cmd-right'    : 'markdown-table-editor:align-right'\n  'shift-cmd-up'       : 'markdown-table-editor:align-center'\n  'shift-cmd-down'     : 'markdown-table-editor:align-none'\n  'alt-shift-cmd-left' : 'markdown-table-editor:move-column-left'\n  'alt-shift-cmd-right': 'markdown-table-editor:move-column-right'\n  'alt-shift-cmd-up'   : 'markdown-table-editor:move-row-up'\n  'alt-shift-cmd-down' : 'markdown-table-editor:move-row-down'\n  'cmd-k cmd-i'        : 'markdown-table-editor:insert-row'\n  'cmd-k alt-cmd-i'    : 'markdown-table-editor:delete-row'\n  'cmd-k cmd-j'        : 'markdown-table-editor:insert-column'\n  'cmd-k alt-cmd-j'    : 'markdown-table-editor:delete-column'\n```\n\n## FAQ\n### Q. My table does not align well when dealing with Chinese characters\nA. Use a monospaced font that includes glyphs for Chinese characters, such as [Noto Sans Mono CJK](https://github.com/googlei18n/noto-cjk).\nmarkdown-table-editor supports East Asian characters including Chinese characters :)\n\n## For developers\nThis package is based on [markdown-table-editor kernel](https://github.com/susisu/mte-kernel), which provides a text editor independent implementation of the functionality of the package.\nYou can create a markdown-table-editor plugin for your favorite text editor with ease!\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/susisu/atom-markdown-table-editor.git"
@@ -210,5 +194,5 @@
     "fix": "eslint lib spec --fix",
     "lint": "eslint lib spec"
   },
-  "version": "1.1.1"
+  "version": "1.1.2"
 }
