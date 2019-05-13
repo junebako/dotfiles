@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/atomic-emacs/versions/0.13.0/tarball",
-  "_id": "atomic-emacs@0.13.0",
+  "_from": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
+  "_id": "atomic-emacs@0.14.0",
   "_inBundle": false,
-  "_integrity": "sha512-eenlrrWNo5Z6Wzo5Vbpj+Afm4FE7M4Uu1vCKTwefdr1JRAJpjHHSRF8dO7/XYLicZHcxOO5GdHhiXUVcmUgi+w==",
+  "_integrity": "sha512-AtkJp/Wez3jSh/ktHmf3QT16RrKhCC9n6nhwfqUxQkX6xYjLj6qSWHk9cMHTbeS/xvvzsk+rTom2N13A6hMWbA==",
   "_location": "/atomic-emacs",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/atomic-emacs/versions/0.13.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.13.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.13.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.13.0/tarball"
+    "raw": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/atomic-emacs/versions/0.13.0/tarball",
-  "_shasum": "e1c9cfcf1e25d988b0ecb131367ea9d858aa2e2f",
-  "_spec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.13.0/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11908-21533-1sqpcmu.2k7fl",
+  "_resolved": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
+  "_shasum": "c6cc3f30b862120fa8b8229903598e3ab4f3e9ee",
+  "_spec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119413-3708-1mzpiw5.ggwr",
   "activationCommands": {
     "atom-text-editor": [
       "atomic-emacs:backward-char",
@@ -58,6 +58,15 @@
       "atomic-emacs:capitalize-word-or-region",
       "atomic-emacs:dabbrev-expand",
       "atomic-emacs:dabbrev-previous",
+      "atomic-emacs:isearch-forward",
+      "atomic-emacs:isearch-backward",
+      "atomic-emacs:isearch-exit",
+      "atomic-emacs:isearch-cancel",
+      "atomic-emacs:isearch-repeat-forward",
+      "atomic-emacs:isearch-repeat-backward",
+      "atomic-emacs:isearch-toggle-case-fold",
+      "atomic-emacs:isearch-toggle-regexp",
+      "atomic-emacs:isearch-yank-word-or-character",
       "atomic-emacs:set-mark",
       "atomic-emacs:mark-sexp",
       "atomic-emacs:mark-whole-buffer",
@@ -75,6 +84,13 @@
     "url": "https://github.com/avendael/atomic-emacs/issues"
   },
   "bundleDependencies": false,
+  "consumedServices": {
+    "file-icons.element-icons": {
+      "versions": {
+        "1.0.0": "consumeElementIcons"
+      }
+    }
+  },
   "dependencies": {},
   "deprecated": false,
   "description": "An atomic implementation of emacs keybindings",
@@ -97,5 +113,5 @@
     "type": "git",
     "url": "git+https://github.com/avendael/atomic-emacs.git"
   },
-  "version": "0.13.0"
+  "version": "0.14.0"
 }

@@ -1,5 +1,6 @@
 KillRing = require './kill-ring'
 Mark = require './mark'
+Utils = require './utils'
 {CompositeDisposable} = require 'atom'
 
 OPENERS = {'(': ')', '[': ']', '{': '}', '\'': '\'', '"': '"', '`': '`'}
@@ -7,10 +8,10 @@ CLOSERS = {')': '(', ']': '[', '}': '{', '\'': '\'', '"': '"', '`': '`'}
 
 module.exports =
 class EmacsCursor
-  @for: (cursor) ->
-    cursor._atomicEmacs ?= new EmacsCursor(cursor)
+  @for: (emacsEditor, cursor) ->
+    cursor._atomicEmacs ?= new EmacsCursor(emacsEditor, cursor)
 
-  constructor: (@cursor) ->
+  constructor: (@emacsEditor, @cursor) ->
     @editor = @cursor.editor
     @_mark = null
     @_localKillRing = null
@@ -44,13 +45,13 @@ class EmacsCursor
   #
   # Return a Range if found, null otherwise. This does not move the cursor.
   locateBackward: (regExp) ->
-    @_locateBackwardFrom(@cursor.getBufferPosition(), regExp)
+    @emacsEditor.locateBackwardFrom(@cursor.getBufferPosition(), regExp)
 
   # Look for the next occurrence of the given regexp.
   #
   # Return a Range if found, null otherwise. This does not move the cursor.
   locateForward: (regExp) ->
-    @_locateForwardFrom(@cursor.getBufferPosition(), regExp)
+    @emacsEditor.locateForwardFrom(@cursor.getBufferPosition(), regExp)
 
   # Look for the previous word character.
   #
@@ -104,14 +105,14 @@ class EmacsCursor
   #
   # If the end of the buffer is reached, remain there.
   skipCharactersBackward: (characters) ->
-    regexp = new RegExp("[^#{escapeRegExp(characters)}]")
+    regexp = new RegExp("[^#{Utils.escapeForRegExp(characters)}]")
     @skipBackwardUntil(regexp)
 
   # Skip forwards over the given characters.
   #
   # If the end of the buffer is reached, remain there.
   skipCharactersForward: (characters) ->
-    regexp = new RegExp("[^#{escapeRegExp(characters)}]")
+    regexp = new RegExp("[^#{Utils.escapeForRegExp(characters)}]")
     @skipForwardUntil(regexp)
 
   # Skip backwards over any word characters.
@@ -143,7 +144,7 @@ class EmacsCursor
   # If the beginning of the buffer is reached, remain there.
   skipBackwardUntil: (regexp) ->
     if not @goToMatchEndBackward(regexp)
-      @_goTo BOB
+      @_goTo Utils.BOB
 
   # Skip over characters until the next occurrence of the given regexp.
   #
@@ -272,31 +273,8 @@ class EmacsCursor
     @_yankMarker?.destroy()
     @_yankMarker = null
 
-  _nextCharacterFrom: (position) ->
-    lineLength = @editor.lineTextForBufferRow(position.row).length
-    if position.column == lineLength
-      if position.row == @editor.getLastBufferRow()
-        null
-      else
-        @editor.getTextInBufferRange([position, [position.row + 1, 0]])
-    else
-      @editor.getTextInBufferRange([position, position.translate([0, 1])])
-
-  _previousCharacterFrom: (position) ->
-    if position.column == 0
-      if position.row == 0
-        null
-      else
-        column = @editor.lineTextForBufferRow(position.row - 1).length
-        @editor.getTextInBufferRange([[position.row - 1, column], position])
-    else
-      @editor.getTextInBufferRange([position.translate([0, -1]), position])
-
   nextCharacter: ->
-    @_nextCharacterFrom(@cursor.getBufferPosition())
-
-  previousCharacter: ->
-    @_nextCharacterFrom(@cursor.getBufferPosition())
+    @emacsEditor.characterAfter(@cursor.getBufferPosition())
 
   # Skip to the end of the current or next symbolic expression.
   skipSexpForward: ->
@@ -418,8 +396,8 @@ class EmacsCursor
 
   _sexpForwardFrom: (point) ->
     eob = @editor.getEofBufferPosition()
-    point = @_locateForwardFrom(point, /[\w()[\]{}'"]/i)?.start or eob
-    character = @_nextCharacterFrom(point)
+    point = @emacsEditor.locateForwardFrom(point, /[\w()[\]{}'"]/i)?.start or eob
+    character = @emacsEditor.characterAfter(point)
     if OPENERS.hasOwnProperty(character) or CLOSERS.hasOwnProperty(character)
       result = null
       stack = []
@@ -443,17 +421,17 @@ class EmacsCursor
             hit.stop()
       result or point
     else
-      @_locateForwardFrom(point, /[\W\n]/i)?.start or eob
+      @emacsEditor.locateForwardFrom(point, /[\W\n]/i)?.start or eob
 
   _sexpBackwardFrom: (point) ->
-    point = @_locateBackwardFrom(point, /[\w()[\]{}'"]/i)?.end or BOB
-    character = @_previousCharacterFrom(point)
+    point = @emacsEditor.locateBackwardFrom(point, /[\w()[\]{}'"]/i)?.end or Utils.BOB
+    character = @emacsEditor.characterBefore(point)
     if OPENERS.hasOwnProperty(character) or CLOSERS.hasOwnProperty(character)
       result = null
       stack = []
       quotes = 0
       re = /[^()[\]{}"'`\\]+|\\.|[()[\]{}"'`]/g
-      @editor.backwardsScanInBufferRange re, [BOB, point], (hit) =>
+      @editor.backwardsScanInBufferRange re, [Utils.BOB, point], (hit) =>
         if hit.matchText == stack[stack.length - 1]
           stack.pop()
           if stack.length == 0
@@ -470,41 +448,28 @@ class EmacsCursor
             hit.stop()
       result or point
     else
-      @_locateBackwardFrom(point, /[\W\n]/i)?.end or BOB
+      @emacsEditor.locateBackwardFrom(point, /[\W\n]/i)?.end or Utils.BOB
 
   _listForwardFrom: (point) ->
     eob = @editor.getEofBufferPosition()
-    if !(match = @_locateForwardFrom(point, /[()[\]{}]/i))
+    if !(match = @emacsEditor.locateForwardFrom(point, /[()[\]{}]/i))
       return null
     end = this._sexpForwardFrom(match.start)
     if end.isEqual(match.start) then null else end
 
   _listBackwardFrom: (point) ->
-    if !(match = @_locateBackwardFrom(point, /[()[\]{}]/i))
+    if !(match = @emacsEditor.locateBackwardFrom(point, /[()[\]{}]/i))
       return null
     start = this._sexpBackwardFrom(match.end)
     if start.isEqual(match.end) then null else start
 
-  _locateBackwardFrom: (point, regExp) ->
-    result = null
-    @editor.backwardsScanInBufferRange regExp, [BOB, point], (hit) ->
-      result = hit.range
-    result
-
-  _locateForwardFrom: (point, regExp) ->
-    result = null
-    eof = @editor.getEofBufferPosition()
-    @editor.scanInBufferRange regExp, [point, eof], (hit) ->
-      result = hit.range
-    result
-
   _getWordCharacterRegExp: ->
     nonWordCharacters = atom.config.get('editor.nonWordCharacters')
-    new RegExp('[^\\s' + escapeRegExp(nonWordCharacters) + ']')
+    new RegExp('[^\\s' + Utils.escapeForRegExp(nonWordCharacters) + ']')
 
   _getNonWordCharacterRegExp: ->
     nonWordCharacters = atom.config.get('editor.nonWordCharacters')
-    new RegExp('[\\s' + escapeRegExp(nonWordCharacters) + ']')
+    new RegExp('[\\s' + Utils.escapeForRegExp(nonWordCharacters) + ']')
 
   _goTo: (point) ->
     if point
@@ -512,13 +477,3 @@ class EmacsCursor
       true
     else
       false
-
-# Stolen from underscore-plus, which we can't seem to require() from a package
-# without depending on a separate copy of the whole library.
-escapeRegExp = (string) ->
-  if string
-    string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
-  else
-    ''
-
-BOB = {row: 0, column: 0}

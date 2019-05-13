@@ -37,8 +37,6 @@ There's no need to restart Atom.
     'alt-}': 'atomic-emacs:forward-paragraph'
     'alt-m': 'atomic-emacs:back-to-indentation'
     'ctrl-a': 'editor:move-to-beginning-of-line'
-    'ctrl-s': 'find-and-replace:show'
-    'ctrl-r': 'find-and-replace:show'
     'alt-<': 'core:move-to-top'
     'alt->': 'core:move-to-bottom'
 
@@ -85,6 +83,25 @@ prefix argument of -1).
     'alt-q': 'autoflow:reflow-selection'
     'alt-;': 'editor:toggle-line-comments'
     'ctrl-alt-\\' : 'editor:auto-indent'
+
+### Searching
+
+    'ctrl-s': 'atomic-emacs:isearch-forward'
+    'ctrl-r': 'atomic-emacs:isearch-backward'
+
+While searching:
+
+    'enter': 'atomic-emacs:isearch-exit'
+    'ctrl-m': 'atomic-emacs:isearch-exit'
+    'escape': 'atomic-emacs:isearch-cancel'
+    'ctrl-g': 'atomic-emacs:isearch-cancel'
+    'ctrl-s': 'atomic-emacs:isearch-repeat-forward'
+    'ctrl-r': 'atomic-emacs:isearch-repeat-backward'
+    'alt-s c': 'atomic-emacs:isearch-toggle-case-fold'
+    'alt-c': 'atomic-emacs:isearch-toggle-case-fold'
+    'alt-s r': 'atomic-emacs:isearch-toggle-regexp'
+    'alt-r': 'atomic-emacs:isearch-toggle-regexp'
+    'ctrl-w': 'atomic-emacs:isearch-yank-word-or-character'
 
 ### Marking & Selecting
 

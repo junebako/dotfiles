@@ -4,6 +4,7 @@ EmacsCursor = require './emacs-cursor'
 EmacsEditor = require './emacs-editor'
 KillRing = require './kill-ring'
 Mark = require './mark'
+SearchManager = require './search-manager'
 State = require './state'
 
 beforeCommand = (event) ->
@@ -45,6 +46,7 @@ module.exports =
   EmacsEditor: EmacsEditor
   KillRing: KillRing
   Mark: Mark
+  SearchManager: SearchManager
   State: State
 
   config:
@@ -75,6 +77,7 @@ module.exports =
       return
 
     State.initialize()
+    @search = new SearchManager(plugin: @)
     document.getElementsByTagName('atom-workspace')[0]?.classList?.add('atomic-emacs')
     @disposable = new CompositeDisposable
     @disposable.add atom.commands.onWillDispatch (event) -> beforeCommand(event)
@@ -132,6 +135,10 @@ module.exports =
       "atomic-emacs:dabbrev-expand": (event) -> getEditor(event).dabbrevExpand()
       "atomic-emacs:dabbrev-previous": (event) -> getEditor(event).dabbrevPrevious()
 
+      # Searching
+      "atomic-emacs:isearch-forward": (event) => @search.start(getEditor(event), direction: 'forward')
+      "atomic-emacs:isearch-backward": (event) => @search.start(getEditor(event), direction: 'backward')
+
       # Marking & Selecting
       "atomic-emacs:set-mark": (event) -> getEditor(event).setMark()
       "atomic-emacs:mark-sexp": (event) -> getEditor(event).markSexp()
@@ -146,6 +153,15 @@ module.exports =
       # UI
       "core:cancel": (event) -> getEditor(event).keyboardQuit()
 
+    @disposable.add atom.commands.add '.atomic-emacs.search atom-text-editor',
+      "atomic-emacs:isearch-exit": (event) => @search.exit()
+      "atomic-emacs:isearch-cancel": (event) => @search.cancel()
+      "atomic-emacs:isearch-repeat-forward": (event) => @search.repeat('forward')
+      "atomic-emacs:isearch-repeat-backward": (event) => @search.repeat('backward')
+      "atomic-emacs:isearch-toggle-case-fold": (event) => @search.toggleCaseSensitivity()
+      "atomic-emacs:isearch-toggle-regexp": (event) => @search.toggleIsRegExp()
+      "atomic-emacs:isearch-yank-word-or-character": (event) => @search.yankWordOrCharacter()
+
     @disposable.add atom.commands.add 'atom-workspace',
       "atomic-emacs:find-file": (event) -> findFile(event)
       "atomic-emacs:close-other-panes": (event) -> closeOtherPanes(event)
@@ -155,9 +171,13 @@ module.exports =
     @disposable?.dispose()
     @disposable = null
     KillRing.global.reset()
+    @search.destroy()
+
+  consumeElementIcons: (@addIconToElement) ->
 
   service_0_13: ->
     state: State
+    search: @search
     editor: (atomEditor) -> EmacsEditor.for(atomEditor)
-    cursor: (atomCursor) -> EmacsCursor.for(atomCursor)
+    cursor: (atomCursor) -> @editor(atomCursor.editor).getEmacsCursorFor(atomCursor)
     getEditor: (event) -> getEditor(event)

@@ -1,20 +1,21 @@
-{EmacsCursor, EmacsEditor, KillRing, State, activate, deactivate} =
+{Point} = require 'atom'
+AtomicEmacs = {EmacsCursor, EmacsEditor, KillRing, State, activate, deactivate} =
   require '../lib/atomic-emacs'
 
 TestEditor = require './test-editor'
 
 describe "AtomicEmacs", ->
-  beforeEach activate
-  afterEach deactivate
+  beforeEach -> AtomicEmacs.activate()
+  afterEach -> AtomicEmacs.deactivate()
 
   beforeEach ->
     waitsForPromise =>
       atom.workspace.open().then (@editor) =>
         atom.config.set 'atomic-emacs.killToClipboard', true
-        @emacsEditor = new EmacsEditor(@editor)
+        @emacsEditor = EmacsEditor.for(@editor)
         @testEditor = new TestEditor(@editor)
         @editorView = atom.views.getView(@editor)
-        @getKillRing = (i) => EmacsCursor.for(@editor.getCursors()[i]).getLocalKillRing()
+        @getKillRing = (i) => @emacsEditor.getEmacsCursors()[i].getLocalKillRing()
 
   describe "atomic-emacs:backward-char", ->
     it "moves the cursor backward one character", ->
@@ -748,14 +749,14 @@ describe "AtomicEmacs", ->
       @testEditor.setState("a(0)b[0]c d[1]e(1)f")
       atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
       expect(@testEditor.getState()).toEqual("ab[0]c d[1]ef")
-      entries = (EmacsCursor.for(c).killRing().getEntries() for c in @editor.getCursors())
+      entries = (c.killRing().getEntries() for c in @emacsEditor.getEmacsCursors())
       expect(entries).toEqual([['b'], ['e']])
 
     it "pushes blanks if selections are empty", ->
       @testEditor.setState("a(0)[0]b")
       atom.commands.dispatch @editorView, 'atomic-emacs:copy-region-as-kill'
-      cursor = @editor.getCursors()[0]
-      expect(EmacsCursor.for(cursor).killRing().getEntries()).toEqual([''])
+      emacsCursor = @emacsEditor.getEmacsCursors()[0]
+      expect(emacsCursor.killRing().getEntries()).toEqual([''])
       expect(@testEditor.getState()).toEqual("a[0]b")
 
     describe "when there is a single cursor", ->
@@ -1356,18 +1357,368 @@ describe "AtomicEmacs", ->
         atom.commands.dispatch @editorView, 'atomic-emacs:capitalize-word-or-region'
         expect(@testEditor.getState()).toEqual("aa (0)Bb Cc[0] dd\nee f[1]Ffgg(1)G")
 
+  describe "Searching", ->
+    markerCoordinates = (marker) ->
+      if marker
+        range = marker.getBufferRange()
+        [range.start.row, range.start.column, range.end.row, range.end.column]
+      else
+        marker
+
+    beforeEach ->
+      @searchManager = AtomicEmacs.search
+      @getCursorPosition = (i) =>
+        @editor.getCursors()[i].getBufferPosition()
+      @waitForSearch = ->
+        while @searchManager.isRunning()
+          advanceClock(1)
+
+    describe "atomic-emacs:isearch-forward", ->
+      it "performs a forward incremental repeatable search", ->
+        @testEditor.setState("[0]hit [1]hit hit")
+        atom.commands.dispatch @editorView, 'atomic-emacs:isearch-forward'
+        @searchManager.searchView.searchEditor.insertText('hit')
+        searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+        @waitForSearch()
+
+        expect(@searchManager.results.numMatches()).toEqual(3)
+        currentMarkers = @searchManager.results.getCurrent()
+        expect(currentMarkers.length).toEqual(2)
+        expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+        expect(markerCoordinates(currentMarkers[1])).toEqual([0, 4, 0, 7])
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+        expect(@getCursorPosition(1)).toEqual(new Point(0, 7))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+
+        currentMarkers = @searchManager.results.getCurrent()
+        expect(currentMarkers.length).toEqual(2)
+        expect(markerCoordinates(currentMarkers[0])).toEqual([0, 4, 0, 7])
+        expect(markerCoordinates(currentMarkers[1])).toEqual([0, 8, 0, 11])
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 7))
+        expect(@getCursorPosition(1)).toEqual(new Point(0, 11))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+
+        currentMarkers = @searchManager.results.getCurrent()
+        expect(currentMarkers.length).toEqual(2)
+        expect(markerCoordinates(currentMarkers[0])).toEqual([0, 8, 0, 11])
+        expect(markerCoordinates(currentMarkers[1])).toEqual([0, 0, 0, 3])
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 11))
+        expect(@getCursorPosition(1)).toEqual(new Point(0, 3))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+
+        currentMarkers = @searchManager.results.getCurrent()
+        expect(currentMarkers.length).toEqual(2)
+        expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+        expect(markerCoordinates(currentMarkers[1])).toEqual([0, 4, 0, 7])
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+        expect(@getCursorPosition(1)).toEqual(new Point(0, 7))
+
+      it "searches from where a search was repeated from when the text is changed", ->
+        @testEditor.setState("[0]aa bb aa bb aa")
+        atom.commands.dispatch @editorView, 'atomic-emacs:isearch-forward'
+        searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+
+        @searchManager.searchView.searchEditor.insertText('bb')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 5))
+
+        @searchManager.searchView.searchEditor.setTextInBufferRange([[0, 0], [0, 2]], 'aa')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 2))
+
+        @searchManager.searchView.searchEditor.setTextInBufferRange([[0, 0], [0, 2]], 'bb')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 5))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 11))
+
+        @searchManager.searchView.searchEditor.setTextInBufferRange([[0, 0], [0, 2]], 'aa')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 8))
+
+        @searchManager.searchView.searchEditor.setTextInBufferRange([[0, 0], [0, 2]], 'bb')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 11))
+
+    describe "atomic-emacs:isearch-backward", ->
+      it "performs a backward incremental repeatable search", ->
+        @testEditor.setState("hit [0]hit [1]hit")
+        atom.commands.dispatch @editorView, 'atomic-emacs:isearch-backward'
+        @searchManager.searchView.searchEditor.insertText('hit')
+        searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+        @waitForSearch()
+
+        expect(@searchManager.results.numMatches()).toEqual(3)
+
+        currentMarkers = @searchManager.results.getCurrent()
+        expect(currentMarkers.length).toEqual(2)
+        expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+        expect(markerCoordinates(currentMarkers[1])).toEqual([0, 4, 0, 7])
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 0))
+        expect(@getCursorPosition(1)).toEqual(new Point(0, 4))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-backward'
+
+        currentMarkers = @searchManager.results.getCurrent()
+        expect(currentMarkers.length).toEqual(2)
+        expect(markerCoordinates(currentMarkers[0])).toEqual([0, 8, 0, 11])
+        expect(markerCoordinates(currentMarkers[1])).toEqual([0, 0, 0, 3])
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 8))
+        expect(@getCursorPosition(1)).toEqual(new Point(0, 0))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-backward'
+
+        currentMarkers = @searchManager.results.getCurrent()
+        expect(currentMarkers.length).toEqual(2)
+        expect(markerCoordinates(currentMarkers[0])).toEqual([0, 4, 0, 7])
+        expect(markerCoordinates(currentMarkers[1])).toEqual([0, 8, 0, 11])
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 4))
+        expect(@getCursorPosition(1)).toEqual(new Point(0, 8))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-backward'
+
+        currentMarkers = @searchManager.results.getCurrent()
+        expect(currentMarkers.length).toEqual(2)
+        expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+        expect(markerCoordinates(currentMarkers[1])).toEqual([0, 4, 0, 7])
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 0))
+        expect(@getCursorPosition(1)).toEqual(new Point(0, 4))
+
+      it "searches from where a search was repeated from when the text is changed", ->
+        @testEditor.setState("aa bb aa bb aa[0]")
+        atom.commands.dispatch @editorView, 'atomic-emacs:isearch-backward'
+        searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+
+        @searchManager.searchView.searchEditor.insertText('bb')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 9))
+
+        @searchManager.searchView.searchEditor.setTextInBufferRange([[0, 0], [0, 2]], 'aa')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 12))
+
+        @searchManager.searchView.searchEditor.setTextInBufferRange([[0, 0], [0, 2]], 'bb')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 9))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-backward'
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+        @searchManager.searchView.searchEditor.setTextInBufferRange([[0, 0], [0, 2]], 'aa')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 6))
+
+        @searchManager.searchView.searchEditor.setTextInBufferRange([[0, 0], [0, 2]], 'bb')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+    it "can switch between searching forward and backward", ->
+      @testEditor.setState("[0]hit hit")
+      atom.commands.dispatch @editorView, 'atomic-emacs:isearch-forward'
+      @searchManager.searchView.searchEditor.insertText('hit')
+      searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+      @waitForSearch()
+
+      expect(@searchManager.results.numMatches()).toEqual(2)
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 4, 0, 7])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 7))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-backward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 4, 0, 7])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 4))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-backward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 0))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 4, 0, 7])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 7))
+
+    it "can switch between searching forward and backward while wrapping", ->
+      @testEditor.setState("hit [0]hit")
+      atom.commands.dispatch @editorView, 'atomic-emacs:isearch-forward'
+      @searchManager.searchView.searchEditor.insertText('hit')
+      searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+      @waitForSearch()
+
+      expect(@searchManager.results.numMatches()).toEqual(2)
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 4, 0, 7])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 7))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-backward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 0))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-backward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 4, 0, 7])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 4))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 4, 0, 7])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 7))
+
+      atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-repeat-forward'
+
+      currentMarkers = @searchManager.results.getCurrent()
+      expect(currentMarkers.length).toEqual(1)
+      expect(markerCoordinates(currentMarkers[0])).toEqual([0, 0, 0, 3])
+      expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+    describe "atomic-emacs:isearch-exit", ->
+      it "removes the search results and leaves cursors at the last hit", ->
+        @testEditor.setState("[0] [1]hit")
+        atom.commands.dispatch @editorView, 'atomic-emacs:isearch-forward'
+        @searchManager.searchView.searchEditor.insertText('hit')
+        searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+        @waitForSearch()
+        results = @searchManager.results
+        expect(results.numMatches()).toEqual(1)
+        expect(@editor.getCursors().length).toEqual(1)
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 4))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-exit'
+
+        expect(@searchManager.results).toEqual(null)
+        expect(results.numMatches()).toEqual(0)
+        expect(@editor.getCursors().length).toEqual(1)
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 4))
+
+    describe "atomic-emacs:isearch-cancel", ->
+      it "removes the search results & restores the initial cursors", ->
+        @testEditor.setState("[0] [1]hit")
+        atom.commands.dispatch @editorView, 'atomic-emacs:isearch-forward'
+        @searchManager.searchView.searchEditor.insertText('hit')
+        searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+        @waitForSearch()
+        results = @searchManager.results
+        expect(results.numMatches()).toEqual(1)
+        expect(@editor.getCursors().length).toEqual(1)
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 4))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-cancel'
+
+        expect(@searchManager.results).toEqual(null)
+        expect(results.numMatches()).toEqual(0)
+        expect(@editor.getCursors().length).toEqual(2)
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 0))
+        expect(@getCursorPosition(1)).toEqual(new Point(0, 1))
+
+    describe "atomic-emacs:isearch-toggle-case-fold", ->
+      it "toggles the case sensitivity of the search", ->
+        @testEditor.setState("[0]HIT hit")
+        atom.commands.dispatch @editorView, 'atomic-emacs:isearch-forward'
+        searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+        @searchManager.searchView.searchEditor.insertText('hit')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-toggle-case-fold'
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 7))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-toggle-case-fold'
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+    describe "atomic-emacs:isearch-toggle-regexp", ->
+      it "toggles whether we're searching by regexp or not", ->
+        @testEditor.setState("[0]hit h.t")
+        atom.commands.dispatch @editorView, 'atomic-emacs:isearch-forward'
+        searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+        @searchManager.searchView.searchEditor.insertText('h.t')
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 7))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-toggle-regexp'
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-toggle-regexp'
+        @waitForSearch()
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 7))
+
+    describe "atomic-emacs:isearch-yank-word-or-character", ->
+      it "yanks the next word at point into the search term", ->
+        @testEditor.setState("[0]hit_hit hit_hit")
+        atom.commands.dispatch @editorView, 'atomic-emacs:isearch-forward'
+        searchEditorView = atom.views.getView(@searchManager.searchView.searchEditor)
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-yank-word-or-character'
+        @waitForSearch()
+
+        expect(@searchManager.results.numMatches()).toEqual(4)
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 3))
+
+        atom.commands.dispatch searchEditorView, 'atomic-emacs:isearch-yank-word-or-character'
+        @waitForSearch()
+
+        expect(@searchManager.results.numMatches()).toEqual(2)
+        expect(@getCursorPosition(0)).toEqual(new Point(0, 7))
+
   describe "atomic_emacs:set-mark", ->
     it "sets and activates the mark of all cursors", ->
       @testEditor.setState("[0].[1]")
-      [cursor0, cursor1] = @editor.getCursors()
+      [emacsCursor0, emacsCursor1] = @emacsEditor.getEmacsCursors()
       atom.commands.dispatch @editorView, 'atomic-emacs:set-mark'
 
-      mark0 = EmacsCursor.for(cursor0).mark()
+      mark0 = emacsCursor0.mark()
       expect(mark0.isActive()).toBe(true)
       point = mark0.getBufferPosition()
       expect([point.row, point.column]).toEqual([0, 0])
 
-      mark1 = EmacsCursor.for(cursor1).mark()
+      mark1 = emacsCursor1.mark()
       expect(mark1.isActive()).toBe(true)
       point = mark1.getBufferPosition()
       expect([point.row, point.column]).toEqual([0, 1])
@@ -1382,7 +1733,7 @@ describe "AtomicEmacs", ->
 
       atom.commands.dispatch @editorView, 'core:backspace'
       expect(@testEditor.getState()).toEqual("a[0]d e[1]h")
-      result = (EmacsCursor.for(c).mark().isActive() for c in @editor.getCursors())
+      result = (c.mark().isActive() for c in @emacsEditor.getEmacsCursors())
       expect(result).toEqual([false, false])
 
     it "properly cleans up if the editor is closed while the mark is active", ->
@@ -1476,7 +1827,7 @@ describe "AtomicEmacs", ->
   describe "core:cancel", ->
     it "deactivates all marks", ->
       @testEditor.setState("[0].[1]")
-      [mark0, mark1] = (EmacsCursor.for(c).mark() for c in @editor.getCursors())
+      [mark0, mark1] = (c.mark() for c in @emacsEditor.getEmacsCursors())
       m.activate() for m in [mark0, mark1]
       atom.commands.dispatch @editorView, 'core:cancel'
       expect(mark0.isActive()).toBe(false)
