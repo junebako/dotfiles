@@ -1,45 +1,31 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118430-31842-kpp124.6t70t3xr/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118430-31842-kpp124.6t70t3xr/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118430-31842-kpp124.6t70t3xr/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-118430-31842-jl0brv.88xfmndn29"
-    ]
-  ],
-  "_from": "../d-118430-31842-kpp124.6t70t3xr/package.tgz",
-  "_id": "teletype@0.13.3",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/teletype/versions/0.13.4/tarball",
+  "_id": "teletype@0.13.4",
+  "_inBundle": false,
+  "_integrity": "sha512-31Jnc1Sxd7dwRtj65Iwd1krA64KKait6UkjyrTUaAJQi2lZCkif6+kd8Vg15Wy2W3tB04fwciq2xvHaJwDL8AA==",
   "_location": "/teletype",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118430-31842-kpp124.6t70t3xr/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118430-31842-kpp124.6t70t3xr/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118430-31842-kpp124.6t70t3xr/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/teletype/versions/0.13.4/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/teletype/versions/0.13.4/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/teletype/versions/0.13.4/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/teletype/versions/0.13.4/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-118430-31842-kpp124.6t70t3xr/package.tgz",
-  "_shasum": "280426316ea6b96273a0c4aed75f8172de4ac93c",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-118430-31842-kpp124.6t70t3xr/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-118430-31842-jl0brv.88xfmndn29",
+  "_resolved": "https://www.atom.io/api/packages/teletype/versions/0.13.4/tarball",
+  "_shasum": "2d953dac0524af4edf43d89a1388d1dc8b3c5828",
+  "_spec": "https://www.atom.io/api/packages/teletype/versions/0.13.4/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119416-17672-kqp3vr.g1dcr",
   "atomTestRunner": "./test/setup",
   "author": "",
   "bugs": {
     "url": "https://github.com/atom/teletype/issues"
   },
+  "bundleDependencies": false,
   "configSchema": {
     "askBeforeJoiningPortalViaExternalApp": {
       "title": "Ask before joining a portal via an external application",
@@ -89,9 +75,10 @@
     "@atom/teletype-client": "^0.38.4",
     "etch": "^0.12.6"
   },
+  "deprecated": false,
   "description": "Share your workspace with team members and collaborate on code in real time",
   "devDependencies": {
-    "@atom/teletype-server": "^0.18.1",
+    "@atom/teletype-server": "^0.18.2",
     "atom-mocha-test-runner": "^1.0.1",
     "deep-equal": "^1.0.1",
     "standard": "^10.0.3",
@@ -110,7 +97,6 @@
   "license": "MIT",
   "main": "index.js",
   "name": "teletype",
-  "optionalDependencies": {},
   "providedServices": {
     "teletype": {
       "description": "A set of APIs for packages to integrate with Teletype",
@@ -119,8 +105,6 @@
       }
     }
   },
-  "readme": "# Teletype for Atom\n\nAn Atom package that lets developers share their workspace with team members and collaborate on code in real time.\n\nLearn more at [teletype.atom.io](https://teletype.atom.io).\n\n![demo](https://user-images.githubusercontent.com/2988/32753167-d781baf0-c899-11e7-8b64-683ab84d3a8c.gif)\n\n## Installation\n\n### Command Line\n\n1. Install [Atom 1.22](https://atom.io) or newer\n2. In the terminal, install the package via apm:\n\n    ```sh\n    apm install teletype\n    ```\n\n### GUI\n\n1. Install [Atom 1.22](https://atom.io) or newer\n1. Launch Atom\n1. Open Settings View using <kbd>Cmd+,</kbd> on macOS or <kbd>Ctrl+,</kbd> on other platforms\n1. Click the Install tab on the left side\n1. Enter `teletype` in the search box and press <kbd>Enter</kbd>\n1. Click the \"Install\" button that appears\n\n## Hacking\n\nThis package is powered by three main components:\n\n- [teletype-crdt](https://github.com/atom/teletype-crdt): The string-wise sequence CRDT that enables peer-to-peer collaborative editing.\n- [teletype-server](https://github.com/atom/teletype-server): The server-side application that facilitates peer discovery.\n- [teletype-client](https://github.com/atom/teletype-client): The editor-agnostic library that manages the interaction with other clients.\n\n### Dependencies\n\nTo run teletype tests locally, you'll first need to have:\n\n- Atom 1.22 or later\n- Node 7+\n- PostgreSQL 9.x\n\n### Running locally\n\n1. Clone and bootstrap\n\n    ```\n    git clone https://github.com/atom/teletype.git\n    cd teletype\n    createdb teletype-test\n    apm install\n    ```\n\n2. Run the tests\n\n    ```\n    atom --test test\n    ```\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/atom/teletype.git"
@@ -145,5 +129,5 @@
     "method": "handleURI",
     "deferActivation": false
   },
-  "version": "0.13.3"
+  "version": "0.13.4"
 }
