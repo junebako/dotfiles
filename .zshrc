@@ -128,9 +128,6 @@ precmd() {
     RUBY_VERSION="$(rbenv version | sed -e 's/ .*//')"
 }
 
-PROMPT=$RED'($RUBY_VERSION) %(!.#.$) '$DEFAULT
-setopt PROMPT_SUBST
-
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
 function git_prompt_stash_count {
@@ -167,7 +164,9 @@ function rprompt-git-current-branch {
     echo "$color$name$action%f%b`git_prompt_stash_count`"
 }
 
-RPROMPT='`rprompt-git-current-branch`'$PURPLE' %~'$GRAY' %D{%H:%M:%S}'$DEFAULT
+PROMPT=$RED'
+%(!.#.$) '$GRAY'%D{%Y-%m-%d %H:%M:%S} '$RED'(Ruby $RUBY_VERSION) '$PURPLE'[%~] `rprompt-git-current-branch`'$RED'
+%(!.#.$) '$DEFAULT
 setopt PROMPT_SUBST
 
 # Some settings
