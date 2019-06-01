@@ -9,3 +9,4 @@ ac-comphist.dat
 .atom/.apm/anonymous-cli-metrics.json
 .atom/.apm/index*
 .atom/.atom-socket-secret-*
+.config/configstore/update-notifier-npm.json
