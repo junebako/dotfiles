@@ -41,16 +41,19 @@ See the EditorConfig [documentation](http://editorconfig.org) for a detailed des
 ## Supported properties
 
 -	[`root`](https://editorconfig.org/#supported-properties)
+-	[`charset`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#charset)
+-	[`end_of_line`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#end_of_line)
 -	[`indent_style`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#indent_style)
 -	[`indent_size`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#indent_size) /
 	[`tab_width`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#tab_width) *(`indent_size` takes precedence over `tab_width`)*
--	[`charset`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#charset) *(supported values: `latin1`, `utf-8`, `utf-16be`, `utf-16le`)*
--	[`end_of_line`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#end_of_line) *(supported values: `lf`, `crlf`)*
--	[`trim_trailing_whitespace`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#trim_trailing_whitespace) *(supported values: `true`, `false`)*
--	[`insert_final_newline`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#insert_final_newline) *(supported values: `true`, `false`; Setting this to `false` strips final newlines)*
+-	[`insert_final_newline`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#insert_final_newline) *(setting this to `false` strips final newlines)*
 -	[`max_line_length`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#max_line_length)
+-	[`trim_trailing_whitespace`](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties#trim_trailing_whitespace)
 
 > :bulb: Any malformed or missing property falls back to `unset` which leaves the control to Atom.
+
+<a name="cr-caveat"></a>
+> :warning: Atom does not support CR line-endings. When `end_of_line` is set to `cr`, EditorConfig will respect the setting when saving files, but their contents will appear to be squashed onto a single line.
 
 
 ## EditorConfig commands
@@ -74,7 +77,7 @@ See the EditorConfig [documentation](http://editorconfig.org) for a detailed des
 
 ## Example file
 
-```ini
+```editorconfig
 root = true
 
 [*]

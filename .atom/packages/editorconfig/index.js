@@ -1,21 +1,28 @@
-/** @babel */
-import generateConfig from './commands/generate';
-import showState from './commands/show';
-import fixFile from './commands/fix';
+'use strict';
+const {CompositeDisposable, Disposable} = require('atom');
 
-const importLazy = require('import-lazy').proxy(require);
-
-const atm = importLazy('atom');
-
-const checklist = importLazy('./lib/checklist');
-const wrapGuideInterceptor = importLazy('./lib/wrapguide-interceptor');
-const statusTile = importLazy('./lib/statustile-view');
-const editorconfig = importLazy('editorconfig');
+// Lazy-loaded modules
+let checklist;
+let editorconfig;
+let fixFile;
+let generateConfig;
+let showState;
+let statusTile;
+let wrapGuideInterceptor;
 
 // Sets the state of the embedded editorconfig
 // This includes the severity (info, warning..) as well as the notification-messages for users
 function setState(ecfg) {
+	if (!checklist) {
+		checklist = require('./lib/checklist.js');
+	}
+
 	checklist(ecfg);
+
+	if (!statusTile) {
+		statusTile = require('./lib/statustile-view.js');
+	}
+
 	statusTile.updateIcon(ecfg.state);
 }
 
@@ -24,7 +31,9 @@ function initializeTextBuffer(buffer) {
 	if ('editorconfig' in buffer === false) {
 		buffer.editorconfig = {
 			buffer, // Preserving a reference to the parent `TextBuffer`
-			disposables: new (atm.CompositeDisposable)(),
+			disposables: new CompositeDisposable(),
+			lastEncoding: buffer.getEncoding(),
+			originallyCRLF: buffer.lineEndingForRow(0) === '\r\n',
 			state: 'subtle',
 			settings: {
 				trim_trailing_whitespace: 'unset',
@@ -73,6 +82,8 @@ function initializeTextBuffer(buffer) {
 
 					if (settings.charset === 'unset') {
 						buffer.setEncoding(atom.config.get('core.fileEncoding', configOptions));
+					} else if (settings.charset === 'utf8bom') {
+						buffer.setEncoding('utf8');
 					} else {
 						buffer.setEncoding(settings.charset);
 					}
@@ -91,9 +102,13 @@ function initializeTextBuffer(buffer) {
 
 					// Ensure the wrap-guide is being intercepted
 					const bufferDom = atom.views.getView(editor);
-					const wrapGuide = bufferDom.querySelector('* /deep/ .wrap-guide');
+					const wrapGuide = bufferDom.querySelector('.wrap-guide');
 					if (wrapGuide !== null) {
 						if (wrapGuide.editorconfig === undefined) {
+							if (!wrapGuideInterceptor) {
+								wrapGuideInterceptor = require('./lib/wrapguide-interceptor.js');
+							}
+
 							wrapGuide.editorconfig = this;
 							wrapGuide.getNativeGuideColumn = wrapGuide.getGuideColumn;
 							wrapGuide.getGuideColumn = wrapGuideInterceptor.getGuideColumn.bind(wrapGuide);
@@ -123,42 +138,123 @@ function initializeTextBuffer(buffer) {
 				setState(this);
 			},
 
+			// Inserts or removes a leading byte-order mark
+			setBOM(enabled) {
+				const hasBOM = buffer.getText().codePointAt(0) === 0xFEFF;
+				if (enabled && !hasBOM) {
+					buffer.setTextInRange([[0, 0], [0, 0]], '\uFEFF');
+				} else if (!enabled && hasBOM) {
+					buffer.delete([[0, 0], [0, 1]]);
+				}
+			},
+
+			// Add or remove byte-order mark depending on UTF-8 type
+			updateBOM() {
+				const {settings} = this;
+				if (settings.charset === 'utf8bom') {
+					this.setBOM(true);
+				} else if (settings.charset === 'utf8') {
+					this.setBOM(false);
+				}
+			},
+
+			// `onDidChangeEncoding` event handler
+			// Used to insert/strip byte-order marks in UTF-8 encoded files
+			onDidChangeEncoding(encoding) {
+				if (encoding === 'utf8') {
+					this.updateBOM();
+				} else if (this.lastEncoding === 'utf8') {
+					this.setBOM(false);
+				}
+
+				this.lastEncoding = encoding;
+			},
+
 			// `onWillSave` event handler
 			// Trims whitespaces and inserts/strips final newline before saving
 			onWillSave() {
 				const {settings} = this;
 
-				if (settings.trim_trailing_whitespace === true) {
-					buffer.backwardsScan(/[ \t]+$/gm, params => {
-						if (params.match[0].length > 0) {
-							params.replace('');
-						}
-					});
+				if (buffer.getEncoding() === 'utf8') {
+					this.updateBOM();
 				}
 
-				if (settings.insert_final_newline !== 'unset') {
-					const lastRow = buffer.getLineCount() - 1;
+				if (settings.end_of_line === '\r') {
+					let text = buffer.getText();
 
-					if (buffer.isRowBlank(lastRow)) {
-						let stripStart = buffer.previousNonBlankRow(lastRow);
+					if (this.originallyCRLF) {
+						text = text.replace(/\r\n/g, '\r');
+					}
+
+					text = text.replace(/\n/g, '\r');
+
+					// NB: Atom doesn't handle CR endings well when scanning/counting lines.
+					// So we handle whitespace trimming the messier and less efficient way.
+					if (settings.trim_trailing_whitespace === true) {
+						text = text.replace(/[ \t]+$/gm, '');
+					}
+
+					if (settings.insert_final_newline !== 'unset') {
+						text = text.replace(/(?:\r[ \t]*)+$/, '');
 
 						if (settings.insert_final_newline === true) {
-							stripStart += 1;
+							text += '\r';
 						}
+					}
 
-						// Strip empty lines from the end
-						if (stripStart < lastRow) {
-							buffer.deleteRows(stripStart + 1, lastRow);
+					buffer.setText(text);
+				} else {
+					if (settings.end_of_line === '\r\n') {
+						buffer.backwardsScan(/([^\r]|^)\n|\r(?!\n)/g, params => {
+							const {match} = params;
+							if (match && match[0].length > 0) {
+								params.replace((match[1] || '') + '\r\n');
+							}
+						});
+					} else if (settings.end_of_line === '\n') {
+						buffer.backwardsScan(/\r\n|\r([^\n]|$)/g, params => {
+							const {match} = params;
+							if (match && match[0].length > 0) {
+								params.replace('\n' + ([match[1]] || ''));
+							}
+						});
+					}
+
+					if (settings.trim_trailing_whitespace === true) {
+						buffer.backwardsScan(/[ \t]+$/gm, params => {
+							if (params.match[0].length > 0) {
+								params.replace('');
+							}
+						});
+					}
+
+					if (settings.insert_final_newline !== 'unset') {
+						const lastRow = buffer.getLineCount() - 1;
+
+						if (buffer.isRowBlank(lastRow)) {
+							let stripStart = buffer.previousNonBlankRow(lastRow);
+
+							if (settings.insert_final_newline === true) {
+								stripStart += 1;
+							}
+
+							// Strip empty lines from the end
+							if (stripStart < lastRow) {
+								buffer.deleteRows(stripStart + 1, lastRow);
+							}
+						} else if (settings.insert_final_newline === true) {
+							buffer.append('\n');
 						}
-					} else if (settings.insert_final_newline === true) {
-						buffer.append('\n');
 					}
 				}
 			}
 		};
 
 		buffer.editorconfig.disposables.add(
-			buffer.onWillSave(buffer.editorconfig.onWillSave.bind(buffer.editorconfig))
+			buffer.onWillSave(buffer.editorconfig.onWillSave.bind(buffer.editorconfig)),
+			buffer.onDidChangeEncoding(buffer.editorconfig.onDidChangeEncoding.bind(buffer.editorconfig)),
+			buffer.onDidDestroy(() => buffer.editorconfig.disposables.dispose()),
+			new Disposable(() => delete buffer.editorconfig)
 		);
 
 		if (buffer.getUri() && buffer.getUri().match(/[\\|/]\.editorconfig$/g) !== null) {
@@ -183,6 +279,10 @@ function observeTextEditor(editor) {
 			observeTextEditor(editor);
 		});
 		return;
+	}
+
+	if (!editorconfig) {
+		editorconfig = require('editorconfig');
 	}
 
 	editorconfig.parse(file).then(config => {
@@ -259,54 +359,106 @@ function observeActivePaneItem(editor) {
 			editor.buffer.editorconfig.applySettings();
 		}
 	} else {
+		if (!statusTile) {
+			statusTile = require('./lib/statustile-view.js');
+		}
+
 		statusTile.removeIcon();
 	}
 }
 
-// Hook into the events to recognize the user opening new editors or changing the pane
-const activate = () => {
-	generateConfig();
-	showState();
-	fixFile();
-	atom.workspace.observeTextEditors(observeTextEditor);
-	atom.workspace.observeActivePaneItem(observeActivePaneItem);
-	reapplyEditorconfig();
+module.exports = {
+	disposables: null,
 
-	// #220: Fix spurious "thrashing" in open editors at startup
-	if (!atom.packages.hasActivatedInitialPackages()) {
-		const disposables = new (atm.CompositeDisposable)();
-		disposables.add(
-			atom.packages.onDidActivatePackage(pkg => {
-				if (pkg.name === 'whitespace' || pkg.name === 'wrap-guide') {
-					reapplyEditorconfig();
+	// Activate package and register commands and event listeners
+	activate() {
+		if (Disposable.isDisposable(this.disposables)) {
+			this.disposables.dispose();
+		}
+
+		this.disposables = new CompositeDisposable(
+			atom.commands.add('atom-workspace', {
+				'EditorConfig:fix-file': () => {
+					if (!fixFile) {
+						fixFile = require('./commands/fix-file.js');
+					}
+
+					return fixFile();
+				},
+				'EditorConfig:fix-file-quietly': () => {
+					if (!fixFile) {
+						fixFile = require('./commands/fix-file.js');
+					}
+
+					return fixFile(false);
+				},
+				'EditorConfig:generate-config': () => {
+					if (!generateConfig) {
+						generateConfig = require('./commands/generate-config.js');
+					}
+
+					return generateConfig();
+				},
+				'EditorConfig:show-state': () => {
+					if (!showState) {
+						showState = require('./commands/show-state.js');
+					}
+
+					return showState();
 				}
 			}),
-			atom.packages.onDidActivateInitialPackages(() => {
-				disposables.dispose();
-				reapplyEditorconfig();
+			atom.workspace.observeTextEditors(observeTextEditor),
+			atom.workspace.observeActivePaneItem(observeActivePaneItem),
+			new Disposable(() => {
+				// Remove all embedded editorconfig-objects
+				const textEditors = atom.workspace.getTextEditors();
+				textEditors.forEach(ed => ed.getBuffer().editorconfig.disposables.dispose());
+
+				if (!statusTile) {
+					statusTile = require('./lib/statustile-view.js');
+				}
+
+				// Clean the status-bar up
+				statusTile.removeIcon();
 			})
 		);
+		reapplyEditorconfig();
+
+		// #220: Fix spurious "thrashing" in open editors at startup
+		if (!atom.packages.hasActivatedInitialPackages()) {
+			const disposables = new CompositeDisposable();
+			disposables.add(
+				atom.packages.onDidActivatePackage(pkg => {
+					if (pkg.name === 'whitespace' || pkg.name === 'wrap-guide') {
+						reapplyEditorconfig();
+					}
+				}),
+				atom.packages.onDidActivateInitialPackages(() => {
+					disposables.dispose();
+					reapplyEditorconfig();
+				})
+			);
+		}
+	},
+
+	deactivate() {
+		if (Disposable.isDisposable(this.disposables)) {
+			this.disposables.dispose();
+			this.disposables = null;
+		}
+	},
+
+	// Apply the statusbar icon-container. The icon will be applied if needed
+	consumeStatusBar(statusBar) {
+		if (!statusTile) {
+			statusTile = require('./lib/statustile-view.js');
+		}
+
+		if (statusTile.containerExists() === false) {
+			statusBar.addRightTile({
+				item: statusTile.createContainer(),
+				priority: 999
+			});
+		}
 	}
 };
-
-// Clean the status-icon up, remove all embedded editorconfig-objects
-const deactivate = () => {
-	const textEditors = atom.workspace.getTextEditors();
-	textEditors.forEach(editor => {
-		editor.getBuffer().editorconfig.disposables.dispose();
-	});
-	statusTile.removeIcon();
-};
-
-// Apply the statusbar icon-container
-// The icon will be applied if needed
-const consumeStatusBar = statusBar => {
-	if (statusTile.containerExists() === false) {
-		statusBar.addRightTile({
-			item: statusTile.createContainer(),
-			priority: 999
-		});
-	}
-};
-
-export default {activate, deactivate, consumeStatusBar};
