@@ -1,69 +1,46 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117106-9838-1vcis56.k4pgxbhuxr/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117106-9838-1vcis56.k4pgxbhuxr/package.tgz",
-        "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117106-9838-1vcis56.k4pgxbhuxr/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117106-9838-1qzdazy.2vhho20529"
-    ]
-  ],
-  "_from": "../d-117106-9838-1vcis56.k4pgxbhuxr/package.tgz",
-  "_id": "language-slim@1.0.0",
-  "_inCache": true,
+  "_from": "https://www.atom.io/api/packages/language-slim/versions/1.0.1/tarball",
+  "_id": "language-slim@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-b4e/kaovdQTctIVTzdo90zJYjAHf8p/0dA6qs3jw3eqGU0Zbf2OCeTo/Wbto0MnDObchQ4zEI/5SYiN7b+ws9Q==",
   "_location": "/language-slim",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117106-9838-1vcis56.k4pgxbhuxr/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117106-9838-1vcis56.k4pgxbhuxr/package.tgz",
-    "spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117106-9838-1vcis56.k4pgxbhuxr/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/language-slim/versions/1.0.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/language-slim/versions/1.0.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/language-slim/versions/1.0.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/language-slim/versions/1.0.1/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-117106-9838-1vcis56.k4pgxbhuxr/package.tgz",
-  "_shasum": "0a1209e8953b0a8e315e2e4920fe5c0a29595280",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/d-117106-9838-1vcis56.k4pgxbhuxr/package.tgz",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-117106-9838-1qzdazy.2vhho20529",
+  "_resolved": "https://www.atom.io/api/packages/language-slim/versions/1.0.1/tarball",
+  "_shasum": "120f5432952f84e19d46c420f71185be884d366d",
+  "_spec": "https://www.atom.io/api/packages/language-slim/versions/1.0.1/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119625-3074-leqts8.l6u1g",
   "bugs": {
     "url": "https://github.com/slim-template/language-slim/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {},
+  "deprecated": false,
   "description": "Slim language package for Atom.",
-  "devDependencies": {},
+  "devDependencies": {
+    "cson": "^5.1.0",
+    "yamljs": "^0.3.0"
+  },
   "engines": {
     "atom": ">0.50.0"
   },
   "homepage": "https://github.com/slim-template/language-slim#readme",
   "license": "MIT",
   "name": "language-slim",
-  "optionalDependencies": {},
   "private": true,
-  "readme": "# Slim Atom language package\n\n## Looking for maintainer(s)! See [this issue](https://github.com/slim-template/language-slim/issues/25).\n\n## Description\n\nThis is the [Atom](http://atom.io/) language package, converted from the [Slim TextMate/Sublime bundle](https://github.com/slim-template/ruby-slim.tmbundle).\n\n## Author\n\n[Fred Wu](http://fredwu.me/)\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/slim-template/language-slim.git"
   },
-  "version": "1.0.0",
-  "_atomModuleCache": {
-    "version": 1,
-    "dependencies": [],
-    "extensions": {
-      ".json": [
-        "package.json"
-      ]
-    },
-    "folders": []
-  }
+  "version": "1.0.1"
 }
