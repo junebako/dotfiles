@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
-  "_id": "linter@2.3.0",
+  "_from": "https://www.atom.io/api/packages/linter/versions/2.3.1/tarball",
+  "_id": "linter@2.3.1",
   "_inBundle": false,
-  "_integrity": "sha512-Vc9+azDU7YUxiv25D7qi4DW/3czQYO8c0LqcYEjy0zjmDyZsgO928V+tEYW4Bmaf84ao2W2vEQqTRjOvvnWlFQ==",
+  "_integrity": "sha512-16WL5KdMiTE1SM4wpimkXzFx5RwdBoEkNUjsi/NkZpu/Tcv1KuojCnrtTO74gzp4sGY28rEXT3kqw/HJ2IOc4g==",
   "_location": "/linter",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball"
+    "raw": "https://www.atom.io/api/packages/linter/versions/2.3.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter/versions/2.3.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter/versions/2.3.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter/versions/2.3.1/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
-  "_shasum": "3b397c466a5a5cde369ee21673760d004488e26f",
-  "_spec": "https://www.atom.io/api/packages/linter/versions/2.3.0/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119018-36494-snq4fc.64dxc",
+  "_resolved": "https://www.atom.io/api/packages/linter/versions/2.3.1/tarball",
+  "_shasum": "87af3eb1abc9853f27c12c0558cae44bce23fe4b",
+  "_spec": "https://www.atom.io/api/packages/linter/versions/2.3.1/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119711-2031-5jrw9j.etqls",
   "author": {
     "name": "steelbrain"
   },
@@ -85,16 +85,16 @@
     }
   },
   "dependencies": {
-    "atom-package-deps": "^5.0.0",
+    "atom-package-deps": "^5.1.0",
     "atom-select-list": "^0.7.2",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "minimatch": "^3.0.3"
   },
   "deprecated": false,
   "description": "A Base Linter with Cow Powers",
   "devDependencies": {
-    "eslint-config-steelbrain": "^6.0.0",
-    "flow-bin": "^0.90.0",
+    "eslint-config-steelbrain": "^7.0.0",
+    "flow-bin": "^0.102.0",
     "jasmine-fix": "^1.3.1"
   },
   "engines": {
@@ -127,5 +127,5 @@
     "lint": "(flow check) && (eslint . ) && (prettier --list-different lib/*.js)",
     "test": "apm test"
   },
-  "version": "2.3.0"
+  "version": "2.3.1"
 }
