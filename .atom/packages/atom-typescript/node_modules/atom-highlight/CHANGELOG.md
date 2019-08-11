@@ -1,3 +1,7 @@
+## 0.4.2
+
+-   A quick hack to work around tree-sitter grammars (Nikolay Yakimov)
+
 ## 0.4.1
 * Add types to package.json
 
