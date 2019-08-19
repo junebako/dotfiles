@@ -88,7 +88,7 @@ directoryIcons:
 
 	Atom:
 		icon: "atom"
-		match: /^\.atom$/
+		match: /^\.atom(-ci)?$/
 		colour: "dark-green"
 
 	"Azure Pipelines":
@@ -169,6 +169,11 @@ directoryIcons:
 	GitLab:
 		icon: "gitlab"
 		match: /^\.gitlab$/
+
+	Istanbul:
+		icon: "istanbul"
+		match: /^\.nyc[-_]output$/
+		colour: "medium-orange"
 
 	Meteor:
 		icon: "meteor"
@@ -1470,7 +1475,9 @@ fileIcons:
 		icon: "database"
 		generic: true
 		match: [
+			[".aff", "medium-red"]
 			[".cson", "medium-maroon"]
+			[/\.dict?$/i, "medium-green"]
 			[".hson", "medium-orange", "hson"]
 			[".http", "medium-red"]
 			[".ndjson", "medium-orange"]
@@ -1483,11 +1490,14 @@ fileIcons:
 			[".ejson", "dark-red"]
 			[".edn", "medium-purple"]
 			[".eam.fs", "dark-purple"]
+			[".son", "dark-green", "son"]
 			[".ston", "medium-maroon"]
 			[".ttl", "medium-cyan", scope: "turtle"]
 			[".schema", "dark-blue", priority: 0.25]
+			[".sy", "dark-green"]
 			[".syntax", "medium-blue"]
 			[".webmanifest", "medium-blue"]
+			[/\.snip(pets?)?$/i, "medium-green", alias: /^(SnipMate|UltiSnip|NeoSnippet)$/i, scope: /\.(snipmate|ultisnips|neosnippet|snippets?)(\.|$)/i]
 			[/\.yas(nippet)?$/i, "medium-green", alias: /(YA)?Snippet/i, scope: /^source\.yasnippet$/i]
 			[/(^|\.)fonts\.(dir|scale|alias)$/i, "medium-red", scope: /^source\.fontdir$/i, priority: 4]
 			[/(^|\.)encodings\.dir$/i, "medium-orange"]
@@ -2638,6 +2648,7 @@ fileIcons:
 			[/\.fits?$/i, "medium-cyan", signature: /^SIMPLE  =/]
 			[".flif", "dark-red", signature: /^FLIF/]
 			[".fts", "medium-cyan"]
+			[/\.(gsrc|gr(emli)?n)$/i, "medium-orange", signature: /^(sun)?gremlinfile/, alias: "Gremlin", scope: /^source\.gremlin$/, mime: "text/plain"]
 			[".hdp", "dark-red"]
 			[".hdr", "medium-blue", signature: /^#\?RADIANCE\n/]
 			[".heic", "dark-red"]
@@ -2735,8 +2746,12 @@ fileIcons:
 
 	Istanbul:
 		icon: "istanbul"
-		match: /^\.nycrc(\.json)?$/i
-		colour: "medium-orange"
+		priority: 2
+		match: [
+			[/^\.nycrc(\.json)?$/i, "medium-orange", uses: "JSON"]
+			[/^\.nycrc\.ya?ml$/i, "medium-green", uses: "YAML"]
+			[/^nyc\.config\.js$/i, "auto-yellow", uses: "JavaScript"]
+		]
 
 	J:
 		icon: "j"
@@ -3448,6 +3463,9 @@ fileIcons:
 		match: [
 			[/^mcmod\.info$/i, "dark-green", scope: "forge-config"]
 			[".mcfunction", "light-green"]
+			[".mclevel", "medium-green"]
+			[".mcpack", "dark-green"]
+			[".mcworld", "medium-blue"]
 			[/^pack\.mcmeta$/i, "dark-green"]
 			[/\.png\.mcmeta$/, "dark-green"]
 		]
@@ -5259,9 +5277,11 @@ fileIcons:
 
 	"Test, JavaScript":
 		icon: "test-js"
-		match: /[._-](spec|test)s?\.([_ms]?js|js[bms]|es\d*)$/i
-		colour: "auto-yellow"
 		priority: 1.5
+		match: [
+			[/[._-](spec|test)s?\.([_ms]?js|js[bms]|es\d*)$/i, "auto-yellow"]
+			[/([\\\/])(spec|test)s?\1(?:\d+[-.])+(?!-)[^.\\\/]+\.[cm]?js$/i, "auto-yellow", matchPath: true]
+		]
 
 	"Test, Perl":
 		icon: "test-perl"
@@ -5281,8 +5301,10 @@ fileIcons:
 	"Test, React":
 		icon: "test-react"
 		priority: 1.5
-		match: /[._-](spec|test)s?\.(jsx|react\.js)$/
-		colour: "auto-blue"
+		match: [
+			[/[._-](spec|test)s?\.(jsx|react\.js)$/, "auto-blue"]
+			[/([\\\/])(spec|test)s?\1(?:\d+[-.])+(?!-)[^.\\\/]+\.(jsx|react\.js)$/i, "auto-blue", matchPath: true]
+		]
 
 	"Test, Ruby":
 		icon: "test-ruby"
@@ -5303,6 +5325,8 @@ fileIcons:
 		match: [
 			[/[._-](spec|test)s?\.ts$/i, "auto-blue"]
 			[/[._-](spec|test)s?\.tsx$/i, ["light-blue", "medium-blue"]]
+			[/([\\\/])(spec|test)s?\1(?:\d+[-.])+(?!-)[^.\\\/]+\.ts$/i, "auto-blue", matchPath: true]
+			[/([\\\/])(spec|test)s?\1(?:\d+[-.])+(?!-)[^.\\\/]+\.tsx$/i, ["light-blue", "medium-blue"], matchPath: true]
 		]
 
 	TeX:
