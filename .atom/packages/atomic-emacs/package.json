@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
-  "_id": "atomic-emacs@0.14.0",
+  "_from": "https://www.atom.io/api/packages/atomic-emacs/versions/0.15.0/tarball",
+  "_id": "atomic-emacs@0.15.0",
   "_inBundle": false,
-  "_integrity": "sha512-AtkJp/Wez3jSh/ktHmf3QT16RrKhCC9n6nhwfqUxQkX6xYjLj6qSWHk9cMHTbeS/xvvzsk+rTom2N13A6hMWbA==",
+  "_integrity": "sha512-FRrG1kP4V7WEWQG7z8QburTOqtEXxtsD4+P/i5BL4oXLYUPDTsD2k6APlyUpK63ATJOmojXNfwQogdSRBLOkNg==",
   "_location": "/atomic-emacs",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball"
+    "raw": "https://www.atom.io/api/packages/atomic-emacs/versions/0.15.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.15.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.15.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.15.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
-  "_shasum": "c6cc3f30b862120fa8b8229903598e3ab4f3e9ee",
-  "_spec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.14.0/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119413-3708-1mzpiw5.ggwr",
+  "_resolved": "https://www.atom.io/api/packages/atomic-emacs/versions/0.15.0/tarball",
+  "_shasum": "0d26199e90c3f0a0a0b90df61c9ea38361fd4d5a",
+  "_spec": "https://www.atom.io/api/packages/atomic-emacs/versions/0.15.0/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119721-41667-96px4a.pxjzt",
   "activationCommands": {
     "atom-text-editor": [
       "atomic-emacs:backward-char",
@@ -113,5 +113,5 @@
     "type": "git",
     "url": "git+https://github.com/avendael/atomic-emacs.git"
   },
-  "version": "0.14.0"
+  "version": "0.15.0"
 }
