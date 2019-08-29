@@ -1,34 +1,45 @@
-<ul>
-  <li><a href="#marked">About</a></li>
-  <li><a href="#install">Installation</a></li>
-  <li><a href="#usage">Usage</a></li>
-  <li><a href="#specifications">Supported Markdown specifications</a></li>
-  <li><a href="#security">Security</a></li>
-  <li><a href="#contributing">Contributing</a></li>
-  <li><a href="#authors">Authors</a></li>
-  <li><a href="#license">License</a></li>
-</ul>
+<a href="https://marked.js.org">
+  <img width="60px" height="60px" src="https://marked.js.org/img/logo-black.svg" align="right" />
+</a>
 
-<h2 id="marked">Marked</h2>
+# Marked
 
-Marked is 
+[![npm](https://badgen.net/npm/v/marked)](https://www.npmjs.com/package/marked)
+[![gzip size](https://badgen.net/badgesize/gzip/https://cdn.jsdelivr.net/npm/marked/marked.min.js)](https://cdn.jsdelivr.net/npm/marked/marked.min.js)
+[![install size](https://badgen.net/packagephobia/install/marked)](https://packagephobia.now.sh/result?p=marked)
+[![downloads](https://badgen.net/npm/dt/marked)](https://www.npmjs.com/package/marked)
+[![dep](https://badgen.net/david/dep/markedjs/marked?label=deps)](https://david-dm.org/markedjs/marked)
+[![dev dep](https://badgen.net/david/dev/markedjs/marked?label=devDeps)](https://david-dm.org/markedjs/marked?type=dev)
+[![travis](https://badgen.net/travis/markedjs/marked)](https://travis-ci.org/markedjs/marked)
+[![snyk](https://snyk.io/test/npm/marked/badge.svg)](https://snyk.io/test/npm/marked)
 
-1. built for speed.<sup>*</sup>
-2. a low-level markdown compiler that allows frequent parsing of large chunks of markdown without caching or blocking for long periods of time.<sup>**</sup>
-3. light-weight while implementing all markdown features from the supported flavors & specifications.<sup>***</sup>
-4. available as a command line interface (CLI) and running in client- or server-side JavaScript projects.
+- ⚡ built for speed
+- ⬇️ low-level compiler for parsing markdown without caching or blocking for long periods of time
+- ⚖️ light-weight while implementing all markdown features from the supported flavors & specifications
+- 🌐 works in a browser, on a server, or from a command line interface (CLI)
 
-<p><small><sup>*</sup> Still working on metrics for comparative analysis and definition.</small><br>
-<small><sup>**</sup> As few dependencies as possible.</small><br>
-<small><sup>***</sup> Strict compliance could result in slower processing when running comparative benchmarking.</small></p>
+## Demo
 
-<h2 id="installation">Installation</h2>
+Checkout the [demo page](https://marked.js.org/demo/) to see marked in action ⛹️
+
+## Docs
+
+Our [documentation pages](https://marked.js.org) are also rendered using marked 💯
+
+Also read about:
+
+* [Options](https://marked.js.org/#/USING_ADVANCED.md)
+* [Extensibility](https://marked.js.org/#/USING_PRO.md)
+
+## Installation
 
 **CLI:** `npm install -g marked`
 
-**In-browser:** `npm install marked --save`
+**In-browser:** `npm install marked`
 
-<h2 id="usage">Usage</h2>
+## Usage
+
+### Warning: 🚨 Marked does not [sanitize](https://marked.js.org/#/USING_ADVANCED.md#options) the output HTML. Please use a sanitize library, like [DOMPurify](https://github.com/cure53/DOMPurify) (recommended), [sanitize-html](https://github.com/apostrophecms/sanitize-html) or [insane](https://github.com/bevacqua/insane) on the output HTML! 🚨
 
 **CLI**
 
@@ -48,50 +59,18 @@ $ cat hello.html
 <head>
   <meta charset="utf-8"/>
   <title>Marked in the browser</title>
-  <script src="/path/to/marked.min.js"></script>
 </head>
 <body>
   <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     document.getElementById('content').innerHTML =
-      marked('# Marked in browser\n\nRendered by **marked**.');
+      marked('# Marked in the browser\n\nRendered by **marked**.');
   </script>
 </body>
 </html>
 ```
 
-
-Marked offers [advanced configurations](https://github.com/markedjs/marked/blob/master/USAGE_ADVANCED.md) and [extensibility](https://github.com/markedjs/marked/blob/master/USAGE_EXTENSIBILITY.md) as well.
-
-<h2 id="specifications">Supported Markdown specifications</h2>
-
-We actively support the features of the following [Markdown flavors](https://github.com/commonmark/CommonMark/wiki/Markdown-Flavors).
-
-|Flavor                                                     |Version    |
-|:----------------------------------------------------------|:----------|
-|The original markdown.pl                                   |--         |
-|[CommonMark](http://spec.commonmark.org/0.28/)             |0.28       |
-|[GitHub Flavored Markdown](https://github.github.com/gfm/) |0.28       |
-
-By supporting the above Markdown flavors, it's possible that Marked can help you use other flavors as well; however, these are not actively supported by the community.
-
-<h2 id="security">Security</h2>
-
-The only completely secure system is the one that doesn't exist in the first place. Having said that, we take the security of Marked very seriously; however, none of us are necessarily security experts, so to speak. Therefore, if you find something, [say something](https://github.com/markedjs/marked/issues), or, better yet, fix the thing! :)
-
-<h2 id="contributing">Contributing</h2>
-
-The marked community enjoys a spirit of collaboration and contribution from all comers. Whether you're just getting started with Markdown, JavaScript, and Marked or you're a veteran with it all figured out, we're here to help each other improve as professionals while helping Marked improve technically. Please see our [contributing documentation](https://github.com/markedjs/marked/blob/master/CONTRIBUTING.md) for more details.
-
-For our Contribution License Agreement, see our [license](https://github.com/markedjs/marked/blob/master/LICENSE.md).
-
-<h2 id="authors">Authors</h2>
-
-For list of credited authors and contributors, please see our [authors page](https://github.com/markedjs/marked/blob/master/AUTHORS.md).
-
-<h2 id="license">License</h2>
+## License
 
 Copyright (c) 2011-2018, Christopher Jeffrey. (MIT License)
-
-See [license](https://github.com/markedjs/marked/blob/master/LICENSE.md) for more details.
-

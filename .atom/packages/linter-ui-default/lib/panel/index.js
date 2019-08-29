@@ -33,6 +33,15 @@ class Panel {
       }),
     )
     this.subscriptions.add(
+      atom.workspace.onDidDestroyPane(({ pane: destroyedPane }) => {
+        const isPaneItemDestroyed = destroyedPane.getItems().includes(this.panel)
+        if (isPaneItemDestroyed && !this.deactivating) {
+          this.panel = null
+          atom.config.set('linter-ui-default.showPanel', false)
+        }
+      }),
+    )
+    this.subscriptions.add(
       atom.workspace.onDidDestroyPaneItem(({ item: paneItem }) => {
         if (paneItem instanceof PanelDock && !this.deactivating) {
           this.panel = null
@@ -53,8 +62,47 @@ class Panel {
       }),
     )
     this.activationTimer = window.requestIdleCallback(() => {
+      const dock = atom.workspace.getBottomDock()
+      this.subscriptions.add(
+        dock.onDidChangeActivePaneItem(paneItem => {
+          if (!this.panel || this.getPanelLocation() !== 'bottom') {
+            return
+          }
+          const isFocusIn = paneItem === this.panel
+          const externallyToggled = isFocusIn !== this.showPanelConfig
+          if (externallyToggled) {
+            atom.config.set('linter-ui-default.showPanel', !this.showPanelConfig)
+          }
+        }),
+      )
+      this.subscriptions.add(
+        dock.onDidChangeVisible(visible => {
+          if (!this.panel || this.getPanelLocation() !== 'bottom') {
+            return
+          }
+          if (!visible) {
+            // ^ When it's time to tell config to hide
+            if (this.showPanelConfig && this.hidePanelWhenEmpty && !this.showPanelStateMessages) {
+              // Ignore because we just don't have any messages to show, everything else is fine
+              return
+            }
+          }
+          const externallyToggled = visible !== this.showPanelConfig
+          if (externallyToggled) {
+            atom.config.set('linter-ui-default.showPanel', !this.showPanelConfig)
+          }
+        }),
+      )
+
       this.activate()
     })
+  }
+  getPanelLocation() {
+    if (!this.panel) {
+      return null
+    }
+    const paneContainer = atom.workspace.paneContainerForItem(this.panel)
+    return (paneContainer && paneContainer.location) || null
   }
   async activate() {
     if (this.panel) {
@@ -86,15 +134,19 @@ class Panel {
       return
     }
     const paneContainer = atom.workspace.paneContainerForItem(panel)
-    if (!paneContainer || paneContainer.location !== 'bottom' || paneContainer.getActivePaneItem() !== panel) {
+    if (!paneContainer || paneContainer.location !== 'bottom') {
       return
     }
+    const isActivePanel = paneContainer.getActivePaneItem() === panel
     const visibilityAllowed1 = this.showPanelConfig
     const visibilityAllowed2 = this.hidePanelWhenEmpty ? this.showPanelStateMessages : true
     if (visibilityAllowed1 && visibilityAllowed2) {
+      if (!isActivePanel) {
+        paneContainer.paneForItem(panel).activateItem(panel)
+      }
       paneContainer.show()
       panel.doPanelResize()
-    } else {
+    } else if (isActivePanel) {
       paneContainer.hide()
     }
   }

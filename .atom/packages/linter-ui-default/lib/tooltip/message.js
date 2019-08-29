@@ -51,12 +51,11 @@ class MessageElement extends React.Component<Props, State> {
     })
   }
 
-  // NOTE: Only handling messages v2 because v1 would be handled by message-legacy component
   onFixClick(): void {
     const message = this.props.message
     const textEditor = getActiveTextEditor()
     if (message.version === 2 && message.solutions && message.solutions.length) {
-      applySolution(textEditor, message.version, sortSolutions(message.solutions)[0])
+      applySolution(textEditor, sortSolutions(message.solutions)[0])
     }
   }
 
@@ -80,9 +79,7 @@ class MessageElement extends React.Component<Props, State> {
   }
 
   canBeFixed(message: LinterMessage): boolean {
-    if (message.version === 1 && message.fix) {
-      return true
-    } else if (message.version === 2 && message.solutions && message.solutions.length) {
+    if (message.version === 2 && message.solutions && message.solutions.length) {
       return true
     }
     return false
