@@ -241,3 +241,7 @@ eval "$(rbenv init -)"
 # nodebrew
 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# starship
+
+eval "$(starship init zsh)"

@@ -1,0 +1,22 @@
+# Don't print a new line at the start of the prompt
+add_newline = true
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = false
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+[character]
+symbol = "➜"
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[directory]
+truncation_length = 4
+
+[git_branch]
+symbol = "🌱 "
