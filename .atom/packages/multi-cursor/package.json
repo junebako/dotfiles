@@ -1,47 +1,31 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116111-31721-f907zk/package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116111-31721-f907zk/package.tgz",
-        "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116111-31721-f907zk/package.tgz",
-        "type": "local"
-      },
-      "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116111-31721-1ycsmbq"
-    ]
-  ],
-  "_from": "../d-116111-31721-f907zk/package.tgz",
-  "_id": "multi-cursor@2.1.5",
-  "_inCache": true,
-  "_installable": true,
+  "_from": "https://www.atom.io/api/packages/multi-cursor/versions/3.0.0/tarball",
+  "_id": "multi-cursor@3.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-ObSLkGmvZpAT5mBzjr2VrYYCQK5o7PCq5mGGEfjYK7QCor/Nu07S5zMk8g/sy/h04ckS8XI9CNoGe0iFL9/C2A==",
   "_location": "/multi-cursor",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116111-31721-f907zk/package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116111-31721-f907zk/package.tgz",
-    "spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116111-31721-f907zk/package.tgz",
-    "type": "local"
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/multi-cursor/versions/3.0.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/multi-cursor/versions/3.0.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/multi-cursor/versions/3.0.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/multi-cursor/versions/3.0.0/tarball"
   },
   "_requiredBy": [
-    "#USER"
+    "#USER",
+    "/"
   ],
-  "_resolved": "file:../d-116111-31721-f907zk/package.tgz",
-  "_shasum": "4a12c89e588d2b7c718d8fb892fe774e3d97f5dc",
-  "_shrinkwrap": null,
-  "_spec": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/d-116111-31721-f907zk/package.tgz",
-  "_where": "/private/var/folders/zn/zj7xg0mj6x163x7tpzmrtlkh0000gn/T/apm-install-dir-116111-31721-1ycsmbq",
+  "_resolved": "https://www.atom.io/api/packages/multi-cursor/versions/3.0.0/tarball",
+  "_shasum": "6967e29e3c7fc3a59ef53d7125126aef0e424cb8",
+  "_spec": "https://www.atom.io/api/packages/multi-cursor/versions/3.0.0/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-11999-6739-1yzux5l.vinl",
   "activationCommands": {
     "atom-workspace": [
-      "multi-cursor:expandDown",
-      "multi-cursor:expandUp",
-      "multi-cursor:skipDown",
-      "multi-cursor:skipUp",
+      "multi-cursor:expand-down",
+      "multi-cursor:expand-up",
+      "multi-cursor:expand-all-up",
+      "multi-cursor:expand-all-down",
       "multi-cursor:move-last-cursor-up",
       "multi-cursor:move-last-cursor-down",
       "multi-cursor:move-last-cursor-left",
@@ -51,9 +35,10 @@
   "bugs": {
     "url": "https://github.com/joseramonc/multi-cursor/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {},
+  "deprecated": false,
   "description": "Atom package to expand your current cursor.",
-  "devDependencies": {},
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
   },
@@ -61,12 +46,9 @@
   "license": "MIT",
   "main": "./lib/multi-cursor",
   "name": "multi-cursor",
-  "optionalDependencies": {},
-  "readme": "# Multi-cursor package\n\nAn atom package to easily create more cursors with keystrokes.\n\n![Multi-cursor demo](https://s3.amazonaws.com/f.cl.ly/items/2X393M1u1G0K0Z061O00/multi-cursor.gif)\n\n## OSX Keymaps:\n* **Creating cursors**\n  * <kbd>alt</kbd> + <kbd>up</kbd> = Create cursor above\n  * <kbd>alt</kbd> + <kbd>down</kbd> = Create cursor under\n* **Moving the last cursor that has been created**\n  * <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>up</kbd> = Move the last-created cursor up\n  * <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>down</kbd> = Move the last-created cursor down\n  * <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>left</kbd> = Move the last-created cursor left\n  * <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>right</kbd> = Move the last-created cursor right\n\n## Linux Keymaps:\n\n* **Creating cursors**\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>up</kbd> = Create cursor above\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>down</kbd> = Create cursor under\n* **Moving the last cursor that has been created**\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>up</kbd> = Move the last-created cursor up\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>down</kbd> = Move the last-created cursor down\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>left</kbd> = Move the last-created cursor left\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>right</kbd> = Move the last-created cursor right\n\n\n## Windows Keymaps:\n\n* **Creating cursors**\n  * <kbd>alt</kbd> + <kbd>up</kbd> = Create cursor above\n  * <kbd>alt</kbd> + <kbd>down</kbd> = Create cursor under\n* **Moving the last cursor that has been created**\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>up</kbd> = Move the last-created cursor up\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>down</kbd> = Move the last-created cursor down\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>left</kbd> = Move the last-created cursor left\n  * <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>right</kbd> = Move the last-created cursor right\n\nThose may be overriden for your favorite keystroke in your `keymap.cson` with:\n\n```\n'atom-workspace atom-text-editor:not([mini])':\n  # you may have to unset the keybinding if it's already in use.\n\n  # Expand current cursor\n  'ctrl-down': 'multi-cursor:expandDown'\n  'ctrl-up':   'multi-cursor:expandUp'\n\n  # Move the last cursor.\n  'ctrl-alt-down':  'multi-cursor:move-last-cursor-down'\n  'ctrl-alt-right': 'multi-cursor:move-last-cursor-right'\n  'ctrl-alt-left':  'multi-cursor:move-last-cursor-left'\n  'ctrl-alt-up':    'multi-cursor:move-last-cursor-up'\n```\n\nBugs, feature requests and comments are more than welcome in the [issues](https://github.com/joseramonc/multi-cursor/issues) :tada:\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joseramonc/multi-cursor.git"
   },
-  "version": "2.1.5"
+  "version": "3.0.0"
 }
