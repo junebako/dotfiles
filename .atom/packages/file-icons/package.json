@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/file-icons/versions/2.1.35/tarball",
-  "_id": "file-icons@2.1.35",
+  "_from": "https://www.atom.io/api/packages/file-icons/versions/2.1.36/tarball",
+  "_id": "file-icons@2.1.36",
   "_inBundle": false,
-  "_integrity": "sha512-Q9wW/F+D8oT1UROw72YIcCE+xKDz0wMnAKCa8UCRnTZFoH/Rd/wsJrE4QfmnpxtrylkUlXG+cODqhIoNvaBgww==",
+  "_integrity": "sha512-L09kSwT28uqPuHPc01vN+eWNOx95gNVDRu5Uamv7WCvoq7S8GQx9FoqbYoZuMvFkKaggc5vq1GhKFJqz24x/5w==",
   "_location": "/file-icons",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/file-icons/versions/2.1.35/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.35/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.35/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.35/tarball"
+    "raw": "https://www.atom.io/api/packages/file-icons/versions/2.1.36/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.36/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.36/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.36/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/file-icons/versions/2.1.35/tarball",
-  "_shasum": "8f0aaa68ddaa5d31032b5f15295ee8ae0984cabc",
-  "_spec": "https://www.atom.io/api/packages/file-icons/versions/2.1.35/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119723-9237-1q17jdt.3rog",
+  "_resolved": "https://www.atom.io/api/packages/file-icons/versions/2.1.36/tarball",
+  "_shasum": "ec98d21008173766e345fe717d4c004f653495c6",
+  "_spec": "https://www.atom.io/api/packages/file-icons/versions/2.1.36/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119923-14293-gsbts.aaa59",
   "atomTestRunner": "atom-mocha",
   "bugs": {
     "url": "https://github.com/file-icons/atom/issues"
@@ -142,5 +142,5 @@
     "lint": "npx eslint . && npx coffeelint -q config.cson",
     "test": "atom -t ./test/"
   },
-  "version": "2.1.35"
+  "version": "2.1.36"
 }

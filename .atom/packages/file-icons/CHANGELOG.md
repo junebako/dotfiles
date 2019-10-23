@@ -3,7 +3,23 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.35...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.36...HEAD
+
+
+[v2.1.36] - 2019-10-19
+----------------------
+### Added
+- **New icons:** AdvPL (`.ahu`, `.aph`, `.prw`, `.tlpp`), AmuseWiki (`.muse`), Hyper (`.hyper.js`), mIRC (`.mrc`), Noon (`.noon`), Odin (`.odin`), Open Policy Agent (`.rego`), Sorbet (`.rbi`), Vyper (`.vy`), Webhint (`.hintrc`), Wget (`.wgetrc`, `.wget-hsts`)
+- **Support:** CPAN (`.cpanplus` directories), cURL (`_curlrc`, `curlrc`), Haskell (`.hs-boot`, `.hsig`), Jest (`.{ts,tsx,mjs}.snap`), JFlex (`.jlex`), NodeJS (`.node_repl_history`, `.node-gyp` directories), Tag (`.sha{256,sum}`), Vim (`.vim` directories)
+
+### Changed
+- Replaced V's icon with updated logo
+
+### Fixed
+- Incorrect scope-name used when matching a grammar override for V
+
+[v2.1.36]: https://github.com/file-icons/atom/releases/tag/v2.1.36
+
 
 
 [v2.1.35] - 2019-08-21
