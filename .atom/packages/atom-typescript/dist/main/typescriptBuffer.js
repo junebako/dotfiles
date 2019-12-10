@@ -31,10 +31,10 @@ class TypescriptBuffer {
             if (this.state) {
                 const client = this.state.client;
                 const file = this.state.filePath;
-                await client.execute("close", { file });
                 this.deps.clearFileErrors(file);
                 this.state.subscriptions.dispose();
                 this.state = undefined;
+                await client.execute("close", { file });
             }
         };
         this.onDidChangePath = (newPath) => {
@@ -180,6 +180,6 @@ class TypescriptBuffer {
         });
     }
 }
-TypescriptBuffer.bufferMap = new WeakMap();
 exports.TypescriptBuffer = TypescriptBuffer;
+TypescriptBuffer.bufferMap = new WeakMap();
 //# sourceMappingURL=typescriptBuffer.js.map

@@ -18,7 +18,7 @@ interface HTMLAttributes {
   challenge?: string
   checked?: boolean
   classID?: string
-  class?: string
+  className?: string
   cols?: number
   colSpan?: number
   content?: string
@@ -156,7 +156,7 @@ interface EtchAttributes extends HTMLAttributes {
     [name: string]: ((e: any) => any) | undefined
   }
   dataset?: {
-    [propName: string]: string | number
+    [propName: string]: string | number | null
   }
   innerHTML?: string
   innerText?: string

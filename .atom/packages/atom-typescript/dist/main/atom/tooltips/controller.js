@@ -17,8 +17,16 @@ class TooltipController {
     }
     async initialize(editor, e, bufferPt) {
         const rawView = atom.views.getView(editor);
-        const curCharPixelPt = rawView.pixelPositionForBufferPosition(bufferPt);
-        const nextCharPixelPt = rawView.pixelPositionForBufferPosition(bufferPt.traverse([0, 1]));
+        // tslint:disable-next-line: one-variable-per-declaration
+        let curCharPixelPt, nextCharPixelPt;
+        try {
+            curCharPixelPt = rawView.pixelPositionForBufferPosition(bufferPt);
+            nextCharPixelPt = rawView.pixelPositionForBufferPosition(bufferPt.traverse([0, 1]));
+        }
+        catch (e) {
+            console.warn(e);
+            return;
+        }
         if (curCharPixelPt.left >= nextCharPixelPt.left)
             return;
         // find out show position
@@ -59,7 +67,7 @@ class TooltipController {
     async showTooltip(tooltipRect, info) {
         this.view = new tooltipView_1.TooltipView();
         document.body.appendChild(this.view.element);
-        await this.view.update(Object.assign({}, tooltipRect, { info }));
+        await this.view.update(Object.assign(Object.assign({}, tooltipRect), { info }));
     }
 }
 exports.TooltipController = TooltipController;

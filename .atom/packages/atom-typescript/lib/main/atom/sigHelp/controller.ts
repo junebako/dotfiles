@@ -46,9 +46,26 @@ export class TooltipController {
     handlePromise(this.view.destroy())
   }
 
+  public async rotateSigHelp(shift: number) {
+    const {visibleItem, sigHelp} = this.view.props
+    const curVisItem =
+      visibleItem !== undefined
+        ? visibleItem
+        : sigHelp?.selectedItemIndex !== undefined
+        ? sigHelp?.selectedItemIndex
+        : 0
+    await this.view.update({visibleItem: curVisItem + shift})
+  }
+
   private async updateTooltip(bufferPt: Atom.Point) {
     if (this.cancelled) return
-    const tooltipRect = this.computeTooltipPosition(bufferPt)
+    let tooltipRect
+    try {
+      tooltipRect = this.computeTooltipPosition(bufferPt)
+    } catch (e) {
+      console.warn(e)
+      return
+    }
 
     const msg = await this.getMessage(bufferPt)
     if (this.cancelled) return

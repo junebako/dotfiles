@@ -70,7 +70,7 @@ class NavigationTreeComponent {
         if (props.navTree !== undefined) {
             this.setNavTree(props.navTree);
         }
-        this.props = Object.assign({}, this.props, props);
+        this.props = Object.assign(Object.assign({}, this.props), props);
         await etch.update(this);
     }
     async destroy() {
@@ -93,7 +93,7 @@ class NavigationTreeComponent {
     }
     render() {
         const maybeNavNodeComp = this.props.navTree ? (etch.dom(navigationNodeComponent_1.NavigationNodeComponent, { navTree: this.props.navTree, ctrl: this })) : null;
-        return (etch.dom("div", { class: "atomts atomts-semantic-view native-key-bindings" },
+        return (etch.dom("div", { className: "atomts atomts-semantic-view native-key-bindings" },
             etch.dom("ol", { className: "list-tree has-collapsable-children focusable-panel" }, maybeNavNodeComp)));
     }
     readAfterUpdate() {

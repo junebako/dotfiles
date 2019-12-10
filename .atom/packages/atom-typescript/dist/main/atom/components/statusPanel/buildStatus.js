@@ -29,7 +29,7 @@ class BuildStatus {
     async update(props) {
         const successStateChanged = props.buildStatus !== undefined &&
             props.buildStatus.success !== this.props.buildStatus.success;
-        this.props = Object.assign({}, this.props, props);
+        this.props = Object.assign(Object.assign({}, this.props), props);
         if (successStateChanged)
             this.resetBuildStatusTimeout();
         await etch.update(this);
@@ -50,7 +50,7 @@ class BuildStatus {
         return (etch.dom(tooltip_1.Tooltip, { title: this.props.buildStatus.success
                 ? "Build was successful"
                 : "Build failed; click to show error message" },
-            etch.dom("span", { class: cls, on: { click: this.buildStatusClicked } }, text)));
+            etch.dom("span", { className: cls, on: { click: this.buildStatusClicked } }, text)));
     }
     async destroy() {
         await etch.destroy(this);

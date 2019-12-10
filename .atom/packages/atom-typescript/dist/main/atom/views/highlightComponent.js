@@ -9,7 +9,7 @@ class HighlightComponent {
         etch.initialize(this);
     }
     async update(props) {
-        this.props = Object.assign({}, this.props, props);
+        this.props = Object.assign(Object.assign({}, this.props), props);
         this.matches = this.match(this.props);
         await etch.update(this);
     }
@@ -17,7 +17,7 @@ class HighlightComponent {
         await etch.destroy(this);
     }
     render() {
-        return (etch.dom("span", null, this.matches.map(m => (etch.dom("span", { class: m.type }, m.text)))));
+        return (etch.dom("span", null, this.matches.map(m => (etch.dom("span", { className: m.type }, m.text)))));
     }
     match(props) {
         if (props.query) {

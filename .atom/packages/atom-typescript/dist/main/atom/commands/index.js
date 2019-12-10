@@ -10,7 +10,6 @@ require("./clearErrors");
 require("./findReferences");
 require("./formatCode");
 require("./goToDeclaration");
-require("./hideSigHelp");
 require("./initializeConfig");
 require("./organizeImports");
 require("./refactorCode");
@@ -20,15 +19,15 @@ require("./renameRefactor");
 require("./restartAllServers");
 require("./returnFromDeclaration");
 require("./semanticView");
-require("./showSigHelp");
 require("./showTooltip");
+require("./sigHelp");
 require("./symbolsView");
 function registerCommands(deps) {
     const disp = new atom_1.CompositeDisposable();
     for (const cmd of registry_1.getCommands()) {
         if (cmd.selector === "atom-text-editor") {
             const d = cmd.desc(deps);
-            disp.add(atom.commands.add(cmd.selector, cmd.command, Object.assign({}, d, { async didDispatch(e) {
+            disp.add(atom.commands.add(cmd.selector, cmd.command, Object.assign(Object.assign({}, d), { async didDispatch(e) {
                     try {
                         const editor = e.currentTarget.getModel();
                         if (utils_1.isTypescriptEditorWithPath(editor)) {
@@ -53,7 +52,7 @@ function registerCommands(deps) {
         }
         else {
             const d = cmd.desc(deps);
-            disp.add(atom.commands.add(cmd.selector, cmd.command, Object.assign({}, d, { async didDispatch() {
+            disp.add(atom.commands.add(cmd.selector, cmd.command, Object.assign(Object.assign({}, d), { async didDispatch() {
                     try {
                         await d.didDispatch();
                     }

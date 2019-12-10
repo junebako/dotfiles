@@ -1,7 +1,8 @@
 import * as Atom from "atom"
 import {Datatip, DatatipProvider} from "atom/ide"
 import {GetClientFunction} from "../../client"
-import {locationToPoint, typeScriptScopes} from "../atom/utils"
+import {renderTooltip} from "../atom/tooltips/tooltipRenderer"
+import {highlight, locationToPoint, typeScriptScopes} from "../atom/utils"
 
 // Note: a horrible hack to avoid dependency on React
 const REACT_ELEMENT_SYMBOL = Symbol.for("react.element")
@@ -46,22 +47,9 @@ export class TSDatatipProvider implements DatatipProvider {
         offset: bufferPt.column + 1,
       })
       const data = result.body!
-      const code = await highlightCode(data.displayString.replace(/^\(.+?\)\s+/, ""))
-      const kind = (
-        <div class="atom-typescript-datatip-tooltip-kind">
-          {data.kind}
-          {data.kindModifiers ? <i> ({data.kindModifiers})</i> : null}
-        </div>
-      )
-      const docs = <div class="atom-typescript-datatip-tooltip-doc">{data.documentation}</div>
+      const tooltip = await renderTooltip(data, etch, highlightCode)
       return {
-        component: () => (
-          <div class="atom-typescript-datatip-tooltip">
-            {code}
-            {kind}
-            {docs}
-          </div>
-        ),
+        component: () => <div className="atom-typescript-datatip-tooltip">{tooltip}</div>,
         range: Atom.Range.fromObject([locationToPoint(data.start), locationToPoint(data.end)]),
       }
     } catch (e) {
@@ -73,45 +61,12 @@ export class TSDatatipProvider implements DatatipProvider {
 async function highlightCode(code: string) {
   const fontFamily = atom.config.get("editor.fontFamily")
 
-  const ed = new Atom.TextEditor({
-    readonly: true,
-    keyboardInputEnabled: false,
-    showInvisibles: false,
-    tabLength: atom.config.get("editor.tabLength"),
-  })
-  const el = atom.views.getView(ed)
-  try {
-    el.setUpdatedSynchronously(true)
-    el.style.pointerEvents = "none"
-    el.style.position = "absolute"
-    el.style.width = "0px"
-    el.style.height = "1px"
-    atom.views.getView(atom.workspace).appendChild(el)
-    atom.grammars.assignLanguageMode(ed.getBuffer(), "source.ts")
-    ed.setText(code.replace(/\r?\n$/, ""))
-    await editorTokenized(ed)
-    const html = Array.from(el.querySelectorAll(".line:not(.dummy)"))
-    return (
-      <div
-        style={{fontFamily}}
-        class="atom-typescript-datatip-tooltip-code"
-        dangerouslySetInnerHTML={{__html: html.map(x => x.innerHTML).join("\n")}}
-      />
-    )
-  } finally {
-    el.remove()
-  }
-}
-
-async function editorTokenized(editor: Atom.TextEditor) {
-  return new Promise(resolve => {
-    if (editor.getBuffer().getLanguageMode().fullyTokenized) {
-      resolve()
-    } else {
-      const disp = editor.onDidTokenize(() => {
-        disp.dispose()
-        resolve()
-      })
-    }
-  })
+  const html = await highlight(code.replace(/\r?\n$/, ""), "source.ts")
+  return (
+    <div
+      style={{fontFamily}}
+      className="atom-typescript-datatip-tooltip-code"
+      dangerouslySetInnerHTML={{__html: html.join("\n")}}
+    />
+  )
 }

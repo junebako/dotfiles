@@ -9,6 +9,7 @@ interface Props extends JSX.Props {
   top: number
   bottom: number
   sigHelp?: protocol.SignatureHelpItems
+  visibleItem?: number
 }
 
 export class TooltipView implements JSX.ElementClass {
@@ -30,7 +31,19 @@ export class TooltipView implements JSX.ElementClass {
   }
 
   public async update(props: Partial<Props>) {
+    if (
+      props.sigHelp?.selectedItemIndex !== undefined &&
+      props.sigHelp?.selectedItemIndex !== this.props.sigHelp?.selectedItemIndex
+    ) {
+      this.props.visibleItem = undefined
+    }
     this.props = {...this.props, ...props}
+    if (this.props.sigHelp === undefined) {
+      this.props.visibleItem = undefined
+    } else if (this.props.visibleItem !== undefined) {
+      this.props.visibleItem = this.props.visibleItem % this.props.sigHelp.items.length
+      if (this.props.visibleItem < 0) this.props.visibleItem += this.props.sigHelp.items.length
+    }
     await etch.update(this)
   }
 
@@ -45,8 +58,8 @@ export class TooltipView implements JSX.ElementClass {
 
   public render() {
     return (
-      <div class="atom-typescript-tooltip tooltip" key={this.sigHelpHash()}>
-        <div class="tooltip-inner">{this.tooltipContents()}</div>
+      <div className="atom-typescript-tooltip tooltip" key={this.sigHelpHash()}>
+        <div className="tooltip-inner">{this.tooltipContents()}</div>
       </div>
     )
   }
@@ -60,18 +73,32 @@ export class TooltipView implements JSX.ElementClass {
   private tooltipContents() {
     if (!this.props.sigHelp) return "…"
     const {sigHelp} = this.props
+    const visibleItem =
+      this.props.visibleItem !== undefined ? this.props.visibleItem : sigHelp.selectedItemIndex
+    const count = sigHelp.items.length
+    const classes = ["atom-typescript-tooltip-signature-help"]
+    if (count > 1) {
+      classes.push("atom-typescript-tooltip-signature-help-changable")
+    }
+    function className(idx: number) {
+      const newclasses = []
+      if (idx === sigHelp.selectedItemIndex) {
+        newclasses.push("atom-typescript-tooltip-signature-help-selected")
+      }
+      if (idx === visibleItem) {
+        newclasses.push("atom-typescript-tooltip-signature-help-visible")
+      }
+      return [...classes, ...newclasses].join(" ")
+    }
     return sigHelp.items.map((sig, idx) => (
-      <div
-        class={`atom-typescript-tooltip-signature-help${
-          idx === sigHelp.selectedItemIndex
-            ? " atom-typescript-tooltip-signature-help-selected"
-            : ""
-        }`}>
-        {partsToStr(sig.prefixDisplayParts)}
-        {this.renderSigHelpParams(sig.parameters, sigHelp.argumentIndex)}
-        {partsToStr(sig.suffixDisplayParts)}
-        <div class="atom-typescript-tooltip-signature-help-documentation">
-          {partsToStr(sig.documentation)}
+      <div className={className(idx)}>
+        <div>
+          {partsToStr(sig.prefixDisplayParts)}
+          {this.renderSigHelpParams(sig.parameters, sigHelp.argumentIndex)}
+          {partsToStr(sig.suffixDisplayParts)}
+          <div className="atom-typescript-tooltip-signature-help-documentation">
+            {partsToStr(sig.documentation)}
+          </div>
         </div>
       </div>
     ))
@@ -79,9 +106,10 @@ export class TooltipView implements JSX.ElementClass {
 
   private renderSigHelpParams(params: protocol.SignatureHelpParameter[], selIdx: number) {
     return params.map((p, i) => (
-      <span class={`atom-typescript-tooltip-signature-help-parameter`}>
+      <span className={`atom-typescript-tooltip-signature-help-parameter`}>
         {i > 0 ? ", " : null}
-        <span class={i === selIdx ? "atom-typescript-tooltip-signature-help-selected" : undefined}>
+        <span
+          className={i === selIdx ? "atom-typescript-tooltip-signature-help-selected" : undefined}>
           {partsToStr(p.displayParts)}
         </span>
       </span>
