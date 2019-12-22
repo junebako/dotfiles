@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.0/tarball",
-  "_id": "atom-typescript@13.4.0",
+  "_from": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.3/tarball",
+  "_id": "atom-typescript@13.4.3",
   "_inBundle": false,
-  "_integrity": "sha512-hI6eIcQe135GGiSC9of9M27UIjRyfe+aWbarf1dZpaQC9WWi2OmyOlu6lnb1QNKnShQrcWmg/e0iDzYHKKHxmQ==",
+  "_integrity": "sha512-LkNoZoSj6vCkIAgAGq7K9DgC6mVShqvTrQwh6783am+BPKRrLJ851OdWAVCVp3zF/wmW1YpQ53wEQ+3rrlo/Ng==",
   "_location": "/atom-typescript",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.0/tarball"
+    "raw": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.3/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.3/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.3/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.3/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.0/tarball",
-  "_shasum": "663038f364ddae64677e65fb7ca7266dd41820ac",
-  "_spec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.0/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1191110-6095-11qh9jo.32rvj",
+  "_resolved": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.3/tarball",
+  "_shasum": "9cde0fe3c4eb77961d0ec4cbb79a6e11368511c2",
+  "_spec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.3/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1191122-34450-ll91ha.c024d",
   "activationCommands": {
     "atom-workspace": [
       "typescript:initialize-config"
@@ -262,9 +262,9 @@
     "fs-plus": "^3.1.1",
     "fuzzaldrin": "^2.1.0",
     "lodash": "^4.17.15",
-    "resolve": "^1.12.2",
+    "resolve": "^1.13.1",
     "tslib": "^1.10.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   },
   "deprecated": false,
   "description": "The only TypeScript plugin you will ever need.",
@@ -274,7 +274,7 @@
   "devDependencies": {
     "@types/atom": "^1.36.1",
     "@types/byline": "^4.2.31",
-    "@types/chai": "^4.2.5",
+    "@types/chai": "^4.2.6",
     "@types/fs-plus": "^3.0.1",
     "@types/fuzzaldrin": "^2.1.2",
     "@types/lodash": "^4.14.149",
@@ -284,7 +284,7 @@
     "atom-ts-spec-runner": "^1.1.1",
     "chai": "^4.2.0",
     "prettier": "^1.19.1",
-    "ts-node": "^8.5.2",
+    "ts-node": "^8.5.4",
     "tslint": "^5.20.1",
     "tslint-use-atom-disposables": "0.0.1",
     "typescript-tslint-plugin": "0.5.5"
@@ -365,5 +365,5 @@
     "test": "npm run typecheck && npm run lint && npm run prettier-check",
     "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts && tsc --noEmit -p ./spec"
   },
-  "version": "13.4.0"
+  "version": "13.4.3"
 }
