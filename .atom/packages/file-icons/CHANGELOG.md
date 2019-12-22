@@ -3,7 +3,25 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.36...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.37...HEAD
+
+
+[v2.1.37] - 2019-12-20
+----------------------
+### Added
+- **New icons:** Conda (`.condarc`), Dependabot (`.dependabot` directories), Faust (`.dsp`), Gnuplot, Oberon (`.ob2`), Patreon (`PATRONS.md`), Razzle (`razzle.config.*`), Stylish Haskell (`.stylish-haskell.yaml`), Terser (`.{terserrc,uglifyrc}.*`), Truffle (`truffle.js`), WASI, Zeit (`now.json`, `.nowignore`)
+- **Support:** Firestore (`firestore.indexes.json`), Gridsome (`gridsome.{client,server}.*`), JavaScript (`**/cartridge/scripts/**/*.ds`), JSON (`.jsonc`), Ledger (`.ledger`, `.hledger`, `.journal`), Mocha (`.mocharc.{jsonc,cjs,mjs}`), Modernizr (`.modernizr{,rc}.js`), Raku (`.raku`, `.rakumod`, `.rakutest`), Shell (`.dircolors`, `dircolors`), VSCode (`.code-workspace`), YAML (`.yaml.mysql`, `.yaml.sed`)
+- **Interpreter recognition:** JavaScript ([`gjs`][], [`mujs`][], [`qjs{,bn,bnc,c}`][QuickJS]), WebAssembly ([`wasmtime`][])
+
+### Changed
+- Renamed Perl 6 to Raku
+
+[v2.1.37]:    https://github.com/file-icons/atom/releases/tag/v2.1.37
+[`gjs`]:      https://gitlab.gnome.org/GNOME/gjs/wikis/Home
+[`mujs`]:     https://www.mujs.com/
+[`wasmtime`]: https://wasmtime.dev/
+[QuickJS]:    https://bellard.org/quickjs/
+
 
 
 [v2.1.36] - 2019-10-19
