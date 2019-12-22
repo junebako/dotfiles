@@ -5,3 +5,5 @@ export EDITOR="emacs"
 export SVN_EDITOR="emacs"
 export LSCOLORS=gxfxcxdxbxegedabagacad
 export PGDATA=/usr/local/var/postgres
+
+export PATH="$HOME/.cargo/bin:$PATH"
