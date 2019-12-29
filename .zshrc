@@ -2,7 +2,7 @@
 
 # User specific aliases and functions
 
-alias cdr='cd $(ghq list -p | peco)'
+alias cdr='cd $(ghq list -p | sort | peco)'
 alias glsa='git ls-files | peco | xargs atom'
 alias ghq-get='ghq get -p'
 alias memo='lv ~/Dropbox/memo/memo.txt'
