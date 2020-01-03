@@ -1,3 +1,19 @@
+## 13.4.8
+
+-   Remove stray console.log
+
+## 13.4.7
+
+-   More autocompletion tweaks
+
+## 13.4.6
+
+-   Tweak autocompletion prefix heuristics
+
+## 13.4.5
+
+-   Fix #1530
+
 ## 13.4.4
 
 -   Fix replacement prefix case bug

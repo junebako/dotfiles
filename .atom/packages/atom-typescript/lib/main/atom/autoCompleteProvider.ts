@@ -8,6 +8,7 @@ import {FileLocationQuery, inits, spanToRange, typeScriptScopes} from "./utils"
 type SuggestionWithDetails = ACP.TextSuggestion & {
   details?: protocol.CompletionEntryDetails
   replacementRange?: Atom.Range
+  isMemberCompletion?: boolean
 }
 
 export class AutocompleteProvider implements ACP.AutocompleteProvider {
@@ -67,7 +68,7 @@ export class AutocompleteProvider implements ACP.AutocompleteProvider {
       const alphaPrefix = prefix.replace(/\W/g, "")
       if (alphaPrefix !== "") {
         suggestions = fuzzaldrin.filter(suggestions, alphaPrefix, {
-          key: "text",
+          key: "displayText",
         })
       }
 
@@ -77,7 +78,7 @@ export class AutocompleteProvider implements ACP.AutocompleteProvider {
       return suggestions.map(suggestion => ({
         replacementPrefix: suggestion.replacementRange
           ? opts.editor.getTextInBufferRange(suggestion.replacementRange)
-          : getReplacementPrefix(opts, suggestion.text!),
+          : getReplacementPrefix(opts, suggestion),
         ...suggestion,
       }))
     } catch (error) {
@@ -161,7 +162,9 @@ async function getSuggestionsInternal(
       includeInsertTextCompletions: true,
       ...location,
     })
-    return completions.body!.entries.map(completionEntryToSuggestion)
+    return completions.body!.entries.map(
+      completionEntryToSuggestion.bind(null, completions.body?.isMemberCompletion),
+    )
   } else {
     // use deprecated completions
     const completions = await client.execute("completions", {
@@ -171,21 +174,36 @@ async function getSuggestionsInternal(
       ...location,
     })
 
-    return completions.body!.map(completionEntryToSuggestion)
+    return completions.body!.map(completionEntryToSuggestion.bind(null, undefined))
   }
 }
 
 // Decide what needs to be replaced in the editor buffer when inserting the completion
-function getReplacementPrefix(opts: ACP.SuggestionsRequestedEvent, replacement: string): string {
-  const prefix = opts.editor
+function getReplacementPrefix(
+  opts: ACP.SuggestionsRequestedEvent,
+  suggestion: SuggestionWithDetails,
+): string {
+  const line = opts.editor
     .getBuffer()
     .getTextInRange([[opts.bufferPosition.row, 0], opts.bufferPosition])
-  for (const i of inits(replacement.toLowerCase(), 1)) {
-    if (prefix.toLowerCase().endsWith(i)) {
-      return prefix.slice(-i.length)
+  if (suggestion.isMemberCompletion) {
+    const dotMatch = line.match(/\.\s*?$/)
+    if (dotMatch) return dotMatch[0].slice(1)
+  }
+  for (const i of inits(suggestion.displayText!.toLowerCase(), 1)) {
+    if (line.toLowerCase().endsWith(i)) {
+      return line.slice(-i.length)
     }
   }
-  return ""
+  const {prefix} = opts
+  const trimmed = prefix.trim()
+  if (trimmed === "" || trimmed.match(/[\.{]$/)) {
+    return ""
+  } else if (suggestion.text.startsWith("$")) {
+    return "$" + prefix
+  } else {
+    return prefix
+  }
 }
 
 // When the user types each character in ".hello", we want to normalize the column such that it's
@@ -231,13 +249,17 @@ function containsScope(scopes: ReadonlyArray<string>, matchScope: string): boole
   return false
 }
 
-function completionEntryToSuggestion(entry: protocol.CompletionEntry): SuggestionWithDetails {
+function completionEntryToSuggestion(
+  isMemberCompletion: boolean | undefined,
+  entry: protocol.CompletionEntry,
+): SuggestionWithDetails {
   return {
     displayText: entry.name,
     text: entry.insertText !== undefined ? entry.insertText : entry.name,
     leftLabel: entry.kind,
     replacementRange: entry.replacementSpan ? spanToRange(entry.replacementSpan) : undefined,
     type: kindMap[entry.kind],
+    isMemberCompletion,
   }
 }
 

@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.4/tarball",
-  "_id": "atom-typescript@13.4.4",
+  "_from": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
+  "_id": "atom-typescript@13.4.8",
   "_inBundle": false,
-  "_integrity": "sha512-Fd9gXZo/u0t+zV21W5oaLYDzbepQKBCPrGK6kEgcmqmcQPvlWueIr4/cQps60h1yBdudQ9WLJiSA0MmwCm+b/A==",
+  "_integrity": "sha512-CrCQHgzsftUv/Z7mVWSRRz2/MFW/8XaNxZuXfKIhp0eVVGR1zmOUBDLtxEXm372pAH2iP8eC/kdoFEC76wmC4w==",
   "_location": "/atom-typescript",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.4/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.4/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.4/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.4/tarball"
+    "raw": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.4/tarball",
-  "_shasum": "fbeb5d2d23e44ecc8755df4c58c382989c345123",
-  "_spec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.4/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-1191129-2215-1d8lsr1.k26b",
+  "_resolved": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
+  "_shasum": "16f1a8238c9bbdc9edd9d5358ef400e3a74c7822",
+  "_spec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-12004-27226-1ukd5af.7798k",
   "activationCommands": {
     "atom-workspace": [
       "typescript:initialize-config"
@@ -365,5 +365,5 @@
     "test": "npm run typecheck && npm run lint && npm run prettier-check",
     "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts && tsc --noEmit -p ./spec"
   },
-  "version": "13.4.4"
+  "version": "13.4.8"
 }
