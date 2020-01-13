@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-  "_id": "linter-ui-default@1.8.0",
+  "_from": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.1/tarball",
+  "_id": "linter-ui-default@1.8.1",
   "_inBundle": false,
-  "_integrity": "sha512-PkOFe091etNRMTK5SYaw9vTvK7QWlsBtxQmnYltlWU0CT02akGeb7q7YAjjpkTM+LxwLJX1KsXc2W0LmncDTCw==",
+  "_integrity": "sha512-AtVSWjz9Mx/Zpe8g3Y3nuHESSa3zf1NjL55379NxzKop43nhIlI0IE0QEzlfO0yB89Vignwe3BlQlXlKpQhMeA==",
   "_location": "/linter-ui-default",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball"
+    "raw": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.1/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-  "_shasum": "2a03809663d08d75e6603e554ddb18d9a64bcb95",
-  "_spec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.0/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119729-17885-1hgxu4a.4zyf",
+  "_resolved": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.1/tarball",
+  "_shasum": "6ac056d31e7e12a586b09be4b1eb42a9c1f36488",
+  "_spec": "https://www.atom.io/api/packages/linter-ui-default/versions/1.8.1/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-120013-16595-38o99b.g9jib",
   "bugs": {
     "url": "https://github.com/steelbrain/linter-ui-default/issues"
   },
@@ -218,5 +218,5 @@
     "lint": "(flow check) && (eslint . ) && (prettier --list-different lib/*.js)",
     "test": "apm test"
   },
-  "version": "1.8.0"
+  "version": "1.8.1"
 }
