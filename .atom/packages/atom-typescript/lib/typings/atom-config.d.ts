@@ -15,9 +15,13 @@ declare module "atom" {
     "atom-typescript.tooltipDelay": number
     "atom-typescript.tooltipPosition": "top" | "bottom"
     "atom-typescript.sigHelpPosition": "top" | "bottom"
+    "atom-typescript.sigHelpDisplayOnChange": boolean
+    "atom-typescript.autocompleteParens": boolean
+    "atom-typescript.tsdkPath": string
     "atom-typescript.ignoredDiagnosticCodes": string[]
     "atom-typescript.ignoreUnusedSuggestionDiagnostics": boolean
     "atom-typescript.suppressAllDiagnostics": boolean
+    "atom-typescript.checkAllFilesOnSave": boolean
     "atom-typescript.tsFileExtensions": string[]
     "atom-typescript.jsFileExtensions": string[]
     "atom-typescript.tsSyntaxScopes": string[]
@@ -38,9 +42,13 @@ declare module "atom" {
       tooltipDelay: number
       tooltipPosition: "top" | "bottom"
       sigHelpPosition: "top" | "bottom"
+      sigHelpDisplayOnChange: boolean
+      autocompleteParens: boolean
+      tsdkPath: string
       ignoredDiagnosticCodes: string[]
       ignoreUnusedSuggestionDiagnostics: boolean
       suppressAllDiagnostics: boolean
+      checkAllFilesOnSave: boolean
       tsFileExtensions: string[]
       jsFileExtensions: string[]
       tsSyntaxScopes: string[]

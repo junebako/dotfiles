@@ -38,7 +38,7 @@ export class AutocompleteProvider implements ACP.AutocompleteProvider {
 
   constructor(private getClient: GetClientFunction) {}
 
-  public async getSuggestions(opts: ACP.SuggestionsRequestedEvent): Promise<ACP.TextSuggestion[]> {
+  public async getSuggestions(opts: ACP.SuggestionsRequestedEvent): Promise<ACP.AnySuggestion[]> {
     const location = getLocationQuery(opts)
     const {prefix} = opts
 
@@ -79,7 +79,7 @@ export class AutocompleteProvider implements ACP.AutocompleteProvider {
         replacementPrefix: suggestion.replacementRange
           ? opts.editor.getTextInBufferRange(suggestion.replacementRange)
           : getReplacementPrefix(opts, suggestion),
-        ...suggestion,
+        ...addCallableParens(suggestion),
       }))
     } catch (error) {
       return []
@@ -261,6 +261,15 @@ function completionEntryToSuggestion(
     type: kindMap[entry.kind],
     isMemberCompletion,
   }
+}
+
+function addCallableParens(s: SuggestionWithDetails): ACP.TextSuggestion | ACP.SnippetSuggestion {
+  if (
+    atom.config.get("atom-typescript.autocompleteParens") &&
+    ["function", "method"].includes(s.leftLabel!)
+  ) {
+    return {...s, snippet: `${s.text}($1)`, text: undefined}
+  } else return s
 }
 
 /** From :

@@ -1,3 +1,4 @@
+import * as path from "path"
 import {addCommand} from "./registry"
 
 addCommand("atom-text-editor", "typescript:check-all-files", deps => ({
@@ -12,34 +13,50 @@ addCommand("atom-text-editor", "typescript:check-all-files", deps => ({
       needFileNameList: true,
     })
 
-    const files = new Set(projectInfo.body!.fileNames)
+    const files = new Set(
+      projectInfo.body!.fileNames?.filter(
+        fn =>
+          // filter out obvious potholes
+          !fn.endsWith("tsconfig.json") && !fn.includes(`${path.sep}node_modules${path.sep}`),
+      ),
+    )
     const max = files.size
 
     // There's no real way to know when all of the errors have been received and not every file from
     // the files set is going to receive a a diagnostic event (typically some d.ts files). To counter
     // that, we cancel the listener and close the progress bar after no diagnostics have been received
     // for some amount of time.
-    let cancelTimeout: number | undefined
+    // That is, if we can't rely on multistep
+    if (client.multistepSupported) {
+      const disp = client.on("syntaxDiag", evt => {
+        if ("file" in evt) files.delete(evt.file)
+        deps.reportProgress({max, value: max - files.size})
+      })
 
-    const disp = client.on("syntaxDiag", evt => {
-      if (cancelTimeout !== undefined) window.clearTimeout(cancelTimeout)
-      cancelTimeout = window.setTimeout(cancel, 2000)
+      deps.reportProgress({max, value: 0})
+      await client.execute("geterrForProject", {file, delay: 0})
+      disp.dispose()
+    } else {
+      let cancelTimeout: number | undefined
 
-      if ("file" in evt) files.delete(evt.file)
-      updateStatus()
-    })
+      const disp = client.on("syntaxDiag", evt => {
+        if (cancelTimeout !== undefined) window.clearTimeout(cancelTimeout)
+        cancelTimeout = window.setTimeout(() => {
+          files.clear()
+          disp.dispose()
+          deps.reportProgress({max, value: max})
+        }, 2000)
 
-    deps.reportProgress({max, value: 0})
-    await client.execute("geterrForProject", {file, delay: 0})
+        if ("file" in evt) files.delete(evt.file)
+        if (files.size === 0) {
+          disp.dispose()
+          window.clearTimeout(cancelTimeout)
+        }
+        deps.reportProgress({max, value: max - files.size})
+      })
 
-    function cancel() {
-      files.clear()
-      updateStatus()
-    }
-
-    function updateStatus() {
-      if (files.size === 0) disp.dispose()
-      deps.reportProgress({max, value: max - files.size})
+      deps.reportProgress({max, value: 0})
+      await client.execute("geterrForProject", {file, delay: 0})
     }
   },
 }))

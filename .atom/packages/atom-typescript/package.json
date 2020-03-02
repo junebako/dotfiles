@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
-  "_id": "atom-typescript@13.4.8",
+  "_from": "https://www.atom.io/api/packages/atom-typescript/versions/13.5.0/tarball",
+  "_id": "atom-typescript@13.5.0",
   "_inBundle": false,
-  "_integrity": "sha512-CrCQHgzsftUv/Z7mVWSRRz2/MFW/8XaNxZuXfKIhp0eVVGR1zmOUBDLtxEXm372pAH2iP8eC/kdoFEC76wmC4w==",
+  "_integrity": "sha512-FPwHhii+cpFVMAxHBpb29ptu1Y+CnLjKewrxoR5qcl1QsNC4PVMHBDaSf57/LlsaJE+IdHZKVHMo6XNzXqTaHA==",
   "_location": "/atom-typescript",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball"
+    "raw": "https://www.atom.io/api/packages/atom-typescript/versions/13.5.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.5.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.5.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/atom-typescript/versions/13.5.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
-  "_shasum": "16f1a8238c9bbdc9edd9d5358ef400e3a74c7822",
-  "_spec": "https://www.atom.io/api/packages/atom-typescript/versions/13.4.8/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-12004-27226-1ukd5af.7798k",
+  "_resolved": "https://www.atom.io/api/packages/atom-typescript/versions/13.5.0/tarball",
+  "_shasum": "1915c440b8c379e1bf06c777bf38825987843e50",
+  "_spec": "https://www.atom.io/api/packages/atom-typescript/versions/13.5.0/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-12022-31093-z6vu8c.z0len",
   "activationCommands": {
     "atom-workspace": [
       "typescript:initialize-config"
@@ -40,6 +40,13 @@
       "type": "boolean",
       "default": true,
       "order": 90
+    },
+    "checkAllFilesOnSave": {
+      "title": "Show problems for project",
+      "description": "It will be report all problems in current project when your file saved.",
+      "type": "boolean",
+      "default": "false",
+      "order": 92
     },
     "autocompletionSuggestionPriority": {
       "description": "Snippets etc have priority of 1. Requires Atom restart",
@@ -131,6 +138,27 @@
       ],
       "default": "top",
       "order": 62
+    },
+    "sigHelpDisplayOnChange": {
+      "title": "Display signature help tooltips on keystroke",
+      "description": "Will automatically show signature help (if any) after `(`, `,`, `<` keystroke",
+      "type": "boolean",
+      "default": true,
+      "order": 63
+    },
+    "autocompleteParens": {
+      "title": "Autocomplete parentheses",
+      "description": "Automatically insert parentheses after autocompleting functions and methods",
+      "type": "boolean",
+      "default": false,
+      "order": 65
+    },
+    "tsdkPath": {
+      "title": "Path to default TypeScript SDK",
+      "description": "TypeScript SDK found at the specified path will be preferred over the bundled one if TypeScript is not installed in node_modules as a project dependency. Ignored when empty",
+      "type": "string",
+      "default": "",
+      "order": 70
     },
     "ignoredDiagnosticCodes": {
       "title": "Ignore diagnostics",
@@ -261,10 +289,11 @@
     "etch": "^0.14.0",
     "fs-plus": "^3.1.1",
     "fuzzaldrin": "^2.1.0",
+    "jsonc-parser": "^2.2.0",
     "lodash": "^4.17.15",
-    "resolve": "^1.13.1",
+    "resolve": "^1.15.1",
     "tslib": "^1.10.0",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.5"
   },
   "deprecated": false,
   "description": "The only TypeScript plugin you will ever need.",
@@ -272,20 +301,20 @@
     "atomts-semantic-view/SemanticView": "deserializeSemanticView"
   },
   "devDependencies": {
-    "@types/atom": "^1.36.1",
+    "@types/atom": "^1.36.2",
     "@types/byline": "^4.2.31",
-    "@types/chai": "^4.2.6",
+    "@types/chai": "^4.2.9",
     "@types/fs-plus": "^3.0.1",
     "@types/fuzzaldrin": "^2.1.2",
     "@types/lodash": "^4.14.149",
     "@types/mocha": "^5",
     "@types/node": "^10",
-    "@types/resolve": "^0.0.8",
+    "@types/resolve": "^1.14.0",
     "atom-ts-spec-runner": "^1.1.1",
     "chai": "^4.2.0",
     "prettier": "^1.19.1",
-    "ts-node": "^8.5.4",
-    "tslint": "^5.20.1",
+    "ts-node": "^8.6.2",
+    "tslint": "^6.0.0",
     "tslint-use-atom-disposables": "0.0.1",
     "typescript-tslint-plugin": "0.5.5"
   },
@@ -365,5 +394,5 @@
     "test": "npm run typecheck && npm run lint && npm run prettier-check",
     "typecheck": "tsc --noEmit -p ./lib && tsc --noEmit -p ./scripts && tsc --noEmit -p ./spec"
   },
-  "version": "13.4.8"
+  "version": "13.5.0"
 }

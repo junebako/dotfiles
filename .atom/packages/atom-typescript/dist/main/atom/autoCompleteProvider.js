@@ -45,7 +45,7 @@ class AutocompleteProvider {
             await this.getAdditionalDetails(suggestions.slice(0, 10), location);
             return suggestions.map(suggestion => (Object.assign({ replacementPrefix: suggestion.replacementRange
                     ? opts.editor.getTextInBufferRange(suggestion.replacementRange)
-                    : getReplacementPrefix(opts, suggestion) }, suggestion)));
+                    : getReplacementPrefix(opts, suggestion) }, addCallableParens(suggestion))));
         }
         catch (error) {
             return [];
@@ -177,6 +177,14 @@ function completionEntryToSuggestion(isMemberCompletion, entry) {
         type: kindMap[entry.kind],
         isMemberCompletion,
     };
+}
+function addCallableParens(s) {
+    if (atom.config.get("atom-typescript.autocompleteParens") &&
+        ["function", "method"].includes(s.leftLabel)) {
+        return Object.assign(Object.assign({}, s), { snippet: `${s.text}($1)`, text: undefined });
+    }
+    else
+        return s;
 }
 const kindMap = {
     directory: "require",
