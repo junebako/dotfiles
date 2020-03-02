@@ -1,7 +1,7 @@
 [include]
   path = ~/.gitconfig.secret
 [core]
-  editor = emacs
+  editor = atom -nw
   pager = lv -c
   quotepath = false
 [pager]
