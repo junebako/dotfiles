@@ -3,7 +3,24 @@ Change Log
 All notable changes to the project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.39...HEAD
+[Unpublished]: https://github.com/file-icons/atom/compare/v2.1.40...HEAD
+
+
+[v2.1.40] - 2020-03-31
+----------------------
+### Added
+- **New icons:** DevContainer (`devcontainer.json`, `.devcontainer` directories), Fork (`.issuetracker`), Lefthook (solid-filled variant), Nickle (`.5c`), Nimble (`.nimble`), OpenQASM (`.qasm`), PNPM (`pnpm-{lock,workspace}.yaml`, `pnpmfile.js`), Sails (`.sailsrc`), Shadow CLJS (`shadow-cljs.edn`), Valve Source Engine (`.bsp`, `.vpk`, `.vtfx`, `.vmt`, `.vtf`, `.vmf`, `.res`), ZenScript (`.zs`, `.zsrc.json`)
+- **Support:** Atom (`.apmrc`, `apmrc`), Config: Rust (`rust-toolchain`), Godot (`.godot`, `.import`, `.tres`, `.tscn`), Jest (`.snap`, `jest.config.babel.*`), Squirrel (`.gnut`)
+- [[`#721`][]]: Colour variations for JavaScript test files
+- [[`#67`][]]: Support for `cjs` and `mjs` config files
+
+### Changed
+- Lefthook icon to use solid-filled variant
+- Modeline strategy now also checks second line
+
+[`#721`]: https://github.com/file-icons/atom/issues/797
+[`#67`]:  https://github.com/file-icons/icons/issues/67
+
 
 
 [v2.1.39] - 2020-02-07

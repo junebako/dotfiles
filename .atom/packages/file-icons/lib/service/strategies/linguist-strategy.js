@@ -14,7 +14,7 @@ class LinguistStrategy extends Strategy {
 			priority:      4,
 			matchesFiles:  true,
 			matchesDirs:   false,
-			ignoreVirtual: false
+			ignoreVirtual: false,
 		});
 		
 		this.hasRules      = false;
@@ -112,7 +112,7 @@ class LinguistStrategy extends Strategy {
 			}
 		
 		this.hasRules = !!this.rules.size;
-		
+
 		for(const path of updatePaths)
 			this.updatePath(path);
 	}

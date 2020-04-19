@@ -9,13 +9,13 @@ class ModelineStrategy extends HeaderStrategy {
 	constructor(){
 		super({
 			name: "modelines",
-			priority: 6
+			priority: 6,
 		});
 	}
 	
 	
 	matchIcon(resource){
-		const data = this.getFirstLine(resource.data) || null;
+		const data = this.getFirstLine(resource.data, 2) || null;
 		
 		if(null === data)
 			return null;

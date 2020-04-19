@@ -20,10 +20,10 @@ class StrategyManager{
 			require("./strategies/grammar-strategy.js"),
 			require("./strategies/path-strategy.js"),
 		];
-		
-		for(const strategy of strategies)
-			this.addStrategy(strategy);
-		
+
+		for(let i = 0, l = strategies.length; i < l; ++i)
+			this.addStrategy(strategies[i]);
+
 		this.fileStrategies = this.fileStrategies.filter(a => a).reverse();
 		this.directoryStrategies = this.directoryStrategies.filter(a => a).reverse();
 	}
@@ -32,7 +32,7 @@ class StrategyManager{
 	reset(){
 		const strategies = new Set([
 			...this.fileStrategies,
-			...this.directoryStrategies
+			...this.directoryStrategies,
 		]);
 		
 		strategies.forEach(strategy => strategy.disable());
@@ -80,7 +80,9 @@ class StrategyManager{
 			: this.fileStrategies;
 		
 		if(!strategies) return;
-		for(const strategy of strategies){
+
+		for(let i = 0, l = strategies.length; i < l; ++i){
+			const strategy = strategies[i];
 			if(!strategy.enabled) continue;
 			const shouldStop = strategy.check(resource);
 			if(shouldStop)

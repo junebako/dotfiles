@@ -15,7 +15,7 @@ class UsertypeStrategy extends Strategy {
 			priority:      3,
 			matchesFiles:  true,
 			matchesDirs:   false,
-			ignoreVirtual: false
+			ignoreVirtual: false,
 		});
 		
 		this.configDisposable = null;
@@ -86,14 +86,15 @@ class UsertypeStrategy extends Strategy {
 			const paths = [];
 			
 			const patterns = types[scopeName];
-			for(const pattern of patterns)
+			for(let i = 0, l = patterns.length; i < l; ++i){
+				const pattern = patterns[i];
 				(-1 === pattern.indexOf(path.sep))
 					? names.push(pattern)
 					: paths.push(pattern);
-			
+			}
 			this.customTypes.set(scopeName, {
 				names: this.makeNamePattern(names),
-				paths: this.makePathPattern(paths)
+				paths: this.makePathPattern(paths),
 			});
 		}
 		

@@ -29,7 +29,7 @@ class HeaderStrategy extends Strategy {
 			ignoreBinary   = true,
 			minScanSize    = 6,
 			maxScanSize    = 80,
-			noSetting      = false
+			noSetting      = false,
 		} = opts;
 		
 		super({
@@ -37,7 +37,7 @@ class HeaderStrategy extends Strategy {
 			priority,
 			noSetting,
 			matchesFiles: true,
-			matchesDirs:  false
+			matchesDirs:  false,
 		});
 		
 		this.ignoreBinary = !!ignoreBinary;
@@ -82,10 +82,11 @@ class HeaderStrategy extends Strategy {
 	 * Extract the first line from a block of text.
 	 *
 	 * @param {String} input
+	 * @param {Number} [count=1]
 	 * @return {String}
 	 */
-	getFirstLine(input){
-		return input ? input.split(/\r?\n/).shift() : "";
+	getFirstLine(input, count = 1){
+		return input ? input.split(/\r?\n/).slice(0, count).join("\n") : "";
 	}
 	
 	

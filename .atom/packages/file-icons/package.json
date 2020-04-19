@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/file-icons/versions/2.1.39/tarball",
-  "_id": "file-icons@2.1.39",
+  "_from": "https://www.atom.io/api/packages/file-icons/versions/2.1.40/tarball",
+  "_id": "file-icons@2.1.40",
   "_inBundle": false,
-  "_integrity": "sha512-8GQIupuxbTZBgTvilxfraq4QrcWziVu95F+geiAEJGHxMdJgjLI6428nhCDOPZMZs9h6wDeLMecONQbwsBScHA==",
+  "_integrity": "sha512-KRxvRZX9NJYTbdXPGURfU3QT4Rio4uGXabc4KuMFfS4Zyilj/bfS9D2HT6Jiax99HypPGWjCCw6Wrw9A8wr9CQ==",
   "_location": "/file-icons",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/file-icons/versions/2.1.39/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.39/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.39/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.39/tarball"
+    "raw": "https://www.atom.io/api/packages/file-icons/versions/2.1.40/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.40/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.40/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/file-icons/versions/2.1.40/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/file-icons/versions/2.1.39/tarball",
-  "_shasum": "c5fca36313997af1b0a83a49d3f2c35d4d59aab9",
-  "_spec": "https://www.atom.io/api/packages/file-icons/versions/2.1.39/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-12018-5849-1lin3lu.m3er",
+  "_resolved": "https://www.atom.io/api/packages/file-icons/versions/2.1.40/tarball",
+  "_shasum": "8c380f51b83dde65edbbbfd6285f6fcf01af1797",
+  "_spec": "https://www.atom.io/api/packages/file-icons/versions/2.1.40/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-120319-77795-13k2a1j.sqcpk",
   "atomTestRunner": "atom-mocha",
   "bugs": {
     "url": "https://github.com/file-icons/atom/issues"
@@ -100,19 +100,22 @@
     "atom-fs": "v0.1.6",
     "lru-cache": "^5.1.1",
     "mapped-disposable": "^1.0.3",
-    "micromatch": "^3.1.10"
+    "micromatch": "^4.0.2"
   },
   "deprecated": false,
   "description": "Assign file extension icons and colours for improved visual grepping",
   "devDependencies": {
+    "@alhadis/eslint-config": "^2.2.0",
     "atom-mocha": "^2.2.1",
+    "babel-eslint": "^10.0.3",
     "coffee-script": "^1.12.7",
     "coffeelint": "^2.1.0",
-    "eslint": "^5.16.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.1",
     "get-options": "^1.2.0",
-    "rimraf": "^2.6.3",
+    "rimraf": "^3.0.2",
     "tmp": "^0.1.0",
-    "unzipper": "^0.9.15"
+    "unzipper": "^0.10.8"
   },
   "engines": {
     "atom": ">=1.25.0"
@@ -139,8 +142,8 @@
     "url": "git+https://github.com/file-icons/atom.git"
   },
   "scripts": {
-    "lint": "npx eslint . && npx coffeelint -q config.cson",
-    "test": "atom -t ./test/"
+    "lint": "make lint",
+    "test": "make test"
   },
-  "version": "2.1.39"
+  "version": "2.1.40"
 }
