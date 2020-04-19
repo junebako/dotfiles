@@ -1,25 +1,25 @@
 {
-  "_from": "https://www.atom.io/api/packages/wordcount/versions/3.1.0/tarball",
-  "_id": "wordcount@3.1.0",
+  "_from": "https://www.atom.io/api/packages/wordcount/versions/3.2.0/tarball",
+  "_id": "wordcount@3.2.0",
   "_inBundle": false,
-  "_integrity": "sha512-Au+bdWhbUyiA8um63+iKOe/oIVxJV6DMaj4sIT5FSu1SzFqCYzX0VMoLNHQYBUU6uP1g2nYGPwwKJgPR8WFP0g==",
+  "_integrity": "sha512-MoFIUiDFbYeT1JHTOTIk1WMFElSlh22cva1BoIgChnLvNgcd7N7uQZOEbgkc0MhDSIJqd+h3myWE5VDYBUgu+g==",
   "_location": "/wordcount",
   "_phantomChildren": {},
   "_requested": {
     "type": "remote",
-    "raw": "https://www.atom.io/api/packages/wordcount/versions/3.1.0/tarball",
-    "rawSpec": "https://www.atom.io/api/packages/wordcount/versions/3.1.0/tarball",
-    "saveSpec": "https://www.atom.io/api/packages/wordcount/versions/3.1.0/tarball",
-    "fetchSpec": "https://www.atom.io/api/packages/wordcount/versions/3.1.0/tarball"
+    "raw": "https://www.atom.io/api/packages/wordcount/versions/3.2.0/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/wordcount/versions/3.2.0/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/wordcount/versions/3.2.0/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/wordcount/versions/3.2.0/tarball"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://www.atom.io/api/packages/wordcount/versions/3.1.0/tarball",
-  "_shasum": "e71a7ffbe04f4aafaa135f22e9a7697f5253739f",
-  "_spec": "https://www.atom.io/api/packages/wordcount/versions/3.1.0/tarball",
-  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-119411-3028-cg3awx.dgumc",
+  "_resolved": "https://www.atom.io/api/packages/wordcount/versions/3.2.0/tarball",
+  "_shasum": "636ca8776e4a02da43e1726aeff392ba379a33a8",
+  "_spec": "https://www.atom.io/api/packages/wordcount/versions/3.2.0/tarball",
+  "_where": "/private/var/folders/4_/bp7cg4pj1r1fbrpl6pq2y3ncj9frxj/T/apm-install-dir-120319-78555-lixf9u.w4pa",
   "bugs": {
     "url": "https://github.com/nesQuick/atom-wordcount/issues"
   },
@@ -58,5 +58,5 @@
     "type": "git",
     "url": "git+https://github.com/nesQuick/atom-wordcount.git"
   },
-  "version": "3.1.0"
+  "version": "3.2.0"
 }
