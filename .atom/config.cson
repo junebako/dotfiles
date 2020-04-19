@@ -28,8 +28,7 @@
   "git-projects": {}
   "japanese-wrap":
     characterWidth: {}
-  "linter-ui-default":
-    showPanel: true
+  "linter-ui-default": {}
   react: {}
   welcome:
     showOnStartup: false
