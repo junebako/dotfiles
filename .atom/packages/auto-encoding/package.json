@@ -27,7 +27,7 @@
   "dependencies": {
     "iconv-lite": "^0.4.23",
     "jschardet": "^2.1.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.19"
   },
   "deprecated": false,
   "description": "Auto detect",
