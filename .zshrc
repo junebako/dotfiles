@@ -45,6 +45,8 @@ alias g='git'
 alias gtmp='git add .; git commit -m "tmp"'
 alias gfpr='git checkout master; git fetch origin; git pull --rebase origin master'
 alias gmbd='git branch --merged master | grep -vE "^\*|master$" | xargs -I % git branch -d %'
+alias gfpr2='git checkout main; git fetch origin; git pull --rebase origin main'
+alias gmbd2='git branch --merged main | grep -vE "^\*|main$" | xargs -I % git branch -d %'
 
 # Docker
 
