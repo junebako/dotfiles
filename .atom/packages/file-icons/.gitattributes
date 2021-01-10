@@ -1,6 +1,0 @@
-/lib/icons/.icondb.js linguist-vendored -diff
-/preview.png export-ignore
-/test/ export-ignore
-
-# Disable EOL normalisation to preserve CRLF in batchfiles
-* autocrlf=false

@@ -1,8 +1,0 @@
-name: "Show EOL characters"
-scopeName: "text.plain"
-fileTypes: ["txt", "tmp"]
-patterns: [
-	{match: "(?:\\r\\n)", name: "crlf"}
-	{match: "(?:\\n)",    name: "lf"}
-	{match: "\\r",        name: "cr"}
-]

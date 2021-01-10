@@ -1,5 +1,0 @@
-'.text.slim':
-  'editor':
-    'commentStart': '/ '
-    'increaseIndentPattern': '$.'
-    

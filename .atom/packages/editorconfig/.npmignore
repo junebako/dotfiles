@@ -1,7 +1,0 @@
-node_modules
-spec/fixtures/test.*
-spec/fixtures/eol/*.?.txt
-spec/fixtures/**/test.*
-!spec/fixtures/test.iss
-!package-lock.json
-*.tmp
