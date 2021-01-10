@@ -7,7 +7,7 @@ use_symbol_for_status = true
 
 [directory]
 truncation_length = 4
-prefix = "📂 "
+format = "📂 [$path]($style) "
 
 [git_branch]
 symbol = "🌱 "
