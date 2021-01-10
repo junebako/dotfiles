@@ -6,7 +6,6 @@ cd ~/
 
 ln -s $DOTFILES/.config
 ln -s $DOTFILES/.docker
-ln -s $DOTFILES/.emacs.d
 ln -s $DOTFILES/.gemrc
 ln -s $DOTFILES/.gitconfig
 ln -s $DOTFILES/.peco
