@@ -18,8 +18,8 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 220
-    lines: 60
+    columns: 189
+    lines: 80
 
   # Allow terminal applications to change Alacritty's window title.
     dynamic_title: true
@@ -29,8 +29,8 @@ window:
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
   position:
-    x: 100
-    y: 700
+    x: 0
+    y: 0
 
   # Window padding (changes require restart)
   #
