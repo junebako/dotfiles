@@ -30,6 +30,7 @@ alias h="history"
 alias x="exit"
 
 alias e="~/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
+alias c="cursor"
 
 alias tree="tree -CN"
 
@@ -47,7 +48,9 @@ alias gtmp='git add .; git commit -m "tmp"'
 function gfpr() {
     local branch
 
-    if test -n "$(git branch -a --format="%(refname:short)" | grep -e ^main$)"; then
+    if test -n "$(git branch -a --format="%(refname:short)" | grep -e ^develop$)"; then
+      branch=develop
+    elif test -n "$(git branch -a --format="%(refname:short)" | grep -e ^main$)"; then
       branch=main
     else
       branch=master
@@ -61,7 +64,9 @@ function gfpr() {
 function gmbd() {
     local branch
 
-    if test -n "$(git branch -a --format="%(refname:short)" | grep -e ^main$)"; then
+    if test -n "$(git branch -a --format="%(refname:short)" | grep -e ^develop$)"; then
+      branch=develop
+    elif test -n "$(git branch -a --format="%(refname:short)" | grep -e ^main$)"; then
       branch=main
     else
       branch=master
@@ -204,11 +209,6 @@ setopt magic_equal_subst
 setopt mark_dirs
 function chpwd() { ls }
 setopt auto_cd
-
-# zsh-notify
-# https://github.com/marzocchi/zsh-notify
-
-source ~/.zsh.d/zsh-notify/notify.plugin.zsh
 
 # emoji-cli
 # https://github.com/b4b4r07/emoji-cli

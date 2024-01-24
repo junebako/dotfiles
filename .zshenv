@@ -14,3 +14,4 @@ export MAKEOPTS="-j4"
 
 export SYS_NOTIFIER="/usr/local/bin/terminal-notifier"
 export NOTIFY_COMMAND_COMPLETE_TIMEOUT=10
+. "$HOME/.cargo/env"
