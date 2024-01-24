@@ -18,4 +18,4 @@ symbol = "🎁 "
 
 [time]
 disabled = false
-format = "🕙 %T"
+format = "🕙 $time"
