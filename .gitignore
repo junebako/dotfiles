@@ -11,3 +11,4 @@ ac-comphist.dat
 .atom/.atom-socket-secret-*
 .config/configstore/update-notifier-npm.json
 .docker
+.config/Microsoft\\VisualStudio Services/
