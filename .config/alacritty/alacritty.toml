@@ -607,9 +607,9 @@ x = 0
 y = 0
 
 [shell]
-program = "/opt/homebrew/bin/zsh"
 args = [
   "-l",
   "-c",
-  "tmux new-session -A -s j"
+  "tmux new-session -A -s juneboku",
 ]
+program = "/opt/homebrew/bin/zsh"
