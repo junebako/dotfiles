@@ -9,8 +9,8 @@
   show = diff-highlight | lv
   diff = diff-highlight | lv
 [user]
-  name = june29
-  email = june29.jp@gmail.com
+  name = juneboku
+  email = juneboku@gmail.com
 [color]
   ui = auto
 [alias]
@@ -27,7 +27,7 @@
   cp   = cherry-pick
   gsub = git-gsub
 [github]
-  user = june29
+  user = juneboku
 [push]
   default = simple
 [fetch]
