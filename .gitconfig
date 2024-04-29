@@ -3,7 +3,7 @@
 [core]
   pager = lv -c
   quotepath = false
-  editor = code --wait
+  editor = cursor --wait
 [pager]
   log  = diff-highlight | lv
   show = diff-highlight | lv
