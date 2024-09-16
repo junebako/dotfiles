@@ -77,10 +77,10 @@ function gmbd() {
 
 # Docker
 
-alias dcb='docker-compose build'
-alias dce='docker-compose exec'
-alias dcr='docker-compose run --rm'
-alias dcu='docker-compose up'
+alias dcb='docker compose build'
+alias dce='docker compose exec'
+alias dcr='docker compose run --rm'
+alias dcu='docker compose up'
 
 # http://www.clear-code.com/blog/2011/9/5.html
 
