@@ -141,7 +141,8 @@ REPORTTIME=5
 
 # keychain
 
-keychain --nogui --quiet ~/.ssh/id_rsa
+ssh-add --apple-use-keychain ~/.ssh/juneboku2024
+ssh-add --apple-use-keychain ~/.ssh/id_rsa
 source ~/.keychain/$HOST-sh
 
 # Prompt
