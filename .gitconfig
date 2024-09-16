@@ -21,7 +21,7 @@
   ci   = commit
   co   = checkout
   b    = branch
-  g    = grep -n -I
+  g    = grep -n -I -i
   s    = log -S
   pl   = pull
   pr   = pull --rebase
