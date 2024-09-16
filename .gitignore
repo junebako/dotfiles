@@ -12,3 +12,4 @@ ac-comphist.dat
 .config/configstore/update-notifier-npm.json
 .docker
 .config/Microsoft\\VisualStudio Services/
+.config/gcloud
