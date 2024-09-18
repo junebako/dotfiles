@@ -34,3 +34,4 @@ end
 
 source ~/.config/fish/config_abbr.fish
 starship init fish | source
+status --is-interactive; and source (rbenv init -|psub)
