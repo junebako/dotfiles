@@ -612,4 +612,4 @@ args = [
   "-c",
   "tmux new-session -A -s juneboku",
 ]
-program = "/opt/homebrew/bin/zsh"
+program = "/opt/homebrew/bin/fish"

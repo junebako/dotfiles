@@ -5,9 +5,9 @@
   quotepath = false
   editor = cursor --wait
 [pager]
-  log  = diff-highlight | lv
-  show = diff-highlight | lv
-  diff = diff-highlight | lv
+  log  = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight | lv
+  show = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight | lv
+  diff = /opt/homebrew/share/git-core/contrib/diff-highlight/diff-highlight | lv
 [user]
   name = juneboku
   email = juneboku@gmail.com
