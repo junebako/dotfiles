@@ -4,6 +4,11 @@ end
 
 set PATH /opt/homebrew/bin $PATH
 
+function history-merge --on-event fish_preexec
+  history --save
+  history --merge
+end
+
 function gfpr
     set branch
 
