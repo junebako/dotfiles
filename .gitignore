@@ -1,15 +1,16 @@
-.gitconfig.secret
-backups
-auto-save-list
-ac-comphist.dat
-.emacs.d/tramp
 .atom/.apm/_cacache/
-.atom/blob-store
-.atom/recovery
 .atom/.apm/anonymous-cli-metrics.json
 .atom/.apm/index*
 .atom/.atom-socket-secret-*
+.atom/blob-store
+.atom/recovery
 .config/configstore/update-notifier-npm.json
-.docker
-.config/Microsoft\\VisualStudio Services/
 .config/gcloud
+.config/karabiner/automatic_backups/
+.config/Microsoft\\VisualStudio Services/
+.docker
+.emacs.d/tramp
+.gitconfig.secret
+ac-comphist.dat
+auto-save-list
+backups
