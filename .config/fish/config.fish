@@ -40,22 +40,27 @@ function gmbd
 end
 
 function rmcache
-    if test (count $argv) -eq 0
-        echo "Usage: rmcache <path>"
+    if test (count $argv) -lt 1
+        echo "Usage: rmcache <path> [depth]"
         return 1
     end
 
     set path $argv[1]
+    set depth 1  # デフォルトの深さ
 
-    # Find and list .DS_Store files
-    echo "Listing .DS_Store files in $path:"
-    find $path -name ".DS_Store"
+    if test (count $argv) -ge 2
+        set depth $argv[2]
+    end
+
+    # 指定された深さで .DS_Store ファイルを検索
+    echo "Listing .DS_Store files in $path with depth $depth:"
+    find $path -name ".DS_Store" -maxdepth $depth
 
     echo
 
-    # Remove .DS_Store files
+    # 指定された深さで .DS_Store ファイルを削除
     echo "Removing .DS_Store files..."
-    find $path -name ".DS_Store" -exec rm {} \;
+    find $path -name ".DS_Store" -maxdepth $depth -exec rm {} \;
 
     echo
 
